@@ -1,0 +1,18 @@
+[
+  {
+    "title": "[first-skill-name]",
+    "slug": "[first-skill-slug]",
+    "purpose": "[first-skill-purpose]",
+    "when": "[first-skill-when]",
+    "reference": "references/skills/[first-skill-name].md",
+    "examples": "examples/skills/[first-skill-name].md"
+  },
+  {
+    "title": "[second-skill-name]",
+    "slug": "[second-skill-slug]",
+    "purpose": "[second-skill-purpose]",
+    "when": "[second-skill-when]",
+    "reference": "references/skills/[second-skill-name].md",
+    "examples": "examples/skills/[second-skill-name].md"
+  }
+]
