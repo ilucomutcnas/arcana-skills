@@ -1,0 +1,132 @@
+[
+  {
+    "title": "algorithmic-art",
+    "slug": "algorithmic-art",
+    "purpose": "Create generative art using p5.js with seeded randomness, algorithmic philosophies, and interactive parameter controls.",
+    "when": "When creating generative or procedural art, algorithmic visual compositions, or p5.js-based interactive art pieces.",
+    "reference": "references/skills/algorithmic-art.md",
+    "examples": "examples/skills/algorithmic-art.md",
+    "assets": ["algorithmic-art__templates/", "algorithmic-art__LICENSE.txt"]
+  },
+  {
+    "title": "makepad-animator",
+    "slug": "makepad-animator",
+    "purpose": "Implement Makepad animation states and transitions with forward timing, snap changes, and shader uniform animation.",
+    "when": "When building Makepad UI animations with hover, focus, pressed, or custom state transitions.",
+    "reference": "references/skills/makepad-animator.md",
+    "examples": "examples/skills/makepad-animator.md"
+  },
+  {
+    "title": "makepad-shader-lab",
+    "slug": "makepad-shader-lab",
+    "purpose": "Write Makepad custom pixel shaders using Sdf2d, uniforms, gradients, and rounded-box rendering.",
+    "when": "When creating custom visual effects in Makepad using shader code, SDF shapes, or gradient fills.",
+    "reference": "references/skills/makepad-shader-lab.md",
+    "examples": "examples/skills/makepad-shader-lab.md"
+  },
+  {
+    "title": "scroll-experience",
+    "slug": "scroll-experience",
+    "purpose": "Build scroll-driven web animations using GSAP ScrollTrigger, Framer Motion, Locomotive Scroll, Lenis, and CSS scroll-timeline.",
+    "when": "When creating scroll-based animations, parallax effects, or cinematic scrolling experiences on the web.",
+    "reference": "references/skills/scroll-experience.md",
+    "examples": "examples/skills/scroll-experience.md"
+  },
+  {
+    "title": "glsl-shader-alchemist",
+    "slug": "glsl-shader-alchemist",
+    "purpose": "Write GPU shaders using GLSL for WebGL, Three.js, or game engines, covering vertex and fragment shaders, uniforms, and vector math.",
+    "when": "When writing custom visual effects in GLSL, optimizing GPU rendering, or implementing post-processing shaders.",
+    "reference": "references/skills/glsl-shader-alchemist.md",
+    "examples": "examples/skills/glsl-shader-alchemist.md"
+  },
+  {
+    "title": "spline-3d-integration",
+    "slug": "spline-3d-integration",
+    "purpose": "Embed interactive 3D scenes from Spline.design into web projects with vanilla JS, React, Next.js, and Vue integration.",
+    "when": "When embedding Spline 3D scenes into websites, handling Spline event listeners, or optimizing Spline performance.",
+    "reference": "references/skills/spline-3d-integration.md",
+    "examples": "examples/skills/spline-3d-integration.md",
+    "assets": ["spline-3d-integration__examples/", "spline-3d-integration__guides/"]
+  },
+  {
+    "title": "threejs-animation",
+    "slug": "threejs-animation",
+    "purpose": "Implement Three.js procedural and keyframe animation using Timer, AnimationClip, AnimationMixer, and AnimationAction.",
+    "when": "When animating Three.js objects with procedural motion, keyframe tracks, or playing GLTF animation clips.",
+    "reference": "references/skills/threejs-animation.md",
+    "examples": "examples/skills/threejs-animation.md"
+  },
+  {
+    "title": "threejs-fundamentals",
+    "slug": "threejs-fundamentals",
+    "purpose": "Set up Three.js core infrastructure including scene, camera, renderer, fog, import maps, responsive resize, and animation loop.",
+    "when": "When starting a new Three.js project, setting up scene infrastructure, or configuring camera, renderer, and responsive layout.",
+    "reference": "references/skills/threejs-fundamentals.md",
+    "examples": "examples/skills/threejs-fundamentals.md"
+  },
+  {
+    "title": "threejs-geometry",
+    "slug": "threejs-geometry",
+    "purpose": "Work with Three.js built-in geometries, custom BufferGeometry, instanced meshes, and geometry merging.",
+    "when": "When creating 3D shapes, custom geometry, or optimizing draw calls with instancing and geometry merging.",
+    "reference": "references/skills/threejs-geometry.md",
+    "examples": "examples/skills/threejs-geometry.md"
+  },
+  {
+    "title": "threejs-interaction",
+    "slug": "threejs-interaction",
+    "purpose": "Implement Three.js user interaction with OrbitControls, raycasting, mouse picking, and click detection.",
+    "when": "When adding user interaction to Three.js scenes including camera controls, object picking, or mouse-based events.",
+    "reference": "references/skills/threejs-interaction.md",
+    "examples": "examples/skills/threejs-interaction.md"
+  },
+  {
+    "title": "threejs-lighting",
+    "slug": "threejs-lighting",
+    "purpose": "Configure Three.js lighting systems including ambient, directional, hemisphere, point, and spot lights with shadow mapping.",
+    "when": "When adding or configuring lights, shadows, or environment maps in a Three.js scene.",
+    "reference": "references/skills/threejs-lighting.md",
+    "examples": "examples/skills/threejs-lighting.md"
+  },
+  {
+    "title": "threejs-loaders",
+    "slug": "threejs-loaders",
+    "purpose": "Load external assets in Three.js using GLTFLoader, TextureLoader, LoadingManager, and model post-processing.",
+    "when": "When loading 3D models, textures, or other assets into a Three.js scene with progress tracking and error handling.",
+    "reference": "references/skills/threejs-loaders.md",
+    "examples": "examples/skills/threejs-loaders.md"
+  },
+  {
+    "title": "threejs-materials",
+    "slug": "threejs-materials",
+    "purpose": "Work with Three.js material types including MeshBasicMaterial, MeshLambertMaterial, MeshStandardMaterial, and PBR workflows.",
+    "when": "When selecting, configuring, or optimizing materials for Three.js meshes including PBR, transparency, and texture mapping.",
+    "reference": "references/skills/threejs-materials.md",
+    "examples": "examples/skills/threejs-materials.md"
+  },
+  {
+    "title": "threejs-postprocessing",
+    "slug": "threejs-postprocessing",
+    "purpose": "Apply Three.js post-processing effects using EffectComposer, RenderPass, UnrealBloomPass, and custom shader passes.",
+    "when": "When adding bloom, blur, color correction, or other post-processing effects to a Three.js scene.",
+    "reference": "references/skills/threejs-postprocessing.md",
+    "examples": "examples/skills/threejs-postprocessing.md"
+  },
+  {
+    "title": "threejs-shader-forge",
+    "slug": "threejs-shader-forge",
+    "purpose": "Create custom Three.js ShaderMaterial and RawShaderMaterial with GLSL vertex and fragment shaders, uniforms, and TSL NodeMaterial.",
+    "when": "When writing custom shaders for Three.js objects, using ShaderMaterial, or working with TSL NodeMaterial for WebGPU.",
+    "reference": "references/skills/threejs-shader-forge.md",
+    "examples": "examples/skills/threejs-shader-forge.md"
+  },
+  {
+    "title": "threejs-textures",
+    "slug": "threejs-textures",
+    "purpose": "Load, configure, and optimize textures in Three.js including async loading, mipmaps, compression, and texture atlases.",
+    "when": "When loading, applying, or optimizing textures for Three.js materials.",
+    "reference": "references/skills/threejs-textures.md",
+    "examples": "examples/skills/threejs-textures.md"
+  }
+]
