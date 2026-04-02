@@ -1,0 +1,107 @@
+[
+  {
+    "title": "foundations",
+    "slug": "foundations",
+    "purpose": "Defines base doctrine for tokens, cascade, naming, theming, layering, and maintainable CSS system design.",
+    "when": "When creating or refactoring design token systems, defining global styling rules, naming strategy, cascade policy, themes, or dark mode.",
+    "reference": "references/skills/foundations.md",
+    "examples": "examples/skills/foundations.md"
+  },
+  {
+    "title": "layout-responsive",
+    "slug": "layout-responsive",
+    "purpose": "Production rules for layout primitives, spacing systems, breakpoints, fluid design, and responsive consistency.",
+    "when": "When designing layouts, implementing responsive behavior, establishing breakpoint policy, or creating layout primitives.",
+    "reference": "references/skills/layout-responsive.md",
+    "examples": "examples/skills/layout-responsive.md"
+  },
+  {
+    "title": "general-ui-styling",
+    "slug": "general-ui-styling",
+    "purpose": "Rules for day-to-day UI styling: forms, cards, states, controls, density, hierarchy, and surface systems.",
+    "when": "When styling dashboards, settings pages, cards, forms, tables, modals, filters, or any product UI components.",
+    "reference": "references/skills/general-ui-styling.md",
+    "examples": "examples/skills/general-ui-styling.md"
+  },
+  {
+    "title": "animation-motion",
+    "slug": "animation-motion",
+    "purpose": "Tasteful, performance-safe motion for UI content transitions, interactive states, and reduced-motion support.",
+    "when": "When adding transitions, hover effects, loading animations, panel motion, or any UI animation requiring performance safety.",
+    "reference": "references/skills/animation-motion.md",
+    "examples": "examples/skills/animation-motion.md"
+  },
+  {
+    "title": "one-pager-landing",
+    "slug": "one-pager-landing",
+    "purpose": "CSS doctrine for landing pages, promo pages, hero sections, CTA styling, and conversion-oriented surfaces.",
+    "when": "When styling landing pages, marketing pages, hero sections, or conversion-oriented single-page layouts.",
+    "reference": "references/skills/one-pager-landing.md",
+    "examples": "examples/skills/one-pager-landing.md"
+  },
+  {
+    "title": "site-wide-systems",
+    "slug": "site-wide-systems",
+    "purpose": "Rules for styling consistency across large sites, multi-page products, shared themes, and long-term maintenance.",
+    "when": "When managing CSS across multiple pages or teams, governing tokens, establishing page templates, or ensuring site-wide consistency.",
+    "reference": "references/skills/site-wide-systems.md",
+    "examples": "examples/skills/site-wide-systems.md"
+  },
+  {
+    "title": "css-review-audit",
+    "slug": "css-review-audit",
+    "purpose": "Structured workflow for reviewing CSS, identifying anti-patterns by severity, and proposing concrete fixes.",
+    "when": "When auditing existing CSS, reviewing pull requests for styling quality, or identifying and fixing CSS anti-patterns.",
+    "reference": "references/skills/css-review-audit.md",
+    "examples": "examples/skills/css-review-audit.md"
+  },
+  {
+    "title": "framework-guides",
+    "slug": "framework-guides",
+    "purpose": "Framework-aware guidance for vanilla CSS, SCSS, Tailwind, CSS Modules, and CSS-in-JS without mixing rules blindly.",
+    "when": "When choosing a CSS methodology, applying framework-specific rules, or ensuring proper use of Tailwind, SCSS, CSS Modules, or CSS-in-JS.",
+    "reference": "references/skills/framework-guides.md",
+    "examples": "examples/skills/framework-guides.md"
+  },
+  {
+    "title": "language-conventions",
+    "slug": "language-conventions",
+    "purpose": "Rules for CSS naming, comments, mixed-language teams, and multilingual codebases.",
+    "when": "When establishing naming conventions, comment standards, or handling CSS in multilingual or mixed-discipline teams.",
+    "reference": "references/skills/language-conventions.md",
+    "examples": "examples/skills/language-conventions.md"
+  },
+  {
+    "title": "frontend-alchemy",
+    "slug": "frontend-alchemy",
+    "purpose": "Create memorable, high-craft frontend interfaces with intentional aesthetic direction, technical correctness, and cohesive restraint.",
+    "when": "When building frontend interfaces that need to stand out with intentional design, or evaluating design decisions for visual impact.",
+    "reference": "references/skills/frontend-alchemy.md",
+    "examples": "examples/skills/frontend-alchemy.md",
+    "assets": [
+      "frontend-design__LICENSE.txt"
+    ]
+  },
+  {
+    "title": "tailwind-design-system",
+    "slug": "tailwind-design-system",
+    "purpose": "Build production-ready design systems with Tailwind CSS including tokens, component variants, semantic colors, shadcn/ui patterns, dark mode, and accessibility.",
+    "when": "When creating Tailwind component libraries, implementing design tokens, building responsive accessible components, or using shadcn/ui.",
+    "reference": "references/skills/tailwind-design-system.md",
+    "examples": "examples/skills/tailwind-design-system.md",
+    "assets": [
+      "tailwind-design-system__resources/"
+    ]
+  },
+  {
+    "title": "frontend-dev-guidelines",
+    "slug": "frontend-dev-guidelines",
+    "purpose": "Production-grade React/TypeScript development with Suspense-first data fetching, feature-based organization, strict TypeScript, and performance-safe defaults.",
+    "when": "When creating React components, adding features, fetching data, setting up routing, or reviewing frontend code architecture.",
+    "reference": "references/skills/frontend-dev-guidelines.md",
+    "examples": "examples/skills/frontend-dev-guidelines.md",
+    "assets": [
+      "frontend-dev-guidelines__resources/"
+    ]
+  }
+]
