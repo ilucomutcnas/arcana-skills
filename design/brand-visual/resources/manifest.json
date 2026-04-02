@@ -1,0 +1,93 @@
+[
+  {
+    "title": "ad-creative",
+    "slug": "ad-creative",
+    "purpose": "Generate high-performing ad copy at scale \u2014 headlines, descriptions, and primary text with character-count validation, angle-based organization, and performance iteration.",
+    "when": "When generating or iterating paid ad copy, creating headline and description variations, organizing copy by angles, or using performance data to inform the next creative round.",
+    "reference": "references/skills/ad-creative.md",
+    "examples": "examples/skills/ad-creative.md",
+    "assets": [
+      "ad-creative__evals/",
+      "ad-creative__references/"
+    ]
+  },
+  {
+    "title": "brand-bible",
+    "slug": "brand-bible",
+    "purpose": "Write user-facing copy following brand voice guidelines with empathetic tone, concise style, active voice, and context-appropriate personality.",
+    "when": "When writing error messages, settings pages, documentation, billing flows, onboarding text, loading states, or any user-facing copy that must follow brand voice.",
+    "reference": "references/skills/brand-bible.md",
+    "examples": "examples/skills/brand-bible.md"
+  },
+  {
+    "title": "brand-guidelines-anthropic",
+    "slug": "brand-guidelines-anthropic",
+    "purpose": "Apply Anthropic's official brand identity including colors, typography (Poppins/Lora with system fallbacks), and visual formatting to deliverables.",
+    "when": "When creating Anthropic-branded materials, applying official colors and typography, or formatting deliverables with Anthropic visual identity.",
+    "reference": "references/skills/brand-guidelines-anthropic.md",
+    "examples": "examples/skills/brand-guidelines-anthropic.md",
+    "assets": [
+      "brand-guidelines-anthropic__LICENSE.txt"
+    ]
+  },
+  {
+    "title": "brand-guidelines-community",
+    "slug": "brand-guidelines-community",
+    "purpose": "Apply Anthropic's community brand identity including colors, typography, and visual formatting for community-facing materials.",
+    "when": "When creating community-facing Anthropic materials, applying community brand colors and typography, or formatting community deliverables.",
+    "reference": "references/skills/brand-guidelines-community.md",
+    "examples": "examples/skills/brand-guidelines-community.md",
+    "assets": [
+      "brand-guidelines-community__LICENSE.txt"
+    ]
+  },
+  {
+    "title": "canvas-design",
+    "slug": "canvas-design",
+    "purpose": "Create design philosophies as aesthetic movements and express them visually on canvas, producing .md philosophy documents and .pdf or .png art files using bundled fonts.",
+    "when": "When creating posters, visual art, design philosophy documents, or any canvas-based visual design expressed as PDF or PNG.",
+    "reference": "references/skills/canvas-design.md",
+    "examples": "examples/skills/canvas-design.md",
+    "assets": [
+      "canvas-design__canvas-fonts/",
+      "canvas-design__LICENSE.txt"
+    ]
+  },
+  {
+    "title": "design-md",
+    "slug": "design-md",
+    "purpose": "Create DESIGN.md files as design system documentation for Stitch projects, translating technical design tokens into descriptive visual language.",
+    "when": "When analyzing Stitch projects, creating DESIGN.md files, synthesizing semantic design systems, or generating design documentation for generative design tools.",
+    "reference": "references/skills/design-md.md",
+    "examples": "examples/skills/design-md.md"
+  },
+  {
+    "title": "design-orchestration",
+    "slug": "design-orchestration",
+    "purpose": "Control the flow between design skills ensuring ideas become designs, designs are reviewed, and only validated designs reach implementation.",
+    "when": "When coordinating a multi-step design pipeline, routing between generation, review, and implementation skills, or ensuring design validation before handoff.",
+    "reference": "references/skills/design-orchestration.md",
+    "examples": "examples/skills/design-orchestration.md"
+  },
+  {
+    "title": "theme-factory",
+    "slug": "theme-factory",
+    "purpose": "Apply consistent, professional theme styling (color palettes, font pairings, visual identity) to slide decks and artifacts from a library of 10 pre-built themes.",
+    "when": "When styling slide decks, presentations, or artifacts with a cohesive theme, or when the user needs to choose from pre-built visual themes.",
+    "reference": "references/skills/theme-factory.md",
+    "examples": "examples/skills/theme-factory.md",
+    "assets": [
+      "theme-factory__themes/",
+      "theme-factory__theme-showcase.pdf",
+      "theme-factory__LICENSE.txt"
+    ]
+  },
+  {
+    "title": "web-design-codex",
+    "slug": "web-design-codex",
+    "purpose": "Review web interface files for compliance with Vercel's Web Interface Guidelines, outputting findings in terse file:line format.",
+    "when": "When reviewing web UI files for design guideline compliance, checking against Vercel's Web Interface Guidelines, or auditing frontend code for design consistency.",
+    "reference": "references/skills/web-design-codex.md",
+    "examples": "examples/skills/web-design-codex.md"
+  }
+]
