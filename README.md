@@ -1,4 +1,4 @@
-# arcana-skills - Domain Packages for Real-World AI Work
+# Arcana Mini Skills: 2000+ Agentic Skills Domain Packages for Claude Code (local/cloud), Gemini CLI, Cursor, Copilot & More. Only Real-World AI Work
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Anthropic-purple)](https://claude.ai)
