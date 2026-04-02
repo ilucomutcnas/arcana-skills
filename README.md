@@ -1,5 +1,7 @@
 # arcana-skills - Domain Packages for Real-World AI Work
 
+https://github.com/ilucomutcnas/arcana-skills/stargazers
+
 A structured ecosystem of installable domain packages for building, routing, and operating high-value AI workflows at scale.
 
 This repository is not a loose collection of prompts, notes, or experimental snippets. It is a practical package system designed for real use: domain-oriented, linked, maintainable, and ready to be downloaded, installed, and integrated into actual agent workflows.
