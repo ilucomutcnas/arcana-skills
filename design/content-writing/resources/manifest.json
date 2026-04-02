@@ -1,0 +1,66 @@
+[
+  {
+    "title": "copywriting",
+    "slug": "copywriting",
+    "purpose": "Produce clear, credible, action-oriented marketing copy through a phased process of context gathering, brief lock, structured page writing, and testability guidance.",
+    "when": "When writing new page copy from scratch (homepage, landing page, pricing, feature, about) with a structured phased approach.",
+    "reference": "references/skills/copywriting.md",
+    "examples": "examples/skills/copywriting.md"
+  },
+  {
+    "title": "copy-editing",
+    "slug": "copy-editing",
+    "purpose": "Systematically improve existing copy through seven sequential editing sweeps covering clarity, voice, relevance, proof, specificity, emotion, and risk reduction.",
+    "when": "When reviewing and improving existing marketing or conversion copy, or editing a first draft before publication.",
+    "reference": "references/skills/copy-editing.md",
+    "examples": "examples/skills/copy-editing.md"
+  },
+  {
+    "title": "journalistic-writing",
+    "slug": "journalistic-writing",
+    "purpose": "Produce newsroom-grade, evidence-aware writing with public-interest structure, attribution discipline, and controlled language.",
+    "when": "When writing news reports, features, explainers, interviews, analysis, headlines, or publication-style rewrites.",
+    "reference": "references/skills/journalistic-writing.md",
+    "examples": "examples/skills/journalistic-writing.md"
+  },
+  {
+    "title": "marketing-writing",
+    "slug": "marketing-writing",
+    "purpose": "Produce persuasive, conversion-oriented writing tuned for audience, offer, and action across landing pages, ads, emails, and product copy.",
+    "when": "When writing landing pages, ads, performance copy, product descriptions, email sequences, slogans, CTA blocks, or campaign messaging.",
+    "reference": "references/skills/marketing-writing.md",
+    "examples": "examples/skills/marketing-writing.md"
+  },
+  {
+    "title": "business-writing",
+    "slug": "business-writing",
+    "purpose": "Produce clear, efficient professional communication for email, chat, memos, status reports, proposals, and executive summaries.",
+    "when": "When writing emails, chat messages, internal updates, partnership outreach, status reports, meeting notes, follow-ups, proposals, or executive summaries.",
+    "reference": "references/skills/business-writing.md",
+    "examples": "examples/skills/business-writing.md"
+  },
+  {
+    "title": "legal-writing",
+    "slug": "legal-writing",
+    "purpose": "Produce legally cautious, structured drafting support for clauses, policies, notices, disclaimers, and formal documents with risk awareness.",
+    "when": "When drafting contract clauses, templates, notices, disclaimers, policies, legal summaries, definitions, or structured obligations and rights.",
+    "reference": "references/skills/legal-writing.md",
+    "examples": "examples/skills/legal-writing.md"
+  },
+  {
+    "title": "general-writing",
+    "slug": "general-writing",
+    "purpose": "Produce natural, emotionally appropriate everyday text for personal messages, social posts, casual notes, and informal communication.",
+    "when": "When writing messages to friends and family, personal notes, casual rewrites, social posts, thank-you messages, congratulations, invitations, or everyday captions.",
+    "reference": "references/skills/general-writing.md",
+    "examples": "examples/skills/general-writing.md"
+  },
+  {
+    "title": "language-handling",
+    "slug": "language-handling",
+    "purpose": "Control multilingual input, translation fidelity, code-switching, and target-language consistency across all writing tasks.",
+    "when": "When input contains multiple languages, user asks for bilingual output, part of source text must remain untranslated, or cultural and tone fidelity matters across languages.",
+    "reference": "references/skills/language-handling.md",
+    "examples": "examples/skills/language-handling.md"
+  }
+]
