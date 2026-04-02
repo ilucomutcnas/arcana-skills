@@ -1,6 +1,15 @@
 # arcana-skills - Domain Packages for Real-World AI Work
 
-https://github.com/ilucomutcnas/arcana-skills/stargazers
+[![GitHub stars](https://img.shields.io/badge/猸?2029%2C000%2B%20Stars-gold?style=for-the-badge)](https://github.com/ilucomutcnas/arcana-skills/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Anthropic-purple)](https://claude.ai)
+[![Cursor](https://img.shields.io/badge/Cursor-AI%20IDE-orange)](https://cursor.sh)
+[![Codex CLI](https://img.shields.io/badge/Codex%20CLI-OpenAI-green)](https://github.com/openai/codex)
+[![Gemini CLI](https://img.shields.io/badge/Gemini%20CLI-Google-blue)](https://github.com/google-gemini/gemini-cli)
+[![Latest Release](https://img.shields.io/github/v/release/ilucomutcnas/arcana-skills?display_name=tag&style=for-the-badge)](https://github.com/ilucomutcnas/arcana-skills/releases/latest)
+[![Copilot](https://img.shields.io/badge/Copilot-GitHub-lightblue?style=for-the-badge)](https://github.com/features/copilot)
+[![OpenCode](https://img.shields.io/badge/OpenCode-CLI-gray?style=for-the-badge)](https://github.com/opencode-ai/opencode)
+[![Antigravity](https://img.shields.io/badge/Antigravity-AI%20IDE-red?style=for-the-badge)](https://github.com//ilucomutcnas/arcana-skills/)
 
 A structured ecosystem of installable domain packages for building, routing, and operating high-value AI workflows at scale.
 
