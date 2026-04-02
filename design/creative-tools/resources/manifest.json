@@ -1,0 +1,39 @@
+[
+  {
+    "title": "ad-creative",
+    "slug": "ad-creative",
+    "purpose": "Generate high-performing ad copy at scale with platform-specific specs, angle-based organization, character-count validation, AI+Remotion visual workflows, and performance-driven iteration.",
+    "when": "When generating or iterating paid ad copy at scale, producing headlines and descriptions with character counts, organizing copy by angles, or iterating based on performance data.",
+    "reference": "references/skills/ad-creative.md",
+    "examples": "examples/skills/ad-creative.md",
+    "assets": [
+      "ad-creative__evals/",
+      "ad-creative__references/"
+    ]
+  },
+  {
+    "title": "content-creator",
+    "slug": "content-creator",
+    "purpose": "Create brand-consistent content with voice analysis, SEO-optimized blog posts, platform-specific social media content, and content calendar planning.",
+    "when": "When writing blog posts, creating social media content, establishing brand voice, optimizing content for SEO, or planning content calendars.",
+    "reference": "references/skills/content-creator.md",
+    "examples": "examples/skills/content-creator.md",
+    "assets": [
+      "content-creator__assets/",
+      "content-creator__references/",
+      "content-creator__scripts/"
+    ]
+  },
+  {
+    "title": "pdf-processing",
+    "slug": "pdf-processing",
+    "purpose": "Process PDF documents programmatically using Python (pypdf, pdfplumber, reportlab) and CLI tools (qpdf, pdftk) for merging, splitting, extraction, form filling, OCR, and creation.",
+    "when": "When merging, splitting, extracting text or tables from, creating, filling forms in, adding watermarks to, or OCR-scanning PDF documents.",
+    "reference": "references/skills/pdf-processing.md",
+    "examples": "examples/skills/pdf-processing.md",
+    "assets": [
+      "pdf-processing__references/",
+      "pdf-processing__scripts/"
+    ]
+  }
+]
