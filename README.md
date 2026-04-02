@@ -1,6 +1,5 @@
 # arcana-skills - Domain Packages for Real-World AI Work
 
-[![GitHub stars](https://img.shields.io/badge/%E2%AD%90%2029%2C000%2B%20Stars-gold?style=for-the-badge)](https://github.com/ilucomutcnas/arcana-skills/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Anthropic-purple)](https://claude.ai)
 [![Cursor](https://img.shields.io/badge/Cursor-AI%20IDE-orange)](https://cursor.sh)
