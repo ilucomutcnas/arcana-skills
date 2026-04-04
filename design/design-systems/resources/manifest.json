@@ -1,0 +1,66 @@
+[
+  {
+    "title": "foundations",
+    "slug": "foundations",
+    "purpose": "Defines the visual and semantic foundation of a design system: tokens, scales, primitives, and naming.",
+    "when": "When creating or refactoring design token systems, color palettes, typography scales, spacing, radii, elevation, motion primitives, or breakpoints.",
+    "reference": "references/skills/foundations.md",
+    "examples": "examples/skills/foundations.md"
+  },
+  {
+    "title": "components",
+    "slug": "components",
+    "purpose": "Designs reusable component contracts, states, variants, and composition rules for a scalable UI library.",
+    "when": "When designing or reviewing component APIs, variants, states, slots, composition rules, or interaction behavior.",
+    "reference": "references/skills/components.md",
+    "examples": "examples/skills/components.md"
+  },
+  {
+    "title": "theming",
+    "slug": "theming",
+    "purpose": "Defines multi-theme, light/dark, and multi-brand theming with semantic safety and implementation discipline.",
+    "when": "When adding light/dark mode, brand themes, high-contrast support, or semantic color contracts to a design system.",
+    "reference": "references/skills/theming.md",
+    "examples": "examples/skills/theming.md"
+  },
+  {
+    "title": "accessibility",
+    "slug": "accessibility",
+    "purpose": "Bakes accessibility into tokens, components, theming, and documentation at the system level.",
+    "when": "When ensuring design system tokens meet contrast requirements, components have proper focus/keyboard/screen-reader support, or motion respects reduced-motion preferences.",
+    "reference": "references/skills/accessibility.md",
+    "examples": "examples/skills/accessibility.md"
+  },
+  {
+    "title": "documentation",
+    "slug": "documentation",
+    "purpose": "Documents system intent, usage rules, component contracts, and adoption guidance for design and engineering teams.",
+    "when": "When writing or reviewing design system documentation, component docs, migration guides, or adoption materials.",
+    "reference": "references/skills/documentation.md",
+    "examples": "examples/skills/documentation.md"
+  },
+  {
+    "title": "governance",
+    "slug": "governance",
+    "purpose": "Defines contribution, review, versioning, deprecation, and ownership rules for sustainable design systems.",
+    "when": "When establishing contribution workflows, review gates, versioning policy, deprecation paths, or ownership models for a design system.",
+    "reference": "references/skills/governance.md",
+    "examples": "examples/skills/governance.md"
+  },
+  {
+    "title": "review-audit",
+    "slug": "review-audit",
+    "purpose": "Audits products or libraries against design-system rules and produces concrete remediation guidance.",
+    "when": "When auditing interfaces, component libraries, or codebases for design-system compliance, token misuse, or consistency issues.",
+    "reference": "references/skills/review-audit.md",
+    "examples": "examples/skills/review-audit.md"
+  },
+  {
+    "title": "framework-mapping",
+    "slug": "framework-mapping",
+    "purpose": "Maps design-system concepts to CSS, Tailwind, CSS Modules, utility-first systems, and CSS-in-JS without losing semantic intent.",
+    "when": "When translating design-system tokens and components into CSS, SCSS, Tailwind, CSS Modules, or CSS-in-JS implementations.",
+    "reference": "references/skills/framework-mapping.md",
+    "examples": "examples/skills/framework-mapping.md"
+  }
+]
