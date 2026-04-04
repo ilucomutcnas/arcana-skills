@@ -1,0 +1,82 @@
+[
+  {
+    "title": "library-architecture",
+    "slug": "library-architecture",
+    "purpose": "Use for core text-analysis, measurement, line-breaking, bidi metadata, and public layout API changes in the Pretext engine.",
+    "when": "When changing Pretext's core engine (prepare, layout, analysis, measurement, line-break, bidi, inline-flow) or public API surface.",
+    "reference": "references/skills/library-architecture.md",
+    "examples": "examples/skills/library-architecture.md"
+  },
+  {
+    "title": "development-workflow",
+    "slug": "development-workflow",
+    "purpose": "Use for setup, command selection, local iteration, page navigation, and the standard Pretext contributor loop.",
+    "when": "When setting up the Pretext dev environment, choosing commands, iterating locally, or checking status dashboards.",
+    "reference": "references/skills/development-workflow.md",
+    "examples": "examples/skills/development-workflow.md"
+  },
+  {
+    "title": "browser-accuracy",
+    "slug": "browser-accuracy",
+    "purpose": "Use for browser sweep work, accuracy claims, mismatch diagnosis, and refresh rules for checked-in accuracy snapshots.",
+    "when": "When running browser accuracy checks, diagnosing cross-browser mismatches, or refreshing accuracy snapshots.",
+    "reference": "references/skills/browser-accuracy.md",
+    "examples": "examples/skills/browser-accuracy.md"
+  },
+  {
+    "title": "benchmarks-profiling",
+    "slug": "benchmarks-profiling",
+    "purpose": "Use for hot-path performance work, benchmark regressions, CPU profiling, allocation churn, and retained-memory checks.",
+    "when": "When profiling Pretext performance, diagnosing benchmark regressions, or checking allocation and memory behavior.",
+    "reference": "references/skills/benchmarks-profiling.md",
+    "examples": "examples/skills/benchmarks-profiling.md"
+  },
+  {
+    "title": "corpus-diagnostics",
+    "slug": "corpus-diagnostics",
+    "purpose": "Use for long-form corpus canaries, width sweeps, probes, extractor questions, font matrices, and mismatch taxonomy work.",
+    "when": "When running corpus sweeps, diagnosing text-shaping mismatches, or working with script-sensitive canary texts.",
+    "reference": "references/skills/corpus-diagnostics.md",
+    "examples": "examples/skills/corpus-diagnostics.md"
+  },
+  {
+    "title": "packaging-release",
+    "slug": "packaging-release",
+    "purpose": "Use for published package shape, dist output, entrypoints, build correctness, and release confidence checks.",
+    "when": "When building dist/, verifying package exports, running smoke tests, or preparing a release.",
+    "reference": "references/skills/packaging-release.md",
+    "examples": "examples/skills/packaging-release.md"
+  },
+  {
+    "title": "demo-dogfooding",
+    "slug": "demo-dogfooding",
+    "purpose": "Use for building, updating, or validating demos that exercise the rich line APIs and editorial-layout capabilities.",
+    "when": "When building or updating Pretext demos, exercising rich line APIs, or dogfooding editorial layout features.",
+    "reference": "references/skills/demo-dogfooding.md",
+    "examples": "examples/skills/demo-dogfooding.md"
+  },
+  {
+    "title": "priorities-roadmap",
+    "slug": "priorities-roadmap",
+    "purpose": "Use for deciding what to work on next, understanding active canaries, and knowing what not to reopen.",
+    "when": "When deciding what to work on, checking active priorities, or avoiding reopening resolved or deprioritized work.",
+    "reference": "references/skills/priorities-roadmap.md",
+    "examples": "examples/skills/priorities-roadmap.md"
+  },
+  {
+    "title": "research-log",
+    "slug": "research-log",
+    "purpose": "Use for interpreting earlier experiments, rejected hypotheses, and durable conclusions that should shape future work.",
+    "when": "When proposing architecture changes, revisiting shaping-heavy work, or separating durable lessons from abandoned experiments.",
+    "reference": "references/skills/research-log.md",
+    "examples": "examples/skills/research-log.md"
+  },
+  {
+    "title": "architecture-review",
+    "slug": "architecture-review",
+    "purpose": "Use for repo review, contributor audits, change-risk reviews, and system-level decision quality assessment.",
+    "when": "When reviewing proposed diffs, auditing contributors, assessing change risk, or checking system-level decision quality.",
+    "reference": "references/skills/architecture-review.md",
+    "examples": "examples/skills/architecture-review.md"
+  }
+]
