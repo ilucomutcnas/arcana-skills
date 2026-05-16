@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "purpose": "Validation thresholds for Arcana skill packages. These values are intentionally strict enough to identify thin or template-like packages, while CI starts in report mode during the repository cleanup phase.",
+  "minimums": {
+    "package_user_facing_words": 1200,
+    "skill_reference_words": 180,
+    "skill_example_words": 80,
+    "mini_skills_per_professional_package": 6
+  },
+  "allowed_statuses": [
+    "draft",
+    "usable",
+    "ready",
+    "deprecated",
+    "needs-review"
+  ],
+  "allowed_maturity": [
+    "professional",
+    "working",
+    "amateur"
+  ],
+  "report_only_ci": true,
+  "notes": [
+    "Use python scripts/validate_skills.py for a non-blocking report.",
+    "Use python scripts/validate_skills.py --strict after structural cleanup begins.",
+    "Use python scripts/validate_skills.py --strict --fail-on-warning for final release-quality checks."
+  ]
+}
