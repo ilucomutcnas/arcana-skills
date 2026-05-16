@@ -1,0 +1,445 @@
+# Repository Structure Map
+
+Inventory-only mapping for GitHub Issue #2. This document records repository structure facts only; no fixes were made in this task. Later issues will perform structural analysis and remediation.
+
+## Repository Summary
+
+| Metric | Value |
+|---|---:|
+| domain_count | 1 |
+| package_count | 8 |
+| markdown_file_count | 259 |
+| json_file_count | 25 |
+| script_file_count | 67 |
+| asset_file_count | 57 |
+| binary_asset_file_count | 55 |
+| empty_file_count | 0 |
+| large_file_count | 3 |
+
+## Repository-Level Files
+
+| File | Path |
+|---|---|
+| readme | README.md |
+| license | LICENSE |
+| license_content | LICENSE-CONTENT |
+| security | SECURITY.md |
+| registry | null |
+| registry_schema | null |
+
+## Domain Summary
+
+| Domain | Path | Package Count |
+|---|---|---:|
+| design | design | 8 |
+
+## Package Table
+
+| Domain | Package | Path | SKILL.md | Manifest | References Dir | Examples Dir | Shared Rules |
+|---|---|---|---|---|---|---|---|
+| design | 3d-animation | design/3d-animation | True | True | True | True | False |
+| design | accessibility-ux | design/accessibility-ux | True | True | True | True | False |
+| design | brand-visual | design/brand-visual | True | True | True | True | False |
+| design | content-writing | design/content-writing | True | True | True | True | True |
+| design | creative-tools | design/creative-tools | True | True | True | True | False |
+| design | css-styling | design/css-styling | True | True | True | True | True |
+| design | design-systems | design/design-systems | False | True | True | True | True |
+| design | pretext-ui | design/pretext-ui | True | True | True | True | True |
+
+## Domain: design
+
+### Package: 3d-animation
+
+- Path: `design/3d-animation`
+- Core Files:
+  - skill_md: True
+  - skill_me: False
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: False
+- Counts:
+  - manifest_records: 16
+  - reference_skill_files: 16
+  - example_skill_files: 16
+  - shared_rule_files: 0
+  - markdown_files: 42
+  - json_files: 1
+  - script_files: 3
+  - asset_files: 0
+  - binary_asset_files: 0
+  - empty_files: 0
+  - large_files: 0
+- Special Folders: none
+- Manifest valid_json: True
+- Manifest record count: 16
+- Manifest records:
+  - slug: algorithmic-art, title: algorithmic-art, reference: references/skills/algorithmic-art.md, examples: examples/skills/algorithmic-art.md, assets: ['algorithmic-art__templates/', 'algorithmic-art__LICENSE.txt']
+  - slug: makepad-animator, title: makepad-animator, reference: references/skills/makepad-animator.md, examples: examples/skills/makepad-animator.md, assets: []
+  - slug: makepad-shader-lab, title: makepad-shader-lab, reference: references/skills/makepad-shader-lab.md, examples: examples/skills/makepad-shader-lab.md, assets: []
+  - slug: scroll-experience, title: scroll-experience, reference: references/skills/scroll-experience.md, examples: examples/skills/scroll-experience.md, assets: []
+  - slug: glsl-shader-alchemist, title: glsl-shader-alchemist, reference: references/skills/glsl-shader-alchemist.md, examples: examples/skills/glsl-shader-alchemist.md, assets: []
+  - slug: spline-3d-integration, title: spline-3d-integration, reference: references/skills/spline-3d-integration.md, examples: examples/skills/spline-3d-integration.md, assets: ['spline-3d-integration__examples/', 'spline-3d-integration__guides/']
+  - slug: threejs-animation, title: threejs-animation, reference: references/skills/threejs-animation.md, examples: examples/skills/threejs-animation.md, assets: []
+  - slug: threejs-fundamentals, title: threejs-fundamentals, reference: references/skills/threejs-fundamentals.md, examples: examples/skills/threejs-fundamentals.md, assets: []
+  - slug: threejs-geometry, title: threejs-geometry, reference: references/skills/threejs-geometry.md, examples: examples/skills/threejs-geometry.md, assets: []
+  - slug: threejs-interaction, title: threejs-interaction, reference: references/skills/threejs-interaction.md, examples: examples/skills/threejs-interaction.md, assets: []
+  - slug: threejs-lighting, title: threejs-lighting, reference: references/skills/threejs-lighting.md, examples: examples/skills/threejs-lighting.md, assets: []
+  - slug: threejs-loaders, title: threejs-loaders, reference: references/skills/threejs-loaders.md, examples: examples/skills/threejs-loaders.md, assets: []
+  - slug: threejs-materials, title: threejs-materials, reference: references/skills/threejs-materials.md, examples: examples/skills/threejs-materials.md, assets: []
+  - slug: threejs-postprocessing, title: threejs-postprocessing, reference: references/skills/threejs-postprocessing.md, examples: examples/skills/threejs-postprocessing.md, assets: []
+  - slug: threejs-shader-forge, title: threejs-shader-forge, reference: references/skills/threejs-shader-forge.md, examples: examples/skills/threejs-shader-forge.md, assets: []
+  - slug: threejs-textures, title: threejs-textures, reference: references/skills/threejs-textures.md, examples: examples/skills/threejs-textures.md, assets: []
+
+### Package: accessibility-ux
+
+- Path: `design/accessibility-ux`
+- Core Files:
+  - skill_md: True
+  - skill_me: False
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: False
+- Counts:
+  - manifest_records: 6
+  - reference_skill_files: 6
+  - example_skill_files: 6
+  - shared_rule_files: 0
+  - markdown_files: 20
+  - json_files: 1
+  - script_files: 0
+  - asset_files: 0
+  - binary_asset_files: 0
+  - empty_files: 0
+  - large_files: 0
+- Special Folders: screen-reader-testing__resources, wcag-audit-patterns__resources
+- Manifest valid_json: True
+- Manifest record count: 6
+- Manifest records:
+  - slug: fixing-accessibility, title: fixing-accessibility, reference: references/skills/fixing-accessibility.md, examples: examples/skills/fixing-accessibility.md, assets: []
+  - slug: fixing-metadata, title: fixing-metadata, reference: references/skills/fixing-metadata.md, examples: examples/skills/fixing-metadata.md, assets: []
+  - slug: fixing-motion-performance, title: fixing-motion-performance, reference: references/skills/fixing-motion-performance.md, examples: examples/skills/fixing-motion-performance.md, assets: []
+  - slug: screen-reader-testing, title: screen-reader-testing, reference: references/skills/screen-reader-testing.md, examples: examples/skills/screen-reader-testing.md, assets: ['screen-reader-testing__resources/']
+  - slug: ui-visual-validator, title: ui-visual-validator, reference: references/skills/ui-visual-validator.md, examples: examples/skills/ui-visual-validator.md, assets: []
+  - slug: wcag-audit-patterns, title: wcag-audit-patterns, reference: references/skills/wcag-audit-patterns.md, examples: examples/skills/wcag-audit-patterns.md, assets: ['wcag-audit-patterns__resources/']
+
+### Package: brand-visual
+
+- Path: `design/brand-visual`
+- Core Files:
+  - skill_md: True
+  - skill_me: False
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: False
+- Counts:
+  - manifest_records: 9
+  - reference_skill_files: 9
+  - example_skill_files: 9
+  - shared_rule_files: 0
+  - markdown_files: 36
+  - json_files: 2
+  - script_files: 0
+  - asset_files: 55
+  - binary_asset_files: 55
+  - empty_files: 0
+  - large_files: 0
+- Special Folders: ad-creative__references
+- Manifest valid_json: True
+- Manifest record count: 9
+- Manifest records:
+  - slug: ad-creative, title: ad-creative, reference: references/skills/ad-creative.md, examples: examples/skills/ad-creative.md, assets: ['ad-creative__evals/', 'ad-creative__references/']
+  - slug: brand-bible, title: brand-bible, reference: references/skills/brand-bible.md, examples: examples/skills/brand-bible.md, assets: []
+  - slug: brand-guidelines-anthropic, title: brand-guidelines-anthropic, reference: references/skills/brand-guidelines-anthropic.md, examples: examples/skills/brand-guidelines-anthropic.md, assets: ['brand-guidelines-anthropic__LICENSE.txt']
+  - slug: brand-guidelines-community, title: brand-guidelines-community, reference: references/skills/brand-guidelines-community.md, examples: examples/skills/brand-guidelines-community.md, assets: ['brand-guidelines-community__LICENSE.txt']
+  - slug: canvas-design, title: canvas-design, reference: references/skills/canvas-design.md, examples: examples/skills/canvas-design.md, assets: ['canvas-design__canvas-fonts/', 'canvas-design__LICENSE.txt']
+  - slug: design-md, title: design-md, reference: references/skills/design-md.md, examples: examples/skills/design-md.md, assets: []
+  - slug: design-orchestration, title: design-orchestration, reference: references/skills/design-orchestration.md, examples: examples/skills/design-orchestration.md, assets: []
+  - slug: theme-factory, title: theme-factory, reference: references/skills/theme-factory.md, examples: examples/skills/theme-factory.md, assets: ['theme-factory__themes/', 'theme-factory__theme-showcase.pdf', 'theme-factory__LICENSE.txt']
+  - slug: web-design-codex, title: web-design-codex, reference: references/skills/web-design-codex.md, examples: examples/skills/web-design-codex.md, assets: []
+
+### Package: content-writing
+
+- Path: `design/content-writing`
+- Core Files:
+  - skill_md: True
+  - skill_me: False
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: True
+- Counts:
+  - manifest_records: 8
+  - reference_skill_files: 8
+  - example_skill_files: 8
+  - shared_rule_files: 1
+  - markdown_files: 23
+  - json_files: 1
+  - script_files: 0
+  - asset_files: 0
+  - binary_asset_files: 0
+  - empty_files: 0
+  - large_files: 0
+- Special Folders: none
+- Manifest valid_json: True
+- Manifest record count: 8
+- Manifest records:
+  - slug: copywriting, title: copywriting, reference: references/skills/copywriting.md, examples: examples/skills/copywriting.md, assets: []
+  - slug: copy-editing, title: copy-editing, reference: references/skills/copy-editing.md, examples: examples/skills/copy-editing.md, assets: []
+  - slug: journalistic-writing, title: journalistic-writing, reference: references/skills/journalistic-writing.md, examples: examples/skills/journalistic-writing.md, assets: []
+  - slug: marketing-writing, title: marketing-writing, reference: references/skills/marketing-writing.md, examples: examples/skills/marketing-writing.md, assets: []
+  - slug: business-writing, title: business-writing, reference: references/skills/business-writing.md, examples: examples/skills/business-writing.md, assets: []
+  - slug: legal-writing, title: legal-writing, reference: references/skills/legal-writing.md, examples: examples/skills/legal-writing.md, assets: []
+  - slug: general-writing, title: general-writing, reference: references/skills/general-writing.md, examples: examples/skills/general-writing.md, assets: []
+  - slug: language-handling, title: language-handling, reference: references/skills/language-handling.md, examples: examples/skills/language-handling.md, assets: []
+
+### Package: creative-tools
+
+- Path: `design/creative-tools`
+- Core Files:
+  - skill_md: True
+  - skill_me: False
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: False
+- Counts:
+  - manifest_records: 3
+  - reference_skill_files: 3
+  - example_skill_files: 3
+  - shared_rule_files: 0
+  - markdown_files: 20
+  - json_files: 2
+  - script_files: 10
+  - asset_files: 0
+  - binary_asset_files: 0
+  - empty_files: 0
+  - large_files: 0
+- Special Folders: ad-creative__references, content-creator__assets, content-creator__references, content-creator__scripts, pdf-processing__references, pdf-processing__scripts
+- Manifest valid_json: True
+- Manifest record count: 3
+- Manifest records:
+  - slug: ad-creative, title: ad-creative, reference: references/skills/ad-creative.md, examples: examples/skills/ad-creative.md, assets: ['ad-creative__evals/', 'ad-creative__references/']
+  - slug: content-creator, title: content-creator, reference: references/skills/content-creator.md, examples: examples/skills/content-creator.md, assets: ['content-creator__assets/', 'content-creator__references/', 'content-creator__scripts/']
+  - slug: pdf-processing, title: pdf-processing, reference: references/skills/pdf-processing.md, examples: examples/skills/pdf-processing.md, assets: ['pdf-processing__references/', 'pdf-processing__scripts/']
+
+### Package: css-styling
+
+- Path: `design/css-styling`
+- Core Files:
+  - skill_md: True
+  - skill_me: False
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: True
+- Counts:
+  - manifest_records: 12
+  - reference_skill_files: 12
+  - example_skill_files: 12
+  - shared_rule_files: 2
+  - markdown_files: 43
+  - json_files: 1
+  - script_files: 0
+  - asset_files: 0
+  - binary_asset_files: 0
+  - empty_files: 0
+  - large_files: 0
+- Special Folders: frontend-dev-guidelines__resources, tailwind-design-system__resources
+- Manifest valid_json: True
+- Manifest record count: 12
+- Manifest records:
+  - slug: foundations, title: foundations, reference: references/skills/foundations.md, examples: examples/skills/foundations.md, assets: []
+  - slug: layout-responsive, title: layout-responsive, reference: references/skills/layout-responsive.md, examples: examples/skills/layout-responsive.md, assets: []
+  - slug: general-ui-styling, title: general-ui-styling, reference: references/skills/general-ui-styling.md, examples: examples/skills/general-ui-styling.md, assets: []
+  - slug: animation-motion, title: animation-motion, reference: references/skills/animation-motion.md, examples: examples/skills/animation-motion.md, assets: []
+  - slug: one-pager-landing, title: one-pager-landing, reference: references/skills/one-pager-landing.md, examples: examples/skills/one-pager-landing.md, assets: []
+  - slug: site-wide-systems, title: site-wide-systems, reference: references/skills/site-wide-systems.md, examples: examples/skills/site-wide-systems.md, assets: []
+  - slug: css-review-audit, title: css-review-audit, reference: references/skills/css-review-audit.md, examples: examples/skills/css-review-audit.md, assets: []
+  - slug: framework-guides, title: framework-guides, reference: references/skills/framework-guides.md, examples: examples/skills/framework-guides.md, assets: []
+  - slug: language-conventions, title: language-conventions, reference: references/skills/language-conventions.md, examples: examples/skills/language-conventions.md, assets: []
+  - slug: frontend-alchemy, title: frontend-alchemy, reference: references/skills/frontend-alchemy.md, examples: examples/skills/frontend-alchemy.md, assets: ['frontend-design__LICENSE.txt']
+  - slug: tailwind-design-system, title: tailwind-design-system, reference: references/skills/tailwind-design-system.md, examples: examples/skills/tailwind-design-system.md, assets: ['tailwind-design-system__resources/']
+  - slug: frontend-dev-guidelines, title: frontend-dev-guidelines, reference: references/skills/frontend-dev-guidelines.md, examples: examples/skills/frontend-dev-guidelines.md, assets: ['frontend-dev-guidelines__resources/']
+
+### Package: design-systems
+
+- Path: `design/design-systems`
+- Core Files:
+  - skill_md: False
+  - skill_me: True
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: True
+- Counts:
+  - manifest_records: 8
+  - reference_skill_files: 8
+  - example_skill_files: 8
+  - shared_rule_files: 2
+  - markdown_files: 23
+  - json_files: 1
+  - script_files: 0
+  - asset_files: 0
+  - binary_asset_files: 0
+  - empty_files: 0
+  - large_files: 0
+- Special Folders: none
+- Manifest valid_json: True
+- Manifest record count: 8
+- Manifest records:
+  - slug: foundations, title: foundations, reference: references/skills/foundations.md, examples: examples/skills/foundations.md, assets: []
+  - slug: components, title: components, reference: references/skills/components.md, examples: examples/skills/components.md, assets: []
+  - slug: theming, title: theming, reference: references/skills/theming.md, examples: examples/skills/theming.md, assets: []
+  - slug: accessibility, title: accessibility, reference: references/skills/accessibility.md, examples: examples/skills/accessibility.md, assets: []
+  - slug: documentation, title: documentation, reference: references/skills/documentation.md, examples: examples/skills/documentation.md, assets: []
+  - slug: governance, title: governance, reference: references/skills/governance.md, examples: examples/skills/governance.md, assets: []
+  - slug: review-audit, title: review-audit, reference: references/skills/review-audit.md, examples: examples/skills/review-audit.md, assets: []
+  - slug: framework-mapping, title: framework-mapping, reference: references/skills/framework-mapping.md, examples: examples/skills/framework-mapping.md, assets: []
+
+### Package: pretext-ui
+
+- Path: `design/pretext-ui`
+- Core Files:
+  - skill_md: True
+  - skill_me: False
+  - composition_protocol: True
+  - self_diagnostic_protocol: True
+  - manifest_json: True
+  - skill_catalog: True
+  - routing_guide: True
+  - asset_link_index: True
+  - references_skills_dir: True
+  - examples_skills_dir: True
+  - shared_rules_dir: True
+- Counts:
+  - manifest_records: 10
+  - reference_skill_files: 10
+  - example_skill_files: 10
+  - shared_rule_files: 1
+  - markdown_files: 37
+  - json_files: 14
+  - script_files: 53
+  - asset_files: 2
+  - binary_asset_files: 0
+  - empty_files: 0
+  - large_files: 3
+- Special Folders: accuracy, benchmarks, corpora, original-docs, pages, research-data, scripts, src
+- Manifest valid_json: True
+- Manifest record count: 10
+- Manifest records:
+  - slug: library-architecture, title: library-architecture, reference: references/skills/library-architecture.md, examples: examples/skills/library-architecture.md, assets: []
+  - slug: development-workflow, title: development-workflow, reference: references/skills/development-workflow.md, examples: examples/skills/development-workflow.md, assets: []
+  - slug: browser-accuracy, title: browser-accuracy, reference: references/skills/browser-accuracy.md, examples: examples/skills/browser-accuracy.md, assets: []
+  - slug: benchmarks-profiling, title: benchmarks-profiling, reference: references/skills/benchmarks-profiling.md, examples: examples/skills/benchmarks-profiling.md, assets: []
+  - slug: corpus-diagnostics, title: corpus-diagnostics, reference: references/skills/corpus-diagnostics.md, examples: examples/skills/corpus-diagnostics.md, assets: []
+  - slug: packaging-release, title: packaging-release, reference: references/skills/packaging-release.md, examples: examples/skills/packaging-release.md, assets: []
+  - slug: demo-dogfooding, title: demo-dogfooding, reference: references/skills/demo-dogfooding.md, examples: examples/skills/demo-dogfooding.md, assets: []
+  - slug: priorities-roadmap, title: priorities-roadmap, reference: references/skills/priorities-roadmap.md, examples: examples/skills/priorities-roadmap.md, assets: []
+  - slug: research-log, title: research-log, reference: references/skills/research-log.md, examples: examples/skills/research-log.md, assets: []
+  - slug: architecture-review, title: architecture-review, reference: references/skills/architecture-review.md, examples: examples/skills/architecture-review.md, assets: []
+
+## Detected Binary Assets
+
+- `design/brand-visual/canvas-design__canvas-fonts/ArsenalSC-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/BigShoulders-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/BigShoulders-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Boldonse-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/BricolageGrotesque-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/BricolageGrotesque-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/CrimsonPro-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/CrimsonPro-Italic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/CrimsonPro-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/DMMono-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/EricaOne-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/GeistMono-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/GeistMono-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Gloock-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/IBMPlexMono-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/IBMPlexMono-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/IBMPlexSerif-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/IBMPlexSerif-BoldItalic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/IBMPlexSerif-Italic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/IBMPlexSerif-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/InstrumentSans-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/InstrumentSans-BoldItalic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/InstrumentSans-Italic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/InstrumentSans-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/InstrumentSerif-Italic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/InstrumentSerif-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Italiana-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/JetBrainsMono-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/JetBrainsMono-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Jura-Light.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Jura-Medium.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/LibreBaskerville-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Lora-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Lora-BoldItalic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Lora-Italic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Lora-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/NationalPark-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/NationalPark-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/NothingYouCouldDo-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Outfit-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Outfit-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/PixelifySans-Medium.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/PoiretOne-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/RedHatMono-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/RedHatMono-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Silkscreen-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/SmoochSans-Medium.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Tektur-Medium.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/Tektur-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/WorkSans-Bold.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/WorkSans-BoldItalic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/WorkSans-Italic.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/WorkSans-Regular.ttf`
+- `design/brand-visual/canvas-design__canvas-fonts/YoungSerif-Regular.ttf`
+- `design/brand-visual/theme-factory__theme-showcase.pdf`
+
+## Detected Empty Files
+
+- none
+
+## Detected Large Files (>500 KB)
+
+- `design/pretext-ui/accuracy/chrome.json`
+- `design/pretext-ui/accuracy/firefox.json`
+- `design/pretext-ui/accuracy/safari.json`
