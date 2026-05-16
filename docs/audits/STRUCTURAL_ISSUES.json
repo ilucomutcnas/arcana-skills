@@ -1,0 +1,200 @@
+{
+  "schema_version": "1.0.0",
+  "generated_for_issue": 4,
+  "inputs": [
+    "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+  ],
+  "summary": {
+    "total_issues": 11,
+    "critical": 1,
+    "high": 2,
+    "medium": 2,
+    "low": 5,
+    "info": 1,
+    "affected_package_count": 6
+  },
+  "issues": [
+    {
+      "id": "STRUCT-001",
+      "severity": "low",
+      "category": "required-structure",
+      "package": "design/3d-animation",
+      "path": "design/3d-animation/shared-rules/",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/3d-animation does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-002",
+      "severity": "low",
+      "category": "required-structure",
+      "package": "design/accessibility-ux",
+      "path": "design/accessibility-ux/shared-rules/",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/accessibility-ux does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-003",
+      "severity": "low",
+      "category": "required-structure",
+      "package": "design/brand-visual",
+      "path": "design/brand-visual/shared-rules/",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/brand-visual does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-004",
+      "severity": "low",
+      "category": "asset-generated",
+      "package": "design/brand-visual",
+      "path": "design/brand-visual",
+      "title": "Package contains binary assets",
+      "evidence": "Repository map shows binary_asset_files=55 for design/brand-visual.",
+      "impact": "Binary assets are asset-hygiene indicators requiring provenance and maintenance tracking.",
+      "recommended_follow_up": "Review and document asset provenance and lifecycle in follow-up issues.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-005",
+      "severity": "low",
+      "category": "required-structure",
+      "package": "design/creative-tools",
+      "path": "design/creative-tools/shared-rules/",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/creative-tools does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-006",
+      "severity": "critical",
+      "category": "discovery",
+      "package": "design/design-systems",
+      "path": "design/design-systems/SKILL.me",
+      "title": "Package has SKILL.me instead of SKILL.md",
+      "evidence": "Repository map shows skill_md=false and skill_me=true for design/design-systems.",
+      "impact": "Skill discovery may fail because the package does not expose the expected SKILL.md router.",
+      "recommended_follow_up": "Rename SKILL.me to SKILL.md in a dedicated structural fix issue.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-007",
+      "severity": "medium",
+      "category": "asset-generated",
+      "package": "design/pretext-ui",
+      "path": "design/pretext-ui",
+      "title": "Package contains files larger than 500 KB",
+      "evidence": "Repository map shows large_files=3 for design/pretext-ui.",
+      "impact": "Large generated/data artifacts can increase repository maintenance overhead.",
+      "recommended_follow_up": "Confirm necessity and document generation/source provenance in follow-up issues.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-008",
+      "severity": "high",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "registry.json",
+      "title": "Root registry.json is missing",
+      "evidence": "Repository map repository_files does not include registry.json.",
+      "impact": "A canonical root package registry is unavailable for automated discovery and coordination.",
+      "recommended_follow_up": "Create registry.json in a dedicated registry issue.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-009",
+      "severity": "high",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "registry.schema.json",
+      "title": "Root registry.schema.json is missing",
+      "evidence": "Repository map repository_files does not include registry.schema.json.",
+      "impact": "No explicit schema contract exists for validating future root registry data.",
+      "recommended_follow_up": "Create registry.schema.json in a dedicated registry issue.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-010",
+      "severity": "medium",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "README.md",
+      "title": "Root-level package registry documentation is missing",
+      "evidence": "Repository map does not list root-level markdown registry documentation.",
+      "impact": "Contributors may lack structural guidance for future registry maintenance.",
+      "recommended_follow_up": "Add root-level registry documentation in a dedicated documentation issue.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    },
+    {
+      "id": "STRUCT-011",
+      "severity": "info",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "README.md",
+      "title": "Current map shows single-domain coverage",
+      "evidence": "Repository map currently lists packages under one domain (design).",
+      "impact": "This is a planning observation for domain expansion, not a blocking defect by itself.",
+      "recommended_follow_up": "Track additional domain onboarding in roadmap/follow-up issues.",
+      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
+    }
+  ],
+  "affected_packages": [
+    {
+      "package": "design/3d-animation",
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1,
+      "info": 0
+    },
+    {
+      "package": "design/accessibility-ux",
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1,
+      "info": 0
+    },
+    {
+      "package": "design/brand-visual",
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 2,
+      "info": 0
+    },
+    {
+      "package": "design/creative-tools",
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 1,
+      "info": 0
+    },
+    {
+      "package": "design/design-systems",
+      "critical": 1,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "info": 0
+    },
+    {
+      "package": "design/pretext-ui",
+      "critical": 0,
+      "high": 0,
+      "medium": 1,
+      "low": 0,
+      "info": 0
+    }
+  ]
+}
