@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0.0",
+  "generated_for_issue": 6,
+  "inputs": [
+    "docs/audits/REPOSITORY_STRUCTURE_MAP.json",
+    "docs/audits/STRUCTURAL_ISSUES.json",
+    "scripts/validate_skills.py"
+  ],
+  "repository_summary": {
+    "domain_count": 1,
+    "package_count": 8,
+    "markdown_file_count": 259,
+    "json_file_count": 25,
+    "script_file_count": 67,
+    "asset_file_count": 57,
+    "binary_asset_file_count": 55,
+    "empty_file_count": 0,
+    "large_file_count": 3
+  },
+  "issue_summary": {
+    "total_issues": 11,
+    "critical": 1,
+    "high": 2,
+    "medium": 2,
+    "low": 5,
+    "info": 1,
+    "affected_package_count": 6
+  },
+  "stage_1_status": {
+    "repository_mapped": true,
+    "structural_issues_classified": true,
+    "ready_for_remediation": true,
+    "remediation_started": false
+  },
+  "confirmed_blockers": [
+    {
+      "id": "STRUCT-006",
+      "severity": "critical",
+      "category": "discovery",
+      "package": "design/design-systems",
+      "path": "design/design-systems/SKILL.me",
+      "title": "Package has SKILL.me instead of SKILL.md",
+      "recommended_follow_up": "Rename SKILL.me to SKILL.md in a dedicated structural fix issue."
+    }
+  ],
+  "repository_level_gaps": [
+    {
+      "id": "STRUCT-008",
+      "severity": "high",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "registry.json",
+      "title": "Root registry.json is missing",
+      "recommended_follow_up": "Create registry.json in a dedicated registry issue."
+    },
+    {
+      "id": "STRUCT-009",
+      "severity": "high",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "registry.schema.json",
+      "title": "Root registry.schema.json is missing",
+      "recommended_follow_up": "Create registry.schema.json in a dedicated registry issue."
+    },
+    {
+      "id": "STRUCT-010",
+      "severity": "medium",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "README.md",
+      "title": "Root-level package registry documentation is missing",
+      "recommended_follow_up": "Add root-level registry documentation in a dedicated documentation issue."
+    },
+    {
+      "id": "STRUCT-011",
+      "severity": "info",
+      "category": "repository-level",
+      "package": "_repository",
+      "path": "README.md",
+      "title": "Current map shows single-domain coverage",
+      "recommended_follow_up": "Track additional domain onboarding in roadmap/follow-up issues."
+    }
+  ],
+  "asset_and_generated_data_indicators": [
+    {
+      "id": "STRUCT-004",
+      "severity": "low",
+      "category": "asset-generated",
+      "package": "design/brand-visual",
+      "path": "design/brand-visual",
+      "title": "Package contains binary assets",
+      "recommended_follow_up": "Review and document asset provenance and lifecycle in follow-up issues."
+    },
+    {
+      "id": "STRUCT-007",
+      "severity": "medium",
+      "category": "asset-generated",
+      "package": "design/pretext-ui",
+      "path": "design/pretext-ui",
+      "title": "Package contains files larger than 500 KB",
+      "recommended_follow_up": "Confirm necessity and document generation/source provenance in follow-up issues."
+    }
+  ],
+  "package_observations": [
+    {
+      "package": "design/3d-animation",
+      "path": "design/3d-animation",
+      "mini_skill_count": 16,
+      "has_skill_md": true,
+      "has_manifest": true,
+      "has_shared_rules": false,
+      "binary_asset_count": 0,
+      "large_file_count": 0,
+      "structural_issue_count": 1,
+      "highest_severity": "low"
+    },
+    {
+      "package": "design/accessibility-ux",
+      "path": "design/accessibility-ux",
+      "mini_skill_count": 6,
+      "has_skill_md": true,
+      "has_manifest": true,
+      "has_shared_rules": false,
+      "binary_asset_count": 0,
+      "large_file_count": 0,
+      "structural_issue_count": 1,
+      "highest_severity": "low"
+    },
+    {
+      "package": "design/brand-visual",
+      "path": "design/brand-visual",
+      "mini_skill_count": 9,
+      "has_skill_md": true,
+      "has_manifest": true,
+      "has_shared_rules": false,
+      "binary_asset_count": 55,
+      "large_file_count": 0,
+      "structural_issue_count": 2,
+      "highest_severity": "low"
+    },
+    {
+      "package": "design/content-writing",
+      "path": "design/content-writing",
+      "mini_skill_count": 8,
+      "has_skill_md": true,
+      "has_manifest": true,
+      "has_shared_rules": true,
+      "binary_asset_count": 0,
+      "large_file_count": 0,
+      "structural_issue_count": 0,
+      "highest_severity": "none"
+    },
+    {
+      "package": "design/creative-tools",
+      "path": "design/creative-tools",
+      "mini_skill_count": 3,
+      "has_skill_md": true,
+      "has_manifest": true,
+      "has_shared_rules": false,
+      "binary_asset_count": 0,
+      "large_file_count": 0,
+      "structural_issue_count": 1,
+      "highest_severity": "low"
+    },
+    {
+      "package": "design/css-styling",
+      "path": "design/css-styling",
+      "mini_skill_count": 12,
+      "has_skill_md": true,
+      "has_manifest": true,
+      "has_shared_rules": true,
+      "binary_asset_count": 0,
+      "large_file_count": 0,
+      "structural_issue_count": 0,
+      "highest_severity": "none"
+    },
+    {
+      "package": "design/design-systems",
+      "path": "design/design-systems",
+      "mini_skill_count": 8,
+      "has_skill_md": false,
+      "has_manifest": true,
+      "has_shared_rules": true,
+      "binary_asset_count": 0,
+      "large_file_count": 0,
+      "structural_issue_count": 1,
+      "highest_severity": "critical"
+    },
+    {
+      "package": "design/pretext-ui",
+      "path": "design/pretext-ui",
+      "mini_skill_count": 10,
+      "has_skill_md": true,
+      "has_manifest": true,
+      "has_shared_rules": true,
+      "binary_asset_count": 0,
+      "large_file_count": 3,
+      "structural_issue_count": 1,
+      "highest_severity": "medium"
+    }
+  ],
+  "recommended_next_issue_order": [
+    {
+      "order": 1,
+      "phase": "critical-remediation",
+      "title": "Fix critical skill discovery issues",
+      "scope": "Rename or restore missing skill entry files without changing package content."
+    },
+    {
+      "order": 2,
+      "phase": "repository-foundation",
+      "title": "Add root registry artifacts",
+      "scope": "Create registry.json, registry.schema.json, and companion documentation at repository root."
+    },
+    {
+      "order": 3,
+      "phase": "structure-alignment",
+      "title": "Align package folder structures",
+      "scope": "Add missing shared-rules/ directories where required by repository conventions."
+    },
+    {
+      "order": 4,
+      "phase": "asset-governance",
+      "title": "Review binary and large-file asset strategy",
+      "scope": "Document handling approach for bundled binaries and oversized files without removing package capabilities."
+    },
+    {
+      "order": 5,
+      "phase": "quality-followup",
+      "title": "Address non-blocking quality warnings",
+      "scope": "Triage validator warnings in dedicated quality/content issues after structural remediation."
+    }
+  ]
+}
