@@ -20,10 +20,10 @@
       "category": "required-structure",
       "package": "design/3d-animation",
       "path": "design/3d-animation/shared-rules/",
-      "title": "Missing shared-rules/ compared with peer packages",
-      "evidence": "Domain design has 4/8 packages with shared-rules/, but design/3d-animation does not.",
-      "impact": "Reduced cross-skill consistency relative to peers in same domain.",
-      "recommended_follow_up": "Assess whether shared-rules/ is needed for this package and add if structurally relevant.",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/3d-animation does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -32,10 +32,10 @@
       "category": "manifest",
       "package": "design/3d-animation",
       "path": "design/3d-animation/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/3d-animation do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -44,10 +44,10 @@
       "category": "required-structure",
       "package": "design/accessibility-ux",
       "path": "design/accessibility-ux/shared-rules/",
-      "title": "Missing shared-rules/ compared with peer packages",
-      "evidence": "Domain design has 4/8 packages with shared-rules/, but design/accessibility-ux does not.",
-      "impact": "Reduced cross-skill consistency relative to peers in same domain.",
-      "recommended_follow_up": "Assess whether shared-rules/ is needed for this package and add if structurally relevant.",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/accessibility-ux does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -56,10 +56,10 @@
       "category": "manifest",
       "package": "design/accessibility-ux",
       "path": "design/accessibility-ux/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/accessibility-ux do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -68,10 +68,10 @@
       "category": "required-structure",
       "package": "design/brand-visual",
       "path": "design/brand-visual/shared-rules/",
-      "title": "Missing shared-rules/ compared with peer packages",
-      "evidence": "Domain design has 4/8 packages with shared-rules/, but design/brand-visual does not.",
-      "impact": "Reduced cross-skill consistency relative to peers in same domain.",
-      "recommended_follow_up": "Assess whether shared-rules/ is needed for this package and add if structurally relevant.",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/brand-visual does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -80,10 +80,10 @@
       "category": "manifest",
       "package": "design/brand-visual",
       "path": "design/brand-visual/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/brand-visual do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -92,10 +92,10 @@
       "category": "asset-generated",
       "package": "design/brand-visual",
       "path": "design/brand-visual",
-      "title": "Binary assets present in package",
-      "evidence": "counts.binary_asset_files=55 for design/brand-visual.",
-      "impact": "Binary files raise review and maintenance overhead.",
-      "recommended_follow_up": "Track provenance and cleanup policy in asset-link-index.",
+      "title": "Package contains binary assets",
+      "evidence": "Repository map shows binary_asset_files=55 for design/brand-visual.",
+      "impact": "Binary assets are asset-hygiene indicators requiring provenance and maintenance tracking.",
+      "recommended_follow_up": "Review and document asset provenance and lifecycle in follow-up issues.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -104,10 +104,10 @@
       "category": "manifest",
       "package": "design/content-writing",
       "path": "design/content-writing/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/content-writing do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -116,10 +116,10 @@
       "category": "required-structure",
       "package": "design/creative-tools",
       "path": "design/creative-tools/shared-rules/",
-      "title": "Missing shared-rules/ compared with peer packages",
-      "evidence": "Domain design has 4/8 packages with shared-rules/, but design/creative-tools does not.",
-      "impact": "Reduced cross-skill consistency relative to peers in same domain.",
-      "recommended_follow_up": "Assess whether shared-rules/ is needed for this package and add if structurally relevant.",
+      "title": "Package is missing shared-rules/ compared to peer packages",
+      "evidence": "In domain 'design', 4/8 mapped packages have shared-rules/, while design/creative-tools does not.",
+      "impact": "Cross-skill consistency support may be weaker than comparable packages.",
+      "recommended_follow_up": "Assess whether shared-rules/ is structurally relevant for this package and add in a follow-up issue if needed.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -128,10 +128,10 @@
       "category": "manifest",
       "package": "design/creative-tools",
       "path": "design/creative-tools/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/creative-tools do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -140,10 +140,10 @@
       "category": "manifest",
       "package": "design/css-styling",
       "path": "design/css-styling/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/css-styling do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -152,10 +152,10 @@
       "category": "discovery",
       "package": "design/design-systems",
       "path": "design/design-systems/SKILL.me",
-      "title": "Package entry router issue (SKILL.me)",
-      "evidence": "core_files.skill_md=False and core_files.skill_me=True for design/design-systems.",
-      "impact": "Skill discovery/routing can fail for the package.",
-      "recommended_follow_up": "Add a valid SKILL.md router in a dedicated structural fix issue.",
+      "title": "Package has SKILL.me instead of SKILL.md",
+      "evidence": "Repository map shows skill_md=false and skill_me=true for design/design-systems.",
+      "impact": "Skill discovery may fail because the package does not expose the expected SKILL.md router.",
+      "recommended_follow_up": "Rename SKILL.me to SKILL.md in a dedicated structural fix issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -164,10 +164,10 @@
       "category": "manifest",
       "package": "design/design-systems",
       "path": "design/design-systems/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/design-systems do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -176,10 +176,10 @@
       "category": "manifest",
       "package": "design/pretext-ui",
       "path": "design/pretext-ui/resources/manifest.json",
-      "title": "Manifest records missing required fields (purpose/when)",
-      "evidence": "One or more manifest records do not include all required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity is incomplete for downstream tooling and registry generation.",
-      "recommended_follow_up": "Add required fields to every manifest record.",
+      "title": "Manifest records are missing required fields",
+      "evidence": "Repository map records for design/pretext-ui do not consistently include required fields: title, slug, purpose, when, reference, examples.",
+      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
+      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -188,10 +188,10 @@
       "category": "asset-generated",
       "package": "design/pretext-ui",
       "path": "design/pretext-ui",
-      "title": "Large files above 500KB present",
-      "evidence": "counts.large_files=3 for design/pretext-ui.",
-      "impact": "Large generated/data files can bloat repository and complicate maintenance.",
-      "recommended_follow_up": "Confirm necessity and document generation/source strategy.",
+      "title": "Package contains files larger than 500 KB",
+      "evidence": "Repository map shows large_files=3 for design/pretext-ui.",
+      "impact": "Large generated/data artifacts can increase repository maintenance overhead.",
+      "recommended_follow_up": "Confirm necessity and document generation/source provenance in follow-up issues.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -200,10 +200,10 @@
       "category": "repository-level",
       "package": "_repository",
       "path": "registry.json",
-      "title": "Missing root registry.json",
-      "evidence": "registry.json is absent from repository_files list.",
-      "impact": "No canonical root package registry is available for automated discovery/validation.",
-      "recommended_follow_up": "Add root registry.json in dedicated registry issue.",
+      "title": "Root registry.json is missing",
+      "evidence": "Repository map repository_files does not include registry.json.",
+      "impact": "A canonical root package registry is unavailable for automated discovery and coordination.",
+      "recommended_follow_up": "Create registry.json in a dedicated registry issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -212,10 +212,10 @@
       "category": "repository-level",
       "package": "_repository",
       "path": "registry.schema.json",
-      "title": "Missing root registry.schema.json",
-      "evidence": "registry.schema.json is absent from repository_files list.",
-      "impact": "Registry validation contract is missing for future automation.",
-      "recommended_follow_up": "Add root registry.schema.json in dedicated registry issue.",
+      "title": "Root registry.schema.json is missing",
+      "evidence": "Repository map repository_files does not include registry.schema.json.",
+      "impact": "No explicit schema contract exists for validating future root registry data.",
+      "recommended_follow_up": "Create registry.schema.json in a dedicated registry issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -224,10 +224,10 @@
       "category": "repository-level",
       "package": "_repository",
       "path": "README.md",
-      "title": "Missing root-level registry documentation",
-      "evidence": "No root markdown file containing 'registry' appears in repository_files.",
-      "impact": "Contributors lack repository-level guidance for package registry conventions.",
-      "recommended_follow_up": "Add root registry documentation describing format and maintenance workflow.",
+      "title": "Root-level package registry documentation is missing",
+      "evidence": "Repository map does not list root-level markdown registry documentation.",
+      "impact": "Contributors may lack structural guidance for future registry maintenance.",
+      "recommended_follow_up": "Add root-level registry documentation in a dedicated documentation issue.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
@@ -236,10 +236,10 @@
       "category": "repository-level",
       "package": "_repository",
       "path": "README.md",
-      "title": "Domain imbalance against multi-plane repository vision",
-      "evidence": "Repository map lists one domain with packages: design.",
-      "impact": "Roadmap breadth may be constrained until additional planned domains are introduced.",
-      "recommended_follow_up": "Track onboarding of additional domains in future planning issues.",
+      "title": "Current map shows single-domain coverage",
+      "evidence": "Repository map currently lists packages under one domain (design).",
+      "impact": "This is a planning observation for domain expansion, not a blocking defect by itself.",
+      "recommended_follow_up": "Track additional domain onboarding in roadmap/follow-up issues.",
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     }
   ],
