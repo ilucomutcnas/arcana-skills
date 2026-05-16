@@ -5,13 +5,13 @@
     "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
   ],
   "summary": {
-    "total_issues": 19,
+    "total_issues": 11,
     "critical": 1,
-    "high": 10,
+    "high": 2,
     "medium": 2,
     "low": 5,
     "info": 1,
-    "affected_package_count": 8
+    "affected_package_count": 6
   },
   "issues": [
     {
@@ -28,18 +28,6 @@
     },
     {
       "id": "STRUCT-002",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/3d-animation",
-      "path": "design/3d-animation/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/3d-animation do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-003",
       "severity": "low",
       "category": "required-structure",
       "package": "design/accessibility-ux",
@@ -51,19 +39,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-004",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/accessibility-ux",
-      "path": "design/accessibility-ux/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/accessibility-ux do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-005",
+      "id": "STRUCT-003",
       "severity": "low",
       "category": "required-structure",
       "package": "design/brand-visual",
@@ -75,19 +51,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-006",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/brand-visual",
-      "path": "design/brand-visual/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/brand-visual do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-007",
+      "id": "STRUCT-004",
       "severity": "low",
       "category": "asset-generated",
       "package": "design/brand-visual",
@@ -99,19 +63,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-008",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/content-writing",
-      "path": "design/content-writing/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/content-writing do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-009",
+      "id": "STRUCT-005",
       "severity": "low",
       "category": "required-structure",
       "package": "design/creative-tools",
@@ -123,31 +75,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-010",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/creative-tools",
-      "path": "design/creative-tools/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/creative-tools do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-011",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/css-styling",
-      "path": "design/css-styling/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/css-styling do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-012",
+      "id": "STRUCT-006",
       "severity": "critical",
       "category": "discovery",
       "package": "design/design-systems",
@@ -159,31 +87,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-013",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/design-systems",
-      "path": "design/design-systems/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/design-systems do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-014",
-      "severity": "high",
-      "category": "manifest",
-      "package": "design/pretext-ui",
-      "path": "design/pretext-ui/resources/manifest.json",
-      "title": "Manifest records are missing required fields",
-      "evidence": "Repository map records for design/pretext-ui do not consistently include required fields: title, slug, purpose, when, reference, examples.",
-      "impact": "Manifest integrity gaps can block consistent indexing and future registry generation.",
-      "recommended_follow_up": "Add all required fields to every manifest record in a dedicated follow-up issue.",
-      "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
-    },
-    {
-      "id": "STRUCT-015",
+      "id": "STRUCT-007",
       "severity": "medium",
       "category": "asset-generated",
       "package": "design/pretext-ui",
@@ -195,7 +99,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-016",
+      "id": "STRUCT-008",
       "severity": "high",
       "category": "repository-level",
       "package": "_repository",
@@ -207,7 +111,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-017",
+      "id": "STRUCT-009",
       "severity": "high",
       "category": "repository-level",
       "package": "_repository",
@@ -219,7 +123,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-018",
+      "id": "STRUCT-010",
       "severity": "medium",
       "category": "repository-level",
       "package": "_repository",
@@ -231,7 +135,7 @@
       "source": "docs/audits/REPOSITORY_STRUCTURE_MAP.json"
     },
     {
-      "id": "STRUCT-019",
+      "id": "STRUCT-011",
       "severity": "info",
       "category": "repository-level",
       "package": "_repository",
@@ -247,7 +151,7 @@
     {
       "package": "design/3d-animation",
       "critical": 0,
-      "high": 1,
+      "high": 0,
       "medium": 0,
       "low": 1,
       "info": 0
@@ -255,7 +159,7 @@
     {
       "package": "design/accessibility-ux",
       "critical": 0,
-      "high": 1,
+      "high": 0,
       "medium": 0,
       "low": 1,
       "info": 0
@@ -263,39 +167,23 @@
     {
       "package": "design/brand-visual",
       "critical": 0,
-      "high": 1,
+      "high": 0,
       "medium": 0,
       "low": 2,
       "info": 0
     },
     {
-      "package": "design/content-writing",
-      "critical": 0,
-      "high": 1,
-      "medium": 0,
-      "low": 0,
-      "info": 0
-    },
-    {
       "package": "design/creative-tools",
       "critical": 0,
-      "high": 1,
+      "high": 0,
       "medium": 0,
       "low": 1,
       "info": 0
     },
     {
-      "package": "design/css-styling",
-      "critical": 0,
-      "high": 1,
-      "medium": 0,
-      "low": 0,
-      "info": 0
-    },
-    {
       "package": "design/design-systems",
       "critical": 1,
-      "high": 1,
+      "high": 0,
       "medium": 0,
       "low": 0,
       "info": 0
@@ -303,7 +191,7 @@
     {
       "package": "design/pretext-ui",
       "critical": 0,
-      "high": 1,
+      "high": 0,
       "medium": 1,
       "low": 0,
       "info": 0
