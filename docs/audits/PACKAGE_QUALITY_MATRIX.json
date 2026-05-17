@@ -7,8 +7,8 @@
     "working": 7,
     "amateur": 0,
     "ready_for_use": 1,
-    "needs_upgrade": 4,
-    "needs_major_upgrade": 2,
+    "needs_upgrade": 5,
+    "needs_major_upgrade": 1,
     "needs_asset_hygiene": 1,
     "needs_registry_only": 0
   },
@@ -244,50 +244,66 @@
       "domain": "design",
       "slug": "creative-tools",
       "path": "design/creative-tools",
-      "mini_skill_count": 3,
+      "mini_skill_count": 6,
       "maturity": "working",
-      "status": "needs-major-upgrade",
-      "overall_score": 66,
+      "status": "needs-upgrade",
+      "overall_score": 83,
       "scores": {
         "structure_completeness": 5,
         "manifest_integrity": 5,
-        "routing_clarity": 4,
+        "routing_clarity": 5,
         "reference_depth": 4,
         "example_quality": 4,
-        "domain_coverage": 1,
-        "specificity_and_non_genericness": 3,
-        "professional_readiness": 2,
+        "domain_coverage": 4,
+        "specificity_and_non_genericness": 4,
+        "professional_readiness": 4,
         "english_only_readiness": 5,
         "asset_hygiene_readiness": 3
       },
       "strengths": [
-        "Solid structural baseline and relatively detailed references for existing scope.",
-        "Clear routing and protocol files are in place."
+        "Mini-skill coverage doubled from 3 to 6 and now spans ad/content, PDF, vector automation, raster retouch, and delivery handoff workflows.",
+        "Routing, composition, and self-diagnostic guidance are coherent and operational across old and newly added mini-skills.",
+        "Each newly added mini-skill includes both reference and example files with practical workflow detail."
       ],
       "quality_gaps": [
-        "Only three mini-skills for a broad domain indicates major under-scoping.",
-        "Professional readiness is constrained by narrow domain coverage."
+        "Professional readiness improved but remains below top-tier packages because several examples are still moderate depth rather than end-to-end production playbooks.",
+        "Asset hygiene is not yet Stage 4-verified; package cannot be treated as fully clean on provenance and binary policy."
       ],
       "recommended_upgrade_actions": [
-        "Expand mini-skill set to cover core creative-tool workflows across vector, raster, and collaborative production.",
-        "Introduce example suites for toolchain interoperability and handoff."
+        "Deepen cross-mini-skill scenarios (vector + raster + handoff) with failure handling, QA gates, and revision loops.",
+        "Add stronger operational checklists for acceptance criteria and cross-team signoff in creative-asset-handoff examples.",
+        "Complete Stage 4 asset hygiene/provenance verification and document outcomes."
       ],
       "suggested_new_mini_skills": [
-        "vector-workflow-automation",
-        "raster-retouch-pipeline",
-        "creative-asset-handoff"
+        "creative-qa-gate-automation"
       ],
       "asset_hygiene_notes": [
-        "Needs Stage 4 validation for asset provenance and binary usage policies."
+        "New mini-skills list no required assets, but package-level Stage 4 provenance and hygiene validation is still pending."
       ],
       "evidence": [
         {
           "path": "design/creative-tools/resources/manifest.json",
-          "note": "Manifest contains 3 mini-skills, indicating limited domain coverage."
+          "note": "Manifest now lists 6 mini-skills, including vector-workflow-automation, raster-retouch-pipeline, and creative-asset-handoff."
+        },
+        {
+          "path": "design/creative-tools/resources/skill-catalog.md",
+          "note": "Catalog documents all 6 mini-skills with expanded operational summaries and pairings."
         },
         {
           "path": "design/creative-tools/resources/routing-guide.md",
-          "note": "Routing exists but routes into a small mini-skill set."
+          "note": "Routing preserves original routes and adds routes for vector/raster/handoff workflows."
+        },
+        {
+          "path": "design/creative-tools/references/skills/vector-workflow-automation.md",
+          "note": "New operational reference exists for vector cleanup, normalization, and export planning."
+        },
+        {
+          "path": "design/creative-tools/examples/skills/raster-retouch-pipeline.md",
+          "note": "New example provides realistic raster cleanup/export flow with QA-oriented steps."
+        },
+        {
+          "path": "design/creative-tools/resources/asset-link-index.md",
+          "note": "Asset index retains prior auxiliary links and lists new mini-skills with no required assets."
         }
       ]
     },
@@ -444,23 +460,23 @@
   "recommended_upgrade_order": [
     {
       "order": 1,
-      "package": "design/creative-tools",
-      "reason": "Very small mini-skill set (3) for broad domain creates major coverage and readiness risk."
+      "package": "design/design-systems",
+      "reason": "Still classified needs-major-upgrade with comparatively thin references/examples for governance-heavy workflows."
     },
     {
       "order": 2,
-      "package": "design/design-systems",
-      "reason": "Thin references/examples reduce professional readiness for governance-heavy workflows."
+      "package": "design/pretext-ui",
+      "reason": "Skeletal examples and shallow operational detail still limit practical production use."
     },
     {
       "order": 3,
-      "package": "design/brand-visual",
-      "reason": "Asset-heavy package (55 binary assets) requires Stage 4 hygiene and provenance review."
+      "package": "design/creative-tools",
+      "reason": "Now coherent and materially improved, but still needs-upgrade for deeper end-to-end scenarios and Stage 4 hygiene verification."
     },
     {
       "order": 4,
-      "package": "design/pretext-ui",
-      "reason": "Skeletal examples and limited operational depth constrain practical use."
+      "package": "design/brand-visual",
+      "reason": "Keep as Stage 4 asset-hygiene priority due to heavy binary asset footprint rather than standard content-upgrade priority."
     }
   ]
 }
