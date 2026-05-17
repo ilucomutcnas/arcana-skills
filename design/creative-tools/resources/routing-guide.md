@@ -22,9 +22,18 @@ Use this guide to decide which extracted file to open.
 ## Routing by Task Type
 
 - **Generating ad copy** -> ad-creative (primary) + content-creator (brand voice)
+- **Iterating ads from data** -> ad-creative
+- **Writing blog posts** -> content-creator (primary) + ad-creative (promotion copy)
+- **Social media content** -> content-creator
+- **Brand voice setup** -> content-creator
+- **Content calendar** -> content-creator
 - **Campaign visual production** -> raster-retouch-pipeline (primary) + ad-creative
 - **Icon set cleanup and export** -> vector-workflow-automation (primary) + creative-asset-handoff
 - **Product image cleanup** -> raster-retouch-pipeline
+- **Merging/splitting PDFs** -> pdf-processing
+- **Extracting text/tables** -> pdf-processing
+- **Filling PDF forms** -> pdf-processing
+- **Creating PDFs** -> pdf-processing
 - **Branded PDF documents** -> pdf-processing + content-creator
 - **Document delivery package** -> pdf-processing + creative-asset-handoff
 - **Campaign package delivery** -> content-creator + creative-asset-handoff
