@@ -1,62 +1,44 @@
----
-name: "design-system-foundations"
-title: "Design System Foundations"
-description: "Defines the visual and semantic foundation of a design system: tokens, scales, primitives, and naming."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# foundations Reference
 
-## Package Structure
+## When to Use
+Use this skill when foundations decisions affect cross-team system consistency and release safety.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/foundations.md`
-- Examples: `examples/skills/foundations.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Required Inputs
+- Product scope, platform constraints, accessibility requirements
+- Existing tokens/components/themes and changelog history
+- Owner list, review gates, and rollout milestones
 
-## Linked Package Files
+## Workflow
+1. Define target outcomes and non-goals.
+2. Apply decision rules and constraints for foundations.
+3. Produce implementation artifacts and review checklist.
+4. Validate against failure modes and handoff expectations.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — design system style guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — design system anti-patterns
+## Decision Rules
+- Prefer semantic intent over local shortcuts.
+- Keep backward compatibility unless breaking change is approved.
+- Require measurable acceptance criteria before release.
 
-# Design System Foundations
+## Checklist
+- Scope and dependencies documented
+- Accessibility and test evidence attached
+- Migration impact and rollback path defined
+- Ownership and sign-off recorded
 
-## Purpose
-Define the base language of the system before components are designed.
+## Anti-Patterns
+- One-off overrides bypassing system contracts
+- Missing version/deprecation notes
+- Ambiguous ownership or no release gate
 
-## Scope
-- color system and semantic mapping
-- typography roles
-- spacing scale
-- radii
-- shadows / elevation
-- borders and strokes
-- grid and breakpoints
-- motion primitives
-- z-layer model
+## Handoff Expectations
+- Designers provide annotated specs and intent notes.
+- Engineers provide mapping, tests, and rollout plan.
+- PM/enablement owners provide adoption communication and KPI target.
 
-## Rules
-1. Tokens represent **roles**, not temporary taste.
-2. Prefer semantic layers:
-   - global/base tokens
-   - alias/semantic tokens
-   - component tokens only when required
-3. Color tokens must separate:
-   - primitive palette
-   - semantic meaning
-   - surface usage
-4. Typography tokens should describe role and behavior, not page names.
-5. Spacing must use a coherent scale. Arbitrary values are exceptions, not defaults.
-6. Motion belongs in the system only if timing and easing are reused.
+## Failure Modes
+- Contract drift between design files and code tokens/components.
+- Release notes that omit migration steps for downstream teams.
+- Incomplete test matrix across states, themes, and platforms.
 
-## Deliverables
-- token inventory
-- naming model
-- usage rules
-- edge-case notes
-- implementation mapping
-
-## Validation
-- Can another team infer where to use each token?
-- Can the system survive a rebrand without rewriting every component?
-- Are accessibility constraints compatible with token choices?
+## Escalation Triggers
+Escalate to governance and review-audit when changes touch multiple products, introduce breaking behavior, or lack measurable rollback conditions.

@@ -1,8 +1,8 @@
 ---
 name: "design-systems"
 title: "Design Systems"
-description: "Use for building, governing, and reviewing production-grade design systems. Covers tokens, foundations, components, theming, accessibility, documentation, governance, auditing, and framework mapping across products, brands, and frontend stacks."
-version: "1.0.0"
+description: "Use for building, governing, and reviewing production-grade design systems with enterprise token operations and adoption workflows."
+version: "1.1.0"
 category: "Design"
 risk: "safe"
 source: "https://github.com/ilucomutcnas/arcana-skills"
@@ -11,99 +11,89 @@ date_added: "30.03.2026"
 
 ## Purpose
 
-Build, govern, and review production-grade design systems. This domain covers the full lifecycle: foundational tokens and scales, reusable component contracts, theming and multi-brand support, accessibility baked into the system level, documentation for adoption, governance for sustainability, auditing for compliance, and framework mapping for implementation.
+Build, govern, and scale production-grade design systems across products and brands, including token lifecycle operations and organization-wide adoption programs.
 
 ## Domain Coverage
 
-This package represents the design systems domain. It covers interconnected capabilities that must work together: foundations define the visual language, components consume it, theming adapts it, accessibility constrains it, documentation communicates it, governance protects it, auditing enforces it, and framework mapping implements it.
-
-Shared guardrails in `shared-rules/STYLE-GUARDRAILS.md` and anti-patterns in `shared-rules/ANTI-PATTERNS.md` apply across all mini-skills.
+This package covers foundations, component contracts, theming, accessibility, documentation, governance, auditing, framework mapping, token lifecycle governance, and cross-team adoption playbooks.
 
 ## How to Use
 
-1. Always begin with self-diagnostic per `self-diagnostic-protocol.md`.
-2. Identify the primary mini-skill that best matches the task.
-3. Check the Multi-Skill Activation Guide below.
-4. Open the corresponding reference under `references/skills/`.
-5. Open examples under `examples/skills/` if concrete patterns are needed.
-6. Use `resources/skill-catalog.md` for the full index.
-7. Use `resources/routing-guide.md` when a task spans multiple mini-skills.
+1. Run self-diagnostic (`self-diagnostic-protocol.md`).
+2. Pick a primary mini-skill and adjacent skills.
+3. Use references for methods and examples for end-to-end patterns.
+4. Use routing and catalog resources for composition.
 
 ## Multi-Skill Activation Guide
 
-Common combinations:
-
-- **New design system**: foundations (primary) + components + theming + accessibility + documentation
-- **Component library**: components (primary) + foundations + accessibility + framework-mapping
-- **Theming and dark mode**: theming (primary) + foundations + accessibility
-- **System audit**: review-audit (primary) + foundations + components + governance
-- **Implementation mapping**: framework-mapping (primary) + foundations + components
-- **Governance setup**: governance (primary) + documentation + review-audit
-- **Accessibility review**: accessibility (primary) + components + theming + review-audit
+- New design system: foundations + components + theming + accessibility + documentation
+- Enterprise token rollout: foundations + design-token-governance + theming + governance
+- Component implementation: components + accessibility + framework-mapping
+- Organizational rollout: governance + system-adoption-playbook + documentation
+- Audit remediation program: review-audit + system-adoption-playbook + governance
 
 ## Package Structure
 
-- `SKILL.md` — lightweight router and high-level index
-- `composition-protocol.md` — universal rules for selecting and combining mini-skills
-- `self-diagnostic-protocol.md` — self-diagnostic rules for this domain package
-- `resources/skill-catalog.md` — full catalog of extracted mini-skills
-- `resources/routing-guide.md` — navigation and composition rules
-- `resources/asset-link-index.md` — complete link map for every auxiliary folder and file
-- `resources/manifest.json` — machine-readable package manifest
-- `references/skills/*.md` — full extracted guidance per mini-skill
-- `examples/skills/*.md` — extracted examples and patterns per mini-skill
-- `shared-rules/STYLE-GUARDRAILS.md` — design system style guardrails
-- `shared-rules/ANTI-PATTERNS.md` — design system anti-patterns reference
+- `SKILL.md`
+- `composition-protocol.md`
+- `self-diagnostic-protocol.md`
+- `resources/skill-catalog.md`
+- `resources/routing-guide.md`
+- `resources/asset-link-index.md`
+- `resources/manifest.json`
+- `references/skills/*.md`
+- `examples/skills/*.md`
+- `shared-rules/STYLE-GUARDRAILS.md`
+- `shared-rules/ANTI-PATTERNS.md`
 
 ## Mini-Skills Index
 
 ### foundations
-- Summary: Defines the visual and semantic foundation: tokens, color systems, typography roles, spacing scales, radii, elevation, motion primitives, and breakpoints.
+- Summary: Token primitives, semantic layers, naming conventions, and scale governance.
 - Open reference: `references/skills/foundations.md`
 - Open examples: `examples/skills/foundations.md`
 
 ### components
-- Summary: Designs reusable component contracts, variants, states, slots, and composition rules for a scalable UI library.
+- Summary: Component API contracts, states, variants, slots, behavior modes, and handoff quality.
 - Open reference: `references/skills/components.md`
 - Open examples: `examples/skills/components.md`
 
 ### theming
-- Summary: Defines multi-theme, light/dark, and multi-brand theming with semantic safety and implementation discipline.
+- Summary: Light/dark/high-contrast/multi-brand semantic theme systems with inheritance and fallback discipline.
 - Open reference: `references/skills/theming.md`
 - Open examples: `examples/skills/theming.md`
 
 ### accessibility
-- Summary: Bakes accessibility into tokens, components, theming, and documentation at the system level.
+- Summary: System-level accessibility governance across tokens, components, themes, and docs.
 - Open reference: `references/skills/accessibility.md`
 - Open examples: `examples/skills/accessibility.md`
 
 ### documentation
-- Summary: Documents system intent, usage rules, component contracts, and adoption guidance for mixed design and engineering audiences.
+- Summary: Information architecture and decision-grade docs for usage, migration, and release communication.
 - Open reference: `references/skills/documentation.md`
 - Open examples: `examples/skills/documentation.md`
 
 ### governance
-- Summary: Defines contribution, review, versioning, deprecation, and ownership rules for sustainable design systems.
+- Summary: Contribution, RFCs, ownership, release operations, and exceptions at package level.
 - Open reference: `references/skills/governance.md`
 - Open examples: `examples/skills/governance.md`
 
 ### review-audit
-- Summary: Audits products or libraries against design-system rules and produces concrete remediation guidance with severity classification.
+- Summary: Compliance scoring, risk prioritization, remediation backlog, and reporting.
 - Open reference: `references/skills/review-audit.md`
 - Open examples: `examples/skills/review-audit.md`
 
 ### framework-mapping
-- Summary: Maps design-system concepts to CSS, Tailwind, CSS Modules, and CSS-in-JS without losing semantic intent.
+- Summary: Semantic token/component mapping to CSS variables, Tailwind, CSS Modules, and CSS-in-JS.
 - Open reference: `references/skills/framework-mapping.md`
 - Open examples: `examples/skills/framework-mapping.md`
 
-## Validation
+### design-token-governance
+- Summary: Token lifecycle operations from proposal to rollout, compatibility, CI validation, and migration safety.
+- Open reference: `references/skills/design-token-governance.md`
+- Open examples: `examples/skills/design-token-governance.md`
 
-- Keep detailed implementation guidance outside the main `SKILL.md`.
-- Prefer adding or updating auxiliary files rather than re-expanding the router.
-
-## Output Requirements
-
-- Keep the main file concise and navigational.
-- Store deep guidance in auxiliary files.
-- Use descriptive, stable file names for extracted mini-skills.
+### system-adoption-playbook
+- Summary: Multi-team adoption strategy, migration waves, enablement, metrics, and exceptions governance.
+- Open reference: `references/skills/system-adoption-playbook.md`
+- Open examples: `examples/skills/system-adoption-playbook.md`

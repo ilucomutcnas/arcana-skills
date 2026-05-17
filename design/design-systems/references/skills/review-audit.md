@@ -1,55 +1,44 @@
----
-name: "design-system-review-audit"
-title: "Design System Review & Audit"
-description: "Audits products or libraries against design-system rules and produces concrete remediation guidance."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# review-audit Reference
 
-## Package Structure
+## When to Use
+Use this skill when review-audit decisions affect cross-team system consistency and release safety.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/review-audit.md`
-- Examples: `examples/skills/review-audit.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Required Inputs
+- Product scope, platform constraints, accessibility requirements
+- Existing tokens/components/themes and changelog history
+- Owner list, review gates, and rollout milestones
 
-## Linked Package Files
+## Workflow
+1. Define target outcomes and non-goals.
+2. Apply decision rules and constraints for review-audit.
+3. Produce implementation artifacts and review checklist.
+4. Validate against failure modes and handoff expectations.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — design system style guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — design system anti-patterns
+## Decision Rules
+- Prefer semantic intent over local shortcuts.
+- Keep backward compatibility unless breaking change is approved.
+- Require measurable acceptance criteria before release.
 
-# Design System Review & Audit
+## Checklist
+- Scope and dependencies documented
+- Accessibility and test evidence attached
+- Migration impact and rollback path defined
+- Ownership and sign-off recorded
 
-## Purpose
-Review interfaces, component libraries, or codebases for system compliance and consistency.
+## Anti-Patterns
+- One-off overrides bypassing system contracts
+- Missing version/deprecation notes
+- Ambiguous ownership or no release gate
 
-## Audit dimensions
-- token compliance
-- component reuse
-- variant discipline
-- accessibility consistency
-- theming correctness
-- documentation gaps
-- divergence and one-off patterns
+## Handoff Expectations
+- Designers provide annotated specs and intent notes.
+- Engineers provide mapping, tests, and rollout plan.
+- PM/enablement owners provide adoption communication and KPI target.
 
-## Output format
-For each issue provide:
-1. violation
-2. why it matters
-3. severity: low / medium / high / critical
-4. concrete fix
-5. whether this is a local issue or system issue
+## Failure Modes
+- Contract drift between design files and code tokens/components.
+- Release notes that omit migration steps for downstream teams.
+- Incomplete test matrix across states, themes, and platforms.
 
-## Common findings
-- raw hardcoded values where semantic tokens should be used
-- duplicate components with slightly different names
-- dark-mode patches inside feature code
-- inconsistent focus styling
-- new components created for spacing/layout differences only
-
-## Validation
-The audit is complete only when it distinguishes:
-- isolated misuse
-- gaps in the system itself
-- governance failures enabling repeated misuse
+## Escalation Triggers
+Escalate to governance and review-audit when changes touch multiple products, introduce breaking behavior, or lack measurable rollback conditions.

@@ -2,47 +2,14 @@
 
 - [`manifest.json`](manifest.json)
 
-## Shared Resources
-- [`shared-rules/STYLE-GUARDRAILS.md`](../shared-rules/STYLE-GUARDRAILS.md)
-- [`shared-rules/ANTI-PATTERNS.md`](../shared-rules/ANTI-PATTERNS.md)
-
-## foundations
-- Reference: [`references/skills/foundations.md`](../references/skills/foundations.md)
-- Examples: [`examples/skills/foundations.md`](../examples/skills/foundations.md)
-- No additional asset folders.
-
-## components
-- Reference: [`references/skills/components.md`](../references/skills/components.md)
-- Examples: [`examples/skills/components.md`](../examples/skills/components.md)
-- No additional asset folders.
-
-## theming
-- Reference: [`references/skills/theming.md`](../references/skills/theming.md)
-- Examples: [`examples/skills/theming.md`](../examples/skills/theming.md)
-- No additional asset folders.
-
-## accessibility
-- Reference: [`references/skills/accessibility.md`](../references/skills/accessibility.md)
-- Examples: [`examples/skills/accessibility.md`](../examples/skills/accessibility.md)
-- No additional asset folders.
-
-## documentation
-- Reference: [`references/skills/documentation.md`](../references/skills/documentation.md)
-- Examples: [`examples/skills/documentation.md`](../examples/skills/documentation.md)
-- No additional asset folders.
-
-## governance
-- Reference: [`references/skills/governance.md`](../references/skills/governance.md)
-- Examples: [`examples/skills/governance.md`](../examples/skills/governance.md)
-- No additional asset folders.
-
-## review-audit
-- Reference: [`references/skills/review-audit.md`](../references/skills/review-audit.md)
-- Examples: [`examples/skills/review-audit.md`](../examples/skills/review-audit.md)
-- No additional asset folders.
-
-## framework-mapping
-- Reference: [`references/skills/framework-mapping.md`](../references/skills/framework-mapping.md)
-- Examples: [`examples/skills/framework-mapping.md`](../examples/skills/framework-mapping.md)
-- No additional asset folders.
-
+## Mini-skill links
+- foundations: reference/examples linked, Assets: none required
+- components: reference/examples linked, Assets: none required
+- theming: reference/examples linked, Assets: none required
+- accessibility: reference/examples linked, Assets: none required
+- documentation: reference/examples linked, Assets: none required
+- governance: reference/examples linked, Assets: none required
+- review-audit: reference/examples linked, Assets: none required
+- framework-mapping: reference/examples linked, Assets: none required
+- design-token-governance: [`../references/skills/design-token-governance.md`](../references/skills/design-token-governance.md), [`../examples/skills/design-token-governance.md`](../examples/skills/design-token-governance.md), Assets: none required
+- system-adoption-playbook: [`../references/skills/system-adoption-playbook.md`](../references/skills/system-adoption-playbook.md), [`../examples/skills/system-adoption-playbook.md`](../examples/skills/system-adoption-playbook.md), Assets: none required

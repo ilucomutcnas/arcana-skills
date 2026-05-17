@@ -1,32 +1,25 @@
-# Design System Documentation — Examples
+# documentation Example
 
-## Minimum Documentation Block for a Component
+## Scenario
+Enterprise product suite applies a documentation update across web app, admin console, and documentation portal.
 
-- Purpose
-- Anatomy
-- Variants
-- States
-- Accessibility
-- Content guidance
-- Examples
-- Anti-patterns
-- Implementation notes
+## Inputs
+- Current system baseline and constraints
+- Affected teams and release window
 
-## Documentation Layers
+## End-to-End Pattern
+1. Draft change proposal with acceptance criteria.
+2. Run review with design, engineering, and accessibility stakeholders.
+3. Execute staged rollout with QA evidence and metrics.
+4. Publish release notes and migration guidance.
 
-1. Foundations docs
-2. Component docs
-3. Content guidance
-4. Accessibility notes
-5. Theming notes
-6. Contribution rules
-7. Migration notes
-8. Release notes
+## Artifacts
+- Decision log with approvers
+- Implementation table by surface/team
+- QA checklist with pass/fail and defects
+- Rollback trigger and owner
 
-## Rules
-
-- Explain when to use and when not to use.
-- Show code and design examples side by side.
-- Document edge cases, not just happy paths.
-- Keep docs opinionated enough to prevent drift.
-- Write for mixed audiences: designers, engineers, reviewers, product teams.
+## Acceptance Criteria
+- No unresolved P1/P2 defects
+- Migration notes consumed by all owning teams
+- KPIs stable for one release cycle

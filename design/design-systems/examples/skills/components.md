@@ -1,12 +1,25 @@
-# Component Example
+# components Example
 
-## Task
-Design a Button component for a multi-product system.
+## Scenario
+Enterprise product suite applies a components update across web app, admin console, and documentation portal.
 
-## Required output
-- Anatomy: container, label, optional icon, loading indicator
-- Variants: primary, secondary, tertiary, destructive
-- Sizes: sm, md, lg
-- States: default, hover, active, focus-visible, disabled, loading
-- Accessibility notes: focus ring, min target size, icon-only labeling
-- Anti-patterns: too many boolean props, inaccessible ghost buttons
+## Inputs
+- Current system baseline and constraints
+- Affected teams and release window
+
+## End-to-End Pattern
+1. Draft change proposal with acceptance criteria.
+2. Run review with design, engineering, and accessibility stakeholders.
+3. Execute staged rollout with QA evidence and metrics.
+4. Publish release notes and migration guidance.
+
+## Artifacts
+- Decision log with approvers
+- Implementation table by surface/team
+- QA checklist with pass/fail and defects
+- Rollback trigger and owner
+
+## Acceptance Criteria
+- No unresolved P1/P2 defects
+- Migration notes consumed by all owning teams
+- KPIs stable for one release cycle

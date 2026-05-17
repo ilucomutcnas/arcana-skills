@@ -1,60 +1,44 @@
----
-name: "design-system-framework-mapping"
-title: "Design System Framework Mapping"
-description: "Maps design-system concepts to CSS, Tailwind, CSS Modules, utility-first systems, and CSS-in-JS without losing semantic intent."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# framework-mapping Reference
 
-## Package Structure
+## When to Use
+Use this skill when framework-mapping decisions affect cross-team system consistency and release safety.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/framework-mapping.md`
-- Examples: `examples/skills/framework-mapping.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Required Inputs
+- Product scope, platform constraints, accessibility requirements
+- Existing tokens/components/themes and changelog history
+- Owner list, review gates, and rollout milestones
 
-## Linked Package Files
+## Workflow
+1. Define target outcomes and non-goals.
+2. Apply decision rules and constraints for framework-mapping.
+3. Produce implementation artifacts and review checklist.
+4. Validate against failure modes and handoff expectations.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — design system style guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — design system anti-patterns
+## Decision Rules
+- Prefer semantic intent over local shortcuts.
+- Keep backward compatibility unless breaking change is approved.
+- Require measurable acceptance criteria before release.
 
-# Design System Framework Mapping
+## Checklist
+- Scope and dependencies documented
+- Accessibility and test evidence attached
+- Migration impact and rollback path defined
+- Ownership and sign-off recorded
 
-## Purpose
-Translate design-system concepts into implementation patterns without collapsing semantics into random classes.
+## Anti-Patterns
+- One-off overrides bypassing system contracts
+- Missing version/deprecation notes
+- Ambiguous ownership or no release gate
 
-## Scope
-- plain CSS
-- SCSS
-- CSS Modules
-- Tailwind
-- CSS-in-JS
-- component-library token mapping
+## Handoff Expectations
+- Designers provide annotated specs and intent notes.
+- Engineers provide mapping, tests, and rollout plan.
+- PM/enablement owners provide adoption communication and KPI target.
 
-## Rules
-1. Framework choice does not excuse semantic drift.
-2. Tokens must remain source-of-truth regardless of implementation style.
-3. Utility classes may express layout quickly, but semantic roles still need stable mapping.
-4. CSS-in-JS is not a substitute for a system model.
-5. Tailwind projects still need token discipline and variant discipline.
+## Failure Modes
+- Contract drift between design files and code tokens/components.
+- Release notes that omit migration steps for downstream teams.
+- Incomplete test matrix across states, themes, and platforms.
 
-## Mapping guidance
-### Plain CSS / SCSS
-- Prefer CSS custom properties for tokens.
-- Separate token layer from component layer.
-
-### CSS Modules
-- Use modules for local component styling, not for redefining global token meaning.
-
-### Tailwind
-- Extend the theme with semantic tokens.
-- Avoid spraying raw utility values when a system token exists.
-- Use component abstractions for repeated patterns.
-
-### CSS-in-JS
-- Keep token access centralized.
-- Avoid ad hoc inline objects that drift from system naming.
-
-## Validation
-- Can design decisions be traced from system token to rendered UI regardless of stack?
+## Escalation Triggers
+Escalate to governance and review-audit when changes touch multiple products, introduce breaking behavior, or lack measurable rollback conditions.

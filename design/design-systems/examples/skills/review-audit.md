@@ -1,10 +1,25 @@
-# Audit Example
+# review-audit Example
 
-## Input
-A product page uses hardcoded hex colors, custom buttons, and dark-mode overrides in feature code.
+## Scenario
+Enterprise product suite applies a review-audit update across web app, admin console, and documentation portal.
 
-## Output
-- Identify each violation
-- classify severity
-- separate system gaps from product misuse
-- recommend token replacement, component consolidation, and theme cleanup
+## Inputs
+- Current system baseline and constraints
+- Affected teams and release window
+
+## End-to-End Pattern
+1. Draft change proposal with acceptance criteria.
+2. Run review with design, engineering, and accessibility stakeholders.
+3. Execute staged rollout with QA evidence and metrics.
+4. Publish release notes and migration guidance.
+
+## Artifacts
+- Decision log with approvers
+- Implementation table by surface/team
+- QA checklist with pass/fail and defects
+- Rollback trigger and owner
+
+## Acceptance Criteria
+- No unresolved P1/P2 defects
+- Migration notes consumed by all owning teams
+- KPIs stable for one release cycle

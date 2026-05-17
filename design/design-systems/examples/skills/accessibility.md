@@ -1,22 +1,25 @@
-# Design System Accessibility — Examples
+# accessibility Example
 
-## Required Checks for Every Component
+## Scenario
+Enterprise product suite applies a accessibility update across web app, admin console, and documentation portal.
 
-- Color contrast for text and UI boundaries (4.5:1 text, 3:1 UI)
-- Focus order and focus visibility
-- Keyboard operability assumptions
-- Icon-only control labeling strategy
-- Touch target sizing (minimum 44x44px)
+## Inputs
+- Current system baseline and constraints
+- Affected teams and release window
 
-## Rules
+## End-to-End Pattern
+1. Draft change proposal with acceptance criteria.
+2. Run review with design, engineering, and accessibility stakeholders.
+3. Execute staged rollout with QA evidence and metrics.
+4. Publish release notes and migration guidance.
 
-1. Color cannot be the only state signal.
-2. Focus-visible patterns must be systemized.
-3. Disabled components must remain understandable.
-4. Motion must have reduced-motion alternatives.
-5. Token choices must be tested against contrast requirements.
-6. Documentation must state known accessibility constraints.
+## Artifacts
+- Decision log with approvers
+- Implementation table by surface/team
+- QA checklist with pass/fail and defects
+- Rollback trigger and owner
 
-## Validation Question
-
-Can a product team adopt this system without creating predictable accessibility regressions?
+## Acceptance Criteria
+- No unresolved P1/P2 defects
+- Migration notes consumed by all owning teams
+- KPIs stable for one release cycle

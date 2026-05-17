@@ -1,33 +1,25 @@
-# Design System Governance — Examples
+# governance Example
 
-## Review Gate Questions
+## Scenario
+Enterprise product suite applies a governance update across web app, admin console, and documentation portal.
 
-- What user/system problem does this solve?
-- Why is the current system insufficient?
-- Can this be solved by variant extension instead of a new component?
-- What is the implementation cost?
-- What is the long-term maintenance cost?
-- What are the accessibility consequences?
+## Inputs
+- Current system baseline and constraints
+- Affected teams and release window
 
-## Versioning Model
+## End-to-End Pattern
+1. Draft change proposal with acceptance criteria.
+2. Run review with design, engineering, and accessibility stakeholders.
+3. Execute staged rollout with QA evidence and metrics.
+4. Publish release notes and migration guidance.
 
-- **patch**: non-breaking fixes
-- **minor**: additive improvements
-- **major**: breaking contract changes
+## Artifacts
+- Decision log with approvers
+- Implementation table by surface/team
+- QA checklist with pass/fail and defects
+- Rollback trigger and owner
 
-## Governance Areas
-
-- Ownership model
-- Decision records
-- Contribution workflow
-- Review criteria
-- Versioning
-- Deprecation
-- Adoption tracking
-
-## Key Rules
-
-1. Every token or component addition needs an explicit reason.
-2. No new primitive without checking if an existing one solves the problem.
-3. Breaking changes must have migration notes.
-4. Deprecations need timelines, alternatives, and communication.
+## Acceptance Criteria
+- No unresolved P1/P2 defects
+- Migration notes consumed by all owning teams
+- KPIs stable for one release cycle

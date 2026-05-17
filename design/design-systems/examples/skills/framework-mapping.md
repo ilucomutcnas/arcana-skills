@@ -1,22 +1,25 @@
-# Design System Framework Mapping — Examples
+# framework-mapping Example
 
-## Plain CSS / SCSS
-- Prefer CSS custom properties for tokens.
-- Separate token layer from component layer.
+## Scenario
+Enterprise product suite applies a framework-mapping update across web app, admin console, and documentation portal.
 
-## CSS Modules
-- Use modules for local component styling.
-- Do not redefine global token meaning in modules.
+## Inputs
+- Current system baseline and constraints
+- Affected teams and release window
 
-## Tailwind
-- Extend the theme with semantic tokens.
-- Avoid spraying raw utility values when a system token exists.
-- Use component abstractions for repeated patterns.
+## End-to-End Pattern
+1. Draft change proposal with acceptance criteria.
+2. Run review with design, engineering, and accessibility stakeholders.
+3. Execute staged rollout with QA evidence and metrics.
+4. Publish release notes and migration guidance.
 
-## CSS-in-JS
-- Keep token access centralized.
-- Avoid ad hoc inline objects that drift from system naming.
+## Artifacts
+- Decision log with approvers
+- Implementation table by surface/team
+- QA checklist with pass/fail and defects
+- Rollback trigger and owner
 
-## Validation Question
-
-Can design decisions be traced from system token to rendered UI regardless of stack?
+## Acceptance Criteria
+- No unresolved P1/P2 defects
+- Migration notes consumed by all owning teams
+- KPIs stable for one release cycle
