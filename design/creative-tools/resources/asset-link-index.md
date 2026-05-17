@@ -46,3 +46,18 @@ This index enumerates every skill-specific auxiliary folder and file in the pack
   - [`pdf-processing__scripts/extract_form_field_info.py`](../pdf-processing__scripts/extract_form_field_info.py)
   - [`pdf-processing__scripts/fill_fillable_fields.py`](../pdf-processing__scripts/fill_fillable_fields.py)
   - [`pdf-processing__scripts/fill_pdf_form_with_annotations.py`](../pdf-processing__scripts/fill_pdf_form_with_annotations.py)
+
+## vector-workflow-automation
+- Reference: [`references/skills/vector-workflow-automation.md`](../references/skills/vector-workflow-automation.md)
+- Examples: [`examples/skills/vector-workflow-automation.md`](../examples/skills/vector-workflow-automation.md)
+- Assets: none required.
+
+## raster-retouch-pipeline
+- Reference: [`references/skills/raster-retouch-pipeline.md`](../references/skills/raster-retouch-pipeline.md)
+- Examples: [`examples/skills/raster-retouch-pipeline.md`](../examples/skills/raster-retouch-pipeline.md)
+- Assets: none required.
+
+## creative-asset-handoff
+- Reference: [`references/skills/creative-asset-handoff.md`](../references/skills/creative-asset-handoff.md)
+- Examples: [`examples/skills/creative-asset-handoff.md`](../examples/skills/creative-asset-handoff.md)
+- Assets: none required.
