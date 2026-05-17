@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "stage": "stage-2-structural-remediation",
+  "status": "complete",
+  "inputs": [
+    "docs/audits/STRUCTURAL_AUDIT.json",
+    "docs/audits/MANIFEST_ROUTING_CONSISTENCY_AUDIT.json",
+    "scripts/validate_skills.py"
+  ],
+  "checks": {
+    "critical_discovery_fixed": true,
+    "design_systems_skill_md_exists": true,
+    "design_systems_skill_me_absent": true,
+    "shared_rules_structure_present": true,
+    "shared_rules_router_references_present": true,
+    "shared_rules_routing_guide_references_present": true,
+    "shared_rules_asset_index_references_present": true,
+    "structural_validation_errors": 0
+  },
+  "validator_summary": {
+    "errors": 0,
+    "warnings": 140,
+    "notes": [
+      "140 warnings remain and are out-of-scope for Stage 2 structural remediation when they concern package quality depth, placeholder/thin content quality, non-English content cleanup, and binary asset hygiene."
+    ]
+  },
+  "remediated_findings": [
+    {
+      "source": "docs/audits/MANIFEST_ROUTING_CONSISTENCY_AUDIT.json",
+      "finding_ids": ["MRC-001", "MRC-002", "MRC-003", "MRC-004", "MRC-005", "MRC-006", "MRC-007", "MRC-008"],
+      "status": "remediated"
+    }
+  ],
+  "remaining_out_of_scope_work": [
+    "package-quality-audit-and-upgrades",
+    "binary-asset-hygiene",
+    "root-registry-and-schema"
+  ],
+  "recommended_next_stage": {
+    "stage": "stage-3-package-quality-audit",
+    "title": "Create package quality rubric and maturity matrix"
+  }
+}
