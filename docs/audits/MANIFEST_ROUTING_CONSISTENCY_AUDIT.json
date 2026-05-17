@@ -4,13 +4,13 @@
   "scope": "manifest-routing-consistency",
   "summary": {
     "package_count": 8,
-    "total_findings": 0,
+    "total_findings": 8,
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
+    "medium": 4,
+    "low": 4,
     "info": 0,
-    "packages_with_findings": 0
+    "packages_with_findings": 4
   },
   "packages": [
     {
@@ -23,8 +23,8 @@
       "routing_guide_present": true,
       "asset_link_index_present": true,
       "shared_rules_present": true,
-      "finding_count": 0,
-      "highest_severity": "none"
+      "finding_count": 2,
+      "highest_severity": "medium"
     },
     {
       "package": "design/accessibility-ux",
@@ -36,8 +36,8 @@
       "routing_guide_present": true,
       "asset_link_index_present": true,
       "shared_rules_present": true,
-      "finding_count": 0,
-      "highest_severity": "none"
+      "finding_count": 2,
+      "highest_severity": "medium"
     },
     {
       "package": "design/brand-visual",
@@ -49,8 +49,8 @@
       "routing_guide_present": true,
       "asset_link_index_present": true,
       "shared_rules_present": true,
-      "finding_count": 0,
-      "highest_severity": "none"
+      "finding_count": 2,
+      "highest_severity": "medium"
     },
     {
       "package": "design/content-writing",
@@ -75,8 +75,8 @@
       "routing_guide_present": true,
       "asset_link_index_present": true,
       "shared_rules_present": true,
-      "finding_count": 0,
-      "highest_severity": "none"
+      "finding_count": 2,
+      "highest_severity": "medium"
     },
     {
       "package": "design/css-styling",
@@ -118,5 +118,94 @@
       "highest_severity": "none"
     }
   ],
-  "findings": []
+  "findings": [
+    {
+      "id": "MRC-001",
+      "severity": "medium",
+      "category": "shared-rules-routing",
+      "package": "design/3d-animation",
+      "path": "design/3d-animation/SKILL.md",
+      "title": "Shared rules are not referenced in router or routing guide",
+      "evidence": "Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Cross-skill routing guidance can miss shared constraints during mini-skill selection.",
+      "recommended_follow_up": "Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue."
+    },
+    {
+      "id": "MRC-002",
+      "severity": "low",
+      "category": "asset-index",
+      "package": "design/3d-animation",
+      "path": "design/3d-animation/resources/asset-link-index.md",
+      "title": "Asset-link index omits shared-rules references",
+      "evidence": "Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Auxiliary index documentation is incomplete for package support files.",
+      "recommended_follow_up": "Document shared-rules artifacts in resources/asset-link-index.md during remediation."
+    },
+    {
+      "id": "MRC-003",
+      "severity": "medium",
+      "category": "shared-rules-routing",
+      "package": "design/accessibility-ux",
+      "path": "design/accessibility-ux/SKILL.md",
+      "title": "Shared rules are not referenced in router or routing guide",
+      "evidence": "Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Cross-skill routing guidance can miss shared constraints during mini-skill selection.",
+      "recommended_follow_up": "Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue."
+    },
+    {
+      "id": "MRC-004",
+      "severity": "low",
+      "category": "asset-index",
+      "package": "design/accessibility-ux",
+      "path": "design/accessibility-ux/resources/asset-link-index.md",
+      "title": "Asset-link index omits shared-rules references",
+      "evidence": "Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Auxiliary index documentation is incomplete for package support files.",
+      "recommended_follow_up": "Document shared-rules artifacts in resources/asset-link-index.md during remediation."
+    },
+    {
+      "id": "MRC-005",
+      "severity": "medium",
+      "category": "shared-rules-routing",
+      "package": "design/brand-visual",
+      "path": "design/brand-visual/SKILL.md",
+      "title": "Shared rules are not referenced in router or routing guide",
+      "evidence": "Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Cross-skill routing guidance can miss shared constraints during mini-skill selection.",
+      "recommended_follow_up": "Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue."
+    },
+    {
+      "id": "MRC-006",
+      "severity": "low",
+      "category": "asset-index",
+      "package": "design/brand-visual",
+      "path": "design/brand-visual/resources/asset-link-index.md",
+      "title": "Asset-link index omits shared-rules references",
+      "evidence": "Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Auxiliary index documentation is incomplete for package support files.",
+      "recommended_follow_up": "Document shared-rules artifacts in resources/asset-link-index.md during remediation."
+    },
+    {
+      "id": "MRC-007",
+      "severity": "medium",
+      "category": "shared-rules-routing",
+      "package": "design/creative-tools",
+      "path": "design/creative-tools/SKILL.md",
+      "title": "Shared rules are not referenced in router or routing guide",
+      "evidence": "Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Cross-skill routing guidance can miss shared constraints during mini-skill selection.",
+      "recommended_follow_up": "Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue."
+    },
+    {
+      "id": "MRC-008",
+      "severity": "low",
+      "category": "asset-index",
+      "package": "design/creative-tools",
+      "path": "design/creative-tools/resources/asset-link-index.md",
+      "title": "Asset-link index omits shared-rules references",
+      "evidence": "Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.",
+      "impact": "Auxiliary index documentation is incomplete for package support files.",
+      "recommended_follow_up": "Document shared-rules artifacts in resources/asset-link-index.md during remediation."
+    }
+  ]
 }

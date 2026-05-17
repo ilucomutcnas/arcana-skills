@@ -11,23 +11,23 @@ Audit coverage included manifest, catalog, routing, reference, example, asset-li
 | Metric | Value |
 |---|---:|
 | package_count | 8 |
-| total_findings | 0 |
+| total_findings | 8 |
 | critical | 0 |
 | high | 0 |
-| medium | 0 |
-| low | 0 |
+| medium | 4 |
+| low | 4 |
 | info | 0 |
-| packages_with_findings | 0 |
+| packages_with_findings | 4 |
 
 ## Package Overview
 
 | Package | Manifest Records | References | Examples | Catalog | Routing Guide | Asset Index | Shared Rules | Findings | Highest Severity |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| design/3d-animation | 16 | 16 | 16 | True | True | True | True | 0 | none |
-| design/accessibility-ux | 6 | 6 | 6 | True | True | True | True | 0 | none |
-| design/brand-visual | 9 | 9 | 9 | True | True | True | True | 0 | none |
+| design/3d-animation | 16 | 16 | 16 | True | True | True | True | 2 | medium |
+| design/accessibility-ux | 6 | 6 | 6 | True | True | True | True | 2 | medium |
+| design/brand-visual | 9 | 9 | 9 | True | True | True | True | 2 | medium |
 | design/content-writing | 8 | 8 | 8 | True | True | True | True | 0 | none |
-| design/creative-tools | 3 | 3 | 3 | True | True | True | True | 0 | none |
+| design/creative-tools | 3 | 3 | 3 | True | True | True | True | 2 | medium |
 | design/css-styling | 12 | 12 | 12 | True | True | True | True | 0 | none |
 | design/design-systems | 8 | 8 | 8 | True | True | True | True | 0 | none |
 | design/pretext-ui | 10 | 10 | 10 | True | True | True | True | 0 | none |
@@ -42,11 +42,81 @@ No findings.
 
 ## Medium
 
-No findings.
+### MRC-001 - Shared rules are not referenced in router or routing guide
+- severity: `medium`
+- category: `shared-rules-routing`
+- package: `design/3d-animation`
+- path: `design/3d-animation/SKILL.md`
+- evidence: Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Cross-skill routing guidance can miss shared constraints during mini-skill selection.
+- recommended follow-up: Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue.
+
+### MRC-003 - Shared rules are not referenced in router or routing guide
+- severity: `medium`
+- category: `shared-rules-routing`
+- package: `design/accessibility-ux`
+- path: `design/accessibility-ux/SKILL.md`
+- evidence: Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Cross-skill routing guidance can miss shared constraints during mini-skill selection.
+- recommended follow-up: Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue.
+
+### MRC-005 - Shared rules are not referenced in router or routing guide
+- severity: `medium`
+- category: `shared-rules-routing`
+- package: `design/brand-visual`
+- path: `design/brand-visual/SKILL.md`
+- evidence: Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Cross-skill routing guidance can miss shared constraints during mini-skill selection.
+- recommended follow-up: Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue.
+
+### MRC-007 - Shared rules are not referenced in router or routing guide
+- severity: `medium`
+- category: `shared-rules-routing`
+- package: `design/creative-tools`
+- path: `design/creative-tools/SKILL.md`
+- evidence: Package contains shared-rules/, but neither SKILL.md nor resources/routing-guide.md references shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Cross-skill routing guidance can miss shared constraints during mini-skill selection.
+- recommended follow-up: Update SKILL.md and/or resources/routing-guide.md to reference shared-rules usage in a dedicated remediation issue.
+
 
 ## Low
 
-No findings.
+### MRC-002 - Asset-link index omits shared-rules references
+- severity: `low`
+- category: `asset-index`
+- package: `design/3d-animation`
+- path: `design/3d-animation/resources/asset-link-index.md`
+- evidence: Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Auxiliary index documentation is incomplete for package support files.
+- recommended follow-up: Document shared-rules artifacts in resources/asset-link-index.md during remediation.
+
+### MRC-004 - Asset-link index omits shared-rules references
+- severity: `low`
+- category: `asset-index`
+- package: `design/accessibility-ux`
+- path: `design/accessibility-ux/resources/asset-link-index.md`
+- evidence: Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Auxiliary index documentation is incomplete for package support files.
+- recommended follow-up: Document shared-rules artifacts in resources/asset-link-index.md during remediation.
+
+### MRC-006 - Asset-link index omits shared-rules references
+- severity: `low`
+- category: `asset-index`
+- package: `design/brand-visual`
+- path: `design/brand-visual/resources/asset-link-index.md`
+- evidence: Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Auxiliary index documentation is incomplete for package support files.
+- recommended follow-up: Document shared-rules artifacts in resources/asset-link-index.md during remediation.
+
+### MRC-008 - Asset-link index omits shared-rules references
+- severity: `low`
+- category: `asset-index`
+- package: `design/creative-tools`
+- path: `design/creative-tools/resources/asset-link-index.md`
+- evidence: Package contains shared-rules/, but resources/asset-link-index.md does not mention shared-rules, STYLE-GUARDRAILS.md, or ANTI-PATTERNS.md.
+- impact: Auxiliary index documentation is incomplete for package support files.
+- recommended follow-up: Document shared-rules artifacts in resources/asset-link-index.md during remediation.
+
 
 ## Info
 
