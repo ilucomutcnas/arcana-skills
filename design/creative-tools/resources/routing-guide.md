@@ -6,29 +6,29 @@ Use this guide to decide which extracted file to open.
 
 - Keep the main `SKILL.md` lightweight and navigational.
 - Open `resources/skill-catalog.md` for the full index.
-- Open `references/skills/<slug>.md` for the full methodology and validation rules.
-- Open `examples/skills/<slug>.md` for sample code and usage patterns.
-- If a task spans multiple domains, combine the relevant reference files.
+- Open `references/skills/SLUG.md` for the full methodology and validation rules.
+- Open `examples/skills/SLUG.md` for sample workflows and output patterns.
+- If a task spans multiple concerns, combine relevant mini-skills.
 
 ## Quick Navigation
 
-- **ad-creative** -> `references/skills/ad-creative.md` and `examples/skills/ad-creative.md`
-- **content-creator** -> `references/skills/content-creator.md` and `examples/skills/content-creator.md`
-- **pdf-processing** -> `references/skills/pdf-processing.md` and `examples/skills/pdf-processing.md`
+- **ad-creative** -> `references/skills/ad-creative.md` + `examples/skills/ad-creative.md`
+- **content-creator** -> `references/skills/content-creator.md` + `examples/skills/content-creator.md`
+- **pdf-processing** -> `references/skills/pdf-processing.md` + `examples/skills/pdf-processing.md`
+- **vector-workflow-automation** -> `references/skills/vector-workflow-automation.md` + `examples/skills/vector-workflow-automation.md`
+- **raster-retouch-pipeline** -> `references/skills/raster-retouch-pipeline.md` + `examples/skills/raster-retouch-pipeline.md`
+- **creative-asset-handoff** -> `references/skills/creative-asset-handoff.md` + `examples/skills/creative-asset-handoff.md`
 
 ## Routing by Task Type
 
 - **Generating ad copy** -> ad-creative (primary) + content-creator (brand voice)
-- **Iterating ads from data** -> ad-creative
-- **Writing blog posts** -> content-creator (primary) + ad-creative (promotion copy)
-- **Social media content** -> content-creator
-- **Brand voice setup** -> content-creator
-- **Content calendar** -> content-creator
-- **Merging/splitting PDFs** -> pdf-processing
-- **Extracting text/tables** -> pdf-processing
-- **Filling PDF forms** -> pdf-processing
-- **Creating PDFs** -> pdf-processing
+- **Campaign visual production** -> raster-retouch-pipeline (primary) + ad-creative
+- **Icon set cleanup and export** -> vector-workflow-automation (primary) + creative-asset-handoff
+- **Product image cleanup** -> raster-retouch-pipeline
 - **Branded PDF documents** -> pdf-processing + content-creator
+- **Document delivery package** -> pdf-processing + creative-asset-handoff
+- **Campaign package delivery** -> content-creator + creative-asset-handoff
+- **Cross-channel release handoff** -> creative-asset-handoff (primary) + vector-workflow-automation + raster-retouch-pipeline
 
 ## Shared Rules
 

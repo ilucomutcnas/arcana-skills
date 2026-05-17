@@ -35,5 +35,32 @@
       "pdf-processing__references/",
       "pdf-processing__scripts/"
     ]
+  },
+  {
+    "title": "vector-workflow-automation",
+    "slug": "vector-workflow-automation",
+    "purpose": "Automate and normalize vector design workflows including SVG cleanup, icon-set normalization, token-aware production, batch exports, and engineering-ready handoff.",
+    "when": "When preparing icon sets or other vector assets for consistent multi-platform use, especially when source quality, naming, and export consistency vary.",
+    "reference": "references/skills/vector-workflow-automation.md",
+    "examples": "examples/skills/vector-workflow-automation.md",
+    "assets": []
+  },
+  {
+    "title": "raster-retouch-pipeline",
+    "slug": "raster-retouch-pipeline",
+    "purpose": "Run non-destructive raster retouch workflows for cleanup, correction, multi-channel resizing, metadata-aware QA, and controlled export variants.",
+    "when": "When cleaning, correcting, resizing, and exporting product or campaign imagery while preserving source fidelity and traceable editing history.",
+    "reference": "references/skills/raster-retouch-pipeline.md",
+    "examples": "examples/skills/raster-retouch-pipeline.md",
+    "assets": []
+  },
+  {
+    "title": "creative-asset-handoff",
+    "slug": "creative-asset-handoff",
+    "purpose": "Package and deliver creative assets with strict source/export separation, naming/versioning conventions, provenance notes, and acceptance criteria.",
+    "when": "When delivering finalized assets to engineering, marketing, clients, or operations teams that require predictable folders, manifests, and approval status.",
+    "reference": "references/skills/creative-asset-handoff.md",
+    "examples": "examples/skills/creative-asset-handoff.md",
+    "assets": []
   }
 ]
