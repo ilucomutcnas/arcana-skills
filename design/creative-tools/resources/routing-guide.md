@@ -30,6 +30,11 @@ Use this guide to decide which extracted file to open.
 - **Creating PDFs** -> pdf-processing
 - **Branded PDF documents** -> pdf-processing + content-creator
 
+## Shared Rules
+
+- Read `../shared-rules/STYLE-GUARDRAILS.md` before delivering cross-mini-skill work or package-level outputs.
+- Read `../shared-rules/ANTI-PATTERNS.md` as a rejection checklist before final delivery.
+
 ## Additional Package Index
 
 - [`asset-link-index.md`](asset-link-index.md) — complete link map for auxiliary folders and files.

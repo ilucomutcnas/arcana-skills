@@ -48,6 +48,8 @@ Common combinations:
 - `resources/routing-guide.md` — navigation and composition rules
 - `resources/asset-link-index.md` — complete link map for every auxiliary folder and file
 - `resources/manifest.json` — machine-readable package manifest
+- `shared-rules/STYLE-GUARDRAILS.md` — package-wide output guardrails used across mini-skills
+- `shared-rules/ANTI-PATTERNS.md` — package-wide mistakes and rejection checks used across mini-skills
 - `references/skills/*.md` — full extracted guidance per mini-skill
 - `examples/skills/*.md` — extracted code snippets and usage samples
 

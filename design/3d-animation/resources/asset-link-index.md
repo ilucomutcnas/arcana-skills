@@ -4,6 +4,10 @@ This index enumerates every skill-specific auxiliary folder and file in the pack
 
 - [`manifest.json`](manifest.json) — machine-readable package manifest.
 
+- Folder: [`shared-rules/`](../shared-rules/)
+  - [`shared-rules/STYLE-GUARDRAILS.md`](../shared-rules/STYLE-GUARDRAILS.md)
+  - [`shared-rules/ANTI-PATTERNS.md`](../shared-rules/ANTI-PATTERNS.md)
+
 ## algorithmic-art
 - Reference: [`references/skills/algorithmic-art.md`](../references/skills/algorithmic-art.md)
 - Examples: [`examples/skills/algorithmic-art.md`](../examples/skills/algorithmic-art.md)
