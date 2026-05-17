@@ -11,8 +11,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Working | 7 |
 | Amateur | 0 |
 | Ready for use | 1 |
-| Needs upgrade | 4 |
-| Needs major upgrade | 2 |
+| Needs upgrade | 5 |
+| Needs major upgrade | 1 |
 | Needs asset hygiene | 1 |
 | Needs registry only | 0 |
 
@@ -24,7 +24,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | design/accessibility-ux | 6 | 81 | working | needs-upgrade |
 | design/brand-visual | 9 | 75 | working | needs-asset-hygiene |
 | design/content-writing | 8 | 93 | professional | ready-for-use |
-| design/creative-tools | 3 | 66 | working | needs-major-upgrade |
+| design/creative-tools | 6 | 83 | working | needs-upgrade |
 | design/css-styling | 12 | 79 | working | needs-upgrade |
 | design/design-systems | 8 | 64 | working | needs-major-upgrade |
 | design/pretext-ui | 10 | 71 | working | needs-upgrade |
@@ -40,8 +40,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Status | Packages |
 |---|---:|
 | ready-for-use | 1 |
-| needs-upgrade | 4 |
-| needs-major-upgrade | 2 |
+| needs-upgrade | 5 |
+| needs-major-upgrade | 1 |
 | needs-asset-hygiene | 1 |
 | needs-registry-only | 0 |
 
@@ -104,16 +104,20 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 ### design/creative-tools
 - **Maturity:** working
-- **Status:** needs-major-upgrade
-- **Overall score:** 66
-- **Strengths:** Solid structural baseline and relatively detailed references for existing scope.; Clear routing and protocol files are in place.
-- **Quality gaps:** Only three mini-skills for a broad domain indicates major under-scoping.; Professional readiness is constrained by narrow domain coverage.
-- **Recommended upgrade actions:** Expand mini-skill set to cover core creative-tool workflows across vector, raster, and collaborative production.; Introduce example suites for toolchain interoperability and handoff.
-- **Suggested new mini-skills:** vector-workflow-automation; raster-retouch-pipeline; creative-asset-handoff
-- **Asset hygiene notes:** Needs Stage 4 validation for asset provenance and binary usage policies.
+- **Status:** needs-upgrade
+- **Overall score:** 83
+- **Strengths:** Mini-skill coverage doubled from 3 to 6 and now spans ad/content, PDF, vector automation, raster retouch, and delivery handoff workflows.; Routing, composition, and self-diagnostic guidance are coherent and operational across old and newly added mini-skills.; Each newly added mini-skill includes both reference and example files with practical workflow detail.
+- **Quality gaps:** Professional readiness improved but remains below top-tier packages because several examples are still moderate depth rather than end-to-end production playbooks.; Asset hygiene is not yet Stage 4-verified; package cannot be treated as fully clean on provenance and binary policy.
+- **Recommended upgrade actions:** Deepen cross-mini-skill scenarios (vector + raster + handoff) with failure handling, QA gates, and revision loops.; Add stronger operational checklists for acceptance criteria and cross-team signoff in creative-asset-handoff examples.; Complete Stage 4 asset hygiene/provenance verification and document outcomes.
+- **Suggested new mini-skills:** creative-qa-gate-automation
+- **Asset hygiene notes:** New mini-skills list no required assets, but package-level Stage 4 provenance and hygiene validation is still pending.
 - **Evidence paths:**
-  - `design/creative-tools/resources/manifest.json` — Manifest contains 3 mini-skills, indicating limited domain coverage.
-  - `design/creative-tools/resources/routing-guide.md` — Routing exists but routes into a small mini-skill set.
+  - `design/creative-tools/resources/manifest.json` — Manifest now lists 6 mini-skills, including vector-workflow-automation, raster-retouch-pipeline, and creative-asset-handoff.
+  - `design/creative-tools/resources/skill-catalog.md` — Catalog documents all 6 mini-skills with expanded operational summaries and pairings.
+  - `design/creative-tools/resources/routing-guide.md` — Routing preserves original routes and adds routes for vector/raster/handoff workflows.
+  - `design/creative-tools/references/skills/vector-workflow-automation.md` — New operational reference exists for vector cleanup, normalization, and export planning.
+  - `design/creative-tools/examples/skills/raster-retouch-pipeline.md` — New example provides realistic raster cleanup/export flow with QA-oriented steps.
+  - `design/creative-tools/resources/asset-link-index.md` — Asset index retains prior auxiliary links and lists new mini-skills with no required assets.
 
 ### design/css-styling
 - **Maturity:** working
@@ -148,14 +152,14 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 - **Strengths:** Package structure and manifest integrity are complete.; Mini-skill count is strong for domain breadth.
 - **Quality gaps:** Example files are very brief and often skeletal.; Reference depth is limited for consistent professional execution.
 - **Recommended upgrade actions:** Expand examples into concrete UI implementation and review scenarios.; Increase reference operational depth with constraints, QA checks, and failure handling.
-- **Suggested new mini-skills:** none proposed in this pass.
+- **Suggested new mini-skills:** none proposed in this pass
 - **Asset hygiene notes:** Package contains asset index and no clear heavy binary concentration in main package tree; maintain Stage 4 review.
 - **Evidence paths:**
   - `design/pretext-ui/resources/manifest.json` — Manifest declares 10 mini-skills with paired references/examples.
   - `design/pretext-ui/examples/skills` — Examples are present but notably short across files.
 
 ## Recommended Upgrade Order
-1. **design/creative-tools** — Very small mini-skill set (3) for broad domain creates major coverage and readiness risk.
-2. **design/design-systems** — Thin references/examples reduce professional readiness for governance-heavy workflows.
-3. **design/brand-visual** — Asset-heavy package (55 binary assets) requires Stage 4 hygiene and provenance review.
-4. **design/pretext-ui** — Skeletal examples and limited operational depth constrain practical use.
+1. **design/design-systems** — Still classified needs-major-upgrade with comparatively thin references/examples for governance-heavy workflows.
+2. **design/pretext-ui** — Skeletal examples and shallow operational detail still limit practical production use.
+3. **design/creative-tools** — Now coherent and materially improved, but still needs-upgrade for deeper end-to-end scenarios and Stage 4 hygiene verification.
+4. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority due to heavy binary asset footprint rather than standard content-upgrade priority.
