@@ -11,8 +11,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Working | 7 |
 | Amateur | 0 |
 | Ready for use | 1 |
-| Needs upgrade | 5 |
-| Needs major upgrade | 1 |
+| Needs upgrade | 6 |
+| Needs major upgrade | 0 |
 | Needs asset hygiene | 1 |
 | Needs registry only | 0 |
 
@@ -26,7 +26,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | design/content-writing | 8 | 93 | professional | ready-for-use |
 | design/creative-tools | 6 | 83 | working | needs-upgrade |
 | design/css-styling | 12 | 79 | working | needs-upgrade |
-| design/design-systems | 8 | 64 | working | needs-major-upgrade |
+| design/design-systems | 10 | 84 | working | needs-upgrade |
 | design/pretext-ui | 10 | 71 | working | needs-upgrade |
 
 ## Maturity and Status Distribution
@@ -40,8 +40,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Status | Packages |
 |---|---:|
 | ready-for-use | 1 |
-| needs-upgrade | 5 |
-| needs-major-upgrade | 1 |
+| needs-upgrade | 6 |
+| needs-major-upgrade | 0 |
 | needs-asset-hygiene | 1 |
 | needs-registry-only | 0 |
 
@@ -134,16 +134,22 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 ### design/design-systems
 - **Maturity:** working
-- **Status:** needs-major-upgrade
-- **Overall score:** 64
-- **Strengths:** Complete structure and coherent manifest-to-file mapping.; Core design-system topics are represented.
-- **Quality gaps:** Reference and example materials are comparatively thin.; Professional readiness is limited for enterprise-level design system operations.
-- **Recommended upgrade actions:** Substantially deepen references for governance, token lifecycle, and release operations.; Add realistic examples for migration, versioning, and cross-team adoption workflows.
-- **Suggested new mini-skills:** design-token-governance; system-adoption-playbook
-- **Asset hygiene notes:** No severe asset signal in package tree, but Stage 4 verification still required.
+- **Status:** needs-upgrade
+- **Overall score:** 84
+- **Strengths:** Manifest, router, composition protocol, routing guide, and asset index are coherent and now aligned to 10 mini-skills.; New token governance and adoption playbook coverage materially improve enterprise workflow completeness.; References and examples now include operational migration, rollout, and governance scenarios rather than only conceptual guidance.
+- **Quality gaps:** Asset hygiene/provenance is still not Stage 4 verified, so package cannot be treated as fully clean.; Some examples remain concise and would benefit from deeper end-to-end evidence for multi-quarter operations.
+- **Recommended upgrade actions:** Run Stage 4 asset hygiene/provenance validation and document outcomes before any clean-hygiene classification.; Deepen selected examples with measurable outcomes, rollback criteria, and post-migration audit artifacts.
+- **Suggested new mini-skills:** none required in this audit pass
+- **Asset hygiene notes:** Stage 3 content quality is materially improved, but Stage 4 asset hygiene/provenance verification is still pending.
 - **Evidence paths:**
-  - `design/design-systems/resources/manifest.json` — Manifest lists 8 mini-skills.
-  - `design/design-systems/references/skills` — References exist but are shorter than peer packages.
+  - `design/design-systems/resources/manifest.json` — Manifest now lists 10 mini-skills including design-token-governance and system-adoption-playbook.
+  - `design/design-systems/references/skills/design-token-governance.md` — New reference defines token lifecycle governance, change classes, review gates, and migration safety controls.
+  - `design/design-systems/examples/skills/design-token-governance.md` — New example includes token rename decision record, migration waves, deprecation policy, and QA checks.
+  - `design/design-systems/references/skills/system-adoption-playbook.md` — New reference provides stakeholder map, maturity model, sequencing logic, KPIs, and exception handling.
+  - `design/design-systems/examples/skills/system-adoption-playbook.md` — New example covers multi-product rollout waves, ownership mapping, KPI targets, and governance cadence.
+  - `design/design-systems/composition-protocol.md` — Composition protocol preserves universal package structure while adding workflow-oriented composition guidance.
+  - `design/design-systems/resources/routing-guide.md` — Routing guide preserves legacy routes and adds token governance/adoption routes.
+  - `design/design-systems/resources/asset-link-index.md` — Asset link index preserves shared-rules links and per-skill reference/example mappings.
 
 ### design/pretext-ui
 - **Maturity:** working
@@ -159,7 +165,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
   - `design/pretext-ui/examples/skills` — Examples are present but notably short across files.
 
 ## Recommended Upgrade Order
-1. **design/design-systems** — Still classified needs-major-upgrade with comparatively thin references/examples for governance-heavy workflows.
-2. **design/pretext-ui** — Skeletal examples and shallow operational detail still limit practical production use.
-3. **design/creative-tools** — Now coherent and materially improved, but still needs-upgrade for deeper end-to-end scenarios and Stage 4 hygiene verification.
-4. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority due to heavy binary asset footprint rather than standard content-upgrade priority.
+1. **design/pretext-ui** — Still needs-upgrade with skeletal examples and shallow operational depth compared to peers.
+2. **design/creative-tools** — Improved significantly but still needs deeper end-to-end scenarios and Stage 4 hygiene verification.
+3. **design/design-systems** — Upgraded to needs-upgrade after Stage 3 expansion; follow-up should focus on deeper long-horizon operational evidence rather than major restructuring.
+4. **design/brand-visual** — Maintain as Stage 4 asset-hygiene priority due to binary asset footprint rather than normal content-upgrade urgency.

@@ -7,8 +7,8 @@
     "working": 7,
     "amateur": 0,
     "ready_for_use": 1,
-    "needs_upgrade": 5,
-    "needs_major_upgrade": 1,
+    "needs_upgrade": 6,
+    "needs_major_upgrade": 0,
     "needs_asset_hygiene": 1,
     "needs_registry_only": 0
   },
@@ -362,49 +362,73 @@
       "domain": "design",
       "slug": "design-systems",
       "path": "design/design-systems",
-      "mini_skill_count": 8,
+      "mini_skill_count": 10,
       "maturity": "working",
-      "status": "needs-major-upgrade",
-      "overall_score": 64,
+      "status": "needs-upgrade",
+      "overall_score": 84,
       "scores": {
         "structure_completeness": 5,
         "manifest_integrity": 5,
-        "routing_clarity": 4,
-        "reference_depth": 2,
-        "example_quality": 2,
-        "domain_coverage": 3,
-        "specificity_and_non_genericness": 3,
-        "professional_readiness": 2,
+        "routing_clarity": 5,
+        "reference_depth": 4,
+        "example_quality": 4,
+        "domain_coverage": 4,
+        "specificity_and_non_genericness": 4,
+        "professional_readiness": 4,
         "english_only_readiness": 5,
-        "asset_hygiene_readiness": 3
+        "asset_hygiene_readiness": 2
       },
       "strengths": [
-        "Complete structure and coherent manifest-to-file mapping.",
-        "Core design-system topics are represented."
+        "Manifest, router, composition protocol, routing guide, and asset index are coherent and now aligned to 10 mini-skills.",
+        "New token governance and adoption playbook coverage materially improve enterprise workflow completeness.",
+        "References and examples now include operational migration, rollout, and governance scenarios rather than only conceptual guidance."
       ],
       "quality_gaps": [
-        "Reference and example materials are comparatively thin.",
-        "Professional readiness is limited for enterprise-level design system operations."
+        "Asset hygiene/provenance is still not Stage 4 verified, so package cannot be treated as fully clean.",
+        "Some examples remain concise and would benefit from deeper end-to-end evidence for multi-quarter operations."
       ],
       "recommended_upgrade_actions": [
-        "Substantially deepen references for governance, token lifecycle, and release operations.",
-        "Add realistic examples for migration, versioning, and cross-team adoption workflows."
+        "Run Stage 4 asset hygiene/provenance validation and document outcomes before any clean-hygiene classification.",
+        "Deepen selected examples with measurable outcomes, rollback criteria, and post-migration audit artifacts."
       ],
       "suggested_new_mini_skills": [
-        "design-token-governance",
-        "system-adoption-playbook"
+        "none required in this audit pass"
       ],
       "asset_hygiene_notes": [
-        "No severe asset signal in package tree, but Stage 4 verification still required."
+        "Stage 3 content quality is materially improved, but Stage 4 asset hygiene/provenance verification is still pending."
       ],
       "evidence": [
         {
           "path": "design/design-systems/resources/manifest.json",
-          "note": "Manifest lists 8 mini-skills."
+          "note": "Manifest now lists 10 mini-skills including design-token-governance and system-adoption-playbook."
         },
         {
-          "path": "design/design-systems/references/skills",
-          "note": "References exist but are shorter than peer packages."
+          "path": "design/design-systems/references/skills/design-token-governance.md",
+          "note": "New reference defines token lifecycle governance, change classes, review gates, and migration safety controls."
+        },
+        {
+          "path": "design/design-systems/examples/skills/design-token-governance.md",
+          "note": "New example includes token rename decision record, migration waves, deprecation policy, and QA checks."
+        },
+        {
+          "path": "design/design-systems/references/skills/system-adoption-playbook.md",
+          "note": "New reference provides stakeholder map, maturity model, sequencing logic, KPIs, and exception handling."
+        },
+        {
+          "path": "design/design-systems/examples/skills/system-adoption-playbook.md",
+          "note": "New example covers multi-product rollout waves, ownership mapping, KPI targets, and governance cadence."
+        },
+        {
+          "path": "design/design-systems/composition-protocol.md",
+          "note": "Composition protocol preserves universal package structure while adding workflow-oriented composition guidance."
+        },
+        {
+          "path": "design/design-systems/resources/routing-guide.md",
+          "note": "Routing guide preserves legacy routes and adds token governance/adoption routes."
+        },
+        {
+          "path": "design/design-systems/resources/asset-link-index.md",
+          "note": "Asset link index preserves shared-rules links and per-skill reference/example mappings."
         }
       ]
     },
@@ -460,23 +484,23 @@
   "recommended_upgrade_order": [
     {
       "order": 1,
-      "package": "design/design-systems",
-      "reason": "Still classified needs-major-upgrade with comparatively thin references/examples for governance-heavy workflows."
+      "package": "design/pretext-ui",
+      "reason": "Still needs-upgrade with skeletal examples and shallow operational depth compared to peers."
     },
     {
       "order": 2,
-      "package": "design/pretext-ui",
-      "reason": "Skeletal examples and shallow operational detail still limit practical production use."
+      "package": "design/creative-tools",
+      "reason": "Improved significantly but still needs deeper end-to-end scenarios and Stage 4 hygiene verification."
     },
     {
       "order": 3,
-      "package": "design/creative-tools",
-      "reason": "Now coherent and materially improved, but still needs-upgrade for deeper end-to-end scenarios and Stage 4 hygiene verification."
+      "package": "design/design-systems",
+      "reason": "Upgraded to needs-upgrade after Stage 3 expansion; follow-up should focus on deeper long-horizon operational evidence rather than major restructuring."
     },
     {
       "order": 4,
       "package": "design/brand-visual",
-      "reason": "Keep as Stage 4 asset-hygiene priority due to heavy binary asset footprint rather than standard content-upgrade priority."
+      "reason": "Maintain as Stage 4 asset-hygiene priority due to binary asset footprint rather than normal content-upgrade urgency."
     }
   ]
 }
