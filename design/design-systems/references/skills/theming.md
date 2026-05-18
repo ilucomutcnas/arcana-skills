@@ -1,52 +1,44 @@
----
-name: "design-system-theming"
-title: "Design System Theming"
-description: "Defines multi-theme, light/dark, and multi-brand theming with semantic safety and implementation discipline."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# theming Reference
 
-## Package Structure
+## When to Use
+Use this skill when theming decisions affect cross-team system consistency and release safety.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/theming.md`
-- Examples: `examples/skills/theming.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Required Inputs
+- Product scope, platform constraints, accessibility requirements
+- Existing tokens/components/themes and changelog history
+- Owner list, review gates, and rollout milestones
 
-## Linked Package Files
+## Workflow
+1. Define target outcomes and non-goals.
+2. Apply decision rules and constraints for theming.
+3. Produce implementation artifacts and review checklist.
+4. Validate against failure modes and handoff expectations.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — design system style guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — design system anti-patterns
+## Decision Rules
+- Prefer semantic intent over local shortcuts.
+- Keep backward compatibility unless breaking change is approved.
+- Require measurable acceptance criteria before release.
 
-# Design System Theming
+## Checklist
+- Scope and dependencies documented
+- Accessibility and test evidence attached
+- Migration impact and rollback path defined
+- Ownership and sign-off recorded
 
-## Purpose
-Create theming models that scale across brands, modes, and accessibility constraints.
+## Anti-Patterns
+- One-off overrides bypassing system contracts
+- Missing version/deprecation notes
+- Ambiguous ownership or no release gate
 
-## Scope
-- light/dark themes
-- brand themes
-- semantic color contracts
-- high-contrast strategies
-- mode-safe illustrations and surfaces
-- theme extension and override policy
+## Handoff Expectations
+- Designers provide annotated specs and intent notes.
+- Engineers provide mapping, tests, and rollout plan.
+- PM/enablement owners provide adoption communication and KPI target.
 
-## Rules
-1. Themes change token values, not component meaning.
-2. Semantic tokens must remain stable across themes.
-3. Do not hardcode dark-mode overrides inside components when a semantic token can solve it.
-4. Brand customization should happen through tokens first, components second.
-5. Every theme must be validated for contrast, focus visibility, and status colors.
+## Failure Modes
+- Contract drift between design files and code tokens/components.
+- Release notes that omit migration steps for downstream teams.
+- Incomplete test matrix across states, themes, and platforms.
 
-## Recommended theme model
-- primitives
-- semantic aliases
-- component aliases where strictly needed
-- runtime theme selection strategy
-- fallback behavior
-
-## Validation
-- Can a new brand be added without component rewrites?
-- Do themes preserve meaning for success/warning/destructive states?
-- Does reduced motion remain respected across themes?
+## Escalation Triggers
+Escalate to governance and review-audit when changes touch multiple products, introduce breaking behavior, or lack measurable rollback conditions.

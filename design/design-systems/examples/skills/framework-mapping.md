@@ -1,22 +1,19 @@
-# Design System Framework Mapping — Examples
+# framework-mapping Example
 
-## Plain CSS / SCSS
-- Prefer CSS custom properties for tokens.
-- Separate token layer from component layer.
+## Scenario: Map semantic tokens across implementation stacks
 
-## CSS Modules
-- Use modules for local component styling.
-- Do not redefine global token meaning in modules.
+## Token-to-Code Mapping Table
+| Semantic token | Plain CSS/SCSS | CSS Modules | Tailwind | CSS-in-JS |
+|---|---|---|---|---|
+| `color.action.primary` | `var(--color-action-primary)` | `styles.primary` uses CSS var | `bg-action-primary` utility | `theme.colors.action.primary` |
+| `space.3` | `var(--space-3)` | `.stack { gap: var(--space-3) }` | `gap-3` mapped to token | `theme.space[3]` |
+| `radius.md` | `var(--radius-md)` | `.card { border-radius: var(--radius-md) }` | `rounded-md` mapped alias | `theme.radii.md` |
 
-## Tailwind
-- Extend the theme with semantic tokens.
-- Avoid spraying raw utility values when a system token exists.
-- Use component abstractions for repeated patterns.
-
-## CSS-in-JS
-- Keep token access centralized.
-- Avoid ad hoc inline objects that drift from system naming.
+## Implementation Notes
+- Plain CSS/SCSS: define root CSS variables from token build output.
+- CSS Modules: compose semantic utility classes; avoid local hex literals.
+- Tailwind: map token contracts in `theme.extend` rather than default palette names.
+- CSS-in-JS: reference semantic theme object keys, not primitives.
 
 ## Validation Question
-
-Can design decisions be traced from system token to rendered UI regardless of stack?
+Can every mapped component be switched between light/dark and Brand A/B without editing component source code?

@@ -1,58 +1,44 @@
----
-name: "design-system-governance"
-title: "Design System Governance"
-description: "Defines contribution, review, versioning, deprecation, and ownership rules for sustainable design systems."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# governance Reference
 
-## Package Structure
+## When to Use
+Use this skill when governance decisions affect cross-team system consistency and release safety.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/governance.md`
-- Examples: `examples/skills/governance.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Required Inputs
+- Product scope, platform constraints, accessibility requirements
+- Existing tokens/components/themes and changelog history
+- Owner list, review gates, and rollout milestones
 
-## Linked Package Files
+## Workflow
+1. Define target outcomes and non-goals.
+2. Apply decision rules and constraints for governance.
+3. Produce implementation artifacts and review checklist.
+4. Validate against failure modes and handoff expectations.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — design system style guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — design system anti-patterns
+## Decision Rules
+- Prefer semantic intent over local shortcuts.
+- Keep backward compatibility unless breaking change is approved.
+- Require measurable acceptance criteria before release.
 
-# Design System Governance
+## Checklist
+- Scope and dependencies documented
+- Accessibility and test evidence attached
+- Migration impact and rollback path defined
+- Ownership and sign-off recorded
 
-## Purpose
-Prevent system entropy.
+## Anti-Patterns
+- One-off overrides bypassing system contracts
+- Missing version/deprecation notes
+- Ambiguous ownership or no release gate
 
-## Governance areas
-- ownership model
-- decision records
-- contribution workflow
-- review criteria
-- versioning
-- deprecation
-- adoption tracking
+## Handoff Expectations
+- Designers provide annotated specs and intent notes.
+- Engineers provide mapping, tests, and rollout plan.
+- PM/enablement owners provide adoption communication and KPI target.
 
-## Rules
-1. Every token or component addition needs an explicit reason.
-2. No new primitive without checking if an existing primitive already solves the problem.
-3. Breaking changes must have migration notes.
-4. Deprecations need timelines, alternatives, and communication.
-5. Reviews must consider design, engineering, accessibility, and product impact.
+## Failure Modes
+- Contract drift between design files and code tokens/components.
+- Release notes that omit migration steps for downstream teams.
+- Incomplete test matrix across states, themes, and platforms.
 
-## Suggested review gate
-- What user/system problem does this solve?
-- Why is the current system insufficient?
-- Can this be solved by variant extension instead of a new component?
-- What is the implementation cost?
-- What is the long-term maintenance cost?
-- What are the accessibility consequences?
-
-## Versioning model
-- patch: non-breaking fixes
-- minor: additive improvements
-- major: breaking contract changes
-
-## Validation
-- Can the system evolve without fragmenting?
-- Are decisions traceable?
+## Escalation Triggers
+Escalate to governance and review-audit when changes touch multiple products, introduce breaking behavior, or lack measurable rollback conditions.

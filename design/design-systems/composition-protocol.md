@@ -9,7 +9,7 @@
 - `resources/asset-link-index.md` — complete link map for every auxiliary folder and file
 - `resources/manifest.json` — machine-readable package manifest
 - `references/skills/*.md` — full extracted guidance per mini-skill
-- `examples/skills/*.md` — extracted code snippets, command examples, prompt patterns, and usage samples
+- `examples/skills/*.md` — extracted examples and patterns per mini-skill
 
 ## Domain Coverage
 
@@ -84,3 +84,25 @@ When selecting mini-skills, use these criteria:
 - Risk: which mini-skills reduce the chance of wrong, incomplete, unsafe, or shallow output?
 - Validation: which mini-skills can test, measure, review, or monitor the result?
 - Scale: which mini-skills become necessary if the task affects production, cost, performance, rollout, or multiple stakeholders?
+
+## Design-System Workflow Recipes (Extension)
+
+### 1) Enterprise token rollout
+- Primary: `design-token-governance`
+- Adjacents: `foundations`, `theming`
+- Validation: `review-audit`
+
+### 2) Component library release
+- Primary: `components`
+- Adjacents: `accessibility`, `framework-mapping`
+- Validation: `governance`
+
+### 3) Multi-brand theming migration
+- Primary: `theming`
+- Adjacents: `foundations`, `design-token-governance`
+- Validation: `accessibility`
+
+### 4) Adoption and audit remediation program
+- Primary: `system-adoption-playbook`
+- Adjacents: `review-audit`, `documentation`
+- Validation: `governance`

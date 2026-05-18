@@ -1,22 +1,25 @@
-# Design System Accessibility — Examples
+# accessibility Example
 
-## Required Checks for Every Component
+## Scenario: Accessibility audit of account settings form components
 
-- Color contrast for text and UI boundaries (4.5:1 text, 3:1 UI)
-- Focus order and focus visibility
-- Keyboard operability assumptions
-- Icon-only control labeling strategy
-- Touch target sizing (minimum 44x44px)
+## Audit Table
+| Check | Result | Evidence | Remediation |
+|---|---|---|---|
+| Contrast (text/input/help text) | Fail | Label at `#6B7280` on `#FFFFFF` = 4.0:1 | Map label token to `color.text.secondary-strong` |
+| Focus order and visibility | Partial | Modal close button receives focus late | Fix DOM order and add initial focus trap |
+| Keyboard operability | Fail | Custom toggle not activatable by Space | Add button semantics and key handlers |
+| Icon-only labeling | Fail | Save icon button has no accessible name | Add `aria-label="Save settings"` |
+| Target sizing | Partial | Small icon actions at 28x28 | Increase to 44x44 touch area |
+| Reduced motion | Fail | Success animation ignores reduced-motion | Gate animation duration to 0ms preference path |
 
-## Rules
+## Remediation Plan
+1. Patch token mappings for contrast in next patch release.
+2. Fix keyboard/focus defects before feature freeze.
+3. Add CI check for icon-only controls missing labels.
+4. Add reduced-motion regression scenario in Storybook test suite.
 
-1. Color cannot be the only state signal.
-2. Focus-visible patterns must be systemized.
-3. Disabled components must remain understandable.
-4. Motion must have reduced-motion alternatives.
-5. Token choices must be tested against contrast requirements.
-6. Documentation must state known accessibility constraints.
-
-## Validation Question
-
-Can a product team adopt this system without creating predictable accessibility regressions?
+## Evidence Checklist
+- Axe and keyboard walkthrough recordings
+- Screen reader transcript for submit/success flow
+- Contrast report for light/dark theme variants
+- Signed QA verification for all remediated defects

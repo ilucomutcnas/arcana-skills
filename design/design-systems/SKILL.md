@@ -1,8 +1,8 @@
 ---
 name: "design-systems"
 title: "Design Systems"
-description: "Use for building, governing, and reviewing production-grade design systems. Covers tokens, foundations, components, theming, accessibility, documentation, governance, auditing, and framework mapping across products, brands, and frontend stacks."
-version: "1.0.0"
+description: "Use for building, governing, and reviewing production-grade design systems. Covers tokens, foundations, components, theming, accessibility, documentation, governance, auditing, framework mapping, token lifecycle governance, and enterprise adoption workflows."
+version: "1.1.0"
 category: "Design"
 risk: "safe"
 source: "https://github.com/ilucomutcnas/arcana-skills"
@@ -11,11 +11,11 @@ date_added: "30.03.2026"
 
 ## Purpose
 
-Build, govern, and review production-grade design systems. This domain covers the full lifecycle: foundational tokens and scales, reusable component contracts, theming and multi-brand support, accessibility baked into the system level, documentation for adoption, governance for sustainability, auditing for compliance, and framework mapping for implementation.
+Build, govern, and review production-grade design systems. This domain covers the full lifecycle: foundational tokens and scales, reusable component contracts, theming and multi-brand support, accessibility baked into the system level, documentation for adoption, governance for sustainability, auditing for compliance, framework mapping for implementation, token lifecycle governance, and organizational adoption playbooks.
 
 ## Domain Coverage
 
-This package represents the design systems domain. It covers interconnected capabilities that must work together: foundations define the visual language, components consume it, theming adapts it, accessibility constrains it, documentation communicates it, governance protects it, auditing enforces it, and framework mapping implements it.
+This package represents the design systems domain. It covers interconnected capabilities that must work together: foundations define the visual language, components consume it, theming adapts it, accessibility constrains it, documentation communicates it, governance protects it, auditing enforces it, framework mapping implements it, design-token-governance manages token lifecycle safety, and system-adoption-playbook drives cross-team rollout.
 
 Shared guardrails in `shared-rules/STYLE-GUARDRAILS.md` and anti-patterns in `shared-rules/ANTI-PATTERNS.md` apply across all mini-skills.
 
@@ -40,6 +40,9 @@ Common combinations:
 - **Implementation mapping**: framework-mapping (primary) + foundations + components
 - **Governance setup**: governance (primary) + documentation + review-audit
 - **Accessibility review**: accessibility (primary) + components + theming + review-audit
+- **Enterprise token rollout**: design-token-governance (primary) + foundations + theming + governance
+- **Organizational rollout**: system-adoption-playbook (primary) + governance + documentation
+- **Audit remediation program**: review-audit (primary) + system-adoption-playbook + governance
 
 ## Package Structure
 
@@ -58,44 +61,54 @@ Common combinations:
 ## Mini-Skills Index
 
 ### foundations
-- Summary: Defines the visual and semantic foundation: tokens, color systems, typography roles, spacing scales, radii, elevation, motion primitives, and breakpoints.
+- Summary: Defines visual and semantic foundations: token primitives, aliasing strategy, naming conventions, scales, and foundation QA.
 - Open reference: `references/skills/foundations.md`
 - Open examples: `examples/skills/foundations.md`
 
 ### components
-- Summary: Designs reusable component contracts, variants, states, slots, and composition rules for a scalable UI library.
+- Summary: Designs reusable component contracts, variants, states, slots, and controlled/uncontrolled behavior for scalable UI libraries.
 - Open reference: `references/skills/components.md`
 - Open examples: `examples/skills/components.md`
 
 ### theming
-- Summary: Defines multi-theme, light/dark, and multi-brand theming with semantic safety and implementation discipline.
+- Summary: Defines light/dark/high-contrast/multi-brand theming with semantic mapping, inheritance, fallback, and regression control.
 - Open reference: `references/skills/theming.md`
 - Open examples: `examples/skills/theming.md`
 
 ### accessibility
-- Summary: Bakes accessibility into tokens, components, theming, and documentation at the system level.
+- Summary: Bakes accessibility into tokens, components, theming, and documentation with system-level governance and evidence.
 - Open reference: `references/skills/accessibility.md`
 - Open examples: `examples/skills/accessibility.md`
 
 ### documentation
-- Summary: Documents system intent, usage rules, component contracts, and adoption guidance for mixed design and engineering audiences.
+- Summary: Documents system intent, usage rules, migration notes, and component contracts for mixed design/engineering audiences.
 - Open reference: `references/skills/documentation.md`
 - Open examples: `examples/skills/documentation.md`
 
 ### governance
-- Summary: Defines contribution, review, versioning, deprecation, and ownership rules for sustainable design systems.
+- Summary: Defines contribution, review gates, ownership, versioning, deprecation, and release operations for sustainable systems.
 - Open reference: `references/skills/governance.md`
 - Open examples: `examples/skills/governance.md`
 
 ### review-audit
-- Summary: Audits products or libraries against design-system rules and produces concrete remediation guidance with severity classification.
+- Summary: Audits products and libraries against system rules, scoring risk and prioritizing remediation.
 - Open reference: `references/skills/review-audit.md`
 - Open examples: `examples/skills/review-audit.md`
 
 ### framework-mapping
-- Summary: Maps design-system concepts to CSS, Tailwind, CSS Modules, and CSS-in-JS without losing semantic intent.
+- Summary: Maps tokens/components to CSS variables, Tailwind, CSS Modules, and CSS-in-JS without losing semantic intent.
 - Open reference: `references/skills/framework-mapping.md`
 - Open examples: `examples/skills/framework-mapping.md`
+
+### design-token-governance
+- Summary: Governs token lifecycle operations: proposal, classification, compatibility, deprecation, migration, CI gates, and release safety.
+- Open reference: `references/skills/design-token-governance.md`
+- Open examples: `examples/skills/design-token-governance.md`
+
+### system-adoption-playbook
+- Summary: Guides organization-wide system rollout through stakeholder alignment, migration waves, enablement, metrics, and exception governance.
+- Open reference: `references/skills/system-adoption-playbook.md`
+- Open examples: `examples/skills/system-adoption-playbook.md`
 
 ## Validation
 

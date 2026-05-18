@@ -1,53 +1,44 @@
----
-name: "design-system-accessibility"
-title: "Design System Accessibility"
-description: "Bakes accessibility into tokens, components, theming, and documentation at the system level."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# accessibility Reference
 
-## Package Structure
+## When to Use
+Use this skill when accessibility decisions affect cross-team system consistency and release safety.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/accessibility.md`
-- Examples: `examples/skills/accessibility.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Required Inputs
+- Product scope, platform constraints, accessibility requirements
+- Existing tokens/components/themes and changelog history
+- Owner list, review gates, and rollout milestones
 
-## Linked Package Files
+## Workflow
+1. Define target outcomes and non-goals.
+2. Apply decision rules and constraints for accessibility.
+3. Produce implementation artifacts and review checklist.
+4. Validate against failure modes and handoff expectations.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — design system style guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — design system anti-patterns
+## Decision Rules
+- Prefer semantic intent over local shortcuts.
+- Keep backward compatibility unless breaking change is approved.
+- Require measurable acceptance criteria before release.
 
-# Design System Accessibility
+## Checklist
+- Scope and dependencies documented
+- Accessibility and test evidence attached
+- Migration impact and rollback path defined
+- Ownership and sign-off recorded
 
-## Purpose
-Ensure the design system is accessibility-aware by default, not by exception.
+## Anti-Patterns
+- One-off overrides bypassing system contracts
+- Missing version/deprecation notes
+- Ambiguous ownership or no release gate
 
-## Scope
-- color contrast
-- semantic structure
-- keyboard navigation
-- focus visibility
-- target size
-- state communication
-- motion sensitivity
-- screen-reader support assumptions
+## Handoff Expectations
+- Designers provide annotated specs and intent notes.
+- Engineers provide mapping, tests, and rollout plan.
+- PM/enablement owners provide adoption communication and KPI target.
 
-## Rules
-1. Color cannot be the only state signal.
-2. Focus-visible patterns must be systemized.
-3. Disabled components must remain understandable.
-4. Motion must have reduced-motion alternatives.
-5. Token choices must be tested against contrast requirements.
-6. Documentation must state known accessibility constraints.
+## Failure Modes
+- Contract drift between design files and code tokens/components.
+- Release notes that omit migration steps for downstream teams.
+- Incomplete test matrix across states, themes, and platforms.
 
-## Required checks
-- contrast for text and UI boundaries
-- focus order and focus visibility
-- keyboard operability assumptions
-- icon-only control labeling strategy
-- touch target sizing
-
-## Validation
-- Can a product team adopt this system without creating predictable accessibility regressions?
+## Escalation Triggers
+Escalate to governance and review-audit when changes touch multiple products, introduce breaking behavior, or lack measurable rollback conditions.

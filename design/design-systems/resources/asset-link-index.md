@@ -46,3 +46,12 @@
 - Examples: [`examples/skills/framework-mapping.md`](../examples/skills/framework-mapping.md)
 - No additional asset folders.
 
+## design-token-governance
+- Reference: [`references/skills/design-token-governance.md`](../references/skills/design-token-governance.md)
+- Examples: [`examples/skills/design-token-governance.md`](../examples/skills/design-token-governance.md)
+- Assets: none required.
+
+## system-adoption-playbook
+- Reference: [`references/skills/system-adoption-playbook.md`](../references/skills/system-adoption-playbook.md)
+- Examples: [`examples/skills/system-adoption-playbook.md`](../examples/skills/system-adoption-playbook.md)
+- Assets: none required.
