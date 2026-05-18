@@ -1,25 +1,25 @@
 # review-audit Example
 
-## Scenario
-Enterprise product suite applies a review-audit update across web app, admin console, and documentation portal.
+## Scenario: Audit of product-library divergence in dark mode
 
-## Inputs
-- Current system baseline and constraints
-- Affected teams and release window
+Observed issues in product app:
+- Hardcoded text color `#666666` on `#1F2937` cards
+- Custom button class overrides `background: #0055FF` bypassing tokens
+- Dark-mode overrides force `#FFFFFF` borders causing glare
 
-## End-to-End Pattern
-1. Draft change proposal with acceptance criteria.
-2. Run review with design, engineering, and accessibility stakeholders.
-3. Execute staged rollout with QA evidence and metrics.
-4. Publish release notes and migration guidance.
+## Severity Table
+| Finding | Type | Severity | Reason |
+|---|---|---|---|
+| Hardcoded `#666666` text | Product misuse | High | Contrast failure in dark mode |
+| Custom button override | System gap + misuse | High | Missing variant plus unauthorized override |
+| White borders in dark mode | Product misuse | Medium | Theme token contract bypassed |
 
-## Artifacts
-- Decision log with approvers
-- Implementation table by surface/team
-- QA checklist with pass/fail and defects
-- Rollback trigger and owner
+## System Gap vs Product Misuse
+- System gap: missing tokenized quiet-button variant caused teams to improvise.
+- Product misuse: teams bypassed semantic token contract instead of requesting variant.
 
-## Acceptance Criteria
-- No unresolved P1/P2 defects
-- Migration notes consumed by all owning teams
-- KPIs stable for one release cycle
+## Remediation Backlog
+1. Add quiet-button semantic variant in system (`P1`, owner: component team).
+2. Replace hardcoded colors with `color.text.secondary` token in audited products (`P1`, owner: product squads).
+3. Add lint rule blocking raw hex in component-layer CSS (`P2`, owner: platform).
+4. Re-audit after two sprints; success if zero high-severity issues remain.

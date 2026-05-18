@@ -1,25 +1,37 @@
 # governance Example
 
-## Scenario
-Enterprise product suite applies a governance update across web app, admin console, and documentation portal.
+## Scenario: Governance model for quarterly design-system releases
 
-## Inputs
-- Current system baseline and constraints
-- Affected teams and release window
+## Governance Areas
+- Token changes
+- Component API changes
+- Accessibility compliance
+- Documentation quality
+- Deprecation and migration readiness
 
-## End-to-End Pattern
-1. Draft change proposal with acceptance criteria.
-2. Run review with design, engineering, and accessibility stakeholders.
-3. Execute staged rollout with QA evidence and metrics.
-4. Publish release notes and migration guidance.
+## Review Gate Questions
+- Is this change backward compatible?
+- Are migration notes explicit for consumers?
+- Is ownership assigned for rollout and support?
+- Are accessibility/test artifacts attached?
 
-## Artifacts
-- Decision log with approvers
-- Implementation table by surface/team
-- QA checklist with pass/fail and defects
-- Rollback trigger and owner
+## Versioning Model
+- Patch: non-breaking defect fixes
+- Minor: additive features with compatibility
+- Major: breaking changes with migration plan
 
-## Acceptance Criteria
-- No unresolved P1/P2 defects
-- Migration notes consumed by all owning teams
-- KPIs stable for one release cycle
+## RFC Workflow
+1. Author RFC with scope, risks, and alternatives.
+2. Review board (design lead, platform lead, accessibility lead) approves/rejects.
+3. Implementation PR includes checklist and release notes.
+4. Post-release review tracks adoption and incident metrics.
+
+## Decision Record
+- Decision: Deprecate `CardHeaderLegacy` in v5 major cycle.
+- Reason: Inconsistent slots and inaccessible heading structure.
+- Outcome: New `CardHeader` contract with migration map.
+
+## Deprecation Plan
+- Mark legacy component as deprecated in docs and lint warnings.
+- Keep compatibility wrapper for one major version.
+- Remove after adoption reaches 95% and exceptions are closed.

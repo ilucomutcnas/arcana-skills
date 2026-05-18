@@ -1,25 +1,19 @@
 # framework-mapping Example
 
-## Scenario
-Enterprise product suite applies a framework-mapping update across web app, admin console, and documentation portal.
+## Scenario: Map semantic tokens across implementation stacks
 
-## Inputs
-- Current system baseline and constraints
-- Affected teams and release window
+## Token-to-Code Mapping Table
+| Semantic token | Plain CSS/SCSS | CSS Modules | Tailwind | CSS-in-JS |
+|---|---|---|---|---|
+| `color.action.primary` | `var(--color-action-primary)` | `styles.primary` uses CSS var | `bg-action-primary` utility | `theme.colors.action.primary` |
+| `space.3` | `var(--space-3)` | `.stack { gap: var(--space-3) }` | `gap-3` mapped to token | `theme.space[3]` |
+| `radius.md` | `var(--radius-md)` | `.card { border-radius: var(--radius-md) }` | `rounded-md` mapped alias | `theme.radii.md` |
 
-## End-to-End Pattern
-1. Draft change proposal with acceptance criteria.
-2. Run review with design, engineering, and accessibility stakeholders.
-3. Execute staged rollout with QA evidence and metrics.
-4. Publish release notes and migration guidance.
+## Implementation Notes
+- Plain CSS/SCSS: define root CSS variables from token build output.
+- CSS Modules: compose semantic utility classes; avoid local hex literals.
+- Tailwind: map token contracts in `theme.extend` rather than default palette names.
+- CSS-in-JS: reference semantic theme object keys, not primitives.
 
-## Artifacts
-- Decision log with approvers
-- Implementation table by surface/team
-- QA checklist with pass/fail and defects
-- Rollback trigger and owner
-
-## Acceptance Criteria
-- No unresolved P1/P2 defects
-- Migration notes consumed by all owning teams
-- KPIs stable for one release cycle
+## Validation Question
+Can every mapped component be switched between light/dark and Brand A/B without editing component source code?
