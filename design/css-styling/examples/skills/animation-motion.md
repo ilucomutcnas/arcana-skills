@@ -1,22 +1,53 @@
-# animation-motion Example
+# Examples — Animation & Motion
 
-## Scenario
-Realistic product delivery workflow for `animation-motion` with end-to-end QA.
+## Example: subtle interaction lift
 
-## Implementation Highlights
-- Defined scope, states, and component/page matrix.
-- Applied token and cascade constraints.
-- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
-- Added responsive checks with explicit width-state table or breakpoint evidence.
-- Added regression gate criteria before merge.
+```css
+.interactive-card {
+  transition:
+    transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
 
-## Acceptance Criteria
-- No severity-1 styling regressions.
-- Cross-browser checks complete (Chrome/Safari/Firefox).
-- Performance impact documented with rationale.
-- Handoff includes implementation notes for design + frontend reviewers.
+.interactive-card:hover {
+  transform: translateY(-2px);
+}
+```
 
-## QA Gates
-- Width/device checks completed and documented.
-- Accessibility and interaction states validated with evidence.
-- Reviewer checklist includes rollback plan if regressions appear after merge.
+## Example: reduced motion
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+## Example: dismiss / reveal panel
+
+```css
+.panel {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+.panel[data-open="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+```
+
+## Stage 3.5 Extension: Concrete Scenario
+
+Panel/tooltip/loading motion scenario with reduced-motion fallback and perf checks.
+
+- Include before/after snippets for changed selectors or component classes.
+- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
+- Include handoff note format for frontend + design reviewers.

@@ -1,17 +1,67 @@
-# foundations Example
+# Examples — Foundations
 
-Token/layer refactor for account surfaces.
+## Example: token structure
 
-- Introduced primitive scale tokens and mapped semantic tokens per theme.
-- Split stylesheet into `@layer reset, base, components, utilities`.
-- Removed component-local color literals and migrated to semantic token map.
+```css
+:root {
+  --color-bg: #ffffff;
+  --color-fg: #101418;
+  --color-muted: #6b7280;
+  --color-border: #d9dee5;
 
-## Acceptance Checks
-- No unresolved legacy tokens in changed files.
-- Dark/light theme screenshots match contrast targets.
-- Component overrides remain inside `overrides` layer with migration tickets.
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
 
-## Migration Notes
-- Introduced compatibility aliases for one release cycle to prevent runtime breakage.
-- Added lint checks that fail on new hard-coded color literals in component styles.
-- Documented rollback path for any theme contrast regressions detected in QA.
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 280ms;
+  --ease-standard: cubic-bezier(.2,.8,.2,1);
+}
+```
+
+## Example: layer ownership
+
+```css
+@layer reset, tokens, base, layout, components, utilities;
+
+@layer tokens {
+  :root { --container-max: 72rem; }
+}
+
+@layer layout {
+  .container {
+    width: min(100% - 2rem, var(--container-max));
+    margin-inline: auto;
+  }
+}
+```
+
+## Example: bad pattern
+
+```css
+.homepage .hero .content .card .title span {
+  color: #1458ff !important;
+}
+```
+
+Why bad:
+- too specific
+- page-dependent
+- hardcoded color
+- override debt
+
+## Stage 3.5 Extension: Concrete Scenario
+
+Token/layer refactor scenario with primitive vs semantic mapping table and acceptance checks.
+
+- Include before/after snippets for changed selectors or component classes.
+- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
+- Include handoff note format for frontend + design reviewers.

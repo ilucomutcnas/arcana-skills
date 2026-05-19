@@ -1,22 +1,104 @@
-# frontend-dev-guidelines Example
+# Frontend Dev Guidelines — Examples
 
-## Scenario
-Realistic product delivery workflow for `frontend-dev-guidelines` with end-to-end QA.
+## Canonical Component Template
 
-## Implementation Highlights
-- Defined scope, states, and component/page matrix.
-- Applied token and cascade constraints.
-- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
-- Added responsive checks with explicit width-state table or breakpoint evidence.
-- Added regression gate criteria before merge.
+```ts
+import React, { useState, useCallback } from 'react';
+import { Box, Paper } from '@mui/material';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import { featureApi } from '../api/featureApi';
+import type { FeatureData } from '~types/feature';
 
-## Acceptance Criteria
-- No severity-1 styling regressions.
-- Cross-browser checks complete (Chrome/Safari/Firefox).
-- Performance impact documented with rationale.
-- Handoff includes implementation notes for design + frontend reviewers.
+interface MyComponentProps {
+  id: number;
+  onAction?: () => void;
+}
 
-## QA Gates
-- Width/device checks completed and documented.
-- Accessibility and interaction states validated with evidence.
-- Reviewer checklist includes rollback plan if regressions appear after merge.
+export const MyComponent: React.FC<MyComponentProps> = ({ id, onAction }) => {
+  const [state, setState] = useState('');
+
+  const { data } = useSuspenseQuery<FeatureData>({
+    queryKey: ['feature', id],
+    queryFn: () => featureApi.getFeature(id),
+  });
+
+  const handleAction = useCallback(() => {
+    setState('updated');
+    onAction?.();
+  }, [onAction]);
+
+  return (
+    <Box sx={{ p: 2 }}>
+      <Paper sx={{ p: 3 }}>
+        {/* Content */}
+      </Paper>
+    </Box>
+  );
+};
+
+export default MyComponent;
+```
+
+## Canonical File Structure
+
+```
+src/
+  features/
+    my-feature/
+      api/
+      components/
+      hooks/
+      helpers/
+      types/
+      index.ts
+
+  components/
+    SuspenseLoader/
+    CustomAppBar/
+
+  routes/
+    my-route/
+      index.tsx
+```
+
+## New Component Checklist
+
+- [ ] `React.FC<Props>` with explicit props interface
+- [ ] Lazy loaded if non-trivial
+- [ ] Wrapped in `<SuspenseLoader>`
+- [ ] Uses `useSuspenseQuery` for data
+- [ ] No early returns
+- [ ] Handlers wrapped in `useCallback`
+- [ ] Default export at bottom
+
+## FFCI Score Formula
+
+```
+FFCI = (Architectural Fit + Reusability + Performance) − (Complexity + Maintenance Cost)
+```
+
+| FFCI | Meaning | Action |
+|------|---------|--------|
+| 10-15 | Excellent | Proceed |
+| 6-9 | Acceptable | Proceed with care |
+| 3-5 | Risky | Simplify or split |
+| ≤ 2 | Poor | Redesign |
+
+## Anti-Patterns (Immediate Rejection)
+
+- Early loading returns
+- Feature logic in `components/`
+- Shared state via prop drilling
+- Inline API calls
+- Untyped responses
+- Multiple responsibilities in one component
+
+For deep reference guides, see `frontend-dev-guidelines__resources/`.
+
+## Stage 3.5 Extension: Concrete Scenario
+
+React feature implementation scenario with structure, styling strategy, states, perf/a11y checks.
+
+- Include before/after snippets for changed selectors or component classes.
+- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
+- Include handoff note format for frontend + design reviewers.

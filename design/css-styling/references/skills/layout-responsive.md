@@ -1,38 +1,89 @@
-# layout-responsive
+---
+name: "layout-responsive"
+title: "CSS Layout & Responsive Systems"
+description: "Production rules for layout primitives, spacing systems, breakpoints, fluid design, and responsive consistency."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for layout responsive with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
 
-## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
+- Main router: `SKILL.md`
+- This reference: `references/skills/layout-responsive.md`
+- Examples: `examples/skills/layout-responsive.md`
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+## Linked Package Files
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
+- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+# CSS Layout & Responsive Systems
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+## Purpose
+Design layouts that scale across devices without ad hoc patching.
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+## Core doctrine
+
+### 1. Start with layout primitives
+Use reusable patterns:
+- container
+- section
+- stack
+- inline / cluster
+- sidebar
+- grid
+- cover
+- split hero
+
+### 2. Responsive behavior should be systemic
+Define:
+- breakpoint philosophy
+- max-width strategy
+- spacing scale adaptation
+- typography scaling
+- layout collapse rules
+
+### 3. Prefer fluid before fragmented
+Use:
+- `clamp()`
+- fluid widths
+- intrinsic sizing
+- auto-fit / auto-fill grids
+Before adding many breakpoint branches.
+
+### 4. Mobile-first, but not mobile-blind
+Start from constrained conditions, then expand.
+But still optimize for the dominant real usage context of the product.
+
+## Good practices
+
+- Keep breakpoint count restrained.
+- Use content-driven breakpoints where possible.
+- Maintain readable line lengths.
+- Treat spacing rhythm as part of responsiveness.
+- Prevent overflow by design, not emergency patches.
+
+## Bad practices
+
+- too many breakpoints
+- layout fixed by per-page exceptions
+- arbitrary widths with no container logic
+- text blocks stretching across giant monitors
+- mobile solved with `overflow-x: auto` as the default rescue plan
+
+## Review checklist
+
+- Does the layout collapse gracefully?
+- Are gaps and padding scaled intentionally?
+- Does the hero still make sense on narrow screens?
+- Are grids resilient to content variance?
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Add container-query checkpoints for card, rail, and table shells at narrow/medium/wide container widths.
+- Use a width-state QA table (320/375/768/1024/1440) with overflow, truncation, and sticky-region checks.
+- Reflow gate: reject changes that cause horizontal scroll on primary app templates.
+- Compatibility gate: validate dynamic viewport units and iOS Safari safe-area behavior.
+

@@ -1,38 +1,110 @@
-# tailwind-design-system
+---
+name: "tailwind-design-system"
+title: "Tailwind Design System"
+description: "Use for building production-ready design systems with Tailwind CSS including tokens, component variants, semantic colors, shadcn/ui patterns, dark mode, and accessibility."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for tailwind design system with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
+
+- Main router: `SKILL.md`
+- This reference: `references/skills/tailwind-design-system.md`
+- Examples: `examples/skills/tailwind-design-system.md`
+- Implementation playbook: `tailwind-design-system__resources/implementation-playbook.md`
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+
+## Linked Package Files
+
+- Adjacent: `references/skills/framework-guides.md` — for Tailwind within broader CSS strategy
+- Adjacent: `references/skills/foundations.md` — for token architecture
+- Adjacent: `references/skills/general-ui-styling.md` — for component state styling
+- Validation: `references/skills/css-review-audit.md` — for review workflow
+
+## Purpose
+
+Build production-ready design systems with Tailwind CSS, including design tokens, component variants, responsive patterns, accessibility, shadcn/ui integration, dark mode, and semantic color systems.
+
+For detailed implementation patterns, see `tailwind-design-system__resources/implementation-playbook.md`.
+
+## When to Use
+
+- When creating a component library with Tailwind
+- When implementing design tokens and theming
+- When building responsive and accessible components
+- When standardizing UI patterns across a codebase
+- When migrating to or extending Tailwind CSS
+- When setting up dark mode and color schemes
+- When using shadcn/ui components
 
 ## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+1. Clarify goals, constraints, and design token requirements.
+2. Define semantic color system with CSS variables.
+3. Implement component variants using built-in variant props.
+4. Apply Tailwind utility classes for layout only.
+5. Use `cn()` for conditional class composition.
+6. Validate against the rules below.
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+## Quality Standards
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+### Semantic Colors
+Use semantic tokens, not raw color values: `bg-primary text-primary-foreground` not `bg-blue-500 text-white`. For status indicators, use Badge variants or semantic tokens like `text-destructive`.
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+### Built-in Variants First
+Use component variant props before className overrides: `<Button variant="outline">` not manual border styling.
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+### className for Layout Only
+Use className for positioning and spacing (`max-w-md`, `mx-auto`, `mt-4`), not for overriding component colors or typography.
+
+### Utility Preferences
+- `gap-*` instead of `space-x-*` / `space-y-*`
+- `size-*` instead of `w-* h-*` when dimensions are equal
+- `truncate` instead of `overflow-hidden text-ellipsis whitespace-nowrap`
+
+### Dark Mode
+Use semantic tokens — they handle light/dark via CSS variables. `bg-background text-foreground` not `bg-white dark:bg-gray-950`.
+
+### Conditional Classes
+Use the `cn()` utility for conditional or merged class names, not manual ternaries.
+
+### Overlay Components
+Never add manual z-index on Dialog, Sheet, Drawer, AlertDialog, DropdownMenu, Popover, Tooltip, HoverCard.
+
+## Technical Rules
+
+Customization hierarchy (in order of preference):
+1. Built-in variants
+2. Semantic color tokens
+3. CSS variables in global CSS
+
+For detailed patterns, tokens, and component examples, see `tailwind-design-system__resources/implementation-playbook.md`.
+
+## Validation
+
+- Verify semantic colors are used instead of raw values.
+- Confirm built-in variants are preferred over className overrides.
+- Check that className is used for layout only.
+- Test dark mode and themed rendering.
+
+## Restrictions
+
+- Do not use raw Tailwind colors for status indicators.
+- Do not override component styles with className when variants exist.
+- Do not add manual z-index on overlay components.
+- Do not use `dark:` color overrides when semantic tokens handle it.
+
+## Output Requirements
+
+- Tailwind-based components following semantic color system.
+- Consistent use of variants and `cn()`.
+- Dark mode support through CSS variables.
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Require semantic color tokens in Tailwind config and map component variants to intent, not raw palettes.
+- Variant governance: state/class matrix for default, hover, active, focus-visible, disabled, loading.
+- Class hygiene gate: enforce `className` layout-only policy when component already owns visual variants.
+- Integration gate: shadcn/ui overrides must stay token-aligned and dark-mode validated.
+

@@ -1,38 +1,94 @@
-# general-ui-styling
+---
+name: "general-ui-styling"
+title: "General UI CSS Styling"
+description: "Rules for day-to-day UI styling: forms, cards, states, controls, density, hierarchy, and surface systems."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for general ui styling with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
 
-## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
+- Main router: `SKILL.md`
+- This reference: `references/skills/general-ui-styling.md`
+- Examples: `examples/skills/general-ui-styling.md`
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+## Linked Package Files
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
+- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+# General UI CSS Styling
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+## Purpose
+Handle normal product UI styling professionally: dashboards, settings pages, cards, forms, tables, modals, chips, filters, and content modules.
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+## Focus areas
+
+### Visual hierarchy
+- Make primary actions obvious.
+- Keep supporting UI quiet.
+- Use spacing before borders.
+- Use contrast before decoration.
+
+### Component states
+Every meaningful component should define:
+- default
+- hover
+- active / pressed
+- focus-visible
+- disabled
+- error
+- loading
+- selected, if relevant
+
+### Surface system
+Define a clear relationship between:
+- page background
+- elevated surfaces
+- interactive controls
+- overlays
+- destructive actions
+- success / warning / info states
+
+### Density discipline
+Choose a density mode intentionally:
+- compact
+- standard
+- relaxed
+
+Do not mix density logic randomly across adjacent components.
+
+## Good practices
+
+- Use consistent padding families for similar components.
+- Keep radii coherent across the product.
+- Make forms feel deliberate, not assembled.
+- Use border, background, and shadow sparingly but consistently.
+- Ensure keyboard users can track focus.
+
+## Bad practices
+
+- every card styled differently
+- hidden focus state
+- hover that shifts layout
+- excessive shadow stacking
+- unreadable placeholder text
+- overusing muted text until the interface loses hierarchy
+
+## Output expectations
+
+When producing CSS guidance:
+- state the intended component contract
+- define token dependencies
+- define state behavior
+- mention accessibility-critical styling when relevant
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Require component state matrices (default/hover/active/focus/disabled/error/loading) for forms, cards, tables, and modals.
+- Focus gate: all interactive controls must keep visible focus rings at 3:1 contrast minimum.
+- Density gate: spacing compaction cannot break touch targets below 44x44 on mobile actions.
+- Regression evidence: attach before/after screenshots for key dashboard/settings states.
+

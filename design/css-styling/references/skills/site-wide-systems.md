@@ -1,38 +1,73 @@
-# site-wide-systems
+---
+name: "site-wide-systems"
+title: "Site-Wide CSS Systems"
+description: "Rules for styling consistency across large sites, multi-page products, shared themes, and long-term maintenance."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for site wide systems with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
 
-## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
+- Main router: `SKILL.md`
+- This reference: `references/skills/site-wide-systems.md`
+- Examples: `examples/skills/site-wide-systems.md`
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+## Linked Package Files
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
+- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+# Site-Wide CSS Systems
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+## Purpose
+Manage CSS as an operating system for a whole website or product family, not as isolated page decoration.
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+## Use when
+- multiple pages must feel coherent
+- multiple teams touch the same styling system
+- theming or brand governance matters
+- utility sprawl is becoming dangerous
+- page-level drift has started
+
+## System responsibilities
+
+- token governance
+- page template consistency
+- shared component patterns
+- dark mode / themes
+- content typography system
+- utility boundaries
+- global exceptions policy
+
+## Best practices
+
+- Define canonical page templates.
+- Create a spacing rhythm across the full site.
+- Keep typography roles stable.
+- Publish a small set of sanctioned utility helpers.
+- Track ownership of global CSS.
+- Use changelogs for token updates in serious projects.
+
+## Bad practices
+
+- homepage looks premium, inner pages look generic
+- each team invents its own spacing
+- no standard content width
+- utilities act as permanent substitute for system design
+- theme changes require hunting through component files
+
+## Validation
+
+- Would a new page inherit quality automatically?
+- Are deviations intentional or accidental?
+- Can brand refresh happen through variables and components rather than rewrites?
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Maintain a drift ledger by page family (marketing, app shell, docs) listing deviations from shared tokens/components.
+- Rollout governance: pilot templates first, then expand with regression snapshots and fallback plan.
+- Cascade complexity gate: no new deep descendant selectors in shared page shells.
+- Theming gate: all overrides require owner + expiration criteria.
+

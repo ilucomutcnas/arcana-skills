@@ -1,22 +1,36 @@
-# layout-responsive Example
+# Examples — Layout & Responsive
 
-## Scenario
-Realistic product delivery workflow for `layout-responsive` with end-to-end QA.
+## Example: fluid section spacing
 
-## Implementation Highlights
-- Defined scope, states, and component/page matrix.
-- Applied token and cascade constraints.
-- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
-- Added responsive checks with explicit width-state table or breakpoint evidence.
-- Added regression gate criteria before merge.
+```css
+.section {
+  padding-block: clamp(3rem, 5vw, 6rem);
+}
+```
 
-## Acceptance Criteria
-- No severity-1 styling regressions.
-- Cross-browser checks complete (Chrome/Safari/Firefox).
-- Performance impact documented with rationale.
-- Handoff includes implementation notes for design + frontend reviewers.
+## Example: auto-fit card grid
 
-## QA Gates
-- Width/device checks completed and documented.
-- Accessibility and interaction states validated with evidence.
-- Reviewer checklist includes rollback plan if regressions appear after merge.
+```css
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+```
+
+## Example: content container
+
+```css
+.container {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+```
+
+## Stage 3.5 Extension: Concrete Scenario
+
+Responsive dashboard card-grid refactor with width-state table and overflow QA gates.
+
+- Include before/after snippets for changed selectors or component classes.
+- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
+- Include handoff note format for frontend + design reviewers.

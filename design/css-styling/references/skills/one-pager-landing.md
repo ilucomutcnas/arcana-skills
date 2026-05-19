@@ -1,38 +1,91 @@
-# one-pager-landing
+---
+name: "one-pager-landing"
+title: "One-Pager & Landing Page CSS"
+description: "CSS doctrine for landing pages, promo pages, hero sections, CTA styling, and conversion-oriented surfaces."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for one pager landing with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
 
-## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
+- Main router: `SKILL.md`
+- This reference: `references/skills/one-pager-landing.md`
+- Examples: `examples/skills/one-pager-landing.md`
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+## Linked Package Files
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
+- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+# One-Pager & Landing Page CSS
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+## Purpose
+Style one-pagers and marketing pages with strong hierarchy, persuasive clarity, and controlled visual drama.
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+## What matters most
+
+1. Section contrast
+2. Hero clarity
+3. CTA prominence
+4. Scannability
+5. Responsive narrative flow
+6. Visual restraint despite promotional intent
+
+## Section types commonly present
+
+- hero
+- proof / logos
+- feature grid
+- comparison
+- social proof
+- FAQ
+- CTA band
+- footer conversion zone
+
+Each section should feel related, but not visually identical.
+
+## Doctrine
+
+### Hero styling
+- Establish immediate visual hierarchy.
+- Support the value proposition with spacing and contrast before effects.
+- Do not overload the hero with decorative motion.
+
+### CTA styling
+- One clear primary action per section.
+- Secondary actions should stay subordinate.
+- CTA repetition is acceptable; CTA confusion is not.
+
+### Long-scroll rhythm
+Use alternating rhythm through:
+- background shifts
+- spacing cadence
+- content width changes
+- media alignment changes
+But keep the visual language coherent.
+
+## Good practices
+
+- strong container discipline
+- readable headline measure
+- controlled accent color use
+- generous vertical spacing
+- proof blocks that visually de-noise trust signals
+
+## Bad practices
+
+- every section trying to be the hero
+- gradients and glow on everything
+- CTA buttons competing equally
+- oversized animated backgrounds harming readability
+- testimonial sections styled like product cards for no reason
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Add section rhythm checklist: hero, social proof, feature bands, CTA, footer must preserve scan hierarchy at mobile and desktop.
+- Performance gate: above-the-fold CSS remains within route budget and avoids blocking non-critical styles.
+- Accessibility gate: CTA contrast and focus states must pass keyboard-only traversal.
+- Conversion gate: primary CTA remains visually dominant under all responsive breakpoints.
+

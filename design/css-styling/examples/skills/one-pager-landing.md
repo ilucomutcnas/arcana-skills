@@ -1,22 +1,39 @@
-# one-pager-landing Example
+# Examples — One-Pager & Landing
 
-## Scenario
-Realistic product delivery workflow for `one-pager-landing` with end-to-end QA.
+## Example: hero shell
 
-## Implementation Highlights
-- Defined scope, states, and component/page matrix.
-- Applied token and cascade constraints.
-- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
-- Added responsive checks with explicit width-state table or breakpoint evidence.
-- Added regression gate criteria before merge.
+```css
+.hero {
+  padding-block: clamp(5rem, 8vw, 8rem);
+  background:
+    radial-gradient(circle at top, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 45%),
+    var(--color-bg);
+}
 
-## Acceptance Criteria
-- No severity-1 styling regressions.
-- Cross-browser checks complete (Chrome/Safari/Firefox).
-- Performance impact documented with rationale.
-- Handoff includes implementation notes for design + frontend reviewers.
+.hero__inner {
+  width: min(100% - 2rem, 74rem);
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+```
 
-## QA Gates
-- Width/device checks completed and documented.
-- Accessibility and interaction states validated with evidence.
-- Reviewer checklist includes rollback plan if regressions appear after merge.
+## Example: CTA band
+
+```css
+.cta-band {
+  padding: clamp(2rem, 4vw, 3rem);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-strong);
+  color: var(--color-surface-strong-contrast);
+}
+```
+
+## Stage 3.5 Extension: Concrete Scenario
+
+Landing section plan covering hero, trust block, CTA, responsive and performance QA.
+
+- Include before/after snippets for changed selectors or component classes.
+- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
+- Include handoff note format for frontend + design reviewers.

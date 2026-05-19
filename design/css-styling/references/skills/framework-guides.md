@@ -1,38 +1,76 @@
-# framework-guides
+---
+name: "framework-guides"
+title: "CSS Framework & Method Guides"
+description: "Framework-aware guidance for vanilla CSS, SCSS, Tailwind, CSS Modules, and CSS-in-JS without mixing rules blindly."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for framework guides with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
 
-## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
+- Main router: `SKILL.md`
+- This reference: `references/skills/framework-guides.md`
+- Examples: `examples/skills/framework-guides.md`
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+## Linked Package Files
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
+- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+# CSS Framework & Method Guides
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+## Purpose
+Apply the right styling rules for the actual technology in use.
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+## Framework branches
+
+### Plain CSS
+Use for:
+- global tokens
+- base styles
+- stable platform-wide rules
+- high portability
+
+### SCSS / Sass
+Use when nesting, mixins, and partials genuinely improve maintainability.
+Do not use SCSS as a license for selector bloat.
+
+### CSS Modules
+Use when component scoping is valuable and naming collisions must disappear.
+Prefer explicit local contracts over cryptic local class sprawl.
+
+### Tailwind
+Use when utility-driven composition is already the project standard.
+Still require:
+- token discipline
+- semantic patterns
+- component consistency
+- utility restraint
+
+### CSS-in-JS
+Use when styling truly depends on runtime state, theme context, or component API composition.
+Avoid when static CSS would be simpler and faster.
+
+## Selection guidance
+
+Choose the smallest system that fits:
+- use plain CSS for foundation
+- use modules for scoped components
+- use Tailwind where utility composition is already institutionalized
+- use CSS-in-JS only where runtime styling needs justify it
+
+## Forbidden behavior
+
+- Do not paste rules from one methodology into another without adaptation.
+- Do not combine Tailwind, giant SCSS globals, and ad hoc inline styles with no ownership model.
+- Do not use framework preference as a substitute for system quality.
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Add framework boundary checks to prevent accidental methodology mixing without rationale.
+- Migration gate: define entry/exit criteria for vanilla CSS, SCSS, Tailwind, CSS Modules, and CSS-in-JS decisions.
+- Enforce one source-of-truth for tokens regardless of framework layer.
+- Require bundle and runtime impact notes for any framework-level styling change.
+

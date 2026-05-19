@@ -1,38 +1,71 @@
-# language-conventions
+---
+name: "css-language-conventions"
+title: "CSS Naming & Language Conventions"
+description: "Rules for CSS naming, comments, mixed-language teams, and multilingual codebases."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for language conventions with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
 
-## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
+- Main router: `SKILL.md`
+- This reference: `references/skills/language-conventions.md`
+- Examples: `examples/skills/language-conventions.md`
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+## Linked Package Files
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
+- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+# CSS Naming & Language Conventions
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+## Purpose
+Keep CSS understandable in multilingual or mixed-discipline teams.
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+## Naming doctrine
+
+- Prefer English for class names, custom properties, file names, and public styling APIs unless the project has an explicit alternative standard.
+- Keep names descriptive but compact.
+- Prefer domain meaning over appearance-only naming when the class is reusable.
+- Use appearance naming only for tightly local layout helpers.
+
+## Comment doctrine
+
+Comments should explain:
+- why a strange workaround exists
+- browser constraints
+- token rationale
+- temporary migration boundaries
+- interaction or motion intent
+
+Comments should not narrate obvious CSS.
+
+## Mixed-language content rules
+
+If the team writes product copy in multiple languages:
+- keep class names language-neutral
+- keep tokens language-neutral
+- keep comments in one primary engineering language
+- avoid transliterated chaos in selectors and filenames
+
+## Good practices
+
+- `product-card`, `site-header`, `form-section`, `--color-accent`
+- one language for engineering comments
+- glossary for domain-specific naming
+
+## Bad practices
+
+- `final-2`
+- mixing English, Russian, and local transliteration in class names
+- comments that only restate the property below them
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Naming cleanup must include before/after mapping for BEM blocks, utilities, and token aliases.
+- Comment policy: user-facing comments in English, concise intent annotations for non-obvious hacks only.
+- Reject abbreviations that obscure component purpose across cross-functional teams.
+- Add linter checks for reserved prefixes and forbidden ambiguous names.
+

@@ -1,22 +1,36 @@
-# site-wide-systems Example
+# Examples — Site-Wide Systems
 
-## Scenario
-Realistic product delivery workflow for `site-wide-systems` with end-to-end QA.
+## Example: page shell rules
 
-## Implementation Highlights
-- Defined scope, states, and component/page matrix.
-- Applied token and cascade constraints.
-- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
-- Added responsive checks with explicit width-state table or breakpoint evidence.
-- Added regression gate criteria before merge.
+```css
+.page-shell {
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
 
-## Acceptance Criteria
-- No severity-1 styling regressions.
-- Cross-browser checks complete (Chrome/Safari/Firefox).
-- Performance impact documented with rationale.
-- Handoff includes implementation notes for design + frontend reviewers.
+.page-section {
+  padding-block: clamp(3rem, 6vw, 6rem);
+}
 
-## QA Gates
-- Width/device checks completed and documented.
-- Accessibility and interaction states validated with evidence.
-- Reviewer checklist includes rollback plan if regressions appear after merge.
+.content-measure {
+  width: min(100%, 68ch);
+}
+```
+
+## Example: semantic text roles
+
+```css
+.text-display { font-size: clamp(2.25rem, 5vw, 4.5rem); line-height: 0.98; }
+.text-heading { font-size: clamp(1.5rem, 2.8vw, 2.5rem); line-height: 1.08; }
+.text-body { font-size: 1rem; line-height: 1.6; }
+.text-meta { font-size: 0.875rem; line-height: 1.4; color: var(--color-muted); }
+```
+
+## Stage 3.5 Extension: Concrete Scenario
+
+Multi-page style consistency remediation with drift table and phased rollout plan.
+
+- Include before/after snippets for changed selectors or component classes.
+- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
+- Include handoff note format for frontend + design reviewers.

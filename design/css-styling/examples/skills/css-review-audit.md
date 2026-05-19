@@ -1,22 +1,35 @@
-# css-review-audit Example
+# Examples — Review & Audit
 
-## Scenario
-Realistic product delivery workflow for `css-review-audit` with end-to-end QA.
+## Example: review prompt
 
-## Implementation Highlights
-- Defined scope, states, and component/page matrix.
-- Applied token and cascade constraints.
-- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
-- Added responsive checks with explicit width-state table or breakpoint evidence.
-- Added regression gate criteria before merge.
+Review this CSS using the CSS Review & Audit skill.
+Return:
+- exact problematic snippet
+- issue category
+- severity
+- concrete fix
+- note whether the fix belongs in tokens, component styles, layout primitives, or page styles
 
-## Acceptance Criteria
-- No severity-1 styling regressions.
-- Cross-browser checks complete (Chrome/Safari/Firefox).
-- Performance impact documented with rationale.
-- Handoff includes implementation notes for design + frontend reviewers.
+## Example: findings shape
 
-## QA Gates
-- Width/device checks completed and documented.
-- Accessibility and interaction states validated with evidence.
-- Reviewer checklist includes rollback plan if regressions appear after merge.
+```text
+Snippet:
+.sidebar .menu li a:hover { margin-left: 6px; }
+
+Issue:
+Layout-shifting hover state
+
+Severity:
+Medium
+
+Fix:
+Replace margin movement with a color or transform-based hover treatment that does not reflow nearby content.
+```
+
+## Stage 3.5 Extension: Concrete Scenario
+
+Audit report scenario with severity table, anti-pattern taxonomy, and remediation backlog.
+
+- Include before/after snippets for changed selectors or component classes.
+- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
+- Include handoff note format for frontend + design reviewers.

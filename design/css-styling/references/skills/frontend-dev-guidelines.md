@@ -1,38 +1,128 @@
-# frontend-dev-guidelines
+---
+name: "frontend-dev-guidelines"
+title: "Frontend Development Guidelines"
+description: "Use for production-grade React/TypeScript development with Suspense-first data fetching, feature-based organization, strict TypeScript, and performance-safe defaults."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## Operational Scope
-Production guidance for frontend dev guidelines with decision rules, constraints, QA evidence, and handoff requirements.
+## Package Structure
+
+- Main router: `SKILL.md`
+- This reference: `references/skills/frontend-dev-guidelines.md`
+- Examples: `examples/skills/frontend-dev-guidelines.md`
+- Deep references: `frontend-dev-guidelines__resources/` (9 files)
+- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`
+
+## Linked Package Files
+
+- Adjacent: `references/skills/frontend-alchemy.md` — for visual design systems
+- Adjacent: `references/skills/tailwind-design-system.md` — for Tailwind styling
+- Validation: `references/skills/css-review-audit.md` — for code review
+
+Deep reference guides:
+- `frontend-dev-guidelines__resources/common-patterns.md`
+- `frontend-dev-guidelines__resources/complete-examples.md`
+- `frontend-dev-guidelines__resources/component-patterns.md`
+- `frontend-dev-guidelines__resources/data-fetching.md`
+- `frontend-dev-guidelines__resources/file-organization.md`
+- `frontend-dev-guidelines__resources/loading-and-error-states.md`
+- `frontend-dev-guidelines__resources/performance.md`
+- `frontend-dev-guidelines__resources/routing-guide.md`
+- `frontend-dev-guidelines__resources/styling-guide.md`
+- `frontend-dev-guidelines__resources/typescript-standards.md`
+
+## Purpose
+
+Build scalable, predictable, and maintainable React applications using Suspense-first data fetching, feature-based code organization, strict TypeScript discipline, and performance-safe defaults. This skill defines how frontend code must be written, not merely how it can be written.
+
+## When to Use
+
+- When creating React components or pages
+- When adding new features to a React application
+- When fetching or mutating data
+- When setting up routing
+- When addressing performance issues
+- When reviewing or refactoring frontend code
+
+## Core Architectural Doctrine (Non-Negotiable)
+
+1. **Suspense is the default**: `useSuspenseQuery` is the primary data-fetching hook. No `isLoading` conditionals. No early-return spinners.
+2. **Lazy load anything heavy**: routes, feature entry components, data grids, charts, editors, large dialogs.
+3. **Feature-based organization**: domain logic in `features/`, reusable primitives in `components/`, cross-feature coupling forbidden.
+4. **TypeScript is strict**: no `any`, explicit return types, `import type` always, types are first-class design artifacts.
 
 ## Workflow
-1. Define user flows, states, and page-family scope.
-2. Apply architecture constraints (tokens, layers, framework boundaries).
-3. Implement with accessibility, responsive, and browser-compat checks.
-4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
-5. Record regression gates and merge criteria.
 
-## Constraints and Validation
-- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
-- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
-- Include browser checks for Chrome/Safari/Firefox.
-- Reject unmeasured performance claims and undocumented overrides.
+### Frontend Feasibility & Complexity Index (FFCI)
 
-## Failure Modes
-- Style drift from token system.
-- Specificity escalation and brittle overrides.
-- State gaps (loading/error/empty/disabled).
-- Inconsistent behavior across frameworks or routes.
+Before implementing, assess:
 
-## Decision Rules
-- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
-- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
-- Explicitly document browser differences and fallbacks.
+| Dimension | Question |
+|-----------|----------|
+| Architectural Fit | Aligns with feature-based structure and Suspense model? |
+| Complexity Load | How complex is state, data, and interaction logic? |
+| Performance Risk | Introduces rendering, bundle, or CLS risk? |
+| Reusability | Can be reused without modification? |
+| Maintenance Cost | Hard to reason about in 6 months? |
 
-## Diagnostics Playbook
-- Use DevTools for computed style and cascade inspection on affected states.
-- Record keyboard traversal, focus ring visibility, and contrast at each major state.
-- Validate against anti-patterns list and flag severity with owners and due dates.
+```
+FFCI = (Architectural Fit + Reusability + Performance) − (Complexity + Maintenance Cost)
+```
 
-## Handoff Expectations
-- Provide changed selectors/components list and migration notes.
-- Include regression gates (blocking vs acceptable) and unresolved risks.
-- Link follow-up tickets for deferred improvements with accountable owners.
+Range: -5 to +15. Proceed if ≥ 6.
+
+## Quality Standards
+
+- Components use `React.FC<Props>` with explicit props interface.
+- Non-trivial components are lazy loaded.
+- Data fetched with `useSuspenseQuery`, wrapped in `<SuspenseLoader>`.
+- No early returns for loading states.
+- Handlers wrapped in `useCallback`.
+- Default export at bottom of file.
+
+## Technical Rules
+
+- `useMemo` for expensive derivations.
+- `useCallback` for passed handlers.
+- `React.memo` for heavy pure components.
+- Debounce search inputs (300-500ms).
+- Cleanup effects to avoid leaks.
+- Performance regressions are bugs.
+- TypeScript strict mode enabled, no implicit `any`, explicit return types, JSDoc on public interfaces.
+
+## Validation
+
+Before finalizing code:
+- FFCI ≥ 6
+- Suspense used correctly
+- Feature boundaries respected
+- No early returns for loading
+- Types explicit and correct
+- Lazy loading applied
+- Performance safe
+
+## Restrictions
+
+- No early loading returns — use Suspense boundaries.
+- No feature logic in `components/` — keep in `features/`.
+- No shared state via prop drilling — use hooks.
+- No inline API calls — use dedicated API layer.
+- No untyped responses.
+- No multiple responsibilities in one component.
+
+## Output Requirements
+
+- Production-ready React/TypeScript code.
+- Feature-based file organization.
+- Suspense-first data fetching.
+- Strict TypeScript throughout.
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- React feature delivery must include CSS-system alignment notes (tokens, layers, component boundaries).
+- Require loading/error/empty state styling evidence for each routed surface.
+- Performance gate: document style payload impact and route-level rendering risk for major UI changes.
+- Accessibility gate: keyboard navigation and focus order verified for new component trees.
+
