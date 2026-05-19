@@ -10,24 +10,24 @@
   {
     "title": "fixing-metadata",
     "slug": "fixing-metadata",
-    "purpose": "Audit and fix page metadata including titles, descriptions, canonical URLs, Open Graph tags, Twitter cards, favicons, structured data, and locale settings.",
-    "when": "When adding or changing page titles, descriptions, canonical URLs, robots directives, Open Graph or Twitter card metadata, favicons, app icons, manifest, theme-color, structured data (JSON-LD), locale, alternate languages, or canonical routing.",
+    "purpose": "Audit and fix metadata that impacts accessibility, route clarity, indexing, social previews, locale correctness, and assistive technology context.",
+    "when": "When adding or changing page titles, descriptions, canonical URLs, robots directives, Open Graph or Twitter card metadata, app manifest, theme-color, JSON-LD, locale declarations, alternate languages, or route-level head tags.",
     "reference": "references/skills/fixing-metadata.md",
     "examples": "examples/skills/fixing-metadata.md"
   },
   {
     "title": "fixing-motion-performance",
     "slug": "fixing-motion-performance",
-    "purpose": "Diagnose and fix animation performance issues including layout thrashing, composite layer promotion, FLIP patterns, scroll-linked motion, and reduced-motion preferences.",
-    "when": "When adding or changing UI animations (CSS, WAAPI, Motion, rAF, GSAP), refactoring janky interactions, implementing scroll-linked motion, animating layout properties, or reviewing components that use will-change, transforms, or layout measurement.",
+    "purpose": "Diagnose and fix animation issues while preserving reduced-motion accessibility, focus stability, and smooth performance under real interaction load.",
+    "when": "When adding or changing UI animations (CSS, WAAPI, Motion, rAF, GSAP), remediating vestibular-risk interactions, fixing scroll-linked motion, or debugging animation-triggered focus and scroll jumps.",
     "reference": "references/skills/fixing-motion-performance.md",
     "examples": "examples/skills/fixing-motion-performance.md"
   },
   {
     "title": "screen-reader-testing",
     "slug": "screen-reader-testing",
-    "purpose": "Test web applications with screen readers (VoiceOver, NVDA, JAWS, TalkBack) covering navigation, forms, dynamic content, modals, live regions, and tab interfaces.",
-    "when": "When validating screen reader compatibility, testing ARIA implementations, debugging assistive technology issues, verifying form accessibility, testing dynamic content announcements, or ensuring navigation accessibility.",
+    "purpose": "Run structured screen reader testing workflows (VoiceOver, NVDA, JAWS, TalkBack) across forms, dialogs, tabs, dynamic updates, and task completion paths.",
+    "when": "When validating screen reader compatibility, testing ARIA implementations, debugging spoken output issues, verifying dialog/form behavior, or checking dynamic announcement quality.",
     "reference": "references/skills/screen-reader-testing.md",
     "examples": "examples/skills/screen-reader-testing.md",
     "assets": ["screen-reader-testing__resources/"]
@@ -35,18 +35,34 @@
   {
     "title": "ui-visual-validator",
     "slug": "ui-visual-validator",
-    "purpose": "Verify UI modifications, design system compliance, and accessibility implementation through systematic visual analysis with evidence-based assessment methodology.",
-    "when": "When verifying UI modifications visually, checking design system compliance, performing visual regression testing, or validating that accessibility changes render correctly.",
+    "purpose": "Verify visual output of accessibility changes with measurable checks for focus visibility, contrast, target size, zoom behavior, and responsive integrity.",
+    "when": "When validating post-fix visual quality, design-system conformance, dark mode or forced-colors rendering, text spacing resilience, and responsive regressions.",
     "reference": "references/skills/ui-visual-validator.md",
     "examples": "examples/skills/ui-visual-validator.md"
   },
   {
     "title": "wcag-audit-patterns",
     "slug": "wcag-audit-patterns",
-    "purpose": "Audit web content against WCAG 2.2 guidelines across all four POUR principles with automated tooling, manual checks, and actionable remediation strategies.",
-    "when": "When conducting accessibility audits, fixing WCAG violations, implementing accessible components, preparing for accessibility lawsuits, meeting ADA/Section 508 requirements, or achieving VPAT compliance.",
+    "purpose": "Execute WCAG 2.2 audit methodology with automated/manual balance, sampling strategy, criterion mapping, and remediation prioritization.",
+    "when": "When conducting accessibility audits, preparing compliance programs, planning remediation by severity, or establishing acceptance gates before release.",
     "reference": "references/skills/wcag-audit-patterns.md",
     "examples": "examples/skills/wcag-audit-patterns.md",
     "assets": ["wcag-audit-patterns__resources/"]
+  },
+  {
+    "title": "wcag-audit-reporting",
+    "slug": "wcag-audit-reporting",
+    "purpose": "Produce governance-ready accessibility audit outputs including severity taxonomy, evidence packs, remediation backlog ownership, retesting, and compliance summaries.",
+    "when": "When an audit must be delivered to engineering, product, legal, procurement, or executive stakeholders with traceable WCAG mapping and retest criteria.",
+    "reference": "references/skills/wcag-audit-reporting.md",
+    "examples": "examples/skills/wcag-audit-reporting.md"
+  },
+  {
+    "title": "assistive-tech-edge-cases",
+    "slug": "assistive-tech-edge-cases",
+    "purpose": "Investigate and remediate failures that emerge only in assistive technology combinations, alternate input modes, and high-stress interaction contexts.",
+    "when": "When baseline screen reader checks pass but users report failures involving speech control, switch input, zoom, forced colors, gesture conflicts, live region overload, or dynamic focus recovery.",
+    "reference": "references/skills/assistive-tech-edge-cases.md",
+    "examples": "examples/skills/assistive-tech-edge-cases.md"
   }
 ]
