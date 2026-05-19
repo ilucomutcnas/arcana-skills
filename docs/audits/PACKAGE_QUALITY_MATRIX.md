@@ -167,7 +167,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 - **Strengths:** Router, composition, self-diagnostic, routing guide, and asset index form a coherent package-level operating system for multi-skill Pretext work.; References preserve Pretext-specific command doctrine and add stronger evidence gates for browser accuracy and benchmarking workflows.; Examples are now concrete Pretext scenarios (browser mismatch triage, multilingual corpus sweep, demo dogfooding, and API-surface architecture change) instead of skeletal templates.
 - **Quality gaps:** Asset hygiene and provenance are not yet Stage 4-verified, so package should not be treated as fully clean.; Several examples are strong but still scenario slices rather than full end-to-end release playbooks across all 10 mini-skills.
 - **Recommended upgrade actions:** Run Stage 4 asset hygiene/provenance review and document outcomes before any clean-hygiene classification.; Deepen selected examples into end-to-end release-candidate playbooks with explicit rollback criteria and attached evidence artifacts.
-- **Suggested new mini-skills:** 
+- **Suggested new mini-skills:** none required in this audit pass
 - **Asset hygiene notes:** Stage 3.4 content depth is materially improved, but Stage 4 asset hygiene/provenance verification is still pending.
 - **Evidence paths:**
   - `design/pretext-ui/resources/manifest.json` — Manifest still lists 10 mini-skills with paired reference/example links.

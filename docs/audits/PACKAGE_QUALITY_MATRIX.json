@@ -558,11 +558,35 @@
     }
   ],
   "recommended_upgrade_order": [
-    "design/accessibility-ux",
-    "design/3d-animation",
-    "design/creative-tools",
-    "design/design-systems",
-    "design/css-styling",
-    "design/brand-visual"
+    {
+      "order": 1,
+      "package": "design/accessibility-ux",
+      "reason": "Highest unresolved content-upgrade priority after css-styling moved to ready-for-use; it still needs broader operational coverage and deeper multi-step remediation/reporting scenarios."
+    },
+    {
+      "order": 2,
+      "package": "design/3d-animation",
+      "reason": "Strong package but still below professional threshold; deepen examples and operational evidence if a targeted content pass is needed before Stage 4."
+    },
+    {
+      "order": 3,
+      "package": "design/creative-tools",
+      "reason": "Improved after expansion, but a follow-up content pass should deepen end-to-end QA, signoff, and release-readiness workflows."
+    },
+    {
+      "order": 4,
+      "package": "design/design-systems",
+      "reason": "Structurally strong after upgrade; remaining follow-up should add deeper long-horizon operational evidence and adoption/release playbooks."
+    },
+    {
+      "order": 5,
+      "package": "design/css-styling",
+      "reason": "Moved to ready-for-use after Stage 3.5; keep as lower-priority follow-up for advanced release-playbook depth, not an immediate upgrade blocker."
+    },
+    {
+      "order": 6,
+      "package": "design/brand-visual",
+      "reason": "Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency."
+    }
   ]
 }
