@@ -1,20 +1,34 @@
-# Library Architecture — Examples
+# library-architecture Example
 
-## Example: System Design Task Routing
+## Scenario
+A maintainer executes an end-to-end **library-architecture** workflow for a Pretext change candidate and prepares review evidence.
 
-**Task:** "I need to change the core line-break behavior for a shaping-sensitive script."
+## Stages
+1. Define task, constraints, and impacted modules/pages/scripts.
+2. Run relevant commands and collect structured evidence tables.
+3. Apply fix/update and re-run checks.
+4. Summarize decision, residual risk, and acceptance criteria.
 
-**Route:**
-1. library-architecture — core engine guardrails
-2. browser-accuracy — fresh browser evidence
-3. corpus-diagnostics — corpus canaries
-4. research-log — earlier failed experiments
+## Evidence Capture Table
+| Area | Before | After | Decision |
+|---|---|---|---|
+| Behavior/metric | baseline observed | candidate observed | accept/block |
 
-**Why:** The work touches core engine behavior, needs fresh browser evidence, needs corpus canaries, and should respect earlier failed experiments.
+## Acceptance Criteria
+- Evidence is reproducible by another contributor.
+- Decision includes fix/accept/refresh rationale where applicable.
+- Handoff notes include follow-up actions and ownership.
 
-## Validation Checklist
+## Change Request
+Add `lineOverflowHint` metadata emitted by `layout` and consumed by diagnostics pages.
 
-- Does the change preserve the fast `layout()` path?
-- Does it belong in preprocessing instead of line layout?
-- Does it widen the public API only when a real consumer proves the need?
-- Does it preserve browser-facing behavior for `white-space: normal` and explicit `pre-wrap` support?
+## API Impact Table
+| Surface | Impact | Compatibility |
+|---|---|---|
+| layout output | new optional field | backward compatible |
+| analyze summary | reads new field if present | backward compatible |
+
+## Responsibility Map
+- prepare: no semantic change
+- layout: compute hint from break decisions
+- analyze: aggregate hint counts for reports

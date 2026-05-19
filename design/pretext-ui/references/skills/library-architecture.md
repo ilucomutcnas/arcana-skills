@@ -1,63 +1,33 @@
----
-name: "pretext-library-architecture"
-title: "Pretext Library Architecture"
-description: "Use for core text-analysis, measurement, line-breaking, bidi metadata, and public layout API changes in the Pretext engine."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# library-architecture Reference
 
-## Package Structure
+## When to Use
+Use this mini-skill for Pretext tasks where **library-architecture** is the main decision driver.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/library-architecture.md`
-- Examples: `examples/skills/library-architecture.md`
-- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
+## Operational Workflow
+1. Confirm inputs, impacted files, and acceptance constraints.
+2. Select commands/pages/scripts that produce verifiable evidence.
+3. Record decision rules and blocking thresholds before implementation.
+4. Capture QA checks, anti-patterns, and handoff expectations.
 
-## Linked Package Files
+## Input Requirements
+- Repro steps and affected script/font/width contexts where relevant.
+- Expected output behavior and compatibility expectations.
+- Evidence artifacts (tables, command logs, diff scope, risk notes).
 
-- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
-- Original docs: `original-docs/` — preserved original contributor documentation
+## QA Checks and Constraints
+- Validate against `shared-rules/ANTI-PATTERNS.md`.
+- Reject ambiguous claims without measurable evidence.
+- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
 
-# Library Architecture
+## Failure Modes
+- Narrowing scope too early and missing adjacent validation.
+- Treating demo or benchmark evidence as optional for user-visible claims.
+- Shipping behavior changes without documenting compatibility impact.
 
-## Purpose
-Use this skill when changing Pretext's core text-analysis, measurement, line-breaking, bidi metadata, or public layout APIs.
+## Skill-Specific Notes
 
-## Source of truth
-- `README.md`
-- `AGENTS.md`
-- `src/layout.ts`
-- `src/analysis.ts`
-- `src/measurement.ts`
-- `src/line-break.ts`
-- `src/bidi.ts`
-
-## Core doctrine
-- `prepare()` / `prepareWithSegments()` do horizontal-only work.
-- `layout()` / `layoutWithLines()` take explicit `lineHeight`.
-- Keep `prepare()` as the opaque fast-path handle.
-- Keep `layout()` fast, allocation-light, and free of DOM reads, canvas calls, and string work.
-- Prefer preprocessing for script-specific break-policy fixes instead of pushing complexity into `layout()`.
-- Preserve the richer internal segment model: normal text, collapsible spaces, preserved spaces, tabs, non-breaking glue, zero-width break opportunities, soft hyphens, and hard breaks.
-- Keep bidi metadata on the rich path when `layout()` itself does not consume it.
-
-## Public API guardrails
-- Public examples and limitations should remain consistent with `README.md`.
-- Do not re-expose internals on the main prepared type when `prepareWithSegments()` already covers richer needs.
-- Keep manual layout helpers aligned with the rich path instead of contaminating the hot path.
-- Treat `inline-flow` as a narrow sidecar, not a generic CSS inline formatting engine.
-
-## Key architectural keeps
-- Punctuation merges into preceding word-like segments, never into spaces.
-- `NBSP`-style glue remains visible and prevents ordinary wrapping.
-- `ZWSP` remains a zero-width break opportunity.
-- Soft hyphen stays invisible when unbroken and surfaces a visible trailing hyphen when that break wins.
-- Astral CJK and later extension blocks must keep hitting the CJK path.
-- CJK grapheme splitting and kinsoku-style keeps must remain intact.
-
-## Validation checklist
-- Does the change preserve the fast `layout()` path?
-- Does it belong in preprocessing instead of line layout?
-- Does it widen the public API only when a real consumer proves the need?
-- Does it preserve browser-facing behavior for `white-space: normal` and explicit `{ whiteSpace: 'pre-wrap' }` support?
+- Public API boundaries: separate `prepare` input normalization, `layout` line construction, and `analyze` diagnostics outputs.
+- Contract rules: text measurement and line-break behavior must remain deterministic for identical font/script/width inputs.
+- Metadata: preserve bidi levels and inline-flow segment offsets in any new layout metadata extension.
+- Architecture checklist: API surface delta, internal ownership map, migration impact, test updates, and rollback strategy.
+- Compatibility risks: changed metadata naming, optional-to-required fields, or altered default width handling.

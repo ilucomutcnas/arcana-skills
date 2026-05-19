@@ -1,47 +1,34 @@
----
-name: "pretext-packaging-release"
-title: "Packaging & Release"
-description: "Use for published package shape, dist output, entrypoints, build correctness, and release confidence checks."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# packaging-release Reference
 
-## Package Structure
+## When to Use
+Use this mini-skill for Pretext tasks where **packaging-release** is the main decision driver.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/packaging-release.md`
-- Examples: `examples/skills/packaging-release.md`
-- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
+## Operational Workflow
+1. Confirm inputs, impacted files, and acceptance constraints.
+2. Select commands/pages/scripts that produce verifiable evidence.
+3. Record decision rules and blocking thresholds before implementation.
+4. Capture QA checks, anti-patterns, and handoff expectations.
 
-## Linked Package Files
+## Input Requirements
+- Repro steps and affected script/font/width contexts where relevant.
+- Expected output behavior and compatibility expectations.
+- Evidence artifacts (tables, command logs, diff scope, risk notes).
 
-- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
-- Original docs: `original-docs/` — preserved original contributor documentation
+## QA Checks and Constraints
+- Validate against `shared-rules/ANTI-PATTERNS.md`.
+- Reject ambiguous claims without measurable evidence.
+- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
 
-# Packaging & Release
+## Failure Modes
+- Narrowing scope too early and missing adjacent validation.
+- Treating demo or benchmark evidence as optional for user-visible claims.
+- Shipping behavior changes without documenting compatibility impact.
 
-## Purpose
-Use this skill for published package shape, dist output, entrypoints, build correctness, and release confidence checks.
+## Skill-Specific Notes
 
-## Important files
-- `package.json`
-- `tsconfig.build.json`
-- `scripts/package-smoke-test.ts`
+## Reference additions
+- Verify package shape: dist files, entrypoints, exports map, and type declarations.
+- Build correctness requires clean build + package smoke tests from consumer perspective.
+- Release confidence checks include browser/perf/corpus evidence links, not build-only pass.
+- Rollback vs fix-forward: rollback for API breakage, fix-forward for minor docs/demo gaps.
 
-## Doctrine
-- Published package ships built ESM from `dist/`.
-- `dist/` is publish-time output, not checked-in source.
-- Keep library-internal imports runtime-honest with `.js` specifiers inside `.ts` files.
-- Use `bun run package-smoke-test` as the quickest published-artifact confidence check before release.
-
-## Standard flow
-```sh
-bun run check
-bun test
-bun run build:package
-bun run package-smoke-test
-```
-
-## Release caution
-Do not change the export surface without verifying emitted files and smoke-test consumers.

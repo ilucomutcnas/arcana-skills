@@ -1,42 +1,36 @@
----
-name: "pretext-research-log"
-title: "Research Log"
-description: "Use for interpreting earlier experiments, rejected hypotheses, and durable conclusions that should shape future work."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# research-log Reference
 
-## Package Structure
+## When to Use
+Use this mini-skill for Pretext tasks where **research-log** is the main decision driver.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/research-log.md`
-- Examples: `examples/skills/research-log.md`
-- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
+## Operational Workflow
+1. Confirm inputs, impacted files, and acceptance constraints.
+2. Select commands/pages/scripts that produce verifiable evidence.
+3. Record decision rules and blocking thresholds before implementation.
+4. Capture QA checks, anti-patterns, and handoff expectations.
 
-## Linked Package Files
+## Input Requirements
+- Repro steps and affected script/font/width contexts where relevant.
+- Expected output behavior and compatibility expectations.
+- Evidence artifacts (tables, command logs, diff scope, risk notes).
 
-- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
-- Original docs: `original-docs/` — preserved original contributor documentation
+## QA Checks and Constraints
+- Validate against `shared-rules/ANTI-PATTERNS.md`.
+- Reject ambiguous claims without measurable evidence.
+- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
 
-# Research Log
+## Failure Modes
+- Narrowing scope too early and missing adjacent validation.
+- Treating demo or benchmark evidence as optional for user-visible claims.
+- Shipping behavior changes without documenting compatibility impact.
 
-## Purpose
-Use this skill when interpreting earlier experiments, rejected hypotheses, and durable conclusions that should shape future work.
+## Skill-Specific Notes
 
-## Research reading rules
-- Use `RESEARCH.md` for why the numbers changed and what was tried.
-- Treat rejected approaches as useful evidence, not as undone work.
-- Be skeptical of ideas that add shaping-aware width caches inside the current segment-sum architecture unless new evidence is stronger than the old failures.
+## Reference additions
+- Interpret prior experiments by methodology quality and dataset representativeness.
+- Track rejected hypotheses and why they failed to prevent churn.
+- Durable conclusions must be cited in new proposals with direct relevance statement.
+- Decision memory hygiene: date, context, evidence quality, superseded-by link if replaced.
 
-## Durable lessons to preserve
-- Some Arabic fixes survived only as preprocessing, diagnostics, or tiny tolerance shims.
-- Local pair corrections and heavier run-slice models did not buy clean enough results to justify their cost.
-- Product-shaped mixed app canaries often teach more than another literary corpus.
-- Clean corpora matter more than corpus count.
 
-## Use this skill when
-- proposing a new architecture change
-- revisiting Arabic or shaping-heavy work
-- deciding whether a miss is local, extractor-sensitive, or architecture-bound
-- separating durable lessons from abandoned experiments
+Additional operating constraint: each handoff must include explicit owner, decision timestamp, and next verification checkpoint to prevent drift between implementation and review cycles.

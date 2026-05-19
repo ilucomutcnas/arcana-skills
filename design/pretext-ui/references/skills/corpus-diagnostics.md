@@ -1,62 +1,34 @@
----
-name: "pretext-corpus-diagnostics"
-title: "Corpus Diagnostics"
-description: "Use for long-form corpus canaries, width sweeps, probes, extractor questions, font matrices, and mismatch taxonomy work."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# corpus-diagnostics Reference
 
-## Package Structure
+## When to Use
+Use this mini-skill for Pretext tasks where **corpus-diagnostics** is the main decision driver.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/corpus-diagnostics.md`
-- Examples: `examples/skills/corpus-diagnostics.md`
-- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
+## Operational Workflow
+1. Confirm inputs, impacted files, and acceptance constraints.
+2. Select commands/pages/scripts that produce verifiable evidence.
+3. Record decision rules and blocking thresholds before implementation.
+4. Capture QA checks, anti-patterns, and handoff expectations.
 
-## Linked Package Files
+## Input Requirements
+- Repro steps and affected script/font/width contexts where relevant.
+- Expected output behavior and compatibility expectations.
+- Evidence artifacts (tables, command logs, diff scope, risk notes).
 
-- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
-- Original docs: `original-docs/` — preserved original contributor documentation
+## QA Checks and Constraints
+- Validate against `shared-rules/ANTI-PATTERNS.md`.
+- Reject ambiguous claims without measurable evidence.
+- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
 
-# Corpus Diagnostics
+## Failure Modes
+- Narrowing scope too early and missing adjacent validation.
+- Treating demo or benchmark evidence as optional for user-visible claims.
+- Shipping behavior changes without documenting compatibility impact.
 
-## Purpose
-Use this skill for long-form corpus canaries, width sweeps, probes, extractor questions, font matrices, and mismatch taxonomy work.
+## Skill-Specific Notes
 
-## Commands
-```sh
-bun run corpus-check
-bun run corpus-sweep
-bun run corpus-font-matrix
-bun run corpus-taxonomy
-bun run corpus-representative
-bun run corpus-status
-bun run corpus-status:refresh
-bun run gatsby-check
-bun run gatsby-sweep
-```
+## Reference additions
+- Maintain long-form canaries and width sweeps across representative script/font matrix.
+- Probe design: isolate one hypothesis per run (line-break logic, measurement drift, bidi segmentation).
+- Extractor questions: which token, width, script, or fallback font triggered mismatch?
+- Script-sensitive handling: avoid cross-script generalization without corpus evidence.
 
-## Corpus doctrine
-- Sweep widths cheaply first.
-- Diagnose only the mismatching widths in detail.
-- Broaden canaries only when the source text is clean.
-- Reject dirty or wrapped raw-source corpora that create false lessons.
-- Use mixed app text as a first-class product-shaped canary.
-- Prefer Chrome for the first font-matrix pass.
-
-## Script-sensitive guidance
-- Arabic/Urdu: use normalized slices, exact corpus font, and RTL range-based diagnostics.
-- Southeast Asian and mixed Thai/Lao/Khmer/Myanmar text: prefer range-based corpus diagnostics over span probing.
-- Safari URL/query probe misses should be cross-checked with `--method=span` before changing the engine.
-
-## Representative keeps
-- URL/query-string handling
-- escaped quote clusters
-- numeric/time-range runs
-- emoji ZWJ runs
-- explicit zero-width separators where source text is clean
-- soft-hyphen canaries when the miss is truly product-shaped
-
-## Refresh rules
-Refresh corpus snapshots and dashboards when sweep methodology or long-form canary behavior changes in a way that moves the checked-in status.

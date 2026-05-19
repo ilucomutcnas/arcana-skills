@@ -1,22 +1,26 @@
-# Development Workflow — Examples
+# development-workflow Example
 
-## Example: Repo Analysis Task Routing
+## Scenario
+A maintainer executes an end-to-end **development-workflow** workflow for a Pretext change candidate and prepares review evidence.
 
-**Task:** "I need to understand how this repo is maintained and what is safe to change."
+## Stages
+1. Define task, constraints, and impacted modules/pages/scripts.
+2. Run relevant commands and collect structured evidence tables.
+3. Apply fix/update and re-run checks.
+4. Summarize decision, residual risk, and acceptance criteria.
 
-**Route:**
-1. development-workflow — command surface
-2. architecture-review — system-level guardrails
-3. priorities-roadmap — active priorities
-4. original-docs/AGENTS.md — preserved contributor notes
+## Evidence Capture Table
+| Area | Before | After | Decision |
+|---|---|---|---|
+| Behavior/metric | baseline observed | candidate observed | accept/block |
 
-## Core Commands Quick Reference
+## Acceptance Criteria
+- Evidence is reproducible by another contributor.
+- Decision includes fix/accept/refresh rationale where applicable.
+- Handoff notes include follow-up actions and ownership.
 
-```sh
-bun install          # Setup
-bun start            # Stable demo pages
-bun run check        # Typecheck and lint
-bun test             # Invariant suite
-bun run build:package  # Emit dist/
-bun run package-smoke-test  # Tarball verification
-```
+## Example additions
+Contributor fixes a line-wrap bug in editorial demo.
+
+Command checklist: install deps, run targeted demo/script check, run strict package validator, run repo validator.
+Expected PR evidence: repro description, changed files, command outputs, and screenshots/snapshots only if already part of package workflow.

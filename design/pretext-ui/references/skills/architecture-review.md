@@ -1,51 +1,36 @@
----
-name: "pretext-architecture-review"
-title: "Architecture Review"
-description: "Use for repo review, contributor audits, change-risk reviews, and system-level decision quality assessment."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# architecture-review Reference
 
-## Package Structure
+## When to Use
+Use this mini-skill for Pretext tasks where **architecture-review** is the main decision driver.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/architecture-review.md`
-- Examples: `examples/skills/architecture-review.md`
-- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
+## Operational Workflow
+1. Confirm inputs, impacted files, and acceptance constraints.
+2. Select commands/pages/scripts that produce verifiable evidence.
+3. Record decision rules and blocking thresholds before implementation.
+4. Capture QA checks, anti-patterns, and handoff expectations.
 
-## Linked Package Files
+## Input Requirements
+- Repro steps and affected script/font/width contexts where relevant.
+- Expected output behavior and compatibility expectations.
+- Evidence artifacts (tables, command logs, diff scope, risk notes).
 
-- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
-- Original docs: `original-docs/` — preserved original contributor documentation
+## QA Checks and Constraints
+- Validate against `shared-rules/ANTI-PATTERNS.md`.
+- Reject ambiguous claims without measurable evidence.
+- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
 
-# Architecture Review
+## Failure Modes
+- Narrowing scope too early and missing adjacent validation.
+- Treating demo or benchmark evidence as optional for user-visible claims.
+- Shipping behavior changes without documenting compatibility impact.
 
-## Purpose
-Use this skill for repo review, contributor audits, change-risk reviews, and system-level decision quality.
+## Skill-Specific Notes
 
-## Review checklist
-- Is the proposed change touching the hot `layout()` path unnecessarily?
-- Is a browser-specific miss being overfit?
-- Does the change preserve the separation between public API docs and internal notes?
-- Are status claims backed by current snapshots?
-- Are demos proving real API needs instead of ornamental wants?
-- Is the packaging surface still coherent?
-- Does the change respect the current roadmap and do-not-do guidance?
+## Reference additions
+- Review method: scope map, dependency map, evidence map, risk map, recommendation.
+- Contributor audit checks reproducibility, command rigor, and claim/evidence alignment.
+- Escalate when diff touches API contracts, packaging exports, or cross-browser guarantees.
+- Review rubric: correctness, compatibility, observability, operability, rollback readiness.
 
-## Risk categories
-- correctness risk
-- browser-divergence risk
-- benchmark regression risk
-- retained-memory risk
-- API surface risk
-- corpus-overfitting risk
-- release-shape risk
 
-## Deliverable shape
-A good review should state:
-- what changed
-- what subsystem it affects
-- what evidence was checked
-- what snapshots or dashboards must be refreshed
-- what risks remain open
+Additional operating constraint: each handoff must include explicit owner, decision timestamp, and next verification checkpoint to prevent drift between implementation and review cycles.

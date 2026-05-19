@@ -1,58 +1,34 @@
----
-name: "pretext-browser-accuracy"
-title: "Browser Accuracy"
-description: "Use for browser sweep work, accuracy claims, mismatch diagnosis, and refresh rules for checked-in accuracy snapshots."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# browser-accuracy Reference
 
-## Package Structure
+## When to Use
+Use this mini-skill for Pretext tasks where **browser-accuracy** is the main decision driver.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/browser-accuracy.md`
-- Examples: `examples/skills/browser-accuracy.md`
-- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
+## Operational Workflow
+1. Confirm inputs, impacted files, and acceptance constraints.
+2. Select commands/pages/scripts that produce verifiable evidence.
+3. Record decision rules and blocking thresholds before implementation.
+4. Capture QA checks, anti-patterns, and handoff expectations.
 
-## Linked Package Files
+## Input Requirements
+- Repro steps and affected script/font/width contexts where relevant.
+- Expected output behavior and compatibility expectations.
+- Evidence artifacts (tables, command logs, diff scope, risk notes).
 
-- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
-- Original docs: `original-docs/` — preserved original contributor documentation
+## QA Checks and Constraints
+- Validate against `shared-rules/ANTI-PATTERNS.md`.
+- Reject ambiguous claims without measurable evidence.
+- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
 
-# Browser Accuracy
+## Failure Modes
+- Narrowing scope too early and missing adjacent validation.
+- Treating demo or benchmark evidence as optional for user-visible claims.
+- Shipping behavior changes without documenting compatibility impact.
 
-## Purpose
-Use this skill for browser sweep work, accuracy claims, mismatch diagnosis, and refresh rules for checked-in accuracy snapshots.
+## Skill-Specific Notes
 
-## Commands
-```sh
-bun run accuracy-check
-bun run accuracy-check:safari
-bun run accuracy-check:firefox
-bun run accuracy-snapshot
-bun run accuracy-snapshot:safari
-bun run accuracy-snapshot:firefox
-bun run pre-wrap-check
-```
+## Reference additions
+- Browser sweeps required for any change affecting line-breaking, bidi, measurement, or demo rendering.
+- Mismatch taxonomy: glyph overflow, wrap divergence, spacing drift, bidi ordering, baseline shift.
+- Delta rules: blocking if text order/wrap semantics diverge; acceptable for sub-pixel cosmetic shifts with rationale.
+- Snapshot refresh rules: refresh only after root-cause review and explicit accept/fix/refresh decision.
 
-## Accuracy doctrine
-- Accuracy pages and checkers are expected to be green in all three installed browsers on fresh runs.
-- Suspect stale tabs or stale servers before changing the algorithm.
-- Keep browser-automation lock semantics intact.
-- Keep the permanent `pre-wrap` coverage small and explicit.
-- For default `white-space: normal`, prefer the normal diagnostic flow unless the whitespace mode itself is under test.
-
-## Refresh rules
-Refresh `accuracy/chrome.json`, `accuracy/safari.json`, and `accuracy/firefox.json` when a diff changes:
-- browser sweep methodology
-- `src/analysis.ts`
-- `src/measurement.ts`
-- `src/line-break.ts`
-- `src/layout.ts`
-- `src/bidi.ts`
-- `pages/accuracy.ts`
-
-## Claim hygiene
-- Do not make broad accuracy claims from a stale page run.
-- Do not patch the engine from one noisy extractor view alone.
-- Treat the public accuracy page as a regression gate, not the only steering metric.
