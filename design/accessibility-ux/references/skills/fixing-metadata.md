@@ -75,5 +75,8 @@ Identify pages with missing or incorrect metadata and fix them. Covers titles, d
 - Provide the corrected metadata tag.
 - Keep changes scoped to metadata only.
 
-## Stage 3 Upgrade Additions
-Extend metadata audit to include accessible title quality per route transition, locale alternates, canonical normalization, JSON-LD parity with visible content, and theme-color/app-manifest checks for readability and UX consistency.
+## Stage 3 Operational Extension
+Decision rules: canonical must match active locale route; title/H1 meaning must align; OG/Twitter fields must mirror visible locale content; JSON-LD values must match visible product facts.
+Checklist: per-locale title/description uniqueness, hreflang cluster completeness, manifest/theme-color readability, route-change title update timing.
+Evidence format: route matrix (EN/ES/FR), before/after meta snippets, canonical parity assertion, visible-content parity assertion.
+Reject output if canonical crosses locale boundaries or structured data contradicts visible copy.

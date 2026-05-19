@@ -85,5 +85,8 @@ Automated tools: axe-core, Lighthouse, WAVE, pa11y.
 - Residual risk documentation for unresolved issues.
 - Re-test confirmation after fixes.
 
-## Stage 3 Upgrade Additions
-Deepen WCAG 2.2 audit planning with sample strategy, automated/manual balance, severity interpretation rules, remediation sequencing, and criterion-level retest gates.
+## Stage 3 Operational Extension
+Decision rules: sample high-risk templates first, combine automated scanning with manual keyboard/SR checks, and rank remediation by user impact plus task criticality.
+Checklist: sample strategy declared, criterion mapping by flow, severity model documented, automated/manual split recorded, retest gate defined.
+Evidence format: audit plan table, backlog seed with WCAG IDs, and release-readiness criteria.
+Reject audit completion claims without retest criteria and owner-assigned backlog entries.

@@ -65,4 +65,28 @@ requestAnimationFrame(() => {
 ```
 
 ## Stage 3 Drawer + Accordion Motion Remediation
-Show reduced-motion CSS fallback, transform-only animation refactor, and acceptance checks for stable focus target, preserved scroll position, and latency under interaction bursts.
+
+## Stage 3 Concrete Drawer + Accordion Motion Remediation
+### Before
+```css
+.drawer { left: -320px; transition: left 240ms ease; }
+.drawer.open { left: 0; }
+.accordion-panel { max-height: 0; transition: max-height 300ms ease; }
+.accordion-panel.open { max-height: 1000px; }
+```
+
+### After
+```css
+.drawer { transform: translateX(-100%); opacity: 0; transition: transform 180ms ease, opacity 180ms ease; }
+.drawer.open { transform: translateX(0); opacity: 1; }
+.accordion-panel { transform-origin: top; transform: scaleY(0.98); opacity: 0; transition: transform 140ms ease, opacity 140ms ease; }
+.accordion-panel.open { transform: scaleY(1); opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .drawer, .accordion-panel { transition: none; }
+}
+```
+
+### Stability checks
+- Opening drawer preserves scroll position.
+- Focus remains on toggled control until panel is interactable, then moves to first heading.
+- Rapid open/close (10 times in 5 seconds) shows no dropped focus and no stuck states.

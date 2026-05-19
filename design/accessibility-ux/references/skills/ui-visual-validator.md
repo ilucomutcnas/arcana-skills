@@ -77,5 +77,8 @@ Expert visual validation focused on verifying UI modifications, design system co
 - Include remediation recommendations for issues.
 - Document edge cases and boundary conditions.
 
-## Stage 3 Upgrade Additions
-Require evidence for focus ring visibility, contrast values, hit targets, layout shift after remediation, zoom/text-spacing resilience, and forced-colors/dark-mode states across breakpoints.
+## Stage 3 Operational Extension
+Decision rules: fail visual validation when focus styles are hidden, contrast falls below threshold, or target sizes violate minimum touch guidance.
+Checklist: focus outline visibility, contrast measurements, hit-area dimensions, zoom/text-spacing resilience, forced-colors and dark-mode parity, layout-shift tolerance after fixes.
+Evidence format: pass/fail table with numeric contrast or size values and route/component references.
+Reject visual sign-off when evidence is qualitative only.

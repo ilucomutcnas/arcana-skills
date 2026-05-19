@@ -68,4 +68,23 @@ NVDA + Space       Toggle browse/focus mode
 For detailed checklists, test scripts, and more code patterns, see `screen-reader-testing__resources/implementation-playbook.md`.
 
 ## Stage 3 Cross-AT Script Output
-Include a script matrix for NVDA+Firefox and VoiceOver+Safari with pass/fail notes for heading navigation, modal announcements, form errors, and live status updates.
+
+## Stage 3 Cross-AT Script Output
+### Test script
+1. Navigate headings to locate checkout summary.
+2. Open payment modal and confirm dialog announcement.
+3. Submit empty card form and verify error narration.
+4. Apply coupon and verify status-message announcement.
+
+### Results
+| Check | NVDA + Firefox | VoiceOver + Safari | Status |
+|---|---|---|---|
+| Heading navigation | H2/H3 order correct | H2/H3 order correct | Pass |
+| Modal announcement | Announces dialog title and description | Announces title only | Partial |
+| Form errors | Reads error summary + field errors | Reads field errors only | Partial |
+| Live status update | Announces updated total once | Announces twice | Partial |
+
+### Follow-up actions
+- Add `aria-describedby` on dialog to align VoiceOver context.
+- Deduplicate coupon live-region announcement.
+- Keep NVDA behavior as baseline acceptance reference.

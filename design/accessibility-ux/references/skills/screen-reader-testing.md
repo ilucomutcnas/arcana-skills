@@ -80,5 +80,8 @@ Minimum coverage: NVDA + Firefox (Windows), VoiceOver + Safari (macOS), VoiceOve
 - Map findings to WCAG criteria.
 - Provide remediation recommendations.
 
-## Stage 3 Upgrade Additions
-Add task scripts covering virtual cursor vs focus mode, forms, dialogs, tabs, live regions, dynamic updates, and mobile gesture behavior. Require result tables across at least two AT/browser combinations.
+## Stage 3 Operational Extension
+Decision rules: test both virtual cursor and focus mode; verify modal/form/live-region flows on at least two AT/browser pairs; treat contradictory AT results as blocking until explained.
+Checklist: heading navigation order, dialog announcement quality, form error narration, status message cadence, mobile gesture interaction, focus restoration after modal close.
+Evidence format: scripted steps, result table per AT/browser pair, pass/fail notes, linked remediation owner for each fail.
+Reject conclusions without reproducible scripts and matrix evidence.

@@ -66,4 +66,13 @@ Accessibility assessment:
 ```
 
 ## Stage 3 Accessibility Visual Report
-Provide pass/fail table with evidence notes: focus outlines, contrast samples, touch target measurements, zoom snapshots, and responsive layout checks.
+
+## Stage 3 Accessibility Visual Validation Report
+| Check | Evidence | Result | Remediation |
+|---|---|---|---|
+| Focus outline visibility | 2px ring visible on button/input links at 100/200% zoom | Pass | None |
+| Contrast | Body text 7.1:1, helper text 4.7:1, error text 5.2:1 | Pass | None |
+| Touch targets | Icon buttons min 44x44 px except close icon 36x36 | Fail | Increase close icon hit-area via padding wrapper |
+| Zoom/text spacing | Layout intact at 400% and custom letter/line spacing | Pass | None |
+| Forced colors | Active card border lost in forced-colors mode | Fail | Add system color border token |
+| Dark mode | Error hint too dim in dark mode | Fail | Raise token contrast to >=4.5:1 |
