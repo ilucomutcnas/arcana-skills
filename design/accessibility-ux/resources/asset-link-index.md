@@ -39,3 +39,13 @@ This index enumerates every skill-specific auxiliary folder and file in the pack
 - Examples: [`examples/skills/wcag-audit-patterns.md`](../examples/skills/wcag-audit-patterns.md)
 - Folder: [`wcag-audit-patterns__resources/`](../wcag-audit-patterns__resources/)
   - [`wcag-audit-patterns__resources/implementation-playbook.md`](../wcag-audit-patterns__resources/implementation-playbook.md)
+
+## wcag-audit-reporting
+- Reference: [`references/skills/wcag-audit-reporting.md`](../references/skills/wcag-audit-reporting.md)
+- Examples: [`examples/skills/wcag-audit-reporting.md`](../examples/skills/wcag-audit-reporting.md)
+- Assets: none required.
+
+## assistive-tech-edge-cases
+- Reference: [`references/skills/assistive-tech-edge-cases.md`](../references/skills/assistive-tech-edge-cases.md)
+- Examples: [`examples/skills/assistive-tech-edge-cases.md`](../examples/skills/assistive-tech-edge-cases.md)
+- Assets: none required.

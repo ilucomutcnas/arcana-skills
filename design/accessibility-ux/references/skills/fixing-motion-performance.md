@@ -74,3 +74,9 @@ Fix animation performance issues in web UIs. Covers layout thrashing, composite 
 - List each performance violation with exact line or snippet.
 - Provide a one-sentence impact explanation.
 - Provide a concrete code-level fix.
+
+## Stage 3 Operational Extension
+Decision rules: avoid animating layout-triggering properties for frequent interactions; prefer transform/opacity; always implement `prefers-reduced-motion` path.
+Checklist: focus target remains stable during animation, scroll position preserved on open/close, burst interaction does not cause stuck state, live regions do not spam while animations run.
+Evidence format: before/after CSS snippet, reduced-motion snippet, interaction burst results, keyboard traversal notes.
+Reject changes that improve FPS but regress focus recovery or reduced-motion behavior.

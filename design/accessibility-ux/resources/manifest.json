@@ -30,7 +30,9 @@
     "when": "When validating screen reader compatibility, testing ARIA implementations, debugging assistive technology issues, verifying form accessibility, testing dynamic content announcements, or ensuring navigation accessibility.",
     "reference": "references/skills/screen-reader-testing.md",
     "examples": "examples/skills/screen-reader-testing.md",
-    "assets": ["screen-reader-testing__resources/"]
+    "assets": [
+      "screen-reader-testing__resources/"
+    ]
   },
   {
     "title": "ui-visual-validator",
@@ -47,6 +49,24 @@
     "when": "When conducting accessibility audits, fixing WCAG violations, implementing accessible components, preparing for accessibility lawsuits, meeting ADA/Section 508 requirements, or achieving VPAT compliance.",
     "reference": "references/skills/wcag-audit-patterns.md",
     "examples": "examples/skills/wcag-audit-patterns.md",
-    "assets": ["wcag-audit-patterns__resources/"]
+    "assets": [
+      "wcag-audit-patterns__resources/"
+    ]
+  },
+  {
+    "title": "wcag-audit-reporting",
+    "slug": "wcag-audit-reporting",
+    "purpose": "Guide production-grade accessibility audit reporting, remediation governance, evidence packaging, owner assignment, retesting, and stakeholder-ready summaries.",
+    "when": "When accessibility findings must be delivered as compliance-ready outputs with severity, ownership, evidence, and retest gates for product, engineering, legal, procurement, or leadership.",
+    "reference": "references/skills/wcag-audit-reporting.md",
+    "examples": "examples/skills/wcag-audit-reporting.md"
+  },
+  {
+    "title": "assistive-tech-edge-cases",
+    "slug": "assistive-tech-edge-cases",
+    "purpose": "Guide detection and remediation of accessibility issues that appear only under assistive-technology combinations, alternative inputs, accessibility settings, or interaction stress conditions.",
+    "when": "When baseline checks pass but failures appear under speech control, switch control, magnification, forced-colors, zoom, gesture conflicts, dynamic updates, or cross-device input interactions.",
+    "reference": "references/skills/assistive-tech-edge-cases.md",
+    "examples": "examples/skills/assistive-tech-edge-cases.md"
   }
 ]

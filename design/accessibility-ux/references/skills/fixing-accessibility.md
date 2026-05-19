@@ -80,3 +80,9 @@ Apply targeted accessibility constraints to UI work. Review files against access
 - Provide a one-sentence impact explanation for each.
 - Provide a concrete code-level fix for each.
 - Keep patches minimal and scoped.
+
+## Stage 3 Operational Extension
+Decision rules: use native HTML semantics first; add ARIA only to communicate state not represented natively; reject icon-only controls without programmatic names.
+Checklist: dialog has labelled title + described summary; invalid submit moves focus to error summary; each invalid field has `aria-invalid` and `aria-describedby`; close action returns focus to invoker; keyboard loop remains bounded while dialog is open.
+Evidence format: WCAG IDs, keyboard path table, before/after snippet, AT notes from at least one desktop SR pair.
+Acceptance: pass all checklist items and no new keyboard traps.

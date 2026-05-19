@@ -24,7 +24,7 @@ date_added: "30.03.2026"
 
 Comprehensive guide to auditing web content against WCAG 2.2 guidelines with actionable remediation strategies. Covers all four POUR principles, conformance levels (A, AA, AAA), automated testing tools, manual audit checklists, and code-level remediation patterns.
 
-For detailed checklists, code patterns, and audit templates, see `wcag-audit-patterns__resources/implementation-playbook.md`.
+For detailed checklists, code patterns, and audit playbook artifacts, see `wcag-audit-patterns__resources/implementation-playbook.md`.
 
 ## When to Use
 
@@ -84,3 +84,9 @@ Automated tools: axe-core, Lighthouse, WAVE, pa11y.
 - Code-level remediation recommendations.
 - Residual risk documentation for unresolved issues.
 - Re-test confirmation after fixes.
+
+## Stage 3 Operational Extension
+Decision rules: sample high-risk templates first, combine automated scanning with manual keyboard/SR checks, and rank remediation by user impact plus task criticality.
+Checklist: sample strategy declared, criterion mapping by flow, severity model documented, automated/manual split recorded, retest gate defined.
+Evidence format: audit plan table, backlog seed with WCAG IDs, and release-readiness criteria.
+Reject audit completion claims without retest criteria and owner-assigned backlog entries.

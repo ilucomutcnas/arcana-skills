@@ -74,3 +74,9 @@ Identify pages with missing or incorrect metadata and fix them. Covers titles, d
 - Report each missing or incorrect metadata element.
 - Provide the corrected metadata tag.
 - Keep changes scoped to metadata only.
+
+## Stage 3 Operational Extension
+Decision rules: canonical must match active locale route; title/H1 meaning must align; OG/Twitter fields must mirror visible locale content; JSON-LD values must match visible product facts.
+Checklist: per-locale title/description uniqueness, hreflang cluster completeness, manifest/theme-color readability, route-change title update timing.
+Evidence format: route matrix (EN/ES/FR), before/after meta snippets, canonical parity assertion, visible-content parity assertion.
+Reject output if canonical crosses locale boundaries or structured data contradicts visible copy.

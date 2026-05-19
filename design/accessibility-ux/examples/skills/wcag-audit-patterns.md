@@ -110,3 +110,30 @@ class AccessibleDropdown extends HTMLElement {
 ```
 
 For detailed WCAG checklists and remediation patterns, see `wcag-audit-patterns__resources/implementation-playbook.md`.
+
+## Stage 3 Multi-Page Audit Plan
+
+## Stage 3 Multi-Page WCAG Audit Plan
+### Sample strategy
+| Template | Count | Sampled pages | Reason |
+|---|---:|---:|---|
+| Product detail | 84 | 8 | Highest traffic + purchase dependency |
+| Checkout steps | 6 | 6 | Critical conversion flow |
+| Account settings | 12 | 4 | Authenticated complexity |
+
+### Criteria mapping by flow
+- Product detail: 1.1.1, 1.3.1, 1.4.3, 2.4.6
+- Checkout modal: 2.1.1, 2.4.3, 3.3.1, 4.1.3
+- Account settings: 1.3.5, 2.4.7, 3.3.2
+
+### Automated vs manual split
+- Automated: axe-core + Lighthouse across all sampled pages.
+- Manual: keyboard traversal, SR narration checks, forced-colors and zoom at 200/400%.
+
+### Severity-ranked backlog seed
+1. Critical: modal focus-loss blocks payment submission.
+2. High: status message not announced after coupon apply.
+3. Medium: insufficient dark-mode helper-text contrast.
+
+### Retest release criteria
+Release only when critical/high issues are closed with evidence, medium issues have owner+date, and regression checks pass on two supported browser/AT pairs.
