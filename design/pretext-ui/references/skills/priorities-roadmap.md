@@ -1,34 +1,60 @@
-# priorities-roadmap Reference
+---
+name: "pretext-priorities-roadmap"
+title: "Priorities & Roadmap"
+description: "Use for deciding what to work on next, understanding active canaries, and knowing what not to reopen."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## When to Use
-Use this mini-skill for Pretext tasks where **priorities-roadmap** is the main decision driver.
+## Package Structure
 
-## Operational Workflow
-1. Confirm inputs, impacted files, and acceptance constraints.
-2. Select commands/pages/scripts that produce verifiable evidence.
-3. Record decision rules and blocking thresholds before implementation.
-4. Capture QA checks, anti-patterns, and handoff expectations.
+- Main router: `SKILL.md`
+- This reference: `references/skills/priorities-roadmap.md`
+- Examples: `examples/skills/priorities-roadmap.md`
+- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
 
-## Input Requirements
-- Repro steps and affected script/font/width contexts where relevant.
-- Expected output behavior and compatibility expectations.
-- Evidence artifacts (tables, command logs, diff scope, risk notes).
+## Linked Package Files
 
-## QA Checks and Constraints
-- Validate against `shared-rules/ANTI-PATTERNS.md`.
-- Reject ambiguous claims without measurable evidence.
-- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
+- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
+- Original docs: `original-docs/` — preserved original contributor documentation
 
-## Failure Modes
-- Narrowing scope too early and missing adjacent validation.
-- Treating demo or benchmark evidence as optional for user-visible claims.
-- Shipping behavior changes without documenting compatibility impact.
+# Priorities & Roadmap
 
-## Skill-Specific Notes
+## Purpose
+Use this skill when deciding what to work on next and what not to reopen.
 
-## Reference additions
-- Prioritize by user impact, regression risk, dependency order, and evidence availability.
-- Active canaries and known risk areas should outweigh speculative feature requests.
-- Do not reopen previously rejected items without new corpus/perf/accuracy evidence.
-- Keep roadmap hygiene: dated decisions, owner, status, unblock condition.
+## Current priorities
+1. Keep the canaries honest.
+2. Use split benchmark rows and chunk-heavy rich rows to steer engine work.
+3. Keep demos as dogfood, not ornamental extras.
+
+## Active canaries
+- Mixed app text still matters.
+- Chinese remains the clearest active CJK canary.
+- Myanmar and Urdu remain shaping/context canaries but are not the main tuning target.
+
+## Not worth doing right now
+- Chasing universal exactness as the product claim.
+- Putting measurement back in `layout()`.
+- Resurrecting dirty corpora only to cover another language.
+- Overfitting one-line misses in one browser/corpus without broader evidence.
+- Turning browser-profile shims into a bag of ad hoc knobs.
+- Exploding the public API with cache or engine knobs.
+
+## Still-open design questions
+- browser shim vs runtime calibration for line-fit tolerance
+- broader `pre-wrap` support
+- `system-ui` fallback strategy
+- server canvas support
+- automatic hyphenation scope
+- intrinsic sizing / logical width APIs
+- bidi rendering scope
+- optional slow verify path
+
+## Stage 3.4 Extension: Priority Matrix and Communication Hygiene
+
+- Score competing work by user impact, regression risk, dependency order, and evidence readiness.
+- Do not reopen previously rejected work without new benchmark/browser/corpus evidence.
+- Publish a short communication note when deferring work so contributors understand sequencing rationale.
 

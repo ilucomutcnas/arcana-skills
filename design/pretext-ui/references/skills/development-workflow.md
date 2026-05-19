@@ -1,35 +1,78 @@
-# development-workflow Reference
+---
+name: "pretext-development-workflow"
+title: "Development Workflow"
+description: "Use for setup, command selection, local iteration, page navigation, and the standard Pretext contributor loop."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## When to Use
-Use this mini-skill for Pretext tasks where **development-workflow** is the main decision driver.
+## Package Structure
 
-## Operational Workflow
-1. Confirm inputs, impacted files, and acceptance constraints.
-2. Select commands/pages/scripts that produce verifiable evidence.
-3. Record decision rules and blocking thresholds before implementation.
-4. Capture QA checks, anti-patterns, and handoff expectations.
+- Main router: `SKILL.md`
+- This reference: `references/skills/development-workflow.md`
+- Examples: `examples/skills/development-workflow.md`
+- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
 
-## Input Requirements
-- Repro steps and affected script/font/width contexts where relevant.
-- Expected output behavior and compatibility expectations.
-- Evidence artifacts (tables, command logs, diff scope, risk notes).
+## Linked Package Files
 
-## QA Checks and Constraints
-- Validate against `shared-rules/ANTI-PATTERNS.md`.
-- Reject ambiguous claims without measurable evidence.
-- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
+- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
+- Original docs: `original-docs/` — preserved original contributor documentation
 
-## Failure Modes
-- Narrowing scope too early and missing adjacent validation.
-- Treating demo or benchmark evidence as optional for user-visible claims.
-- Shipping behavior changes without documenting compatibility impact.
+# Development Workflow
 
-## Skill-Specific Notes
+## Purpose
+Use this skill for setup, command selection, local iteration, and the normal contributor loop.
 
-## Reference additions
-- Setup assumptions: Node toolchain installed, package dependencies resolved, and local demo pages runnable.
-- Command selection: choose fastest command proving claim (targeted page check before full validation).
-- Contributor loop: reproduce -> patch -> targeted check -> strict package validation -> summarize evidence.
-- Smoke checks before PR: run package strict validation plus impacted page/script command.
-- Branch hygiene: one issue-focused branch, clean status, coherent commit scope.
+## Setup
+```sh
+bun install
+bun start
+```
+
+## Core command surface
+- `bun start` — stable demo pages
+- `bun run start:lan` — LAN-reachable dev server
+- `bun run start:watch` — watch/reload mode
+- `bun run site:build` — static demo site build
+- `bun run check` — typecheck and lint
+- `bun test` — invariant suite
+- `bun run build:package` — emit `dist/`
+- `bun run package-smoke-test` — tarball verification
+
+## Use these pages
+- `/demos/index`
+- `/demos/bubbles`
+- `/demos/dynamic-layout`
+- `/demos/editorial-engine`
+- `/accuracy`
+- `/benchmark`
+- `/corpus`
+
+## Current sources of truth
+- `STATUS.md`
+- `status/dashboard.json`
+- `accuracy/*.json`
+- `benchmarks/*.json`
+- `corpora/STATUS.md`
+- `corpora/dashboard.json`
+- `corpora/representative.json`
+- `RESEARCH.md`
+
+## Workflow discipline
+- Use the stable page server unless you explicitly need watch/reload.
+- Prefer checked-in dashboards and snapshots before making status claims.
+- Keep command lists synchronized with `DEVELOPMENT.md` instead of inventing parallel instructions.
+
+## Stage 3.4 Extension: PR Evidence and Review-Ready Checklist
+
+### PR evidence bundle
+- Repro steps (including width/script context for layout issues).
+- Command outputs for targeted checks and package strict validation.
+- Before/after behavior summary with risk note for deferred cleanup.
+
+### Review-ready checklist
+- Branch scope is single-issue and clean.
+- Required checks ran and are attached.
+- Adjacent mini-skill impacts (accuracy/perf/corpus/release) are acknowledged.
 

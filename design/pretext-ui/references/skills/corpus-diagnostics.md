@@ -1,34 +1,75 @@
-# corpus-diagnostics Reference
+---
+name: "pretext-corpus-diagnostics"
+title: "Corpus Diagnostics"
+description: "Use for long-form corpus canaries, width sweeps, probes, extractor questions, font matrices, and mismatch taxonomy work."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## When to Use
-Use this mini-skill for Pretext tasks where **corpus-diagnostics** is the main decision driver.
+## Package Structure
 
-## Operational Workflow
-1. Confirm inputs, impacted files, and acceptance constraints.
-2. Select commands/pages/scripts that produce verifiable evidence.
-3. Record decision rules and blocking thresholds before implementation.
-4. Capture QA checks, anti-patterns, and handoff expectations.
+- Main router: `SKILL.md`
+- This reference: `references/skills/corpus-diagnostics.md`
+- Examples: `examples/skills/corpus-diagnostics.md`
+- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
 
-## Input Requirements
-- Repro steps and affected script/font/width contexts where relevant.
-- Expected output behavior and compatibility expectations.
-- Evidence artifacts (tables, command logs, diff scope, risk notes).
+## Linked Package Files
 
-## QA Checks and Constraints
-- Validate against `shared-rules/ANTI-PATTERNS.md`.
-- Reject ambiguous claims without measurable evidence.
-- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
+- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
+- Original docs: `original-docs/` — preserved original contributor documentation
 
-## Failure Modes
-- Narrowing scope too early and missing adjacent validation.
-- Treating demo or benchmark evidence as optional for user-visible claims.
-- Shipping behavior changes without documenting compatibility impact.
+# Corpus Diagnostics
 
-## Skill-Specific Notes
+## Purpose
+Use this skill for long-form corpus canaries, width sweeps, probes, extractor questions, font matrices, and mismatch taxonomy work.
 
-## Reference additions
-- Maintain long-form canaries and width sweeps across representative script/font matrix.
-- Probe design: isolate one hypothesis per run (line-break logic, measurement drift, bidi segmentation).
-- Extractor questions: which token, width, script, or fallback font triggered mismatch?
-- Script-sensitive handling: avoid cross-script generalization without corpus evidence.
+## Commands
+```sh
+bun run corpus-check
+bun run corpus-sweep
+bun run corpus-font-matrix
+bun run corpus-taxonomy
+bun run corpus-representative
+bun run corpus-status
+bun run corpus-status:refresh
+bun run gatsby-check
+bun run gatsby-sweep
+```
+
+## Corpus doctrine
+- Sweep widths cheaply first.
+- Diagnose only the mismatching widths in detail.
+- Broaden canaries only when the source text is clean.
+- Reject dirty or wrapped raw-source corpora that create false lessons.
+- Use mixed app text as a first-class product-shaped canary.
+- Prefer Chrome for the first font-matrix pass.
+
+## Script-sensitive guidance
+- Arabic/Urdu: use normalized slices, exact corpus font, and RTL range-based diagnostics.
+- Southeast Asian and mixed Thai/Lao/Khmer/Myanmar text: prefer range-based corpus diagnostics over span probing.
+- Safari URL/query probe misses should be cross-checked with `--method=span` before changing the engine.
+
+## Representative keeps
+- URL/query-string handling
+- escaped quote clusters
+- numeric/time-range runs
+- emoji ZWJ runs
+- explicit zero-width separators where source text is clean
+- soft-hyphen canaries when the miss is truly product-shaped
+
+## Refresh rules
+Refresh corpus snapshots and dashboards when sweep methodology or long-form canary behavior changes in a way that moves the checked-in status.
+
+## Stage 3.4 Extension: Canary Decisions and Script-Sensitive Evidence
+
+### Canary decision rules
+- **Keep** when signal is stable and regression-detecting.
+- **Split** when one corpus hides multiple failure modes (for example bidi order + wrap drift).
+- **Replace/Remove** only with rationale tied to representativeness and maintenance cost.
+
+### Script-sensitive evidence gates
+- Do not flatten Arabic, CJK, and mixed-direction mismatches into one generic label.
+- Cross-link corpus findings with browser sweep outputs for the same width/script cohort.
+- Block merge when high-severity script-specific mismatches lack assigned remediation.
 

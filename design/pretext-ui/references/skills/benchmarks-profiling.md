@@ -1,34 +1,75 @@
-# benchmarks-profiling Reference
+---
+name: "pretext-benchmarks-profiling"
+title: "Benchmarks & Profiling"
+description: "Use for hot-path performance work, benchmark regressions, CPU profiling, allocation churn, and retained-memory checks."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## When to Use
-Use this mini-skill for Pretext tasks where **benchmarks-profiling** is the main decision driver.
+## Package Structure
 
-## Operational Workflow
-1. Confirm inputs, impacted files, and acceptance constraints.
-2. Select commands/pages/scripts that produce verifiable evidence.
-3. Record decision rules and blocking thresholds before implementation.
-4. Capture QA checks, anti-patterns, and handoff expectations.
+- Main router: `SKILL.md`
+- This reference: `references/skills/benchmarks-profiling.md`
+- Examples: `examples/skills/benchmarks-profiling.md`
+- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
 
-## Input Requirements
-- Repro steps and affected script/font/width contexts where relevant.
-- Expected output behavior and compatibility expectations.
-- Evidence artifacts (tables, command logs, diff scope, risk notes).
+## Linked Package Files
 
-## QA Checks and Constraints
-- Validate against `shared-rules/ANTI-PATTERNS.md`.
-- Reject ambiguous claims without measurable evidence.
-- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
+- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
+- Original docs: `original-docs/` — preserved original contributor documentation
 
-## Failure Modes
-- Narrowing scope too early and missing adjacent validation.
-- Treating demo or benchmark evidence as optional for user-visible claims.
-- Shipping behavior changes without documenting compatibility impact.
+# Benchmarks & Profiling
 
-## Skill-Specific Notes
+## Purpose
+Use this skill for hot-path performance work, benchmark regressions, CPU profiling, allocation churn, and retained-memory checks.
 
-## Reference additions
-- Select benchmarks that mirror production/editorial paths, not synthetic single-line cases only.
-- Diagnose hot paths via CPU profile and map to prepare/layout/analyze boundaries.
-- Track allocation churn and retained memory to separate transient spikes from leaks.
-- Performance budgets: define max regression threshold before coding.
+## Commands
+```sh
+bun run benchmark-check
+bun run benchmark-check:safari
+bun run status-dashboard
+```
+
+## Preferred profiling loop
+1. Start `bun start`.
+2. Launch an isolated Chrome with remote debugging and a throwaway profile.
+3. Use a tiny dedicated repro page before the full benchmark page.
+4. Ask the questions in order:
+   - Is this a benchmark regression?
+   - Where is CPU time going?
+   - Is this allocation churn?
+   - Is anything retained after GC?
+
+## Tool choice
+- Throughput/regression: benchmark page or a narrow stress page
+- CPU hotspots: Chrome CPU profiler / performance trace
+- Allocation churn: Chrome heap sampling during workload
+- Retained memory: before/after heap snapshots with forced GC
+
+## Performance doctrine
+- `layout()` remains the resize hot path.
+- `prepare()` is where script-specific cost lives.
+- Keep the hot path simple and allocation-light.
+- Use split `analyze()` / `measure()` benchmark rows to steer `prepare()` work.
+- Use chunk-heavy rich benchmark rows to steer `layoutNextLine()` work.
+
+## Refresh rules
+Refresh `benchmarks/chrome.json` and `benchmarks/safari.json` when methodology or the hot path changes.
+Then regenerate `status/dashboard.json`.
+
+## Stage 3.4 Extension: Performance Budgets and Evidence Requirements
+
+### Budget framing
+- Set a regression budget before landing (for example <=3% on representative mixed-script paths).
+- Treat hot-path regressions above budget as release blockers unless architecture review signs off on tradeoffs.
+
+### Evidence requirements
+- Provide before/after benchmark table from `bun run benchmark-check` (and Safari variant when relevant).
+- Include CPU profile notes showing which function family regressed.
+- Distinguish allocation churn from retained memory growth to avoid mislabeling leaks.
+
+### Failure-mode handling
+- If benchmark improves but canary accuracy regresses, block and route to browser/corpus checks.
+- If Chrome and Safari diverge materially, keep both snapshots and document platform risk.
 

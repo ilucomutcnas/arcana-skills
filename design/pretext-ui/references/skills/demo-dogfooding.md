@@ -1,36 +1,51 @@
-# demo-dogfooding Reference
+---
+name: "pretext-demo-dogfooding"
+title: "Demo Dogfooding"
+description: "Use for building, updating, or validating demos that exercise the rich line APIs and editorial-layout capabilities."
+risk: "safe"
+source: "https://github.com/ilucomutcnas/arcana-skills"
+date_added: "30.03.2026"
+---
 
-## When to Use
-Use this mini-skill for Pretext tasks where **demo-dogfooding** is the main decision driver.
+## Package Structure
 
-## Operational Workflow
-1. Confirm inputs, impacted files, and acceptance constraints.
-2. Select commands/pages/scripts that produce verifiable evidence.
-3. Record decision rules and blocking thresholds before implementation.
-4. Capture QA checks, anti-patterns, and handoff expectations.
+- Main router: `SKILL.md`
+- This reference: `references/skills/demo-dogfooding.md`
+- Examples: `examples/skills/demo-dogfooding.md`
+- Anti-patterns: `shared-rules/ANTI-PATTERNS.md`
 
-## Input Requirements
-- Repro steps and affected script/font/width contexts where relevant.
-- Expected output behavior and compatibility expectations.
-- Evidence artifacts (tables, command logs, diff scope, risk notes).
+## Linked Package Files
 
-## QA Checks and Constraints
-- Validate against `shared-rules/ANTI-PATTERNS.md`.
-- Reject ambiguous claims without measurable evidence.
-- Ensure cross-skill handoff includes risks, unresolved questions, and rollback path.
+- Shared: `shared-rules/ANTI-PATTERNS.md` — Pretext anti-patterns
+- Original docs: `original-docs/` — preserved original contributor documentation
 
-## Failure Modes
-- Narrowing scope too early and missing adjacent validation.
-- Treating demo or benchmark evidence as optional for user-visible claims.
-- Shipping behavior changes without documenting compatibility impact.
+# Demo Dogfooding
 
-## Skill-Specific Notes
+## Purpose
+Use this skill when building, updating, or validating demos that exercise the rich line APIs and editorial-layout capabilities.
 
-## Reference additions
-- Update demos when rich line API behavior or metadata semantics change.
-- Cover editorial layouts, bidi paragraphs, and edge width conditions.
-- QA loop: expected states, visual sanity, interaction behavior, and mismatch logging.
-- Capture edge cases as reusable repro inputs for future checks.
+## Demo doctrine
+- Keep editorial demos as the dogfood path for rich line APIs.
+- Prefer `layoutNextLine()` and `walkLineRanges()` when the demo is about streaming or obstacle-aware layout.
+- Add a new demo only if it exposes something current editorial demos do not already cover.
+- Let browser demos increasingly dogfood `layoutNextLine()` instead of relying only on whole-paragraph materialization.
 
+## Current useful pages
+- `/demos/bubbles`
+- `/demos/dynamic-layout`
+- `/demos/editorial-engine`
+- `/demos/justification-comparison`
+- `/demos/markdown-chat`
 
-Additional operating constraint: each handoff must include explicit owner, decision timestamp, and next verification checkpoint to prevent drift between implementation and review cycles.
+## Expansion rule
+If a future custom-layout page wants more metadata, prove the need there before expanding the public rich API.
+
+## Stage 3.4 Extension: Feedback Loops and API-Need Validation
+
+- Demo updates must prove a real API need (diagnostic or behavior insight), not ornamental UI churn.
+- Capture baseline/candidate/edge/failure states and feed outcomes to:
+  - `library-architecture` for contract changes,
+  - `browser-accuracy` for parity investigations,
+  - `priorities-roadmap` for sequencing follow-up work.
+- Record owner + next action for unresolved demo edge cases.
+
