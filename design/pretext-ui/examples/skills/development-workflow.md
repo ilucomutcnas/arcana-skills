@@ -1,26 +1,36 @@
 # development-workflow Example
 
-## Scenario
-A maintainer executes an end-to-end **development-workflow** workflow for a Pretext change candidate and prepares review evidence.
+## Scenario: contributor fixes a line-wrap bug in editorial demo
 
-## Stages
-1. Define task, constraints, and impacted modules/pages/scripts.
-2. Run relevant commands and collect structured evidence tables.
-3. Apply fix/update and re-run checks.
-4. Summarize decision, residual risk, and acceptance criteria.
+Issue: at 640px, inline punctuation causes a premature wrap in `pages/demos/editorial-engine.html` for mixed Arabic/English paragraphs.
 
-## Evidence Capture Table
-| Area | Before | After | Decision |
-|---|---|---|---|
-| Behavior/metric | baseline observed | candidate observed | accept/block |
+## Repo Analysis Routing
+- Primary: `development-workflow`
+- Adjacent: `library-architecture`, `browser-accuracy`
+- Validation: `corpus-diagnostics`
 
-## Acceptance Criteria
-- Evidence is reproducible by another contributor.
-- Decision includes fix/accept/refresh rationale where applicable.
-- Handoff notes include follow-up actions and ownership.
+## Core Command Quick Reference
+- Install + baseline checks: `pnpm install`
+- Targeted page workflow: run demo/build command used in current repo contributor docs
+- Accuracy evidence: run browser accuracy script for impacted scenario
+- Package checks before PR: `python scripts/validate_skills.py --package design/pretext-ui --strict`
 
-## Example additions
-Contributor fixes a line-wrap bug in editorial demo.
+## Workflow Stages
+1. Reproduce bug on demo page with exact width/font context.
+2. Trace to `line-break` and inline-flow metadata decision point.
+3. Patch minimal fix in engine module.
+4. Re-run targeted demo and browser/corpus checks.
+5. Run package validator and prepare review notes.
 
-Command checklist: install deps, run targeted demo/script check, run strict package validator, run repo validator.
-Expected PR evidence: repro description, changed files, command outputs, and screenshots/snapshots only if already part of package workflow.
+## Command Checklist (before PR)
+- [ ] Repro documented with paragraph sample and width.
+- [ ] Targeted engine/test command output captured.
+- [ ] Cross-browser sweep result attached for affected demo.
+- [ ] Corpus diagnostic check confirms no new canary drift.
+- [ ] Strict package validation passes.
+
+## Expected Evidence Before PR
+- Short root-cause note tied to exact module/function.
+- Before/after behavior summary for demo page.
+- Browser and corpus outputs proving no regression spread.
+- Clear risk note if fix defers adjacent cleanup.

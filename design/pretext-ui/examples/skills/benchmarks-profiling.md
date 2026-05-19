@@ -1,24 +1,31 @@
 # benchmarks-profiling Example
 
-## Scenario
-A maintainer executes an end-to-end **benchmarks-profiling** workflow for a Pretext change candidate and prepares review evidence.
+## Scenario: layout runtime regression (+18%) on mixed-script corpus
 
-## Stages
-1. Define task, constraints, and impacted modules/pages/scripts.
-2. Run relevant commands and collect structured evidence tables.
-3. Apply fix/update and re-run checks.
-4. Summarize decision, residual risk, and acceptance criteria.
+After a change to line-break candidate generation, benchmark runs on `mixed-app-text.txt` and Arabic/Japanese samples show a runtime increase from baseline.
 
-## Evidence Capture Table
-| Area | Before | After | Decision |
-|---|---|---|---|
-| Behavior/metric | baseline observed | candidate observed | accept/block |
+## Benchmark Results
+| Corpus / Width | Baseline (ms) | Candidate (ms) | Delta |
+|---|---:|---:|---:|
+| mixed-app-text @ 640 | 84 | 99 | +17.9% |
+| ar-al-bukhala @ 640 | 102 | 120 | +17.6% |
+| ja-rashomon @ 640 | 76 | 88 | +15.8% |
 
-## Acceptance Criteria
-- Evidence is reproducible by another contributor.
-- Decision includes fix/accept/refresh rationale where applicable.
-- Handoff notes include follow-up actions and ownership.
+## CPU Profile Notes
+- Hot path moved from `measurement.measureTokenSpan` to repeated `line-break.enumerateCandidates` calls.
+- Candidate path executes extra fallback branch per token even when script bucket is unchanged.
+- `prepare` cost unchanged; regression is isolated to `layout` candidate loop.
 
-## Example additions
-Regression: layout runtime +18% on mixed-script corpus.
-Include before/after benchmark table, profile call-stack notes, remediation plan, and acceptance threshold (e.g., <=3% regression).
+## Allocation + Retained Memory Interpretation
+- Allocation churn: +22% short-lived arrays per paragraph from candidate fan-out.
+- Retained memory: flat (no leak signature), indicating performance issue is compute/churn, not retention.
+- Decision: optimize branch pruning and reuse candidate buffers before considering structural rewrite.
+
+## Remediation Plan
+1. Gate fallback branch on script-bucket change.
+2. Reuse candidate scratch arrays across line attempts.
+3. Re-run targeted benchmark suite and corpus canaries.
+
+## Acceptance Threshold
+- Regression budget: **must be <= 3%** vs baseline on mixed-script suite.
+- Any remaining >3% requires architecture-review sign-off with explicit tradeoff rationale.

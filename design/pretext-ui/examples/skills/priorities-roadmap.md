@@ -1,24 +1,30 @@
 # priorities-roadmap Example
 
-## Scenario
-A maintainer executes an end-to-end **priorities-roadmap** workflow for a Pretext change candidate and prepares review evidence.
+## Scenario: triage competing maintenance tasks
 
-## Stages
-1. Define task, constraints, and impacted modules/pages/scripts.
-2. Run relevant commands and collect structured evidence tables.
-3. Apply fix/update and re-run checks.
-4. Summarize decision, residual risk, and acceptance criteria.
+Incoming work queue:
+1. Browser wrap mismatch on Arabic canary.
+2. Optional API cleanup for layout metadata naming.
+3. Performance regression alert from mixed-script benchmark.
+4. New demo polish request.
 
-## Evidence Capture Table
-| Area | Before | After | Decision |
-|---|---|---|---|
-| Behavior/metric | baseline observed | candidate observed | accept/block |
+## Priority Matrix
+| Task | User impact | Regression risk | Dependency weight | Priority |
+|---|---|---|---|---|
+| Arabic browser mismatch | High | High | Blocks release confidence | P0 |
+| Mixed-script perf regression | High | High | Affects canary trust | P0 |
+| API naming cleanup | Medium | Medium | Requires migration notes | P1 |
+| Demo polish | Low | Low | No release gate impact | P3 |
 
-## Acceptance Criteria
-- Evidence is reproducible by another contributor.
-- Decision includes fix/accept/refresh rationale where applicable.
-- Handoff notes include follow-up actions and ownership.
+## Not-Now Decisions
+- Defer demo polish until mismatch/perf gates are green.
+- Defer API cleanup until current release candidate closes; keep note linked to migration plan.
 
-## Example additions
-Triaging API cleanup vs browser mismatch fix vs benchmark regression.
-Include priority matrix, not-now decisions, selected sequence, and contributor communication note.
+## Selected Roadmap Order
+1. Fix Arabic browser mismatch with corpus + browser evidence.
+2. Remove perf regression to <=3% threshold.
+3. Schedule API cleanup behind architecture-review with migration analysis.
+4. Revisit demo polish after release branch stabilization.
+
+## Communication Note
+Post roadmap update in contributor channel with rationale: “Release quality gates (accuracy + performance) take precedence over aesthetic/demo improvements; API cleanup remains planned with migration-safe window.”

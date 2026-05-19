@@ -1,23 +1,37 @@
 # packaging-release Example
 
-## Scenario
-A maintainer executes an end-to-end **packaging-release** workflow for a Pretext change candidate and prepares review evidence.
+## Scenario: prepare release candidate for Pretext package
 
-## Stages
-1. Define task, constraints, and impacted modules/pages/scripts.
-2. Run relevant commands and collect structured evidence tables.
-3. Apply fix/update and re-run checks.
-4. Summarize decision, residual risk, and acceptance criteria.
+A release candidate includes line-layout metadata changes and demo updates. Maintainer must verify package shape and release confidence before publishing.
 
-## Evidence Capture Table
-| Area | Before | After | Decision |
+## Package Export Table
+| Export | Path | Status | Notes |
 |---|---|---|---|
-| Behavior/metric | baseline observed | candidate observed | accept/block |
+| `.` | `dist/index.js` | pass | main API unchanged |
+| `./analysis` | `dist/analysis.js` | pass | diagnostics helper preserved |
+| `./layout` | `dist/layout.js` | pass | includes metadata update |
+| `./package.json` | `package.json` | pass | export map consistent |
 
-## Acceptance Criteria
-- Evidence is reproducible by another contributor.
-- Decision includes fix/accept/refresh rationale where applicable.
-- Handoff notes include follow-up actions and ownership.
+## Dist/Entrypoint Checks
+- Dist contains expected JS + type declaration files.
+- Export map resolves in Node ESM and bundler smoke harness.
+- No orphaned build artifacts from previous release.
 
-## Example additions
-Release candidate review with export table, smoke checklist, blocker table, and final go/no-go decision including rollback trigger.
+## Smoke Test Checklist
+- [ ] Consumer import smoke test passes.
+- [ ] Minimal layout render scenario runs.
+- [ ] Browser accuracy snapshots verified for release candidate.
+- [ ] Benchmark budget not exceeded for mixed-script suite.
+- [ ] Demo pages load without runtime export errors.
+
+## Release-Blocker Table
+| Blocker | Gate | Outcome |
+|---|---|---|
+| Export mismatch | package-smoke-test | none |
+| Dist missing declaration | build check | none |
+| Browser regression | accuracy sweep | none |
+| Perf regression > budget | benchmark check | none |
+
+## Go / No-Go Decision
+- **Go**: all package/export/smoke gates pass, no blocking browser or perf deltas.
+- **No-Go**: any export resolution error or benchmark/browsers fail; fix-forward only for non-blocking docs wording.
