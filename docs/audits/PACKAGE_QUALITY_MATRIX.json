@@ -6,8 +6,8 @@
     "professional": 1,
     "working": 7,
     "amateur": 0,
-    "ready_for_use": 1,
-    "needs_upgrade": 6,
+    "ready_for_use": 2,
+    "needs_upgrade": 5,
     "needs_major_upgrade": 0,
     "needs_asset_hygiene": 1,
     "needs_registry_only": 0
@@ -439,44 +439,81 @@
       "path": "design/pretext-ui",
       "mini_skill_count": 10,
       "maturity": "working",
-      "status": "needs-upgrade",
-      "overall_score": 71,
+      "status": "ready-for-use",
+      "overall_score": 86,
       "scores": {
         "structure_completeness": 5,
         "manifest_integrity": 5,
-        "routing_clarity": 4,
-        "reference_depth": 2,
-        "example_quality": 1,
+        "routing_clarity": 5,
+        "reference_depth": 4,
+        "example_quality": 4,
         "domain_coverage": 4,
-        "specificity_and_non_genericness": 3,
-        "professional_readiness": 2,
+        "specificity_and_non_genericness": 4,
+        "professional_readiness": 4,
         "english_only_readiness": 5,
-        "asset_hygiene_readiness": 4
+        "asset_hygiene_readiness": 3
       },
       "strengths": [
-        "Package structure and manifest integrity are complete.",
-        "Mini-skill count is strong for domain breadth."
+        "Router, composition, self-diagnostic, routing guide, and asset index form a coherent package-level operating system for multi-skill Pretext work.",
+        "References preserve Pretext-specific command doctrine and add stronger evidence gates for browser accuracy and benchmarking workflows.",
+        "Examples are now concrete Pretext scenarios (browser mismatch triage, multilingual corpus sweep, demo dogfooding, and API-surface architecture change) instead of skeletal templates."
       ],
       "quality_gaps": [
-        "Example files are very brief and often skeletal.",
-        "Reference depth is limited for consistent professional execution."
+        "Asset hygiene and provenance are not yet Stage 4-verified, so package should not be treated as fully clean.",
+        "Several examples are strong but still scenario slices rather than full end-to-end release playbooks across all 10 mini-skills."
       ],
       "recommended_upgrade_actions": [
-        "Expand examples into concrete UI implementation and review scenarios.",
-        "Increase reference operational depth with constraints, QA checks, and failure handling."
+        "Run Stage 4 asset hygiene/provenance review and document outcomes before any clean-hygiene classification.",
+        "Deepen selected examples into end-to-end release-candidate playbooks with explicit rollback criteria and attached evidence artifacts."
       ],
       "suggested_new_mini_skills": [],
       "asset_hygiene_notes": [
-        "Package contains asset index and no clear heavy binary concentration in main package tree; maintain Stage 4 review."
+        "Stage 3.4 content depth is materially improved, but Stage 4 asset hygiene/provenance verification is still pending."
       ],
       "evidence": [
         {
           "path": "design/pretext-ui/resources/manifest.json",
-          "note": "Manifest declares 10 mini-skills with paired references/examples."
+          "note": "Manifest still lists 10 mini-skills with paired reference/example links."
         },
         {
-          "path": "design/pretext-ui/examples/skills",
-          "note": "Examples are present but notably short across files."
+          "path": "design/pretext-ui/SKILL.md",
+          "note": "Router preserves multi-skill semantics and adds adjacent/validation activation guidance."
+        },
+        {
+          "path": "design/pretext-ui/composition-protocol.md",
+          "note": "Composition protocol preserves universal routing model and adds Pretext-oriented workflow composition guidance."
+        },
+        {
+          "path": "design/pretext-ui/resources/routing-guide.md",
+          "note": "Routing guide preserves layered routes and adds extended Pretext task scenarios."
+        },
+        {
+          "path": "design/pretext-ui/resources/asset-link-index.md",
+          "note": "Asset index preserves original docs, per-skill links, and repository asset-directory mapping."
+        },
+        {
+          "path": "design/pretext-ui/references/skills/browser-accuracy.md",
+          "note": "Reference preserves browser accuracy commands/doctrine and adds mismatch taxonomy plus evidence gates."
+        },
+        {
+          "path": "design/pretext-ui/references/skills/benchmarks-profiling.md",
+          "note": "Reference preserves benchmark/profiling loop and extends budget/evidence expectations."
+        },
+        {
+          "path": "design/pretext-ui/examples/skills/browser-accuracy.md",
+          "note": "Example is a concrete cross-browser mismatch triage scenario at fixed width and page context."
+        },
+        {
+          "path": "design/pretext-ui/examples/skills/corpus-diagnostics.md",
+          "note": "Example is a concrete multilingual corpus sweep with taxonomy and action ownership."
+        },
+        {
+          "path": "design/pretext-ui/examples/skills/demo-dogfooding.md",
+          "note": "Example is a concrete editorial-engine dogfooding workflow with QA checklist and feedback loops."
+        },
+        {
+          "path": "design/pretext-ui/examples/skills/library-architecture.md",
+          "note": "Example is a concrete lineOverflowHint API architecture scenario with compatibility and risk tables."
         }
       ]
     }
@@ -484,23 +521,28 @@
   "recommended_upgrade_order": [
     {
       "order": 1,
-      "package": "design/pretext-ui",
-      "reason": "Still needs-upgrade with skeletal examples and shallow operational depth compared to peers."
+      "package": "design/css-styling",
+      "reason": "Still needs-upgrade with uneven reference/example depth and relatively low overall score among unresolved content packages."
     },
     {
       "order": 2,
-      "package": "design/creative-tools",
-      "reason": "Improved significantly but still needs deeper end-to-end scenarios and Stage 4 hygiene verification."
+      "package": "design/accessibility-ux",
+      "reason": "Needs broader operational coverage and deeper multi-step remediation/reporting scenarios."
     },
     {
       "order": 3,
-      "package": "design/design-systems",
-      "reason": "Upgraded to needs-upgrade after Stage 3 expansion; follow-up should focus on deeper long-horizon operational evidence rather than major restructuring."
+      "package": "design/creative-tools",
+      "reason": "Improved after expansion, but follow-up content pass should deepen end-to-end QA and signoff workflows."
     },
     {
       "order": 4,
+      "package": "design/design-systems",
+      "reason": "Now structurally strong, but targeted follow-up should add deeper long-horizon operational evidence."
+    },
+    {
+      "order": 5,
       "package": "design/brand-visual",
-      "reason": "Maintain as Stage 4 asset-hygiene priority due to binary asset footprint rather than normal content-upgrade urgency."
+      "reason": "Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency."
     }
   ]
 }
