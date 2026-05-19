@@ -1,22 +1,43 @@
 # wcag-audit-reporting
 
-## When to use
-Use after (or during) audit discovery to deliver governance-ready outputs to engineering, product, legal, and procurement.
+## Purpose
+Produce production-grade accessibility audit deliverables that convert findings into remediation governance, legal/compliance support artifacts, and release-ready retest gates.
 
-## Required inputs
-- WCAG issue inventory from `wcag-audit-patterns`
-- Keyboard and AT evidence from `screen-reader-testing`
-- Visual evidence from `ui-visual-validator`
-- Candidate remediation actions from `fixing-accessibility`
+## When to Use
+Use this mini-skill when WCAG findings must be communicated beyond engineering notes: program management, procurement, legal, compliance, security review boards, and executive reporting.
 
-## Reporting workflow
-1. Normalize issue taxonomy (content, structure, interaction, announcement, visual, motion).
-2. Assign severity (`critical`, `high`, `medium`, `low`) using user-impact and task-blocking rules.
-3. Map every issue to WCAG 2.2 criterion.
-4. Build evidence pack: visual notes, DOM snippet, keyboard path, SR notes, browser/AT matrix.
-5. Build remediation backlog with owner, due date, dependency, and acceptance criteria.
-6. Mark VPAT/ACR-supportable findings and out-of-scope legal interpretations.
-7. Publish retest workflow with pass gates and rejection triggers.
+## Required Inputs
+- Issue inventory and criterion mapping from `wcag-audit-patterns`.
+- Component-level technical remediation notes from `fixing-accessibility`.
+- Keyboard and screen reader evidence from `screen-reader-testing`.
+- Visual/focus/contrast evidence from `ui-visual-validator`.
+- Scope statement identifying in-scope page-types, user journeys, and known exclusions.
 
-## Failure modes / rejection
-Reject reports that omit severity, owner assignment, retest plan, or evidence references.
+## Issue Taxonomy and Severity Model
+Classify each issue by taxonomy (navigation, form validation, dynamic announcements, visual contrast, focus handling, motion side effects, metadata context). Score severity with two dimensions: user impact and task criticality.
+- Critical: blocks core task completion or legal access obligations.
+- High: major friction with substantial error risk or abandonment.
+- Medium: partial friction with workaround.
+- Low: polish-level issue without major task impact.
+
+## Evidence Requirements
+For each issue include:
+- visual note or screenshot reference identifier;
+- affected DOM/code snippet;
+- keyboard reproduction path;
+- screen reader output notes;
+- browser/assistive-technology matrix;
+- affected route/component ID;
+- WCAG criterion and conformance level.
+
+## Remediation Backlog Structure
+Each backlog row must include issue ID, severity, user impact, engineering owner, product owner, due date, dependency, remediation status, acceptance criteria, and retest owner.
+
+## Compliance Notes, VPAT/ACR Boundaries
+This mini-skill supports VPAT/ACR evidence preparation but does not issue legal determinations. Mark evidence confidence, in-scope platforms, and unresolved caveats explicitly.
+
+## Retest Workflow and Acceptance
+Require evidence-linked retest per issue. Exit criteria: criterion re-check passed, keyboard path verified, AT matrix rerun for impacted flows, visual validation completed, and no regression in adjacent features.
+
+## Failure Modes and Rejection Criteria
+Reject reports that omit severity rationale, owner assignment, due date, WCAG mapping, evidence references, retest gates, or stakeholder summary language.

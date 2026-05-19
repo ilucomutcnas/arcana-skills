@@ -1,25 +1,29 @@
-# Example: Checkout accessibility audit report
+# Example: Subscription Checkout Accessibility Audit Report
 
-## Severity table
-| ID | Issue | Severity | User impact |
+## Executive Scope
+Audit scope covered account creation, payment modal, coupon workflow, and confirmation route across desktop and mobile. Out of scope: native app checkout.
+
+## Severity Table
+| Issue ID | Finding | Severity | User impact | Owner |
+|---|---|---|---|---|
+| AX-101 | Payment modal loses focus on validation error | Critical | Keyboard and AT users cannot recover quickly | Checkout FE |
+| AX-113 | Status message not announced after coupon apply | High | Users miss pricing state change | Commerce FE |
+| AX-127 | Low contrast helper text in dark mode | Medium | Reduced readability at night mode | Design Systems |
+
+## WCAG Mapping
+| Issue ID | WCAG Criterion | Level | Evidence |
 |---|---|---|---|
-| A11Y-021 | Checkout modal traps virtual cursor | Critical | Task completion blocked |
-| A11Y-034 | Error summary not announced | High | Validation failures missed |
+| AX-101 | 2.4.3 Focus Order / 3.3.1 Error Identification | A | keyboard path + DOM snippet |
+| AX-113 | 4.1.3 Status Messages | AA | NVDA + VoiceOver notes |
+| AX-127 | 1.4.3 Contrast (Minimum) | AA | contrast sample records |
 
-## WCAG mapping
-| ID | Criterion | Level | Notes |
-|---|---|---|---|
-| A11Y-021 | 2.1.2 No Keyboard Trap | A | Escape/focus return fails |
-| A11Y-034 | 4.1.3 Status Messages | AA | Live region silent |
+## Remediation Backlog
+- AX-101: Add error summary anchor and focus restoration; due 2026-05-29; dependency: modal utility patch.
+- AX-113: Add polite live region update with deduping; due 2026-05-30.
+- AX-127: Update token pair to meet 4.5:1; due 2026-05-27.
 
-## Remediation backlog
-- FE Platform: modal focus recovery patch, due 2026-05-28.
-- Checkout Team: error summary live region patch, due 2026-05-30.
+## Evidence Pack Summary
+Evidence pack includes route IDs, keyboard paths, code excerpts, SR transcript notes, and browser/AT matrix runs for NVDA+Firefox and VoiceOver+Safari.
 
-## Evidence pack summary
-- Keyboard path: `Tab → Submit → Shift+Tab → Escape`.
-- SR notes: NVDA/Firefox silent on summary; VoiceOver/Safari partially announces.
-- DOM snippets linked per issue.
-
-## Retest and stakeholder summary
-Retest on staging with NVDA/Firefox and VoiceOver/Safari; release gate requires both issues pass and no regression in focus ring contrast.
+## Retest Plan and Stakeholder Summary
+Retest on staging after merge with reruns of checkout critical path. Release approval requires all critical/high findings closed and medium issues tracked with owner/date.

@@ -1,23 +1,21 @@
 # Self-Diagnostic Protocol
 
 ## Required Checks
-
-- Confirm primary, adjacent, and validation mini-skills are explicitly activated.
-- Map each reported issue to WCAG criterion ID and level.
-- Include keyboard reproduction path for every operability issue.
-- Include screen reader / AT browser matrix evidence for AT claims.
-- Include visual evidence for focus, contrast, hit target, zoom/text-spacing behavior.
-- Include reduced-motion and dynamic-update risk assessment for motion or async UI changes.
-- Confirm audit report completeness: severity, owner, due date, remediation status, retest gate, evidence pack.
-- Confirm `resources/asset-link-index.md` and manifest links preserve existing entries.
+- Confirm primary, adjacent, and validation mini-skills are explicitly listed.
+- Map each issue to WCAG criterion and conformance level.
+- Provide keyboard reproduction path evidence for operability claims.
+- Provide AT/browser matrix evidence for screen reader or AT findings.
+- Provide visual evidence for focus, contrast, target size, zoom, and text spacing behavior.
+- Include reduced-motion and dynamic-update risk analysis when motion or async UI is changed.
+- For audit outputs, include severity, owner, due date, remediation state, evidence pack, retest gate, and stakeholder summary.
+- Confirm resource and asset index preservation, including existing linked folders and playbooks.
 
 ## Rejection Criteria
-
-Reject output if any apply:
+Reject outputs containing:
 - remediation guidance without WCAG mapping;
 - accessibility claims without keyboard path evidence;
-- screen reader conclusions without AT/browser matrix;
-- visual accessibility fixes without focus/contrast evidence;
-- motion changes without reduced-motion fallback path;
-- audit report missing severity, owner, retest plan, or evidence pack;
-- deletion of existing resource/index links or asset entries.
+- screen reader or AT conclusions without AT/browser matrix evidence;
+- visual accessibility claims without focus/contrast evidence;
+- motion changes without reduced-motion path and regression checks;
+- audit reports missing severity, owner, retest, or evidence pack;
+- deletion of existing asset-link-index entries or required resource links.
