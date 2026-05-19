@@ -1,25 +1,37 @@
 # browser-accuracy Example
 
-## Scenario
-A maintainer executes an end-to-end **browser-accuracy** workflow for a Pretext change candidate and prepares review evidence.
+## Scenario: 640px wrap mismatch (Chromium diverges, Firefox/WebKit align)
 
-## Stages
-1. Define task, constraints, and impacted modules/pages/scripts.
-2. Run relevant commands and collect structured evidence tables.
-3. Apply fix/update and re-run checks.
-4. Summarize decision, residual risk, and acceptance criteria.
+During a release-candidate sweep, `pages/demos/editorial-engine.html` shows a paragraph break mismatch at width 640px. Firefox and WebKit wrap the second line after “metadata”, while Chromium pushes “metadata hint” to the next line.
 
-## Evidence Capture Table
-| Area | Before | After | Decision |
-|---|---|---|---|
-| Behavior/metric | baseline observed | candidate observed | accept/block |
+## Inputs
+- Diagnostic page: `pages/demos/editorial-engine.html`
+- Text sample: paragraph derived from `corpora/mixed-app-text.txt` with Arabic + English inline spans
+- Width: `640px`
+- Browser set: Chromium, Firefox, WebKit
+
+## Mismatch Table
+| Browser | Observed wrap | Expected wrap | Severity | Suspected layer | Decision |
+|---|---|---|---|---|---|
+| Chromium | Breaks before `metadata` | Keep `metadata` on line 2 | High | measurement or line-break threshold | Investigate and fix candidate |
+| Firefox | Keeps `metadata` on line 2 | Same as baseline | Pass | none | Keep baseline |
+| WebKit | Keeps `metadata` on line 2 | Same as baseline | Pass | none | Keep baseline |
+
+## Diagnosis Steps
+1. **Reproduce** with the same page, text seed, and width in all three engines.
+2. **Isolate layer**:
+   - compare token measurements across engines (`measurement` suspicion),
+   - verify line-break candidate ordering (`line-break` suspicion),
+   - inspect bidi/inline-flow segment boundaries for mixed-direction spans.
+3. **Compare with corpus diagnostics** by running corpus sweep on the same sample family (`mixed-app-text`, Arabic canary) at 640px to detect whether mismatch is page-only or corpus-wide.
+4. **Decide fix / accept / refresh** based on whether the divergence changes semantic wrapping behavior or only cosmetic spacing.
+
+## Final Decision Rules
+- **Fix engine contract** when divergence changes break position or text order for representative corpus cases.
+- **Refresh snapshot** only when behavior is intentional, documented, and equivalent across acceptance criteria except for non-blocking cosmetic deltas.
+- **Block merge** when browser evidence is missing, mismatch severity is high, or root cause remains unassigned.
 
 ## Acceptance Criteria
-- Evidence is reproducible by another contributor.
-- Decision includes fix/accept/refresh rationale where applicable.
-- Handoff notes include follow-up actions and ownership.
-
-## Example additions
-Scenario: Chromium and Firefox wrap differently at 640px while WebKit matches Firefox.
-Mismatch table includes browser, symptom, severity, suspected layer, decision.
-Final decision chosen after diagnosis: fix engine contract or refresh snapshot with rationale.
+- Fresh Chromium/Firefox/WebKit evidence is attached for the exact page, sample, and width.
+- No unsupported claim like “browser parity is fine” without mismatch table + diagnosis notes.
+- If snapshot refresh is chosen, rationale explicitly explains why no engine contract fix is required.
