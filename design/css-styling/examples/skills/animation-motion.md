@@ -44,10 +44,38 @@
 }
 ```
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: Panel, Tooltip, and Loading Motion
 
-Panel/tooltip/loading motion scenario with reduced-motion fallback and perf checks.
+### Motion Budget Table
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+| Element | Property Animated | Duration | Easing | Reduced-Motion Fallback | Performance Risk |
+|---|---|---:|---|---|---|
+| Filter Panel | transform + opacity | 180ms | `cubic-bezier(.2,.8,.2,1)` | instant show/hide | low |
+| Tooltip | opacity + translateY | 120ms | ease-out | opacity only (80ms) | low |
+| Loading Bars | transformX | 700ms loop | linear | static shimmer disabled | medium |
+
+### Before
+
+```css
+.panel[data-open="true"] {
+  top: 0;
+  height: 100%;
+  transition: top 220ms ease, height 220ms ease;
+}
+```
+
+### After
+
+```css
+.panel {
+  transform: translateY(0.5rem);
+  opacity: 0;
+  transition: transform 180ms var(--ease-standard), opacity 180ms var(--ease-standard);
+}
+.panel[data-open="true"] { transform: translateY(0); opacity: 1; }
+```
+
+### Acceptance Criteria
+- No width/height/top/left animation unless justified and measured.
+- Reduced-motion path is fully functional (not hidden content).
+- Mid-tier mobile trace shows no noticeable jank during panel + tooltip interactions.

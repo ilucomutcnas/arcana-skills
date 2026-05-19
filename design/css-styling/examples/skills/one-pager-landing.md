@@ -30,10 +30,28 @@
 }
 ```
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: Launch Landing Section Plan
 
-Landing section plan covering hero, trust block, CTA, responsive and performance QA.
+### Section Plan
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+| Section | Goal | Styling Priority | Risk |
+|---|---|---|---|
+| Hero | value proposition | strong heading contrast + primary CTA | oversized media pushes CTA below fold |
+| Trust Block | credibility | logo rhythm + subtle separators | low contrast logos |
+| Feature Band | explain benefits | alternating backgrounds + icon consistency | spacing drift |
+| CTA | conversion | highest contrast action button | competing secondary actions |
+| Footer | orientation | subdued hierarchy, legal links readable | cramped mobile columns |
+
+### Mobile/Desktop QA
+
+| Check | Mobile | Desktop |
+|---|---|---|
+| Hero CTA visible without scroll | pass | pass |
+| Trust logos wrap cleanly | pass | pass |
+| Feature cards equal rhythm | pass | pass |
+| CTA contrast >= 4.5:1 | pass | pass |
+
+### Performance-Sensitive Notes
+- Above-the-fold CSS budget target: <= 45KB gzip.
+- Avoid heavy animated background gradients in hero.
+- Defer decorative section flourishes to non-critical CSS chunk.

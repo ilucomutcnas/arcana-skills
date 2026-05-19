@@ -95,10 +95,23 @@ FFCI = (Architectural Fit + Reusability + Performance) − (Complexity + Mainten
 
 For deep reference guides, see `frontend-dev-guidelines__resources/`.
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: React Feature Implementation Scenario
 
-React feature implementation scenario with structure, styling strategy, states, perf/a11y checks.
+### Feature Structure Table
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+| Route | Component | Data Hook | Styling Strategy | Loading/Error/Empty |
+|---|---|---|---|---|
+| `/billing/usage` | `UsagePage` | `useUsageMetricsQuery` | CSS Modules + shared tokens | Suspense skeleton / inline error / empty hint |
+| `/billing/invoices` | `InvoiceList` | `useInvoicesQuery` | Tailwind shell + semantic badges | table skeleton / retry state / no invoices card |
+
+### Styling Integration Plan
+- **Component boundary**: page container owns layout; leaf cards own visual variants.
+- **Token use**: color, spacing, radius, and focus ring from shared CSS tokens only.
+- **CSS/Tailwind strategy**: CSS Modules for widget internals; Tailwind for grid/layout scaffolding.
+- **Performance/A11y checks**: route CSS payload delta logged; keyboard focus order tested with tab loop.
+
+### Acceptance Criteria
+- Suspense and all data states are visually styled and stable.
+- Focus order verified across filters, table actions, and dialogs.
+- Style payload impact recorded in PR notes.
+- No prop-drilling for shared state and no inline API calls in presentational components.

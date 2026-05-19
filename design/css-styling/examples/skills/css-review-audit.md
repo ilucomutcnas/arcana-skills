@@ -26,10 +26,28 @@ Fix:
 Replace margin movement with a color or transform-based hover treatment that does not reflow nearby content.
 ```
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: Audit Report Example
 
-Audit report scenario with severity table, anti-pattern taxonomy, and remediation backlog.
+### Severity Model
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+| Level | Meaning | Example |
+|---|---|---|
+| S0 blocker | release risk | broken focus visibility on primary form flow |
+| S1 major risk | high UX/perf impact | hover margin shifts causing reflow in nav |
+| S2 maintainability debt | accumulative complexity | repeated token aliases with conflicting names |
+| S3 cosmetic drift | low-risk inconsistency | card radius differs by 2px from system |
+
+### Anti-Pattern Taxonomy
+- specificity
+- duplication
+- accessibility
+- performance
+- responsiveness
+
+### Remediation Backlog
+
+| Owner | Fix | Evidence | Due Date |
+|---|---|---|---|
+| FE Platform | remove `!important` in billing cards | PR #812 diff + screenshot | 2026-05-30 |
+| Design Systems | unify focus ring token | contrast report + keyboard video | 2026-06-02 |
+| Web Perf | split unused marketing CSS | coverage report + LCP delta | 2026-06-05 |

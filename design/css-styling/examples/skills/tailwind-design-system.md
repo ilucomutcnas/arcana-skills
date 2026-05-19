@@ -67,10 +67,30 @@ import { cn } from "@/lib/utils"
 
 For detailed implementation patterns, see `tailwind-design-system__resources/implementation-playbook.md`.
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: Tailwind Button Variant System
 
-Tailwind component variant system with state/class table and review checklist.
+### State/Class Table
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+| State | Classes |
+|---|---|
+| default | `bg-primary text-primary-foreground` |
+| hover | `hover:bg-primary/90` |
+| active | `active:translate-y-px` |
+| focus-visible | `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring` |
+| disabled | `disabled:opacity-50 disabled:pointer-events-none` |
+| loading | `data-[loading=true]:cursor-wait data-[loading=true]:opacity-80` |
+
+```tsx
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md transition",
+  { variants: { intent: { primary: "bg-primary text-primary-foreground", ghost: "bg-transparent text-foreground" } } }
+);
+
+<Button className={cn("w-full md:w-auto", buttonVariants({ intent: "primary" }))}>Save</Button>
+```
+
+### Review Checklist
+- No raw palette classes for semantic UI states.
+- `className` stays layout-only unless missing variant is explicitly approved.
+- Dark mode reviewed for all variant intents.
+- shadcn/ui overrides remain token-aligned.

@@ -58,10 +58,43 @@ Why bad:
 - hardcoded color
 - override debt
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: Account Surface Token/Layer Refactor
 
-Token/layer refactor scenario with primitive vs semantic mapping table and acceptance checks.
+Account settings surfaces were using hardcoded brand blues and one `!important` override in `.plan-card__price`.
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+### Primitive -> Semantic Mapping
+
+| Primitive Token | Semantic Token | Usage |
+|---|---|---|
+| `--blue-600` | `--text-accent` | Link/action text in account notices |
+| `--gray-100` | `--surface-subtle` | Secondary panel background |
+| `--gray-900` | `--text-primary` | Body copy and headings |
+| `--space-4` | `--control-padding-inline` | Input/button horizontal padding |
+
+### Before
+
+```css
+.plan-card__price {
+  color: #1458ff !important;
+}
+```
+
+### After
+
+```css
+@layer components {
+  .plan-card__price {
+    color: var(--text-accent);
+  }
+}
+```
+
+### Acceptance Checks
+- Zero raw hex additions in `components/**/*.css` for this change set.
+- No new `!important` declarations.
+- Theme fallback verified in Safari 17 and Firefox latest.
+- Alias `--text-link: var(--text-accent);` retained for one release cycle.
+
+### Handoff Notes
+- Frontend: run token-lint and report any direct primitive usage in components.
+- Design: approve semantic token mapping for billing, profile, and security account sections.

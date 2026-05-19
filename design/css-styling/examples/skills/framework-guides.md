@@ -23,10 +23,17 @@ Less good for:
 - platform-wide token governance
 - typography rules that should remain global
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: Framework Selection and Migration Matrix
 
-Framework selection + migration matrix across vanilla/SCSS/Tailwind/Modules/CSS-in-JS.
+| Approach | Best Fit | Tradeoff | Migration Note |
+|---|---|---|---|
+| Vanilla CSS | small/static pages | global collision risk | introduce layers before scaling |
+| SCSS | complex shared mixins | nesting bloat risk | cap nesting depth at 2 |
+| Tailwind | rapid product UI | class sprawl risk | enforce semantic tokens in config |
+| CSS Modules | isolated widgets | cross-page reuse friction | keep tokens global |
+| CSS-in-JS | dynamic theme logic | runtime overhead | restrict to truly dynamic cases |
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+Decision example: dashboard widgets use CSS Modules, tokens remain global, Tailwind only for shadcn/ui shell.
+
+### Mixing Rejection Criteria
+Reject if raw Tailwind arbitrary values, SCSS globals, and inline styles are combined without ownership model and token contract.

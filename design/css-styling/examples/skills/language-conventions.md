@@ -30,10 +30,31 @@
 color: blue;
 ```
 
-## Stage 3.5 Extension: Concrete Scenario
+## Stage 3.5 Extension: Naming Cleanup Scenario
 
-Naming cleanup scenario with before/after class names and comment policy decisions.
+### Before/After Table
 
-- Include before/after snippets for changed selectors or component classes.
-- Include acceptance checklist with responsive, accessibility, and regression-safe styling criteria.
-- Include handoff note format for frontend + design reviewers.
+| Before | After | Rationale |
+|---|---|---|
+| `.knopka_new2` | `.settings-saveButton` | English, component-purpose naming |
+| `.blue-title-final` | `.profileHeader__title` | avoids color-only and "final" suffixes |
+| `.statya-kartochka` | `.articleCard` | removes transliteration |
+| `.final-2` | `.billingPlan__summary` | meaningful role-based name |
+
+### Comment Policy
+
+Acceptable:
+```css
+/* Safari clips focus outline unless overflow remains visible on card shell. */
+```
+
+Rejected:
+```css
+/* Makes text red. */
+color: red;
+```
+
+### Acceptance Criteria
+- English class names only.
+- No `final-2`, `new2`, transliteration, or color-only semantic names.
+- Reserved prefixes documented (`u-`, `is-`, `js-`, `t-`) and used consistently.
