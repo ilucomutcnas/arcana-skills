@@ -76,3 +76,9 @@ This file maps each mini-skill to its reference and examples file.
 
 - [`asset-link-index.md`](asset-link-index.md)
 - [`manifest.json`](manifest.json)
+
+## 13. css-performance-budgeting
+- Summary: CSS runtime/rendering budget governance including selector cost, reflow risk, paint/composite hotspots, and release gates.
+- Use with: layout-responsive + css-review-audit + frontend-dev-guidelines; animation-motion for jank triage; site-wide-systems for multi-page-family cleanup.
+- Reference: `references/skills/css-performance-budgeting.md`
+- Examples: `examples/skills/css-performance-budgeting.md`

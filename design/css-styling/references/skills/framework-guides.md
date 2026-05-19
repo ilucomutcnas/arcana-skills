@@ -66,3 +66,11 @@ Choose the smallest system that fits:
 - Do not paste rules from one methodology into another without adaptation.
 - Do not combine Tailwind, giant SCSS globals, and ad hoc inline styles with no ownership model.
 - Do not use framework preference as a substitute for system quality.
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Add framework boundary checks to prevent accidental methodology mixing without rationale.
+- Migration gate: define entry/exit criteria for vanilla CSS, SCSS, Tailwind, CSS Modules, and CSS-in-JS decisions.
+- Enforce one source-of-truth for tokens regardless of framework layer.
+- Require bundle and runtime impact notes for any framework-level styling change.
+

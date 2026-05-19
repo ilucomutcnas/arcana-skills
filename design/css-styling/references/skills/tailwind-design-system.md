@@ -100,3 +100,11 @@ For detailed patterns, tokens, and component examples, see `tailwind-design-syst
 - Tailwind-based components following semantic color system.
 - Consistent use of variants and `cn()`.
 - Dark mode support through CSS variables.
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Require semantic color tokens in Tailwind config and map component variants to intent, not raw palettes.
+- Variant governance: state/class matrix for default, hover, active, focus-visible, disabled, loading.
+- Class hygiene gate: enforce `className` layout-only policy when component already owns visual variants.
+- Integration gate: shadcn/ui overrides must stay token-aligned and dark-mode validated.
+

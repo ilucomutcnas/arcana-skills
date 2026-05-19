@@ -118,3 +118,11 @@ Before finalizing code:
 - Feature-based file organization.
 - Suspense-first data fetching.
 - Strict TypeScript throughout.
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- React feature delivery must include CSS-system alignment notes (tokens, layers, component boundaries).
+- Require loading/error/empty state styling evidence for each routed surface.
+- Performance gate: document style payload impact and route-level rendering risk for major UI changes.
+- Accessibility gate: keyboard navigation and focus order verified for new component trees.
+

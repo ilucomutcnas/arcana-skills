@@ -265,3 +265,21 @@ Use a response like this when issues are found:
 - After selecting the working set, run Activated Scope Check.
 - Expand diagnostic scope only when the task, the evidence, or the user request justifies it.
 - Treat self-diagnostic as mandatory package hygiene, but keep it router-aware, lazy, and proportional to scope.
+
+
+## CSS Package Rejection Criteria
+- Styling changes without responsive QA evidence.
+- Animation changes without reduced-motion fallback.
+- Performance claims without measured baseline/after budget rationale.
+- Token/theme changes without migration notes.
+- Tailwind/SCSS/CSS Modules mixing without explicit rationale and ownership boundaries.
+- Deletion of existing asset-index/resource entries.
+
+## Required Checks
+- Activated primary/adjacent/validation mini-skills are listed.
+- CSS architecture and cascade risk reviewed.
+- Browser compatibility evidence recorded.
+- Accessibility evidence (focus, keyboard, reduced-motion) recorded.
+- Performance budget impact documented.
+- Framework methodology consistency validated.
+- Asset/resource index preservation confirmed.

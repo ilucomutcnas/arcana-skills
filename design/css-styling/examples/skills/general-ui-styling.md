@@ -46,3 +46,34 @@
   background: var(--color-surface);
 }
 ```
+
+## Stage 3.5 Extension: Settings Dashboard Styling Pass
+
+### Component State Matrix
+
+| Component | default | hover | active | focus-visible | disabled | error | loading |
+|---|---|---|---|---|---|---|---|
+| Button | solid primary | raise shadow-1 | shadow-0 | ring + offset | opacity + cursor | n/a | spinner reserved slot |
+| TextInput | neutral border | border emphasis | subtle inset | ring + border accent | muted bg + icon | red border + message | skeleton overlay |
+| Select | neutral shell | chevron tint | pressed bg | ring + label tint | muted shell | red border + helper | width preserved |
+| DataCard | clean panel | border accent | n/a | focus-within ring | muted text/icon | status badge | pulse placeholder |
+
+### Corrected State Pattern
+
+```css
+.field__input[data-state="error"] {
+  border-color: var(--border-danger);
+  background: color-mix(in srgb, var(--surface-default) 92%, var(--danger-50));
+}
+
+.field__input:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+```
+
+### Acceptance Criteria
+- Focus-visible states remain clearly visible on all controls.
+- Disabled states include cursor + icon/opacity cues (not color alone).
+- Error states include icon or text helper plus border change.
+- Loading state reserves component height; no layout shift in forms.

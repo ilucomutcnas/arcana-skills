@@ -61,3 +61,11 @@ If the team writes product copy in multiple languages:
 - `final-2`
 - mixing English, Russian, and local transliteration in class names
 - comments that only restate the property below them
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Naming cleanup must include before/after mapping for BEM blocks, utilities, and token aliases.
+- Comment policy: user-facing comments in English, concise intent annotations for non-obvious hacks only.
+- Reject abbreviations that obscure component purpose across cross-functional teams.
+- Add linter checks for reserved prefixes and forbidden ambiguous names.
+

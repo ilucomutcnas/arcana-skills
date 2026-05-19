@@ -97,3 +97,11 @@ Before finalizing:
 - Is the token system expressive enough but not bloated?
 - Does dark mode or theming require duplication?
 - Would deleting one file unexpectedly break three unrelated surfaces?
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Map primitive tokens (`--space-*`, `--color-*`) to semantic tokens (`--surface-*`, `--text-*`) in a migration table before merge.
+- Enforce layer ownership: `reset`/`base` cannot include component variants; `components` cannot redefine primitive scales.
+- Regression gates: zero raw hex additions in component files, no new `!important`, and no selector specificity increase without rationale.
+- Browser checks: validate token fallbacks in Safari and Firefox for custom property inheritance and `@layer` ordering.
+

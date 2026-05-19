@@ -79,3 +79,11 @@ High
 Fix:
 Replace the hardcoded color with a semantic token and move the title styling into the component contract.
 ```
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Apply severity model: S0 blockers, S1 major risk, S2 maintainability debt, S3 cosmetic drift.
+- Include anti-pattern taxonomy tags (specificity, duplication, accessibility, performance, responsiveness).
+- Require measurable remediation acceptance for S0/S1 issues before close.
+- Audit output must include evidence links, owner, due date, and rollback criteria.
+

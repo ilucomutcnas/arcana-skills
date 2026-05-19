@@ -81,3 +81,11 @@ But keep the visual language coherent.
 - CTA buttons competing equally
 - oversized animated backgrounds harming readability
 - testimonial sections styled like product cards for no reason
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Add section rhythm checklist: hero, social proof, feature bands, CTA, footer must preserve scan hierarchy at mobile and desktop.
+- Performance gate: above-the-fold CSS remains within route budget and avoids blocking non-critical styles.
+- Accessibility gate: CTA contrast and focus states must pass keyboard-only traversal.
+- Conversion gate: primary CTA remains visually dominant under all responsive breakpoints.
+

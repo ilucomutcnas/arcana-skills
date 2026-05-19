@@ -79,3 +79,11 @@ But still optimize for the dominant real usage context of the product.
 - Are gaps and padding scaled intentionally?
 - Does the hero still make sense on narrow screens?
 - Are grids resilient to content variance?
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Add container-query checkpoints for card, rail, and table shells at narrow/medium/wide container widths.
+- Use a width-state QA table (320/375/768/1024/1440) with overflow, truncation, and sticky-region checks.
+- Reflow gate: reject changes that cause horizontal scroll on primary app templates.
+- Compatibility gate: validate dynamic viewport units and iOS Safari safe-area behavior.
+

@@ -44,6 +44,9 @@ Common combinations:
 - **Site-wide consistency**: site-wide-systems (primary) + foundations + layout-responsive + language-conventions
 - **Animation system**: animation-motion (primary) + general-ui-styling + foundations
 - **Design engineering**: frontend-alchemy (primary) + general-ui-styling + animation-motion + layout-responsive
+- **CSS performance regression**: css-performance-budgeting (primary) + css-review-audit + layout-responsive + frontend-dev-guidelines
+- **Animation jank**: css-performance-budgeting (primary) + animation-motion + general-ui-styling
+- **Large-site cleanup**: site-wide-systems (primary) + css-review-audit + css-performance-budgeting + foundations
 
 ## Package Structure
 
@@ -121,6 +124,11 @@ Common combinations:
 - Open reference: `references/skills/frontend-dev-guidelines.md`
 - Open examples: `examples/skills/frontend-dev-guidelines.md`
 
+### css-performance-budgeting
+- Summary: CSS runtime and rendering budget governance across payload, selector complexity, layout/reflow risk, paint/composite cost, and release gates.
+- Open reference: `references/skills/css-performance-budgeting.md`
+- Open examples: `examples/skills/css-performance-budgeting.md`
+
 ## Validation
 
 - Keep detailed implementation guidance outside the main `SKILL.md`.
@@ -132,3 +140,4 @@ Common combinations:
 - Keep the main file concise and navigational.
 - Store deep guidance in auxiliary files.
 - Use descriptive, stable file names for extracted mini-skills.
+

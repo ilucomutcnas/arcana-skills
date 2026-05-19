@@ -63,3 +63,11 @@ Manage CSS as an operating system for a whole website or product family, not as 
 - Would a new page inherit quality automatically?
 - Are deviations intentional or accidental?
 - Can brand refresh happen through variables and components rather than rewrites?
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Maintain a drift ledger by page family (marketing, app shell, docs) listing deviations from shared tokens/components.
+- Rollout governance: pilot templates first, then expand with regression snapshots and fallback plan.
+- Cascade complexity gate: no new deep descendant selectors in shared page shells.
+- Theming gate: all overrides require owner + expiration criteria.
+

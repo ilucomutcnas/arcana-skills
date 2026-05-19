@@ -84,3 +84,11 @@ When producing CSS guidance:
 - define token dependencies
 - define state behavior
 - mention accessibility-critical styling when relevant
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Require component state matrices (default/hover/active/focus/disabled/error/loading) for forms, cards, tables, and modals.
+- Focus gate: all interactive controls must keep visible focus rings at 3:1 contrast minimum.
+- Density gate: spacing compaction cannot break touch targets below 44x44 on mobile actions.
+- Regression evidence: attach before/after screenshots for key dashboard/settings states.
+

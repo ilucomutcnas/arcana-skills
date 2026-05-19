@@ -84,3 +84,11 @@ Ask:
 - Is this performant on low-end hardware?
 - Would turning this off improve usability?
 - Is reduced motion respected?
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Animation budget gate: interaction motion targets <= 200ms and transform/opacity-first transitions.
+- Reduced-motion gate: every non-essential animation must provide a functional fallback path.
+- Reject motion changes that animate layout-triggering properties (`width`, `height`, `top`, `left`) unless justified and measured.
+- Capture perf traces for panel reveal, tooltip, and loading indicators on mid-tier mobile simulation.
+

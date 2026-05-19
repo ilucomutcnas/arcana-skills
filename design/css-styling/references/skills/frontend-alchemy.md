@@ -81,3 +81,11 @@ DFII = (Impact + Fit + Feasibility + Performance) − Consistency Risk
 - High-craft, production-ready frontend code.
 - Clear aesthetic direction documented.
 - Design decisions explained.
+
+## Stage 3.5 Extension: Operational QA and Regression Gates
+
+- Apply restraint checks to ensure high-craft treatments do not degrade readability, performance, or maintainability.
+- Validate visual concept against accessibility floors (contrast, focus, reduced motion) before polish iterations.
+- Document interaction polish budgets and fallback states for low-end devices.
+- Handoff must include implementable token/layer notes, not visual-only direction.
+
