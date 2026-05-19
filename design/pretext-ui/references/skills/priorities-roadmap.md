@@ -51,3 +51,10 @@ Use this skill when deciding what to work on next and what not to reopen.
 - intrinsic sizing / logical width APIs
 - bidi rendering scope
 - optional slow verify path
+
+## Stage 3.4 Extension: Priority Matrix and Communication Hygiene
+
+- Score competing work by user impact, regression risk, dependency order, and evidence readiness.
+- Do not reopen previously rejected work without new benchmark/browser/corpus evidence.
+- Publish a short communication note when deferring work so contributors understand sequencing rationale.
+

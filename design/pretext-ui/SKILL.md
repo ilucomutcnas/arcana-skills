@@ -24,10 +24,11 @@ Anti-patterns in `shared-rules/ANTI-PATTERNS.md` apply across all mini-skills. O
 1. Always begin with self-diagnostic per `self-diagnostic-protocol.md`.
 2. Identify the primary mini-skill that best matches the task.
 3. Check the Multi-Skill Activation Guide below.
-4. Open the corresponding reference under `references/skills/`.
-5. Open examples under `examples/skills/` if routing guidance is needed.
-6. Use `resources/skill-catalog.md` for the full index.
-7. Use `resources/routing-guide.md` when a task spans multiple mini-skills.
+4. Add adjacent and validation mini-skills for non-trivial work (minimum 1 primary + 2 adjacent + 1 validation).
+5. Open the corresponding reference under `references/skills/`.
+6. Open examples under `examples/skills/` if routing guidance is needed.
+7. Use `resources/skill-catalog.md` for the full index.
+8. Use `resources/routing-guide.md` when a task spans multiple mini-skills.
 
 ## Multi-Skill Activation Guide
 
@@ -41,6 +42,12 @@ Common combinations:
 - **New demo**: demo-dogfooding (primary) + library-architecture + development-workflow
 - **Contributor onboarding**: development-workflow (primary) + priorities-roadmap + architecture-review
 - **Diff review**: architecture-review (primary) + library-architecture + research-log + priorities-roadmap
+
+Additional selection guardrails for complex changes:
+- **Public layout API or metadata change**: keep `library-architecture` as primary and include `architecture-review` as validation.
+- **Mismatch visible in demo/pages**: keep `browser-accuracy` as primary and include `corpus-diagnostics` for script-sensitive confirmation.
+- **Speed/memory regression**: keep `benchmarks-profiling` as primary and include `library-architecture` for root-cause mapping.
+- **Release-candidate signoff**: keep `packaging-release` as primary and include `demo-dogfooding` for behavior verification.
 
 ## Package Structure
 

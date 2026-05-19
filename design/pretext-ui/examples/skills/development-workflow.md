@@ -1,22 +1,36 @@
-# Development Workflow — Examples
+# development-workflow Example
 
-## Example: Repo Analysis Task Routing
+## Scenario: contributor fixes a line-wrap bug in editorial demo
 
-**Task:** "I need to understand how this repo is maintained and what is safe to change."
+Issue: at 640px, inline punctuation causes a premature wrap in `pages/demos/editorial-engine.html` for mixed Arabic/English paragraphs.
 
-**Route:**
-1. development-workflow — command surface
-2. architecture-review — system-level guardrails
-3. priorities-roadmap — active priorities
-4. original-docs/AGENTS.md — preserved contributor notes
+## Repo Analysis Routing
+- Primary: `development-workflow`
+- Adjacent: `library-architecture`, `browser-accuracy`
+- Validation: `corpus-diagnostics`
 
-## Core Commands Quick Reference
+## Core Command Quick Reference
+- Install + baseline checks: `pnpm install`
+- Targeted page workflow: run demo/build command used in current repo contributor docs
+- Accuracy evidence: run browser accuracy script for impacted scenario
+- Package checks before PR: `python scripts/validate_skills.py --package design/pretext-ui --strict`
 
-```sh
-bun install          # Setup
-bun start            # Stable demo pages
-bun run check        # Typecheck and lint
-bun test             # Invariant suite
-bun run build:package  # Emit dist/
-bun run package-smoke-test  # Tarball verification
-```
+## Workflow Stages
+1. Reproduce bug on demo page with exact width/font context.
+2. Trace to `line-break` and inline-flow metadata decision point.
+3. Patch minimal fix in engine module.
+4. Re-run targeted demo and browser/corpus checks.
+5. Run package validator and prepare review notes.
+
+## Command Checklist (before PR)
+- [ ] Repro documented with paragraph sample and width.
+- [ ] Targeted engine/test command output captured.
+- [ ] Cross-browser sweep result attached for affected demo.
+- [ ] Corpus diagnostic check confirms no new canary drift.
+- [ ] Strict package validation passes.
+
+## Expected Evidence Before PR
+- Short root-cause note tied to exact module/function.
+- Before/after behavior summary for demo page.
+- Browser and corpus outputs proving no regression spread.
+- Clear risk note if fix defers adjacent cleanup.

@@ -63,3 +63,16 @@ bun start
 - Use the stable page server unless you explicitly need watch/reload.
 - Prefer checked-in dashboards and snapshots before making status claims.
 - Keep command lists synchronized with `DEVELOPMENT.md` instead of inventing parallel instructions.
+
+## Stage 3.4 Extension: PR Evidence and Review-Ready Checklist
+
+### PR evidence bundle
+- Repro steps (including width/script context for layout issues).
+- Command outputs for targeted checks and package strict validation.
+- Before/after behavior summary with risk note for deferred cleanup.
+
+### Review-ready checklist
+- Branch scope is single-issue and clean.
+- Required checks ran and are attached.
+- Adjacent mini-skill impacts (accuracy/perf/corpus/release) are acknowledged.
+

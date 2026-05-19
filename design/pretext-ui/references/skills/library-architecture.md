@@ -61,3 +61,11 @@ Use this skill when changing Pretext's core text-analysis, measurement, line-bre
 - Does it belong in preprocessing instead of line layout?
 - Does it widen the public API only when a real consumer proves the need?
 - Does it preserve browser-facing behavior for `white-space: normal` and explicit `{ whiteSpace: 'pre-wrap' }` support?
+
+## Stage 3.4 Extension: Public API and Compatibility Guidance
+
+- For additive metadata (for example `lineOverflowHint`), require explicit compatibility statement and migration expectation.
+- Keep boundaries clear: `prepare` normalizes inputs, `layout` decides breakpoints/metadata, `analyze` aggregates diagnostics.
+- Any API-surface widening requires architecture-review signoff and browser/corpus evidence links.
+- Reject proposals that change contracts without fallback behavior for existing consumers.
+

@@ -57,3 +57,19 @@ bun run status-dashboard
 ## Refresh rules
 Refresh `benchmarks/chrome.json` and `benchmarks/safari.json` when methodology or the hot path changes.
 Then regenerate `status/dashboard.json`.
+
+## Stage 3.4 Extension: Performance Budgets and Evidence Requirements
+
+### Budget framing
+- Set a regression budget before landing (for example <=3% on representative mixed-script paths).
+- Treat hot-path regressions above budget as release blockers unless architecture review signs off on tradeoffs.
+
+### Evidence requirements
+- Provide before/after benchmark table from `bun run benchmark-check` (and Safari variant when relevant).
+- Include CPU profile notes showing which function family regressed.
+- Distinguish allocation churn from retained memory growth to avoid mislabeling leaks.
+
+### Failure-mode handling
+- If benchmark improves but canary accuracy regresses, block and route to browser/corpus checks.
+- If Chrome and Safari diverge materially, keep both snapshots and document platform risk.
+

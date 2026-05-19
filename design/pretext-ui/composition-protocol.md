@@ -84,3 +84,41 @@ When selecting mini-skills, use these criteria:
 - Risk: which mini-skills reduce the chance of wrong, incomplete, unsafe, or shallow output?
 - Validation: which mini-skills can test, measure, review, or monitor the result?
 - Scale: which mini-skills become necessary if the task affects production, cost, performance, rollout, or multiple stakeholders?
+
+## Practical Workflow Recipes (Extension)
+
+### 1) Layout engine API change
+- Primary: `library-architecture`
+- Adjacent: `corpus-diagnostics`, `browser-accuracy`
+- Validation: `architecture-review`
+- Required evidence: API impact table, migration notes, width sweep diff, browser deltas, risk sign-off.
+
+### 2) Cross-browser accuracy investigation
+- Primary: `browser-accuracy`
+- Adjacent: `library-architecture`, `development-workflow`
+- Validation: `corpus-diagnostics`
+- Required evidence: mismatch taxonomy table, sweep commands, reproducible case in pages/, triage result (fix/accept/refresh).
+
+### 3) Performance regression triage
+- Primary: `benchmarks-profiling`
+- Adjacent: `library-architecture`, `browser-accuracy`
+- Validation: `architecture-review`
+- Required evidence: before/after benchmark table, CPU profile notes, allocation/retained memory interpretation, threshold decision.
+
+### 4) Corpus mismatch diagnosis
+- Primary: `corpus-diagnostics`
+- Adjacent: `browser-accuracy`, `research-log`
+- Validation: `priorities-roadmap`
+- Required evidence: script/font matrix, width sweep probes, mismatch taxonomy assignment, canary keep/drop decision.
+
+### 5) Release readiness review
+- Primary: `packaging-release`
+- Adjacent: `demo-dogfooding`, `development-workflow`
+- Validation: `browser-accuracy`
+- Required evidence: export/entrypoint checklist, smoke test results, demo QA notes, rollback vs fix-forward call.
+
+### 6) Roadmap decision review
+- Primary: `priorities-roadmap`
+- Adjacent: `research-log`, `architecture-review`
+- Validation: `corpus-diagnostics`
+- Required evidence: priority matrix, rejected-work guardrail, dependency order, communication note.

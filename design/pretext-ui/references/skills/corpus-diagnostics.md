@@ -60,3 +60,16 @@ bun run gatsby-sweep
 
 ## Refresh rules
 Refresh corpus snapshots and dashboards when sweep methodology or long-form canary behavior changes in a way that moves the checked-in status.
+
+## Stage 3.4 Extension: Canary Decisions and Script-Sensitive Evidence
+
+### Canary decision rules
+- **Keep** when signal is stable and regression-detecting.
+- **Split** when one corpus hides multiple failure modes (for example bidi order + wrap drift).
+- **Replace/Remove** only with rationale tied to representativeness and maintenance cost.
+
+### Script-sensitive evidence gates
+- Do not flatten Arabic, CJK, and mixed-direction mismatches into one generic label.
+- Cross-link corpus findings with browser sweep outputs for the same width/script cohort.
+- Block merge when high-severity script-specific mismatches lack assigned remediation.
+

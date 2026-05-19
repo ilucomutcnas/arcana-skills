@@ -56,3 +56,17 @@ Refresh `accuracy/chrome.json`, `accuracy/safari.json`, and `accuracy/firefox.js
 - Do not make broad accuracy claims from a stale page run.
 - Do not patch the engine from one noisy extractor view alone.
 - Treat the public accuracy page as a regression gate, not the only steering metric.
+
+## Stage 3.4 Extension: Mismatch Taxonomy and Acceptance Gates
+
+### Mismatch taxonomy (operational)
+- **Break-position divergence**: one browser moves a token to the next line while others keep it on the current line (usually blocking).
+- **Order divergence**: bidi or inline-flow run order differs (blocking).
+- **Spacing-only drift**: same breakpoints, minor width/rounding jitter (reviewable, not automatically blocking).
+
+### Acceptance gates
+- Attach fresh Chromium/Firefox/WebKit evidence for the same page, text seed, and width.
+- Do not claim browser parity without a per-browser mismatch table.
+- Snapshot refresh is allowed only when divergence is intentional, documented, and non-semantic.
+- Block merge when root-cause ownership is missing or blocking mismatch persists.
+

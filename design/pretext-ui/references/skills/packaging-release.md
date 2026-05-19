@@ -45,3 +45,18 @@ bun run package-smoke-test
 
 ## Release caution
 Do not change the export surface without verifying emitted files and smoke-test consumers.
+
+## Stage 3.4 Extension: Release Candidate Go/No-Go
+
+### Go decision
+- Dist shape, exports, and smoke tests pass.
+- Browser/corpus/perf evidence does not show blocking regressions.
+
+### No-go decision
+- Entrypoint/export mismatch, failing smoke tests, or unresolved blocking accuracy/perf findings.
+- Public API changes missing migration/compatibility note.
+
+### Fix-forward vs rollback
+- Fix-forward for minor docs/demo gaps.
+- Rollback for compatibility breaks or unresolved package-shape defects.
+

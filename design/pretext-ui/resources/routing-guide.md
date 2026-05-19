@@ -3,8 +3,8 @@
 ## Rules
 
 - Choose the narrowest matching skill first.
-- Open `references/skills/<slug>.md` for full doctrine and commands.
-- Open `examples/skills/<slug>.md` for task routing patterns.
+- Open `references/skills/{slug}.md` for full doctrine and commands.
+- Open `examples/skills/{slug}.md` for task routing patterns.
 - Always check `shared-rules/ANTI-PATTERNS.md` for what not to do.
 
 ## Quick Navigation
@@ -37,6 +37,18 @@
 - **New demo** -> demo-dogfooding + library-architecture + development-workflow
 - **Onboarding** -> development-workflow + priorities-roadmap + architecture-review
 - **Diff review** -> architecture-review + library-architecture + research-log
+
+## Extended Routing Scenarios
+
+- **Public API changes** -> library-architecture + corpus-diagnostics + architecture-review
+- **Layout mismatch in page/demo** -> browser-accuracy + library-architecture + corpus-diagnostics
+- **Browser sweep (release gate)** -> browser-accuracy + development-workflow + corpus-diagnostics
+- **Performance regression** -> benchmarks-profiling + library-architecture + architecture-review
+- **Corpus/canary update** -> corpus-diagnostics + browser-accuracy + research-log
+- **Release candidate** -> packaging-release + demo-dogfooding + browser-accuracy
+- **Demo update** -> demo-dogfooding + development-workflow + library-architecture
+- **Roadmap decision** -> priorities-roadmap + research-log + architecture-review
+- **Architecture review** -> architecture-review + library-architecture + benchmarks-profiling
 
 ## Additional Package Index
 

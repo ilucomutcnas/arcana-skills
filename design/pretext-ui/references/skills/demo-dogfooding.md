@@ -39,3 +39,13 @@ Use this skill when building, updating, or validating demos that exercise the ri
 
 ## Expansion rule
 If a future custom-layout page wants more metadata, prove the need there before expanding the public rich API.
+
+## Stage 3.4 Extension: Feedback Loops and API-Need Validation
+
+- Demo updates must prove a real API need (diagnostic or behavior insight), not ornamental UI churn.
+- Capture baseline/candidate/edge/failure states and feed outcomes to:
+  - `library-architecture` for contract changes,
+  - `browser-accuracy` for parity investigations,
+  - `priorities-roadmap` for sequencing follow-up work.
+- Record owner + next action for unresolved demo edge cases.
+

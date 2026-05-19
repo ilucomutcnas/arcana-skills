@@ -1,20 +1,34 @@
-# Library Architecture — Examples
+# library-architecture Example
 
-## Example: System Design Task Routing
+## Concrete Change Request
+Add `lineOverflowHint` metadata emitted by `layout`, consumed by diagnostic pages (`pages/accuracy.html`, `pages/corpus.html` pathways), while preserving compatibility for consumers that do not read the new field.
 
-**Task:** "I need to change the core line-break behavior for a shaping-sensitive script."
+## Compatibility Expectations
+- Field is optional and additive.
+- Existing consumers parsing layout output without `lineOverflowHint` continue to work.
+- No renaming/removal of existing layout metadata fields.
 
-**Route:**
-1. library-architecture — core engine guardrails
-2. browser-accuracy — fresh browser evidence
-3. corpus-diagnostics — corpus canaries
-4. research-log — earlier failed experiments
+## API Impact Table
+| Surface | Public/Internal | Impact | Migration needed | Risk |
+|---|---|---|---|---|
+| `layout` output object | Public | Add optional `lineOverflowHint` | No (optional) | Medium: API widening |
+| `analyze` summary | Internal-facing report output | Aggregate hint counts | No, but docs update | Low |
+| diagnostic pages data adapter | Internal | Read hint for UI diagnostics | Minor adapter update | Low |
+| downstream strict schema consumers | Public ecosystem | May reject unknown fields if schema locked | Possibly (schema relax) | Medium |
 
-**Why:** The work touches core engine behavior, needs fresh browser evidence, needs corpus canaries, and should respect earlier failed experiments.
+## Responsibility Map
+- `prepare`: preserve input normalization; no behavior change in token preparation.
+- `layout`: compute `lineOverflowHint` at the measurement/line-break boundary where final break candidate is chosen.
+- `analyze`: consume optional hint and emit aggregate diagnostics.
+- Measurement/line-break boundary: measurement provides widths; line-break decides boundary; hint must represent that boundary decision without re-measuring.
 
-## Validation Checklist
+## Risk Review
+- **Public API widening**: additive field can still break strict validators; call out compatibility note.
+- **Hot path cost**: hint computation must not add measurable overhead on dense corpora.
+- **Browser accuracy**: hint must not mask real wrap divergence; cross-browser evidence required.
+- **Corpus/canary impact**: Arabic and mixed corpora must show stable behavior after field addition.
 
-- Does the change preserve the fast `layout()` path?
-- Does it belong in preprocessing instead of line layout?
-- Does it widen the public API only when a real consumer proves the need?
-- Does it preserve browser-facing behavior for `white-space: normal` and explicit `pre-wrap` support?
+## Acceptance Criteria
+- Optional field does not break existing consumers in package smoke checks.
+- Browser and corpus evidence exists for representative samples/widths.
+- `architecture-review` signoff is captured because public API surface changes.

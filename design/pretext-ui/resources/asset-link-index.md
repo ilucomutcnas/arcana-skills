@@ -81,3 +81,6 @@ Research datasets: dashboard.json, system-ui-size-scan.json
 
 ### shared/
 Shared TypeScript modules: navigation-state.ts
+
+Assets: none required.
+No additional asset folders.

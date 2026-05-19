@@ -49,3 +49,19 @@ A good review should state:
 - what evidence was checked
 - what snapshots or dashboards must be refreshed
 - what risks remain open
+
+## Stage 3.4 Extension: Review Rubric and Escalation Discipline
+
+### Review rubric
+- **Correctness**: behavior and claims are consistent with artifacts.
+- **Compatibility**: API/package changes include migration and fallback expectations.
+- **Operability**: commands and checks are reproducible for reviewers.
+- **Risk control**: rollback/fix-forward path is explicit.
+
+### Escalation criteria
+- Escalate when diffs touch public API, packaging exports, or cross-browser guarantees.
+- Escalate when performance claims lack benchmark/profile evidence.
+
+### Owner/checkpoint rule
+- Every blocking comment should name an owner and a concrete verification checkpoint before approval.
+

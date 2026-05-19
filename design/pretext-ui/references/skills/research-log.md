@@ -40,3 +40,10 @@ Use this skill when interpreting earlier experiments, rejected hypotheses, and d
 - revisiting Arabic or shaping-heavy work
 - deciding whether a miss is local, extractor-sensitive, or architecture-bound
 - separating durable lessons from abandoned experiments
+
+## Stage 3.4 Extension: Decision Memory Hygiene
+
+- For each reused experiment, cite prior hypothesis, method limits, and current evidence relevance.
+- Keep rejected paths discoverable to prevent repeat churn.
+- New proposals must link to durable conclusions they depend on and explain why prior rejections do or do not apply.
+
