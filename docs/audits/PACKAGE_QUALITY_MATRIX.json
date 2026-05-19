@@ -6,8 +6,8 @@
     "professional": 1,
     "working": 7,
     "amateur": 0,
-    "ready_for_use": 2,
-    "needs_upgrade": 5,
+    "ready_for_use": 3,
+    "needs_upgrade": 4,
     "needs_major_upgrade": 0,
     "needs_asset_hygiene": 1,
     "needs_registry_only": 0
@@ -52,7 +52,7 @@
       ],
       "quality_gaps": [
         "Some example files are shorter and less workflow-rich than top-tier packages.",
-        "Overall score is below the rubric\u2019s typical professional band (90-100), so classification is kept conservative.",
+        "Overall score is below the rubric’s typical professional band (90-100), so classification is kept conservative.",
         "Asset hygiene readiness is good but still depends on Stage 4 verification."
       ],
       "recommended_upgrade_actions": [
@@ -312,48 +312,87 @@
       "domain": "design",
       "slug": "css-styling",
       "path": "design/css-styling",
-      "mini_skill_count": 12,
+      "mini_skill_count": 13,
       "maturity": "working",
-      "status": "needs-upgrade",
-      "overall_score": 79,
+      "status": "ready-for-use",
+      "overall_score": 88,
       "scores": {
         "structure_completeness": 5,
         "manifest_integrity": 5,
-        "routing_clarity": 4,
-        "reference_depth": 3,
-        "example_quality": 3,
-        "domain_coverage": 4,
+        "routing_clarity": 5,
+        "reference_depth": 4,
+        "example_quality": 4,
+        "domain_coverage": 5,
         "specificity_and_non_genericness": 4,
-        "professional_readiness": 3,
+        "professional_readiness": 4,
         "english_only_readiness": 5,
         "asset_hygiene_readiness": 3
       },
       "strengths": [
-        "Strong mini-skill count and complete structural package components.",
-        "Domain-specificity is generally good across styling topics."
+        "Mini-skill coverage expanded to 13 with css-performance-budgeting filling a concrete operational gap.",
+        "Routing and composition surfaces consistently integrate performance-budgeting workflows without breaking prior semantics.",
+        "References and examples now preserve CSS-specific doctrine/snippets while adding Stage 3.5 regression and triage scenarios."
       ],
       "quality_gaps": [
-        "Reference and example depth are uneven with multiple short files.",
-        "Professional readiness limited by sparse end-to-end implementation scenarios."
+        "Despite stronger depth, several examples are still scenario slices rather than full release playbooks across all 13 mini-skills.",
+        "Package maturity remains below professional threshold because some cross-skill operational evidence is still moderate rather than exhaustive.",
+        "Asset hygiene/provenance is still pending Stage 4 verification and cannot be treated as fully clean."
       ],
       "recommended_upgrade_actions": [
-        "Expand short references with constraints, diagnostics, and browser compatibility playbooks.",
-        "Add richer examples that show full component theming and regression-safe styling changes."
+        "Deepen selected examples into end-to-end styling release playbooks with rollback criteria and measurable acceptance gates.",
+        "Add cross-mini-skill workflows that combine performance budgets with accessibility and design-system governance handoffs.",
+        "Complete Stage 4 asset hygiene/provenance verification and document outcomes."
       ],
       "suggested_new_mini_skills": [
-        "css-performance-budgeting"
+        "none required in this audit pass"
       ],
       "asset_hygiene_notes": [
-        "Stage 4 should verify any linked assets and external snippets for hygiene documentation."
+        "Resource links and asset references were preserved during Stage 3.5, but Stage 4 hygiene/provenance validation is still required before clean classification."
       ],
       "evidence": [
         {
           "path": "design/css-styling/resources/manifest.json",
-          "note": "Manifest defines 12 mini-skills with paired resources."
+          "note": "Manifest now lists 13 mini-skills, including css-performance-budgeting."
         },
         {
-          "path": "design/css-styling/examples/skills",
-          "note": "Examples present for all skills but variable depth."
+          "path": "design/css-styling/SKILL.md",
+          "note": "Router semantics are preserved and now include performance-oriented combinations."
+        },
+        {
+          "path": "design/css-styling/composition-protocol.md",
+          "note": "Composition protocol includes CSS workflow recipes, including performance regression triage."
+        },
+        {
+          "path": "design/css-styling/self-diagnostic-protocol.md",
+          "note": "Self-diagnostic protocol adds package rejection criteria and required checks for quality gates."
+        },
+        {
+          "path": "design/css-styling/resources/skill-catalog.md",
+          "note": "Catalog includes css-performance-budgeting and updated operational pairing guidance."
+        },
+        {
+          "path": "design/css-styling/resources/routing-guide.md",
+          "note": "Routing guide places css-performance-budgeting in review/quality routes and performance scenarios."
+        },
+        {
+          "path": "design/css-styling/resources/asset-link-index.md",
+          "note": "Asset link index preserves existing resource links and maps css-performance-budgeting with no required assets."
+        },
+        {
+          "path": "design/css-styling/references/skills/css-performance-budgeting.md",
+          "note": "New reference defines explicit CSS performance budgets, diagnostics, and release gates."
+        },
+        {
+          "path": "design/css-styling/examples/skills/css-performance-budgeting.md",
+          "note": "New example provides a concrete performance regression containment scenario."
+        },
+        {
+          "path": "design/css-styling/examples/skills/foundations.md",
+          "note": "Foundations example preserves token/layer doctrine and includes an account-surface token/layer refactor scenario."
+        },
+        {
+          "path": "design/css-styling/examples/skills/frontend-dev-guidelines.md",
+          "note": "Frontend dev guidelines example preserves React/TS operational patterns and adds feature implementation workflow detail."
         }
       ]
     },
@@ -519,30 +558,11 @@
     }
   ],
   "recommended_upgrade_order": [
-    {
-      "order": 1,
-      "package": "design/css-styling",
-      "reason": "Still needs-upgrade with uneven reference/example depth and relatively low overall score among unresolved content packages."
-    },
-    {
-      "order": 2,
-      "package": "design/accessibility-ux",
-      "reason": "Needs broader operational coverage and deeper multi-step remediation/reporting scenarios."
-    },
-    {
-      "order": 3,
-      "package": "design/creative-tools",
-      "reason": "Improved after expansion, but follow-up content pass should deepen end-to-end QA and signoff workflows."
-    },
-    {
-      "order": 4,
-      "package": "design/design-systems",
-      "reason": "Now structurally strong, but targeted follow-up should add deeper long-horizon operational evidence."
-    },
-    {
-      "order": 5,
-      "package": "design/brand-visual",
-      "reason": "Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency."
-    }
+    "design/accessibility-ux",
+    "design/3d-animation",
+    "design/creative-tools",
+    "design/design-systems",
+    "design/css-styling",
+    "design/brand-visual"
   ]
 }
