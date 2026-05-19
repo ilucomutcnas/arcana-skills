@@ -10,8 +10,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Professional | 1 |
 | Working | 7 |
 | Amateur | 0 |
-| Ready for use | 2 |
-| Needs upgrade | 5 |
+| Ready for use | 3 |
+| Needs upgrade | 4 |
 | Needs major upgrade | 0 |
 | Needs asset hygiene | 1 |
 | Needs registry only | 0 |
@@ -25,7 +25,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | design/brand-visual | 9 | 75 | working | needs-asset-hygiene |
 | design/content-writing | 8 | 93 | professional | ready-for-use |
 | design/creative-tools | 6 | 83 | working | needs-upgrade |
-| design/css-styling | 12 | 79 | working | needs-upgrade |
+| design/css-styling | 13 | 88 | working | ready-for-use |
 | design/design-systems | 10 | 84 | working | needs-upgrade |
 | design/pretext-ui | 10 | 86 | working | ready-for-use |
 
@@ -39,8 +39,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 | Status | Packages |
 |---|---:|
-| ready-for-use | 2 |
-| needs-upgrade | 5 |
+| ready-for-use | 3 |
+| needs-upgrade | 4 |
 | needs-major-upgrade | 0 |
 | needs-asset-hygiene | 1 |
 | needs-registry-only | 0 |
@@ -121,16 +121,25 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 ### design/css-styling
 - **Maturity:** working
-- **Status:** needs-upgrade
-- **Overall score:** 79
-- **Strengths:** Strong mini-skill count and complete structural package components.; Domain-specificity is generally good across styling topics.
-- **Quality gaps:** Reference and example depth are uneven with multiple short files.; Professional readiness limited by sparse end-to-end implementation scenarios.
-- **Recommended upgrade actions:** Expand short references with constraints, diagnostics, and browser compatibility playbooks.; Add richer examples that show full component theming and regression-safe styling changes.
-- **Suggested new mini-skills:** css-performance-budgeting
-- **Asset hygiene notes:** Stage 4 should verify any linked assets and external snippets for hygiene documentation.
+- **Status:** ready-for-use
+- **Overall score:** 88
+- **Strengths:** Mini-skill coverage expanded to 13 with css-performance-budgeting filling a concrete operational gap.; Routing and composition surfaces consistently integrate performance-budgeting workflows without breaking prior semantics.; References and examples now preserve CSS-specific doctrine/snippets while adding Stage 3.5 regression and triage scenarios.
+- **Quality gaps:** Despite stronger depth, several examples are still scenario slices rather than full release playbooks across all 13 mini-skills.; Package maturity remains below professional threshold because some cross-skill operational evidence is still moderate rather than exhaustive.; Asset hygiene/provenance is still pending Stage 4 verification and cannot be treated as fully clean.
+- **Recommended upgrade actions:** Deepen selected examples into end-to-end styling release playbooks with rollback criteria and measurable acceptance gates.; Add cross-mini-skill workflows that combine performance budgets with accessibility and design-system governance handoffs.; Complete Stage 4 asset hygiene/provenance verification and document outcomes.
+- **Suggested new mini-skills:** none required in this audit pass
+- **Asset hygiene notes:** Resource links and asset references were preserved during Stage 3.5, but Stage 4 hygiene/provenance validation is still required before clean classification.
 - **Evidence paths:**
-  - `design/css-styling/resources/manifest.json` — Manifest defines 12 mini-skills with paired resources.
-  - `design/css-styling/examples/skills` — Examples present for all skills but variable depth.
+  - `design/css-styling/resources/manifest.json` — Manifest now lists 13 mini-skills, including css-performance-budgeting.
+  - `design/css-styling/SKILL.md` — Router semantics are preserved and now include performance-oriented combinations.
+  - `design/css-styling/composition-protocol.md` — Composition protocol includes CSS workflow recipes, including performance regression triage.
+  - `design/css-styling/self-diagnostic-protocol.md` — Self-diagnostic protocol adds package rejection criteria and required checks for quality gates.
+  - `design/css-styling/resources/skill-catalog.md` — Catalog includes css-performance-budgeting and updated operational pairing guidance.
+  - `design/css-styling/resources/routing-guide.md` — Routing guide places css-performance-budgeting in review/quality routes and performance scenarios.
+  - `design/css-styling/resources/asset-link-index.md` — Asset link index preserves existing resource links and maps css-performance-budgeting with no required assets.
+  - `design/css-styling/references/skills/css-performance-budgeting.md` — New reference defines explicit CSS performance budgets, diagnostics, and release gates.
+  - `design/css-styling/examples/skills/css-performance-budgeting.md` — New example provides a concrete performance regression containment scenario.
+  - `design/css-styling/examples/skills/foundations.md` — Foundations example preserves token/layer doctrine and includes an account-surface token/layer refactor scenario.
+  - `design/css-styling/examples/skills/frontend-dev-guidelines.md` — Frontend dev guidelines example preserves React/TS operational patterns and adds feature implementation workflow detail.
 
 ### design/design-systems
 - **Maturity:** working
@@ -174,8 +183,9 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
   - `design/pretext-ui/examples/skills/library-architecture.md` — Example is a concrete lineOverflowHint API architecture scenario with compatibility and risk tables.
 
 ## Recommended Upgrade Order
-1. **design/css-styling** — Still needs-upgrade with uneven reference/example depth and relatively low overall score among unresolved content packages.
-2. **design/accessibility-ux** — Needs broader operational coverage and deeper multi-step remediation/reporting scenarios.
-3. **design/creative-tools** — Improved after expansion, but follow-up content pass should deepen end-to-end QA and signoff workflows.
-4. **design/design-systems** — Now structurally strong, but targeted follow-up should add deeper long-horizon operational evidence.
-5. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency.
+1. **design/accessibility-ux** — Highest unresolved content-upgrade priority after css-styling moved to ready-for-use.
+2. **design/3d-animation** — Strong package but still below professional threshold; deepen examples and operational evidence.
+3. **design/creative-tools** — Improved after expansion; follow-up should deepen QA/signoff release playbooks.
+4. **design/design-systems** — Structurally strong; remaining follow-up is deeper long-horizon operational evidence.
+5. **design/css-styling** — Keep as lower-priority follow-up for advanced playbook depth, not an immediate upgrade blocker.
+6. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency.
