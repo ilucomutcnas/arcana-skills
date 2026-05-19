@@ -10,8 +10,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Professional | 1 |
 | Working | 7 |
 | Amateur | 0 |
-| Ready for use | 1 |
-| Needs upgrade | 6 |
+| Ready for use | 2 |
+| Needs upgrade | 5 |
 | Needs major upgrade | 0 |
 | Needs asset hygiene | 1 |
 | Needs registry only | 0 |
@@ -27,7 +27,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | design/creative-tools | 6 | 83 | working | needs-upgrade |
 | design/css-styling | 12 | 79 | working | needs-upgrade |
 | design/design-systems | 10 | 84 | working | needs-upgrade |
-| design/pretext-ui | 10 | 71 | working | needs-upgrade |
+| design/pretext-ui | 10 | 86 | working | ready-for-use |
 
 ## Maturity and Status Distribution
 
@@ -39,8 +39,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 | Status | Packages |
 |---|---:|
-| ready-for-use | 1 |
-| needs-upgrade | 6 |
+| ready-for-use | 2 |
+| needs-upgrade | 5 |
 | needs-major-upgrade | 0 |
 | needs-asset-hygiene | 1 |
 | needs-registry-only | 0 |
@@ -153,19 +153,29 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 ### design/pretext-ui
 - **Maturity:** working
-- **Status:** needs-upgrade
-- **Overall score:** 71
-- **Strengths:** Package structure and manifest integrity are complete.; Mini-skill count is strong for domain breadth.
-- **Quality gaps:** Example files are very brief and often skeletal.; Reference depth is limited for consistent professional execution.
-- **Recommended upgrade actions:** Expand examples into concrete UI implementation and review scenarios.; Increase reference operational depth with constraints, QA checks, and failure handling.
-- **Suggested new mini-skills:** none proposed in this pass
-- **Asset hygiene notes:** Package contains asset index and no clear heavy binary concentration in main package tree; maintain Stage 4 review.
+- **Status:** ready-for-use
+- **Overall score:** 86
+- **Strengths:** Router, composition, self-diagnostic, routing guide, and asset index form a coherent package-level operating system for multi-skill Pretext work.; References preserve Pretext-specific command doctrine and add stronger evidence gates for browser accuracy and benchmarking workflows.; Examples are now concrete Pretext scenarios (browser mismatch triage, multilingual corpus sweep, demo dogfooding, and API-surface architecture change) instead of skeletal templates.
+- **Quality gaps:** Asset hygiene and provenance are not yet Stage 4-verified, so package should not be treated as fully clean.; Several examples are strong but still scenario slices rather than full end-to-end release playbooks across all 10 mini-skills.
+- **Recommended upgrade actions:** Run Stage 4 asset hygiene/provenance review and document outcomes before any clean-hygiene classification.; Deepen selected examples into end-to-end release-candidate playbooks with explicit rollback criteria and attached evidence artifacts.
+- **Suggested new mini-skills:** none required in this audit pass
+- **Asset hygiene notes:** Stage 3.4 content depth is materially improved, but Stage 4 asset hygiene/provenance verification is still pending.
 - **Evidence paths:**
-  - `design/pretext-ui/resources/manifest.json` — Manifest declares 10 mini-skills with paired references/examples.
-  - `design/pretext-ui/examples/skills` — Examples are present but notably short across files.
+  - `design/pretext-ui/resources/manifest.json` — Manifest still lists 10 mini-skills with paired reference/example links.
+  - `design/pretext-ui/SKILL.md` — Router preserves multi-skill semantics and adds adjacent/validation activation guidance.
+  - `design/pretext-ui/composition-protocol.md` — Composition protocol preserves universal routing model and adds Pretext-oriented workflow composition guidance.
+  - `design/pretext-ui/resources/routing-guide.md` — Routing guide preserves layered routes and adds extended Pretext task scenarios.
+  - `design/pretext-ui/resources/asset-link-index.md` — Asset index preserves original docs, per-skill links, and repository asset-directory mapping.
+  - `design/pretext-ui/references/skills/browser-accuracy.md` — Reference preserves browser accuracy commands/doctrine and adds mismatch taxonomy plus evidence gates.
+  - `design/pretext-ui/references/skills/benchmarks-profiling.md` — Reference preserves benchmark/profiling loop and extends budget/evidence expectations.
+  - `design/pretext-ui/examples/skills/browser-accuracy.md` — Example is a concrete cross-browser mismatch triage scenario at fixed width and page context.
+  - `design/pretext-ui/examples/skills/corpus-diagnostics.md` — Example is a concrete multilingual corpus sweep with taxonomy and action ownership.
+  - `design/pretext-ui/examples/skills/demo-dogfooding.md` — Example is a concrete editorial-engine dogfooding workflow with QA checklist and feedback loops.
+  - `design/pretext-ui/examples/skills/library-architecture.md` — Example is a concrete lineOverflowHint API architecture scenario with compatibility and risk tables.
 
 ## Recommended Upgrade Order
-1. **design/pretext-ui** — Still needs-upgrade with skeletal examples and shallow operational depth compared to peers.
-2. **design/creative-tools** — Improved significantly but still needs deeper end-to-end scenarios and Stage 4 hygiene verification.
-3. **design/design-systems** — Upgraded to needs-upgrade after Stage 3 expansion; follow-up should focus on deeper long-horizon operational evidence rather than major restructuring.
-4. **design/brand-visual** — Maintain as Stage 4 asset-hygiene priority due to binary asset footprint rather than normal content-upgrade urgency.
+1. **design/css-styling** — Still needs-upgrade with uneven reference/example depth and relatively low overall score among unresolved content packages.
+2. **design/accessibility-ux** — Needs broader operational coverage and deeper multi-step remediation/reporting scenarios.
+3. **design/creative-tools** — Improved after expansion, but follow-up content pass should deepen end-to-end QA and signoff workflows.
+4. **design/design-systems** — Now structurally strong, but targeted follow-up should add deeper long-horizon operational evidence.
+5. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency.
