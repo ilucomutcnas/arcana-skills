@@ -1,86 +1,38 @@
----
-name: "animation-motion"
-title: "CSS Animation & Motion Systems"
-description: "Tasteful, performance-safe motion for UI content transitions, interactive states, and reduced-motion support."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# animation-motion
 
-## Package Structure
+## Operational Scope
+Production guidance for animation motion with decision rules, constraints, QA evidence, and handoff requirements.
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/animation-motion.md`
-- Examples: `examples/skills/animation-motion.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Workflow
+1. Define user flows, states, and page-family scope.
+2. Apply architecture constraints (tokens, layers, framework boundaries).
+3. Implement with accessibility, responsive, and browser-compat checks.
+4. Run diagnostics (DevTools, visual regression, interaction/focus checks).
+5. Record regression gates and merge criteria.
 
-## Linked Package Files
+## Constraints and Validation
+- Include explicit responsive evidence (mobile/tablet/desktop breakpoints or container states).
+- Include accessibility checks (focus, contrast, keyboard, reduced motion where relevant).
+- Include browser checks for Chrome/Safari/Firefox.
+- Reject unmeasured performance claims and undocumented overrides.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
+## Failure Modes
+- Style drift from token system.
+- Specificity escalation and brittle overrides.
+- State gaps (loading/error/empty/disabled).
+- Inconsistent behavior across frameworks or routes.
 
-# CSS Animation & Motion Systems
+## Decision Rules
+- Define acceptance evidence before edits: screenshots/trace IDs, responsive matrix, and rollback trigger.
+- Map constraints to layers/tokens first; avoid ad-hoc local overrides.
+- Explicitly document browser differences and fallbacks.
 
-## Purpose
-Use motion to clarify interface behavior, reinforce hierarchy, and add tactility without harming performance or trust.
+## Diagnostics Playbook
+- Use DevTools for computed style and cascade inspection on affected states.
+- Record keyboard traversal, focus ring visibility, and contrast at each major state.
+- Validate against anti-patterns list and flag severity with owners and due dates.
 
-## Motion doctrine
-
-### Motion is functional first
-Motion should:
-- indicate change
-- confirm interaction
-- guide attention
-- preserve orientation
-- soften state transitions
-
-It should not:
-- distract
-- delay obvious tasks
-- simulate depth everywhere
-- constantly compete with content
-
-### Safe defaults
-Prefer animating:
-- opacity
-- transform
-
-Avoid animating when possible:
-- width
-- height
-- top
-- left
-- filter on large surfaces
-- box-shadow on many items at once
-
-### Duration guidance
-- tiny feedback: 100–140ms
-- standard interaction: 160–220ms
-- panel / overlay motion: 220–320ms
-- major decorative sequences: only when justified
-
-### Reduced motion
-Always provide a reduced-motion path.
-
-## Good practices
-
-- Use one or two easing families consistently.
-- Match motion intensity to component importance.
-- Keep list hover effects subtle.
-- Make skeletons and loading feedback calm, not flashy.
-
-## Bad practices
-
-- bounce everywhere
-- oversized spring motion for enterprise UI
-- delayed hover response
-- infinite pulsing on critical surfaces
-- entrance animation on every element in a dense screen
-
-## Validation
-
-Ask:
-- Does this help comprehension?
-- Is this performant on low-end hardware?
-- Would turning this off improve usability?
-- Is reduced motion respected?
+## Handoff Expectations
+- Provide changed selectors/components list and migration notes.
+- Include regression gates (blocking vs acceptable) and unresolved risks.
+- Link follow-up tickets for deferred improvements with accountable owners.

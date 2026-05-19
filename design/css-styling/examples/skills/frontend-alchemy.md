@@ -1,33 +1,22 @@
-# Frontend Alchemy — Examples
+# frontend-alchemy Example
 
-## Design Feasibility and Impact Index (DFII)
+## Scenario
+Realistic product delivery workflow for `frontend-alchemy` with end-to-end QA.
 
-```
-DFII = (Impact + Fit + Feasibility + Performance) − Consistency Risk
-```
+## Implementation Highlights
+- Defined scope, states, and component/page matrix.
+- Applied token and cascade constraints.
+- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
+- Added responsive checks with explicit width-state table or breakpoint evidence.
+- Added regression gate criteria before merge.
 
-Rate each dimension 1-5:
+## Acceptance Criteria
+- No severity-1 styling regressions.
+- Cross-browser checks complete (Chrome/Safari/Firefox).
+- Performance impact documented with rationale.
+- Handoff includes implementation notes for design + frontend reviewers.
 
-| Dimension | Question |
-|-----------|----------|
-| Impact | Does this make the interface notably better? |
-| Fit | Does it belong in this design language? |
-| Feasibility | Can it be built cleanly? |
-| Performance | Does it run well? |
-| Consistency Risk | Does it create drift from the system? |
-
-**Range:** -5 → +15. Proceed if ≥ 6.
-
-## Pre-Implementation Questions
-
-1. Who is this for, emotionally?
-2. Should this feel trustworthy, exciting, calm, or provocative?
-3. Is memorability or clarity more important?
-4. Will this scale to other pages/components?
-
-## Core Principles
-
-- Clarity beats cleverness
-- Restraint beats excess
-- Precision beats decoration
-- Intentionality beats defaults
+## QA Gates
+- Width/device checks completed and documented.
+- Accessibility and interaction states validated with evidence.
+- Reviewer checklist includes rollback plan if regressions appear after merge.

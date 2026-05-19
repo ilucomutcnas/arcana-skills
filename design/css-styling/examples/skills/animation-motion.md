@@ -1,45 +1,22 @@
-# Examples — Animation & Motion
+# animation-motion Example
 
-## Example: subtle interaction lift
+## Scenario
+Realistic product delivery workflow for `animation-motion` with end-to-end QA.
 
-```css
-.interactive-card {
-  transition:
-    transform var(--duration-fast) var(--ease-standard),
-    box-shadow var(--duration-fast) var(--ease-standard);
-}
+## Implementation Highlights
+- Defined scope, states, and component/page matrix.
+- Applied token and cascade constraints.
+- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
+- Added responsive checks with explicit width-state table or breakpoint evidence.
+- Added regression gate criteria before merge.
 
-.interactive-card:hover {
-  transform: translateY(-2px);
-}
-```
+## Acceptance Criteria
+- No severity-1 styling regressions.
+- Cross-browser checks complete (Chrome/Safari/Firefox).
+- Performance impact documented with rationale.
+- Handoff includes implementation notes for design + frontend reviewers.
 
-## Example: reduced motion
-
-```css
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-```
-
-## Example: dismiss / reveal panel
-
-```css
-.panel {
-  opacity: 0;
-  transform: translateY(0.5rem);
-  transition:
-    opacity var(--duration-base) var(--ease-standard),
-    transform var(--duration-base) var(--ease-standard);
-}
-
-.panel[data-open="true"] {
-  opacity: 1;
-  transform: translateY(0);
-}
-```
+## QA Gates
+- Width/device checks completed and documented.
+- Accessibility and interaction states validated with evidence.
+- Reviewer checklist includes rollback plan if regressions appear after merge.

@@ -84,3 +84,11 @@ When selecting mini-skills, use these criteria:
 - Risk: which mini-skills reduce the chance of wrong, incomplete, unsafe, or shallow output?
 - Validation: which mini-skills can test, measure, review, or monitor the result?
 - Scale: which mini-skills become necessary if the task affects production, cost, performance, rollout, or multiple stakeholders?
+
+## Workflow Recipes
+- Token/cascade refactor: foundations + language-conventions + site-wide-systems.
+- Responsive component implementation: layout-responsive + general-ui-styling + frontend-dev-guidelines.
+- CSS performance regression triage: css-performance-budgeting + css-review-audit + animation-motion/layout-responsive.
+- Tailwind component system rollout: tailwind-design-system + framework-guides + foundations.
+- Landing page styling pass: one-pager-landing + general-ui-styling + css-performance-budgeting.
+- CSS audit remediation program: css-review-audit + site-wide-systems + frontend-dev-guidelines.

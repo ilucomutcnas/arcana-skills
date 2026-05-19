@@ -77,3 +77,8 @@
   - [`frontend-dev-guidelines__resources/styling-guide.md`](../frontend-dev-guidelines__resources/styling-guide.md)
   - [`frontend-dev-guidelines__resources/typescript-standards.md`](../frontend-dev-guidelines__resources/typescript-standards.md)
 
+
+## css-performance-budgeting
+- Reference: [`references/skills/css-performance-budgeting.md`](../references/skills/css-performance-budgeting.md)
+- Examples: [`examples/skills/css-performance-budgeting.md`](../examples/skills/css-performance-budgeting.md)
+- Assets: none required.

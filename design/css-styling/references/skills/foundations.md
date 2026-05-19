@@ -1,99 +1,34 @@
----
-name: "css-foundations"
-title: "CSS Foundations & Architecture"
-description: "Defines the base doctrine for tokens, cascade, naming, theming, layering, and maintainable CSS system design."
-risk: "safe"
-source: "https://github.com/ilucomutcnas/arcana-skills"
-date_added: "30.03.2026"
----
+# foundations
 
-## Package Structure
+## Core Governance
+- Separate primitive tokens (`--space-4`, `--gray-900`) from semantic tokens (`--surface-card`, `--text-muted`).
+- Maintain explicit cascade layers: `reset`, `base`, `components`, `utilities`, `overrides`.
+- Keep reset rules minimal and accessibility-safe (font inheritance, list semantics, form controls).
 
-- Main router: `SKILL.md`
-- This reference: `references/skills/foundations.md`
-- Examples: `examples/skills/foundations.md`
-- Shared rules: `shared-rules/STYLE-GUARDRAILS.md`, `shared-rules/ANTI-PATTERNS.md`
+## Naming and Token Constraints
+- Primitive names are scale-based; semantic names are role-based.
+- Disallow component names in primitive token namespace.
+- Theme variables must map semantic tokens, not raw colors in components.
 
-## Linked Package Files
+## Layering Boundaries
+- `base` defines typographic rhythm and global spacing defaults.
+- `components` owns reusable UI blocks only.
+- `utilities` are low-specificity single-purpose helpers.
+- `overrides` are temporary and ticket-linked with expiry owner.
 
-- Shared: `shared-rules/STYLE-GUARDRAILS.md` — universal CSS guardrails
-- Shared: `shared-rules/ANTI-PATTERNS.md` — CSS anti-patterns reference
+## Workflow
+1. Audit current token collisions and specificity hotspots.
+2. Create migration table old token -> semantic token.
+3. Move rules into layer boundaries with visual regression snapshots.
+4. Run dark/light theme and high contrast checks.
+5. Record adoption progress and deprecated token cutoff date.
 
-# CSS Foundations & Architecture
+## Diagnostics and Compatibility
+- Validate `@layer` fallback strategy for older browsers (progressive enhancement).
+- Use computed-style checks for token resolution across themes.
+- Verify focus outline contrast after reset updates.
 
-## Purpose
-Build a styling foundation that can scale without collapsing into overrides, duplication, and specificity fights.
-
-## Use when
-- creating or refactoring a design token system
-- defining global styling rules
-- deciding naming strategy
-- setting cascade policy
-- planning themes or dark mode
-- establishing utility vs component boundaries
-
-## Doctrine
-
-### 1. Tokens first
-Define and reuse tokens for:
-- color
-- spacing
-- typography scale
-- radius
-- shadow
-- border widths
-- motion durations
-- easing curves
-- z-index layers
-
-### 2. Stable layering
-Use a clear order:
-1. reset / normalize
-2. tokens / variables
-3. base elements
-4. layout primitives
-5. components
-6. utilities
-7. exceptions
-
-### 3. Specificity must stay boring
-- Prefer single-class selectors.
-- Avoid tag-plus-class unless needed.
-- Avoid nesting that creates accidental lock-in.
-- Prefer local override contracts instead of selector escalation.
-
-### 4. Theme through variables
-Dark mode, brand mode, seasonal themes, or tenant-level branding should flow through variables, not duplicated selector trees.
-
-### 5. Naming is operational
-Choose a naming strategy and stay consistent:
-- semantic component classes
-- utility classes
-- BEM-like structure
-- token references
-Do not combine them randomly.
-
-## Good practices
-
-- Use CSS custom properties for system values.
-- Separate semantic tokens from raw palette values.
-- Keep global CSS intentionally small.
-- Document layer ownership clearly.
-- Create layout primitives such as container, stack, cluster, grid, section.
-
-## Bad practices
-
-- random hardcoded colors
-- spacing values invented per component
-- z-index numbers without scale
-- component styles dependent on page DOM structure
-- unbounded nesting in preprocessors
-- “temporary” overrides left in production
-
-## Validation
-
-Before finalizing:
-- Can another page reuse this without override debt?
-- Is the token system expressive enough but not bloated?
-- Does dark mode or theming require duplication?
-- Would deleting one file unexpectedly break three unrelated surfaces?
+## Anti-Patterns
+- Global `!important` utilities.
+- Component files redefining global typography tokens.
+- Mixing brand-specific color literals directly in page CSS.

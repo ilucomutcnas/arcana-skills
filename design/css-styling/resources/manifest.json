@@ -103,5 +103,13 @@
     "assets": [
       "frontend-dev-guidelines__resources/"
     ]
+  },
+  {
+    "title": "css-performance-budgeting",
+    "slug": "css-performance-budgeting",
+    "purpose": "Controls CSS runtime and rendering performance through explicit budgets, diagnostics, and release gates.",
+    "when": "When addressing style payload growth, selector/cascade complexity, reflow risk, animation jank, or render-blocking CSS regressions.",
+    "reference": "references/skills/css-performance-budgeting.md",
+    "examples": "examples/skills/css-performance-budgeting.md"
   }
 ]

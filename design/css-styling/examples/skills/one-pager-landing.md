@@ -1,31 +1,22 @@
-# Examples — One-Pager & Landing
+# one-pager-landing Example
 
-## Example: hero shell
+## Scenario
+Realistic product delivery workflow for `one-pager-landing` with end-to-end QA.
 
-```css
-.hero {
-  padding-block: clamp(5rem, 8vw, 8rem);
-  background:
-    radial-gradient(circle at top, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 45%),
-    var(--color-bg);
-}
+## Implementation Highlights
+- Defined scope, states, and component/page matrix.
+- Applied token and cascade constraints.
+- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
+- Added responsive checks with explicit width-state table or breakpoint evidence.
+- Added regression gate criteria before merge.
 
-.hero__inner {
-  width: min(100% - 2rem, 74rem);
-  margin-inline: auto;
-  display: grid;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-```
+## Acceptance Criteria
+- No severity-1 styling regressions.
+- Cross-browser checks complete (Chrome/Safari/Firefox).
+- Performance impact documented with rationale.
+- Handoff includes implementation notes for design + frontend reviewers.
 
-## Example: CTA band
-
-```css
-.cta-band {
-  padding: clamp(2rem, 4vw, 3rem);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface-strong);
-  color: var(--color-surface-strong-contrast);
-}
-```
+## QA Gates
+- Width/device checks completed and documented.
+- Accessibility and interaction states validated with evidence.
+- Reviewer checklist includes rollback plan if regressions appear after merge.

@@ -1,68 +1,22 @@
-# Tailwind Design System — Examples
+# tailwind-design-system Example
 
-## Semantic Colors
+## Scenario
+Realistic product delivery workflow for `tailwind-design-system` with end-to-end QA.
 
-```tsx
-// Incorrect — raw colors
-<div className="bg-blue-500 text-white">
-  <p className="text-gray-600">Secondary</p>
-</div>
+## Implementation Highlights
+- Defined scope, states, and component/page matrix.
+- Applied token and cascade constraints.
+- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
+- Added responsive checks with explicit width-state table or breakpoint evidence.
+- Added regression gate criteria before merge.
 
-// Correct — semantic tokens
-<div className="bg-primary text-primary-foreground">
-  <p className="text-muted-foreground">Secondary</p>
-</div>
-```
+## Acceptance Criteria
+- No severity-1 styling regressions.
+- Cross-browser checks complete (Chrome/Safari/Firefox).
+- Performance impact documented with rationale.
+- Handoff includes implementation notes for design + frontend reviewers.
 
-## Built-in Variants First
-
-```tsx
-// Incorrect — manual styling
-<Button className="border border-input bg-transparent hover:bg-accent">
-  Click me
-</Button>
-
-// Correct — variant prop
-<Button variant="outline">Click me</Button>
-```
-
-## className for Layout Only
-
-```tsx
-// Incorrect — overriding colors
-<Card className="bg-blue-100 text-blue-900 font-bold">
-
-// Correct — layout only
-<Card className="max-w-md mx-auto">
-```
-
-## Conditional Classes with cn()
-
-```tsx
-import { cn } from "@/lib/utils"
-
-// Incorrect
-<div className={`flex ${isActive ? "bg-primary" : "bg-muted"}`}>
-
-// Correct
-<div className={cn("flex items-center", isActive ? "bg-primary text-primary-foreground" : "bg-muted")}>
-```
-
-## Utility Preferences
-
-- `gap-4` not `space-y-4`
-- `size-10` not `w-10 h-10`
-- `truncate` not `overflow-hidden text-ellipsis whitespace-nowrap`
-
-## Status Indicators
-
-```tsx
-// Incorrect — raw colors
-<span className="text-emerald-600">+20.1%</span>
-
-// Correct — semantic tokens or Badge
-<Badge variant="secondary">+20.1%</Badge>
-<span className="text-destructive">-3.2%</span>
-```
-
-For detailed implementation patterns, see `tailwind-design-system__resources/implementation-playbook.md`.
+## QA Gates
+- Width/device checks completed and documented.
+- Accessibility and interaction states validated with evidence.
+- Reviewer checklist includes rollback plan if regressions appear after merge.

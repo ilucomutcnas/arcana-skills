@@ -26,6 +26,7 @@ Use this guide to decide which extracted file to open.
 
 ### Review and Quality
 - **css-review-audit** -> `references/skills/css-review-audit.md`
+- **css-performance-budgeting** -> `references/skills/css-performance-budgeting.md`
 
 ### Frontend Engineering
 - **frontend-alchemy** -> `references/skills/frontend-alchemy.md`
@@ -46,3 +47,11 @@ Use this guide to decide which extracted file to open.
 
 - [`asset-link-index.md`](asset-link-index.md)
 - [`manifest.json`](manifest.json)
+
+
+- CSS performance regression -> css-performance-budgeting (primary) + css-review-audit + layout-responsive + frontend-dev-guidelines
+- Animation jank -> css-performance-budgeting (primary) + animation-motion + general-ui-styling
+- Layout reflow issue -> css-performance-budgeting + layout-responsive
+- Unused CSS / payload cleanup -> css-performance-budgeting + site-wide-systems
+- Site-wide cascade complexity cleanup -> site-wide-systems + css-review-audit + css-performance-budgeting
+- Landing page performance-sensitive styling -> one-pager-landing + css-performance-budgeting

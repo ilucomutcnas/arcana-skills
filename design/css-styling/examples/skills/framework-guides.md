@@ -1,24 +1,22 @@
-# Examples — Framework Guides
+# framework-guides Example
 
-## Example: Tailwind discipline
+## Scenario
+Realistic product delivery workflow for `framework-guides` with end-to-end QA.
 
-Good:
-- utilities used consistently
-- tokens mapped through theme
-- repeated patterns extracted into components or class abstractions
+## Implementation Highlights
+- Defined scope, states, and component/page matrix.
+- Applied token and cascade constraints.
+- Added accessibility checks (focus, contrast, keyboard, reduced-motion when applicable).
+- Added responsive checks with explicit width-state table or breakpoint evidence.
+- Added regression gate criteria before merge.
 
-Bad:
-- massive unreadable class chains
-- arbitrary values everywhere
-- color usage detached from theme
+## Acceptance Criteria
+- No severity-1 styling regressions.
+- Cross-browser checks complete (Chrome/Safari/Firefox).
+- Performance impact documented with rationale.
+- Handoff includes implementation notes for design + frontend reviewers.
 
-## Example: CSS Modules fit
-
-Good for:
-- card component variants
-- form field shells
-- isolated dashboard widgets
-
-Less good for:
-- platform-wide token governance
-- typography rules that should remain global
+## QA Gates
+- Width/device checks completed and documented.
+- Accessibility and interaction states validated with evidence.
+- Reviewer checklist includes rollback plan if regressions appear after merge.
