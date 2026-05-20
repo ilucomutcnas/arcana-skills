@@ -84,3 +84,14 @@ When selecting mini-skills, use these criteria:
 - Risk: which mini-skills reduce the chance of wrong, incomplete, unsafe, or shallow output?
 - Validation: which mini-skills can test, measure, review, or monitor the result?
 - Scale: which mini-skills become necessary if the task affects production, cost, performance, rollout, or multiple stakeholders?
+
+
+## Practical Workflow Recipes
+
+1. **Complete Three.js scene delivery**: primary `threejs-fundamentals`; adjacent `threejs-geometry`, `threejs-materials`, `threejs-lighting`; validation `threejs-interaction` for runtime behavior checks.
+2. **Procedural shader debugging**: primary `procedural-shader-debugging`; adjacent `glsl-shader-alchemist`, `threejs-shader-forge`, `threejs-postprocessing`; validation `threejs-materials`.
+3. **GLTF asset pipeline and release check**: primary `threejs-loaders`; adjacent `threejs-textures`, `threejs-materials`, `threejs-animation`; validation `threejs-fundamentals`.
+4. **Scroll-driven 3D/animation experience**: primary `scroll-experience`; adjacent `threejs-animation`, `threejs-fundamentals`; validation `threejs-interaction`.
+5. **Spline hero integration**: primary `spline-3d-integration`; adjacent `scroll-experience`, `threejs-fundamentals`; validation `threejs-loaders` for fallback and lifecycle readiness.
+6. **Makepad animated shader component**: primary `makepad-animator`; adjacent `makepad-shader-lab`; validation `procedural-shader-debugging` for artifact triage workflow.
+7. **Generative art release package**: primary `algorithmic-art`; adjacent `glsl-shader-alchemist`, `threejs-postprocessing`; validation `threejs-fundamentals` for canvas and runtime quality.

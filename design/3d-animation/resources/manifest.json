@@ -6,7 +6,10 @@
     "when": "When creating generative or procedural art, algorithmic visual compositions, or p5.js-based interactive art pieces.",
     "reference": "references/skills/algorithmic-art.md",
     "examples": "examples/skills/algorithmic-art.md",
-    "assets": ["algorithmic-art__templates/", "algorithmic-art__LICENSE.txt"]
+    "assets": [
+      "algorithmic-art__templates/",
+      "algorithmic-art__LICENSE.txt"
+    ]
   },
   {
     "title": "makepad-animator",
@@ -47,7 +50,10 @@
     "when": "When embedding Spline 3D scenes into websites, handling Spline event listeners, or optimizing Spline performance.",
     "reference": "references/skills/spline-3d-integration.md",
     "examples": "examples/skills/spline-3d-integration.md",
-    "assets": ["spline-3d-integration__examples/", "spline-3d-integration__guides/"]
+    "assets": [
+      "spline-3d-integration__examples/",
+      "spline-3d-integration__guides/"
+    ]
   },
   {
     "title": "threejs-animation",
@@ -128,5 +134,13 @@
     "when": "When loading, applying, or optimizing textures for Three.js materials.",
     "reference": "references/skills/threejs-textures.md",
     "examples": "examples/skills/threejs-textures.md"
+  },
+  {
+    "title": "procedural-shader-debugging",
+    "slug": "procedural-shader-debugging",
+    "purpose": "Diagnose and remediate broken procedural visuals across GLSL, Three.js shader stacks, Makepad shaders, and post-processing pipelines.",
+    "when": "When procedural shader visuals fail due to precision, coordinate-space, pass-order, color-space, or GPU-specific rendering defects.",
+    "reference": "references/skills/procedural-shader-debugging.md",
+    "examples": "examples/skills/procedural-shader-debugging.md"
   }
 ]

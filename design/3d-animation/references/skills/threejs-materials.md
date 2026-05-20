@@ -75,3 +75,21 @@ Common properties: `side` (FrontSide, BackSide, DoubleSide), `transparent`, `opa
 - Material configuration with all relevant properties.
 - Texture map assignments when applicable.
 - Comments explaining material choice rationale.
+
+## Production Constraints and Failure Modes
+
+- Define measurable performance budgets (frame time, memory, draw calls, shader compile time) before implementation.
+- Document browser/GPU matrix (Chrome, Safari, Firefox + at least one mobile device class) and known limitations.
+- Add explicit fallback behavior (reduced motion, static poster, disabled heavy effect path) for low-end/mobile constraints.
+- Capture failure modes in review notes: visual artifacts, precision drift, lifecycle leaks, disposal omissions, and asset loading errors.
+- Require release evidence: before/after metrics, acceptance checklist, and rollback strategy.
+
+## Diagnostics Checklist
+
+1. Reproduce issue with minimal scene/component and deterministic inputs.
+2. Isolate subsystem boundaries (geometry/material/shader/postprocessing/interaction/loader).
+3. Instrument timing (`performance.now`, frame budget logging, renderer info counters).
+4. Validate resize/dispose/context lifecycle and listener cleanup.
+5. Verify color-space/tone mapping consistency and mobile-specific rendering behavior.
+6. Record pass/fail evidence and ship only if all blocking defects are cleared.
+

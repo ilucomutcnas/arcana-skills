@@ -265,3 +265,26 @@ Use a response like this when issues are found:
 - After selecting the working set, run Activated Scope Check.
 - Expand diagnostic scope only when the task, the evidence, or the user request justifies it.
 - Treat self-diagnostic as mandatory package hygiene, but keep it router-aware, lazy, and proportional to scope.
+
+
+## Domain-Specific Stage 3 Checks
+
+- Verify activated primary/adjacent/validation mini-skills are explicitly listed for the task.
+- Verify renderer/scene lifecycle evidence: resize handling, disposal, and context-loss strategy.
+- Verify shader/debug evidence exists for shader-affecting work, including minimal repro and before/after notes.
+- Verify geometry/material/texture/loader budgets and tradeoffs are documented.
+- Verify animation timing plus reduced-motion/fallback strategy.
+- Verify browser/GPU/mobile compatibility evidence is present.
+- Verify asset/resource index entries are preserved and not deleted.
+- Verify release evidence includes rollback or fallback path.
+
+## Rejection Criteria (Stage 3)
+
+Reject output when any of the following are true:
+- shader claims are made without minimal reproduction or before/after evidence;
+- 3D scene changes omit resize/dispose/context-loss handling;
+- model or texture changes omit loading/error/fallback path;
+- postprocessing effects omit performance and mobile fallback notes;
+- scroll effects omit reduced-motion or keyboard fallback;
+- binary assets are added or removed;
+- existing asset-index/resource entries are deleted.
