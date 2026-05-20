@@ -6,8 +6,8 @@
     "professional": 1,
     "working": 7,
     "amateur": 0,
-    "ready_for_use": 3,
-    "needs_upgrade": 4,
+    "ready_for_use": 4,
+    "needs_upgrade": 3,
     "needs_major_upgrade": 0,
     "needs_asset_hygiene": 1,
     "needs_registry_only": 0
@@ -52,7 +52,7 @@
       ],
       "quality_gaps": [
         "Some example files are shorter and less workflow-rich than top-tier packages.",
-        "Overall score is below the rubric’s typical professional band (90-100), so classification is kept conservative.",
+        "Overall score is below the rubric\u2019s typical professional band (90-100), so classification is kept conservative.",
         "Asset hygiene readiness is good but still depends on Stage 4 verification."
       ],
       "recommended_upgrade_actions": [
@@ -85,49 +85,88 @@
       "domain": "design",
       "slug": "accessibility-ux",
       "path": "design/accessibility-ux",
-      "mini_skill_count": 6,
+      "mini_skill_count": 8,
       "maturity": "working",
-      "status": "needs-upgrade",
-      "overall_score": 81,
+      "status": "ready-for-use",
+      "overall_score": 89,
       "scores": {
         "structure_completeness": 5,
         "manifest_integrity": 5,
-        "routing_clarity": 4,
-        "reference_depth": 4,
-        "example_quality": 4,
-        "domain_coverage": 3,
+        "routing_clarity": 5,
+        "reference_depth": 5,
+        "example_quality": 5,
+        "domain_coverage": 4,
         "specificity_and_non_genericness": 4,
-        "professional_readiness": 4,
+        "professional_readiness": 5,
         "english_only_readiness": 5,
         "asset_hygiene_readiness": 3
       },
       "strengths": [
-        "Clear structure and coherent accessibility-focused skill set.",
-        "Reference material is practical and non-generic for UX accessibility tasks."
+        "Package now covers 8 mini-skills with explicit audit-reporting and assistive-tech edge-case workflows integrated across router, catalog, and routing resources.",
+        "References and examples are operationally deep, including WCAG mapping, retest gates, evidence packs, AT/browser matrix expectations, and concrete multi-step remediation scenarios."
       ],
       "quality_gaps": [
-        "Domain breadth likely under-covered with only six mini-skills.",
-        "Asset hygiene readiness is moderate and should be documented more explicitly."
+        "Domain breadth is materially improved but still below full professional-band completeness because additional advanced compliance playbooks and long-horizon governance patterns could be expanded.",
+        "Asset hygiene readiness remains moderate; Stage 4 provenance/hygiene verification is still required before any clean-hygiene classification."
       ],
       "recommended_upgrade_actions": [
-        "Add broader coverage for audits, remediation reporting, and assistive-tech edge-case workflows.",
-        "Expand examples to include multi-step, real project accessibility triage."
+        "Run Stage 4 asset hygiene/provenance verification and document outcomes without changing package semantics.",
+        "In a future non-audit pass, deepen cross-quarter governance scenarios (for example procurement/legal escalation variants and longitudinal remediation tracking) to target professional maturity."
       ],
       "suggested_new_mini_skills": [
-        "wcag-audit-reporting",
-        "screen-reader-ux-testing"
+        "none required in this audit pass"
       ],
       "asset_hygiene_notes": [
-        "No immediate binary concentration detected; Stage 4 should still verify external asset references."
+        "Resource and asset-link coverage is preserved and expanded for the new mini-skills, but Stage 4 asset hygiene/provenance is still pending and must not be treated as complete."
       ],
       "evidence": [
         {
           "path": "design/accessibility-ux/resources/manifest.json",
-          "note": "Manifest contains 6 mini-skills with references and examples."
+          "note": "Manifest now lists 8 mini-skills including wcag-audit-reporting and assistive-tech-edge-cases with reference/example links."
+        },
+        {
+          "path": "design/accessibility-ux/SKILL.md",
+          "note": "Router preserves package semantics and adds audit-reporting and AT edge-case combinations in the Multi-Skill Activation Guide."
+        },
+        {
+          "path": "design/accessibility-ux/composition-protocol.md",
+          "note": "Universal composition protocol is preserved and now includes Accessibility Workflow Recipes for reporting and AT edge-case triage."
+        },
+        {
+          "path": "design/accessibility-ux/self-diagnostic-protocol.md",
+          "note": "Self-diagnostic protocol defines rejection criteria and required evidence fields for audit outputs, AT matrixes, and resource-index preservation."
         },
         {
           "path": "design/accessibility-ux/resources/routing-guide.md",
-          "note": "Routing guidance exists for entry selection."
+          "note": "Routing guide includes both new mini-skills and explicit routes for audit reporting, retest governance, VPAT/ACR evidence support, and AT edge-case investigations."
+        },
+        {
+          "path": "design/accessibility-ux/resources/asset-link-index.md",
+          "note": "Asset link index preserves existing resource links and adds wcag-audit-reporting and assistive-tech-edge-cases with no required assets."
+        },
+        {
+          "path": "design/accessibility-ux/references/skills/wcag-audit-reporting.md",
+          "note": "New reference exists with severity taxonomy, evidence-pack requirements, remediation backlog structure, and retest acceptance criteria."
+        },
+        {
+          "path": "design/accessibility-ux/examples/skills/wcag-audit-reporting.md",
+          "note": "New example exists with executive scope, severity/WCAG tables, remediation backlog, evidence pack summary, and retest plan."
+        },
+        {
+          "path": "design/accessibility-ux/references/skills/assistive-tech-edge-cases.md",
+          "note": "New reference exists with AT/input edge-case categories, test matrix design, remediation patterns, and rejection criteria."
+        },
+        {
+          "path": "design/accessibility-ux/examples/skills/assistive-tech-edge-cases.md",
+          "note": "New example exists covering AT/input matrix, taxonomy, remediation planning, and retest acceptance."
+        },
+        {
+          "path": "design/accessibility-ux/examples/skills/fixing-accessibility.md",
+          "note": "Concrete form/modal remediation scenario includes before/after snippets and keyboard-path evidence."
+        },
+        {
+          "path": "design/accessibility-ux/examples/skills/wcag-audit-patterns.md",
+          "note": "Concrete multi-page WCAG audit plan exists with sampling strategy and criterion-mapped workflow structure."
         }
       ]
     },
@@ -560,28 +599,28 @@
   "recommended_upgrade_order": [
     {
       "order": 1,
-      "package": "design/accessibility-ux",
-      "reason": "Highest unresolved content-upgrade priority after css-styling moved to ready-for-use; it still needs broader operational coverage and deeper multi-step remediation/reporting scenarios."
+      "package": "design/3d-animation",
+      "reason": "Strong package but now the top unresolved normal content-upgrade target after accessibility-ux moved to ready-for-use; deepen operational examples and release evidence toward professional maturity."
     },
     {
       "order": 2,
-      "package": "design/3d-animation",
-      "reason": "Strong package but still below professional threshold; deepen examples and operational evidence if a targeted content pass is needed before Stage 4."
+      "package": "design/creative-tools",
+      "reason": "Expanded coverage is solid, but follow-up should deepen cross-mini-skill QA/signoff workflows and end-to-end release-readiness evidence."
     },
     {
       "order": 3,
-      "package": "design/creative-tools",
-      "reason": "Improved after expansion, but a follow-up content pass should deepen end-to-end QA, signoff, and release-readiness workflows."
+      "package": "design/design-systems",
+      "reason": "Structurally strong after upgrade; remaining follow-up is deeper long-horizon operational evidence and adoption/release playbooks."
     },
     {
       "order": 4,
-      "package": "design/design-systems",
-      "reason": "Structurally strong after upgrade; remaining follow-up should add deeper long-horizon operational evidence and adoption/release playbooks."
+      "package": "design/css-styling",
+      "reason": "Already ready-for-use; keep as lower-priority follow-up for advanced release-playbook depth, not an immediate upgrade blocker."
     },
     {
       "order": 5,
-      "package": "design/css-styling",
-      "reason": "Moved to ready-for-use after Stage 3.5; keep as lower-priority follow-up for advanced release-playbook depth, not an immediate upgrade blocker."
+      "package": "design/accessibility-ux",
+      "reason": "Moved to ready-for-use after Stage 3.6; keep only as optional future pass for professional-threshold depth, not immediate content-upgrade urgency."
     },
     {
       "order": 6,

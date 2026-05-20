@@ -10,8 +10,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Professional | 1 |
 | Working | 7 |
 | Amateur | 0 |
-| Ready for use | 3 |
-| Needs upgrade | 4 |
+| Ready for use | 4 |
+| Needs upgrade | 3 |
 | Needs major upgrade | 0 |
 | Needs asset hygiene | 1 |
 | Needs registry only | 0 |
@@ -21,7 +21,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Package | Mini-skills | Overall | Maturity | Status |
 |---|---:|---:|---|---|
 | design/3d-animation | 16 | 88 | working | needs-upgrade |
-| design/accessibility-ux | 6 | 81 | working | needs-upgrade |
+| design/accessibility-ux | 8 | 89 | working | ready-for-use |
 | design/brand-visual | 9 | 75 | working | needs-asset-hygiene |
 | design/content-writing | 8 | 93 | professional | ready-for-use |
 | design/creative-tools | 6 | 83 | working | needs-upgrade |
@@ -39,8 +39,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 | Status | Packages |
 |---|---:|
-| ready-for-use | 3 |
-| needs-upgrade | 4 |
+| ready-for-use | 4 |
+| needs-upgrade | 3 |
 | needs-major-upgrade | 0 |
 | needs-asset-hygiene | 1 |
 | needs-registry-only | 0 |
@@ -63,16 +63,26 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 ### design/accessibility-ux
 - **Maturity:** working
-- **Status:** needs-upgrade
-- **Overall score:** 81
-- **Strengths:** Clear structure and coherent accessibility-focused skill set.; Reference material is practical and non-generic for UX accessibility tasks.
-- **Quality gaps:** Domain breadth likely under-covered with only six mini-skills.; Asset hygiene readiness is moderate and should be documented more explicitly.
-- **Recommended upgrade actions:** Add broader coverage for audits, remediation reporting, and assistive-tech edge-case workflows.; Expand examples to include multi-step, real project accessibility triage.
-- **Suggested new mini-skills:** wcag-audit-reporting; screen-reader-ux-testing
-- **Asset hygiene notes:** No immediate binary concentration detected; Stage 4 should still verify external asset references.
+- **Status:** ready-for-use
+- **Overall score:** 89
+- **Strengths:** Package now covers 8 mini-skills with explicit audit-reporting and assistive-tech edge-case workflows integrated across router, catalog, and routing resources.; References and examples are operationally deep, including WCAG mapping, retest gates, evidence packs, AT/browser matrix expectations, and concrete multi-step remediation scenarios.
+- **Quality gaps:** Domain breadth is materially improved but still below full professional-band completeness because additional advanced compliance playbooks and long-horizon governance patterns could be expanded.; Asset hygiene readiness remains moderate; Stage 4 provenance/hygiene verification is still required before any clean-hygiene classification.
+- **Recommended upgrade actions:** Run Stage 4 asset hygiene/provenance verification and document outcomes without changing package semantics.; In a future non-audit pass, deepen cross-quarter governance scenarios (for example procurement/legal escalation variants and longitudinal remediation tracking) to target professional maturity.
+- **Suggested new mini-skills:** none required in this audit pass
+- **Asset hygiene notes:** Resource and asset-link coverage is preserved and expanded for the new mini-skills, but Stage 4 asset hygiene/provenance is still pending and must not be treated as complete.
 - **Evidence paths:**
-  - `design/accessibility-ux/resources/manifest.json` — Manifest contains 6 mini-skills with references and examples.
-  - `design/accessibility-ux/resources/routing-guide.md` — Routing guidance exists for entry selection.
+  - `design/accessibility-ux/resources/manifest.json` — Manifest now lists 8 mini-skills including wcag-audit-reporting and assistive-tech-edge-cases with reference/example links.
+  - `design/accessibility-ux/SKILL.md` — Router preserves package semantics and adds audit-reporting and AT edge-case combinations in the Multi-Skill Activation Guide.
+  - `design/accessibility-ux/composition-protocol.md` — Universal composition protocol is preserved and now includes Accessibility Workflow Recipes for reporting and AT edge-case triage.
+  - `design/accessibility-ux/self-diagnostic-protocol.md` — Self-diagnostic protocol defines rejection criteria and required evidence fields for audit outputs, AT matrixes, and resource-index preservation.
+  - `design/accessibility-ux/resources/routing-guide.md` — Routing guide includes both new mini-skills and explicit routes for audit reporting, retest governance, VPAT/ACR evidence support, and AT edge-case investigations.
+  - `design/accessibility-ux/resources/asset-link-index.md` — Asset link index preserves existing resource links and adds wcag-audit-reporting and assistive-tech-edge-cases with no required assets.
+  - `design/accessibility-ux/references/skills/wcag-audit-reporting.md` — New reference exists with severity taxonomy, evidence-pack requirements, remediation backlog structure, and retest acceptance criteria.
+  - `design/accessibility-ux/examples/skills/wcag-audit-reporting.md` — New example exists with executive scope, severity/WCAG tables, remediation backlog, evidence pack summary, and retest plan.
+  - `design/accessibility-ux/references/skills/assistive-tech-edge-cases.md` — New reference exists with AT/input edge-case categories, test matrix design, remediation patterns, and rejection criteria.
+  - `design/accessibility-ux/examples/skills/assistive-tech-edge-cases.md` — New example exists covering AT/input matrix, taxonomy, remediation planning, and retest acceptance.
+  - `design/accessibility-ux/examples/skills/fixing-accessibility.md` — Concrete form/modal remediation scenario includes before/after snippets and keyboard-path evidence.
+  - `design/accessibility-ux/examples/skills/wcag-audit-patterns.md` — Concrete multi-page WCAG audit plan exists with sampling strategy and criterion-mapped workflow structure.
 
 ### design/brand-visual
 - **Maturity:** working
@@ -183,9 +193,9 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
   - `design/pretext-ui/examples/skills/library-architecture.md` — Example is a concrete lineOverflowHint API architecture scenario with compatibility and risk tables.
 
 ## Recommended Upgrade Order
-1. **design/accessibility-ux** — Highest unresolved content-upgrade priority after css-styling moved to ready-for-use.
-2. **design/3d-animation** — Strong package but still below professional threshold; deepen examples and operational evidence.
-3. **design/creative-tools** — Improved after expansion; follow-up should deepen QA/signoff release playbooks.
-4. **design/design-systems** — Structurally strong; remaining follow-up is deeper long-horizon operational evidence.
-5. **design/css-styling** — Keep as lower-priority follow-up for advanced playbook depth, not an immediate upgrade blocker.
+1. **design/3d-animation** — Strong package but now the top unresolved normal content-upgrade target after accessibility-ux moved to ready-for-use.
+2. **design/creative-tools** — Expanded coverage is solid; follow-up should deepen cross-mini-skill QA/signoff workflows and end-to-end release-readiness evidence.
+3. **design/design-systems** — Structurally strong; remaining follow-up is deeper long-horizon operational evidence and adoption/release playbooks.
+4. **design/css-styling** — Keep as lower-priority follow-up for advanced playbook depth, not an immediate upgrade blocker.
+5. **design/accessibility-ux** — Moved to ready-for-use after Stage 3.6; optional future pass for professional-threshold depth, not immediate content-upgrade urgency.
 6. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency.
