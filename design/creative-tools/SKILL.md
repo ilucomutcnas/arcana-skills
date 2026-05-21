@@ -2,7 +2,7 @@
 name: "creative-tools"
 title: "Creative Tools Studio"
 description: "Use for performance ad creative at scale (headlines, descriptions, platform-specific copy with iteration), content creation with brand voice analysis, SEO optimization, social media content, content calendar planning, vector workflow automation, raster retouch pipelines, creative asset handoff, and PDF processing (merge, split, extract, create, fill forms, OCR)."
-version: "1.1.0"
+version: "1.2.0"
 category: "Design"
 risk: "safe"
 source: "https://github.com/ilucomutcnas/arcana-skills"
@@ -15,7 +15,7 @@ Provide structured guidance for creative production tools: generating and iterat
 
 ## Domain Coverage
 
-This package represents the creative tools domain. It covers six interconnected capabilities: performance ad creative generation with platform specs and iteration tracking, content creation with brand voice analysis and SEO optimization, PDF processing for document automation, vector workflow automation for SVG/icon normalization, raster retouch pipelines for non-destructive image production, and creative asset handoff for release-ready delivery. Mini-skills are separated for routing and selective loading while still supporting multi-skill composition.
+This package represents the creative tools domain. It covers seven interconnected capabilities: performance ad creative generation with platform specs and iteration tracking, content creation with brand voice analysis and SEO optimization, PDF processing for document automation, vector workflow automation for SVG/icon normalization, raster retouch pipelines for non-destructive image production, creative QA gate automation for review/signoff/release decisions, and creative asset handoff for release-ready delivery. Mini-skills are separated for routing and selective loading while still supporting multi-skill composition.
 
 ## How to Use
 
@@ -38,7 +38,11 @@ Common combinations:
 - **Content marketing pipeline**: content-creator (primary) + ad-creative (for promotion copy) + creative-asset-handoff (for release package)
 - **Brand launch content**: content-creator (primary) + ad-creative + raster-retouch-pipeline + pdf-processing (for branded PDFs)
 - **Icon system release**: vector-workflow-automation (primary) + creative-asset-handoff (for engineering and design-system delivery)
-- **Document automation**: pdf-processing (primary) + content-creator (for document content) + creative-asset-handoff (for distribution readiness)
+- **Document automation**: pdf-processing (primary) + creative-qa-gate-automation + content-creator (for document content) + creative-asset-handoff (for distribution readiness)
+- **Campaign QA/signoff**: creative-qa-gate-automation (primary) + ad-creative + content-creator + raster-retouch-pipeline + creative-asset-handoff
+- **Cross-channel creative release**: creative-asset-handoff (primary) + creative-qa-gate-automation + vector-workflow-automation + raster-retouch-pipeline
+- **Editorial launch package**: content-creator (primary) + creative-qa-gate-automation + ad-creative + creative-asset-handoff
+- **Document delivery QA**: pdf-processing (primary) + creative-qa-gate-automation + creative-asset-handoff
 
 ## Package Structure
 
@@ -80,6 +84,11 @@ Common combinations:
 - Summary: Run non-destructive raster retouch operations for cleanup, correction, crop/resize variants, profile-aware exports, and review gates across web/social/product channels.
 - Open reference: `references/skills/raster-retouch-pipeline.md`
 - Open examples: `examples/skills/raster-retouch-pipeline.md`
+
+### creative-qa-gate-automation
+- Summary: Run pre-handoff creative QA gates with automated/manual checks, severity triage, revision loops, signoff matrices, and release blocker decisions.
+- Open reference: `references/skills/creative-qa-gate-automation.md`
+- Open examples: `examples/skills/creative-qa-gate-automation.md`
 
 ### creative-asset-handoff
 - Summary: Package final creative deliverables with deterministic naming, source/export separation, versioning, provenance notes, stakeholder usage instructions, and acceptance criteria.

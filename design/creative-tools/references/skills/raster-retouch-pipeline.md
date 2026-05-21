@@ -88,3 +88,33 @@ Typical set:
 - Haloing or masking artifacts around subjects.
 - Crops that remove critical product detail.
 - Missing provenance notes for edited assets.
+
+
+## Stage 3.8 Extension: QA Gates, Revision Loops, and Release Evidence
+
+### QA Gates
+- Require non-destructive edit logs tied to source IDs and working file versions.
+- Validate color/profile conversions per target channel (sRGB/CMYK as specified).
+- Validate crop safety zones and subject framing for each channel variant.
+- Validate channel-specific dimensions and compression thresholds.
+- Require metadata/provenance fields (editor, edit date, source lineage).
+- Capture visual diff notes for each revision round.
+
+### Revision-Loop Rules
+- Track defects by type: artifacting, color shift, framing, profile mismatch, size overflow.
+- Each fix must reference affected layer/export and include recheck status.
+- Late visual changes reopen final gate checks for all downstream variants.
+
+### Evidence Requirements
+- Edit log table, export matrix, and compression audit results.
+- Visual diff/revision ledger with severity and owner.
+- Final acceptance signatures from creative and channel owners.
+
+### Acceptance/Rejection Gates
+Accept when originals are preserved, edits are traceable, exports satisfy channel specs, and visual QA is approved.
+Reject when masters are flattened destructively, profile mismatches remain, or channel constraints fail.
+
+### Integration and Handoff
+Provide revision ledger and final export evidence to `creative-qa-gate-automation`.
+After approval, package source/export sets and usage notes through `creative-asset-handoff`.
+

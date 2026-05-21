@@ -36,3 +36,38 @@ A product design team provides 18 navigation icons exported from mixed tools. En
 - [ ] SVG renders match PNG previews.
 - [ ] Tokenized color assignment verified in light/dark preview.
 - [ ] File naming is deterministic and import-safe.
+
+## Stage 3.8 Example: Icon Set QA and Release
+
+### Before/After SVG Snippet
+```svg
+<!-- Before -->
+<svg width="31" height="30"><path d="M1.2 0.9 ... (420 points)" fill="#2A2A2A"/></svg>
+
+<!-- After -->
+<svg viewBox="0 0 24 24" role="img" aria-label="Home" data-token-fill="icon.primary">
+  <path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z"/>
+</svg>
+```
+
+### Issue Taxonomy
+| Category | Check | Result | Action |
+|---|---|---|---|
+| viewBox consistency | 24x24 required | 3 files failed | Reframed to `0 0 24 24` |
+| Path complexity | <=250 points | 2 files exceeded | Simplified with manual node cleanup |
+| Stroke/fill rules | token-based styling | 5 files had hard-coded hex | Replaced with token attrs |
+| Naming/versioning | deterministic slug + version | 4 files had “Layer copy” names | Renamed to canonical scheme |
+| Token alignment | fill/stroke maps | 1 icon used wrong accent token | Remapped to `icon.accent` |
+| Accessibility labels | title/aria for semantic icons | 6 icons missing labels | Added `aria-label` and title metadata |
+
+### Export Variants
+| Variant | Output | Purpose | Gate |
+|---|---|---|---|
+| Source normalized | SVG | Engineering import | Must pass lint and render diff |
+| Raster fallback | PNG 24/48 | Legacy clients/docs | Must match SVG silhouette |
+| Sprite bundle | SVG sprite | Web performance path | Must preserve IDs/names |
+
+### Signoff Gates
+- Design system lead: approves geometry, naming, and token alignment.
+- Engineering owner: approves import safety, sprite compatibility, and runtime rendering.
+- Release ops: confirms manifest and evidence package forwarded to `creative-qa-gate-automation`.

@@ -110,3 +110,39 @@ When selecting mini-skills, use these criteria:
 - Adjacent: `vector-workflow-automation`, `raster-retouch-pipeline`, `content-creator`
 - Validation: `pdf-processing` when document artifacts are included.
 - Use when final delivery must include complete manifests, provenance, and acceptance criteria.
+
+
+### 5) Full Campaign Creative Release
+- Primary: `creative-qa-gate-automation`
+- Adjacent: `ad-creative`, `content-creator`, `raster-retouch-pipeline`, `vector-workflow-automation`
+- Delivery: `creative-asset-handoff`
+
+### 6) Ad Variation Review and Release
+- Primary: `ad-creative`
+- Adjacent: `creative-qa-gate-automation`, `content-creator`
+- Delivery: `creative-asset-handoff`
+
+### 7) Editorial Launch Package
+- Primary: `content-creator`
+- Adjacent: `creative-qa-gate-automation`, `ad-creative`
+- Delivery: `creative-asset-handoff`
+
+### 8) Icon/Vector Release to Engineering
+- Primary: `vector-workflow-automation`
+- Adjacent: `creative-qa-gate-automation`
+- Delivery: `creative-asset-handoff`
+
+### 9) Product Image Variant Release
+- Primary: `raster-retouch-pipeline`
+- Adjacent: `creative-qa-gate-automation`, `ad-creative`
+- Delivery: `creative-asset-handoff`
+
+### 10) Branded PDF/Document Delivery
+- Primary: `pdf-processing`
+- Adjacent: `creative-qa-gate-automation`, `content-creator`
+- Delivery: `creative-asset-handoff`
+
+### 11) Final Creative Asset Handoff with Late Revision Loop
+- Primary: `creative-asset-handoff`
+- Adjacent: `creative-qa-gate-automation`, owning production mini-skill
+- Rule: reopen QA gate on any late content/spec/platform change before re-export.

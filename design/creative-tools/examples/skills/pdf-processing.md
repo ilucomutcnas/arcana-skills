@@ -76,3 +76,36 @@ pdfimages -j input.pdf output_prefix
 
 For form filling instructions, see `pdf-processing__references/forms.md`.
 For advanced features and JavaScript libraries, see `pdf-processing__references/reference.md`.
+
+## Stage 3.8 Example: Branded PDF One-Pager/Form QA Pass
+
+### Deliverable Context
+Release package includes:
+- `partner-onepager-v3.pdf` (marketing one-pager, 4 pages).
+- `partner-intake-form-v2.pdf` (fillable form for channel partners).
+
+### Script Output Evidence
+| Check | Script/Method | Result | Evidence artifact |
+|---|---|---|---|
+| Fillable fields completeness | `check_fillable_fields.py` | 14/14 required fields present | `logs/form-fields.txt` |
+| Bounding box validation | `check_bounding_boxes.py` | 0 overflow violations | `logs/bounding-boxes.json` |
+| Page count integrity | `pypdf len(reader.pages)` | Expected 4 + 2 pages | `logs/page-count.txt` |
+| Metadata verification | `PdfReader().metadata` | Title/author/version set | `logs/metadata.txt` |
+| Text extraction/accessibility | `pdftotext -layout` | Headings/body extracted without corruption | `logs/text-extraction.txt` |
+
+### Issue Table
+| ID | Severity | Owner | Issue | Fix |
+|---|---|---|---|---|
+| PDF-04 | Blocker | Doc ops | Missing required “Offer terms apply” footer on page 2 | Added legal footer and regenerated v3 |
+| PDF-07 | Major | Design ops | Form checkbox labels clipped in mobile view | Increased label box width and reran bounding-box check |
+| PDF-09 | Minor | Marketing ops | Metadata keywords stale from v2 | Updated metadata and archived old export |
+
+### Acceptance Criteria
+- [x] All mandatory form fields validated and writable.
+- [x] No text overflow in branded layout regions.
+- [x] Page order and page count match approved brief.
+- [x] Metadata and provenance watermark match release version.
+- [x] Text extraction output is readable for accessibility review.
+
+### Evidence Pack Summary
+Delivered to `creative-qa-gate-automation`: script logs, before/after PDF hashes, issue resolution log, legal signoff note, and final acceptance checklist.
