@@ -52,3 +52,6 @@ Follow the 40/25/25/10 distribution:
 7. Proofread and fact-check
 8. Optimize for platform
 9. Schedule strategically
+
+## QA/Signoff Extension Example
+This workflow includes issue taxonomy, revision loop entries, stakeholder approval states, and final evidence-pack notes before release.

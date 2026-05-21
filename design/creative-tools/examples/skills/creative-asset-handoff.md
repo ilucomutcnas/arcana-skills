@@ -41,3 +41,6 @@ spring-campaign-delivery/
 
 ## Handoff Note (Short)
 "Attached is the approved spring campaign delivery package v3. All exports are reconciled in `docs/delivery-manifest.md`, source files are separated under `source/`, and usage constraints are documented in `docs/provenance-and-licensing.md`."
+
+## QA/Signoff Extension Example
+This workflow includes issue taxonomy, revision loop entries, stakeholder approval states, and final evidence-pack notes before release.

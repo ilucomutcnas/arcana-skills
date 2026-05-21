@@ -12,6 +12,7 @@ Use this guide to decide which extracted file to open.
 
 ## Quick Navigation
 
+- **creative-qa-gate-automation** -> `references/skills/creative-qa-gate-automation.md` + `examples/skills/creative-qa-gate-automation.md`
 - **ad-creative** -> `references/skills/ad-creative.md` + `examples/skills/ad-creative.md`
 - **content-creator** -> `references/skills/content-creator.md` + `examples/skills/content-creator.md`
 - **pdf-processing** -> `references/skills/pdf-processing.md` + `examples/skills/pdf-processing.md`
@@ -21,6 +22,16 @@ Use this guide to decide which extracted file to open.
 
 ## Routing by Task Type
 
+- **Creative QA gate** -> creative-qa-gate-automation (primary) + relevant production mini-skills
+- **Campaign release signoff** -> creative-qa-gate-automation (primary) + creative-asset-handoff
+- **Cross-channel deliverable validation** -> creative-qa-gate-automation + ad-creative + content-creator + vector-workflow-automation + raster-retouch-pipeline + pdf-processing
+- **Ad copy compliance review** -> creative-qa-gate-automation + ad-creative
+- **Content launch approval** -> creative-qa-gate-automation + content-creator
+- **Icon system QA** -> creative-qa-gate-automation + vector-workflow-automation
+- **Product image release QA** -> creative-qa-gate-automation + raster-retouch-pipeline
+- **PDF delivery QA** -> creative-qa-gate-automation + pdf-processing
+- **Late revision loop** -> creative-qa-gate-automation + owning mini-skill + creative-asset-handoff
+- **Stakeholder approval matrix** -> creative-qa-gate-automation (primary)
 - **Generating ad copy** -> ad-creative (primary) + content-creator (brand voice)
 - **Iterating ads from data** -> ad-creative
 - **Writing blog posts** -> content-creator (primary) + ad-creative (promotion copy)

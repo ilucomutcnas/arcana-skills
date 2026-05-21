@@ -83,3 +83,6 @@ Reject handoff when:
 - Provenance/licensing fields are absent.
 - Manifest does not reconcile to delivered files.
 - Acceptance criteria are missing or unsigned.
+
+## QA Gate Integration
+Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.

@@ -87,3 +87,6 @@ Reject and rework when:
 - Colors remain hard-coded despite token requirement.
 - Naming/versioning prevents deterministic imports.
 - Export package omits required fallback formats.
+
+## QA Gate Integration
+Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.

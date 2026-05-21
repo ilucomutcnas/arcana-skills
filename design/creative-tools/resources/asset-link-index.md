@@ -61,3 +61,9 @@ This index enumerates every skill-specific auxiliary folder and file in the pack
 - Reference: [`references/skills/creative-asset-handoff.md`](../references/skills/creative-asset-handoff.md)
 - Examples: [`examples/skills/creative-asset-handoff.md`](../examples/skills/creative-asset-handoff.md)
 - Assets: none required.
+
+
+## creative-qa-gate-automation
+- Reference: [`references/skills/creative-qa-gate-automation.md`](../references/skills/creative-qa-gate-automation.md)
+- Examples: [`examples/skills/creative-qa-gate-automation.md`](../examples/skills/creative-qa-gate-automation.md)
+- Assets: none required.

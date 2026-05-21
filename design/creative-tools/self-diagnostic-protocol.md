@@ -34,3 +34,26 @@ Use only when task scope is package quality, migration, or broad repair.
 - Critical: routing breakage, missing primary references, or unusable active mini-skills.
 - Major: inconsistent manifest/catalog/routing mappings or missing adjacent files.
 - Minor: non-blocking clarity issues.
+
+
+## Stage 3.8 Release Gate Checks
+Before recommending release:
+- Verify activated primary + adjacent + validation mini-skills are explicitly listed.
+- Verify deliverable matrix completeness across copy/content/vector/raster/PDF/handoff rows.
+- Verify platform/spec compliance per channel.
+- Verify brand voice/tone consistency and claim substantiation.
+- Verify source/export separation in final package layout.
+- Verify provenance/licensing/security notes are present.
+- Verify revision loop log contains owner, action, status, and recheck result.
+- Verify stakeholder signoff matrix has explicit approve/reject states.
+- Verify release blockers are resolved or escalated with go/no-go decision.
+- Verify resource and asset-link index entries are preserved.
+
+Reject output if any of these are true:
+- release recommendation without QA evidence pack,
+- handoff lacks source/export separation,
+- ad/content claims have no substantiation or compliance notes,
+- vector/raster/PDF deliverables lack channel-specific acceptance gates,
+- owner or signoff state is missing,
+- existing asset-index/resource entries were deleted,
+- binary assets were added.

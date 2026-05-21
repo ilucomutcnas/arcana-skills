@@ -103,3 +103,6 @@ Quick reference:
 - Processed PDF files.
 - Extracted text or tables in requested format.
 - Error reports for any processing failures.
+
+## QA Gate Integration
+Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.

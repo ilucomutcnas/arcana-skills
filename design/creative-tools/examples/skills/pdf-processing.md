@@ -76,3 +76,6 @@ pdfimages -j input.pdf output_prefix
 
 For form filling instructions, see `pdf-processing__references/forms.md`.
 For advanced features and JavaScript libraries, see `pdf-processing__references/reference.md`.
+
+## QA/Signoff Extension Example
+This workflow includes issue taxonomy, revision loop entries, stakeholder approval states, and final evidence-pack notes before release.

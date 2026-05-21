@@ -2,8 +2,8 @@
   {
     "title": "ad-creative",
     "slug": "ad-creative",
-    "purpose": "Generate high-performing ad copy at scale with platform-specific specs, angle-based organization, character-count validation, AI+Remotion visual workflows, and performance-driven iteration.",
-    "when": "When generating or iterating paid ad copy at scale, producing headlines and descriptions with character counts, organizing copy by angles, or iterating based on performance data.",
+    "purpose": "Generate high-performing ad copy at scale with platform-specific specs, angle-based organization, character-count validation, AI+Remotion visual workflows, performance-driven iteration, and QA-ready evidence for approval gates.",
+    "when": "When generating or iterating paid ad copy at scale, producing headlines and descriptions with character counts, preparing compliant channel variants, or building approval-ready creative rounds from performance data.",
     "reference": "references/skills/ad-creative.md",
     "examples": "examples/skills/ad-creative.md",
     "assets": [
@@ -14,8 +14,8 @@
   {
     "title": "content-creator",
     "slug": "content-creator",
-    "purpose": "Create brand-consistent content with voice analysis, SEO-optimized blog posts, platform-specific social media content, and content calendar planning.",
-    "when": "When writing blog posts, creating social media content, establishing brand voice, optimizing content for SEO, or planning content calendars.",
+    "purpose": "Create brand-consistent content with voice analysis, SEO-optimized blog posts, platform-specific social media content, content calendar planning, and editorial launch QA signoff.",
+    "when": "When writing blog posts, creating social media content, establishing brand voice, optimizing content for SEO, planning content calendars, or preparing editorial release approvals.",
     "reference": "references/skills/content-creator.md",
     "examples": "examples/skills/content-creator.md",
     "assets": [
@@ -27,8 +27,8 @@
   {
     "title": "pdf-processing",
     "slug": "pdf-processing",
-    "purpose": "Process PDF documents programmatically using Python (pypdf, pdfplumber, reportlab) and CLI tools (qpdf, pdftk) for merging, splitting, extraction, form filling, OCR, and creation.",
-    "when": "When merging, splitting, extracting text or tables from, creating, filling forms in, adding watermarks to, or OCR-scanning PDF documents.",
+    "purpose": "Process PDF documents programmatically using Python (pypdf, pdfplumber, reportlab) and CLI tools (qpdf, pdftk) for merging, splitting, extraction, form filling, OCR, creation, and document release validation.",
+    "when": "When merging, splitting, extracting text or tables from, creating, filling forms in, adding watermarks to, or QA-validating PDF documents before delivery.",
     "reference": "references/skills/pdf-processing.md",
     "examples": "examples/skills/pdf-processing.md",
     "assets": [
@@ -39,8 +39,8 @@
   {
     "title": "vector-workflow-automation",
     "slug": "vector-workflow-automation",
-    "purpose": "Automate and normalize vector design workflows including SVG cleanup, icon-set normalization, token-aware production, batch exports, and engineering-ready handoff.",
-    "when": "When preparing icon sets or other vector assets for consistent multi-platform use, especially when source quality, naming, and export consistency vary.",
+    "purpose": "Automate and normalize vector design workflows including SVG cleanup, icon-set normalization, token-aware production, batch exports, engineering-ready QA, and release traceability.",
+    "when": "When preparing icon sets or other vector assets for consistent multi-platform use, especially when source quality, naming, acceptance gates, and export consistency vary.",
     "reference": "references/skills/vector-workflow-automation.md",
     "examples": "examples/skills/vector-workflow-automation.md",
     "assets": []
@@ -48,8 +48,8 @@
   {
     "title": "raster-retouch-pipeline",
     "slug": "raster-retouch-pipeline",
-    "purpose": "Run non-destructive raster retouch workflows for cleanup, correction, multi-channel resizing, metadata-aware QA, and controlled export variants.",
-    "when": "When cleaning, correcting, resizing, and exporting product or campaign imagery while preserving source fidelity and traceable editing history.",
+    "purpose": "Run non-destructive raster retouch workflows for cleanup, correction, multi-channel resizing, metadata-aware QA, revision loops, and controlled export variants.",
+    "when": "When cleaning, correcting, resizing, and exporting product or campaign imagery while preserving source fidelity, audit trails, and release acceptance constraints.",
     "reference": "references/skills/raster-retouch-pipeline.md",
     "examples": "examples/skills/raster-retouch-pipeline.md",
     "assets": []
@@ -57,10 +57,19 @@
   {
     "title": "creative-asset-handoff",
     "slug": "creative-asset-handoff",
-    "purpose": "Package and deliver creative assets with strict source/export separation, naming/versioning conventions, provenance notes, and acceptance criteria.",
-    "when": "When delivering finalized assets to engineering, marketing, clients, or operations teams that require predictable folders, manifests, and approval status.",
+    "purpose": "Package and deliver creative assets with strict source/export separation, naming/versioning conventions, provenance notes, acceptance criteria, and release rollback instructions.",
+    "when": "When delivering finalized assets to engineering, marketing, clients, or operations teams that require predictable folders, manifests, signoff state, and usage-safe release bundles.",
     "reference": "references/skills/creative-asset-handoff.md",
     "examples": "examples/skills/creative-asset-handoff.md",
+    "assets": []
+  },
+  {
+    "title": "creative-qa-gate-automation",
+    "slug": "creative-qa-gate-automation",
+    "purpose": "Guide production-grade creative QA gates, review automation, signoff workflows, revision loops, acceptance/rejection logic, evidence packs, and release readiness across creative deliverables.",
+    "when": "When coordinating cross-channel creative validation before handoff, including automated and manual checks, blocker triage, stakeholder approval, and release-go/no-go decisions.",
+    "reference": "references/skills/creative-qa-gate-automation.md",
+    "examples": "examples/skills/creative-qa-gate-automation.md",
     "assets": []
   }
 ]

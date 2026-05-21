@@ -36,3 +36,6 @@ A product design team provides 18 navigation icons exported from mixed tools. En
 - [ ] SVG renders match PNG previews.
 - [ ] Tokenized color assignment verified in light/dark preview.
 - [ ] File naming is deterministic and import-safe.
+
+## QA/Signoff Extension Example
+This workflow includes issue taxonomy, revision loop entries, stakeholder approval states, and final evidence-pack notes before release.

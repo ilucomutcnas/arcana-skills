@@ -37,3 +37,6 @@ An ecommerce team needs updated product images for a reusable bottle launch. The
 - [ ] Background edges free from halo artifacts.
 - [ ] Exports meet file-size and dimension constraints.
 - [ ] Metadata includes editor, edit date, and source ID.
+
+## QA/Signoff Extension Example
+This workflow includes issue taxonomy, revision loop entries, stakeholder approval states, and final evidence-pack notes before release.

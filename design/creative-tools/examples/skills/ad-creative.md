@@ -54,3 +54,6 @@ Pull performance data → Identify winning patterns → Generate new variations 
 
 For full platform specs, see `ad-creative__references/platform-specs.md`.
 For AI+Remotion visual workflows, see `ad-creative__references/generative-tools.md`.
+
+## QA/Signoff Extension Example
+This workflow includes issue taxonomy, revision loop entries, stakeholder approval states, and final evidence-pack notes before release.

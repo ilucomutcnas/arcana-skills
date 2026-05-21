@@ -97,3 +97,6 @@ Professional-grade brand voice analysis, SEO optimization, and platform-specific
 - Content pieces optimized for target platform.
 - SEO score and recommendations when applicable.
 - Brand voice consistency assessment.
+
+## QA Gate Integration
+Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.

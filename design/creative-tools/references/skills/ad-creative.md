@@ -104,3 +104,6 @@ Always include character counts next to each copy variant. Flag over-limit lines
 - Standard output: organized by angle with character counts per line.
 - Bulk CSV output: headline, description columns ready for upload.
 - Iteration report: performance summary, new creative, recommendations.
+
+## QA Gate Integration
+Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.

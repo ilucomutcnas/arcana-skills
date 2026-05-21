@@ -88,3 +88,6 @@ Typical set:
 - Haloing or masking artifacts around subjects.
 - Crops that remove critical product detail.
 - Missing provenance notes for edited assets.
+
+## QA Gate Integration
+Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.
