@@ -98,5 +98,33 @@ Professional-grade brand voice analysis, SEO optimization, and platform-specific
 - SEO score and recommendations when applicable.
 - Brand voice consistency assessment.
 
-## QA Gate Integration
-Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.
+
+## Stage 3.8 Extension: QA Gates, Revision Loops, and Release Evidence
+
+### QA Gates
+- Lock brand voice attributes before drafting channel derivatives.
+- Require SEO evidence (score report, keyword distribution, heading structure) for long-form content.
+- Require factual/source checks for every external statistic and product claim.
+- Validate tone consistency across blog, social, and email variants.
+- Validate localization readiness: idioms, region-sensitive claims, and date/units format.
+- Confirm publishing calendar dependencies (canonical URL and sequencing) before release.
+
+### Revision-Loop Rules
+- Track revision rounds with changed section, reason, owner, and recheck result.
+- Any headline or CTA change in primary blog asset triggers downstream social/email sync review.
+- Rejected edits must map to blocker class: compliance, factual risk, tone mismatch, or scheduling conflict.
+
+### Evidence Requirements
+- Brand voice analyzer output and reviewer summary.
+- SEO optimizer report and before/after delta.
+- Citation list with source URLs/doc IDs.
+- Stakeholder signoff matrix including content, marketing, and compliance owners.
+
+### Acceptance/Rejection Gates
+Accept when tone, SEO, factual checks, and schedule dependencies all pass.
+Reject when any claim is uncited, tone diverges from approved brand lock, or channel publish dependencies are unsatisfied.
+
+### Integration and Handoff
+Route final editorial package to `creative-qa-gate-automation` for release-governance checks.
+After approval, hand off publish-ready assets, calendar mapping, and evidence docs via `creative-asset-handoff`.
+

@@ -105,5 +105,33 @@ Always include character counts next to each copy variant. Flag over-limit lines
 - Bulk CSV output: headline, description columns ready for upload.
 - Iteration report: performance summary, new creative, recommendations.
 
-## QA Gate Integration
-Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.
+
+## Stage 3.8 Extension: QA Gates, Revision Loops, and Release Evidence
+
+### QA Gates
+- Validate every line against platform specs before approval (headlines/descriptions/body limits per channel).
+- Export character-limit evidence for every variant (pass/fail and trimmed alternatives).
+- Require claim substantiation ID for any quantitative or comparative claim.
+- Confirm legal/disclaimer routing (inline, landing-page, or footnote) per channel policy.
+- Verify A/B readiness: each test set needs distinct angles, not paraphrased duplicates.
+
+### Revision-Loop Rules
+- Log rejected angles with explicit reason taxonomy: spec overflow, compliance, weak hook, duplication, or performance mismatch.
+- Rewrites must preserve approved intent while addressing exact failure reason.
+- Run targeted recheck first (only changed lines), then full campaign regression gate.
+- Carry forward performance learning notes (winners/losers and hypotheses) into next round.
+
+### Evidence Requirements
+- Character-count report for all submitted variants.
+- Claim evidence links and legal reviewer signoff state.
+- Rejection log with severity and owner.
+- Final approved upload table and versioned CSV.
+
+### Acceptance/Rejection Gates
+Accept only when copy is spec-compliant, substantiated, and legally clear for target channel.
+Reject when any claim lacks evidence, required disclaimer path is missing, or A/B set lacks meaningful variation.
+
+### Integration and Handoff
+Send approved variants + evidence pack to `creative-qa-gate-automation` for campaign-level go/no-go review.
+After QA gate pass, deliver immutable upload files and notes through `creative-asset-handoff`.
+

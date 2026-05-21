@@ -42,5 +42,42 @@ spring-campaign-delivery/
 ## Handoff Note (Short)
 "Attached is the approved spring campaign delivery package v3. All exports are reconciled in `docs/delivery-manifest.md`, source files are separated under `source/`, and usage constraints are documented in `docs/provenance-and-licensing.md`."
 
-## QA/Signoff Extension Example
-This workflow includes issue taxonomy, revision loop entries, stakeholder approval states, and final evidence-pack notes before release.
+## Stage 3.8 Example: Final Campaign Package Governance
+
+### Release Manifest Snapshot
+| Asset Group | Source path | Export path | Status | Notes |
+|---|---|---|---|---|
+| Ad copy and channel text | `source/content/` | `exports/social/`, `exports/ad-platform/` | Approved | Includes legal-cleared copy IDs |
+| Product imagery | `source/raster-working/` | `exports/web/`, `exports/marketplace/` | Approved | Non-destructive masters retained |
+| Icon set | `source/vectors/` | `exports/app/` | Approved | Token-aligned SVG + PNG fallback |
+| Partner PDF | `source/layout/` | `exports/print/` | Approved | Metadata and footer disclaimers validated |
+
+### Ownership and Signoff Matrix
+| Team | Owner | Signoff state | Evidence |
+|---|---|---|---|
+| Creative production | Creative ops lead | Approved | QA gate report v5 |
+| Design systems | DS manager | Approved | SVG acceptance checklist |
+| Marketing | Campaign manager | Approved | Channel usage instructions |
+| Legal/compliance | Counsel reviewer | Approved | Claim/disclaimer review log |
+
+### Source/Export Separation Notes
+- `source/` contains editable PSD/AI/FIG/INDD and working markdown files only.
+- `exports/` contains immutable release artifacts only.
+- Every exported file maps to one source record in the manifest.
+
+### Revision History
+| Version | Change | Trigger |
+|---|---|---|
+| v3.0 | Initial approved delivery set | Launch freeze |
+| v3.1 | Replaced one social image after crop fix | Late major issue from QA gate |
+| v3.2 | Updated one partner PDF disclaimer line | Legal amendment |
+
+### Rollback/Withdrawal Path
+If post-release defect is found:
+1. Mark impacted exports as withdrawn in manifest.
+2. Move withdrawn assets to `/archive/withdrawn-v3.2/`.
+3. Restore last approved version from `/archive/approved-v3.1/`.
+4. Notify channel owners with replacement IDs.
+
+### Late-Change Protocol
+Any late change after signoff reopens `creative-qa-gate-automation`. No modified export is redistributed until blocker status is cleared and signoff matrix is re-stamped.

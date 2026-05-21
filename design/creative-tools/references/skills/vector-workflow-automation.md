@@ -88,5 +88,32 @@ Reject and rework when:
 - Naming/versioning prevents deterministic imports.
 - Export package omits required fallback formats.
 
-## QA Gate Integration
-Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.
+
+## Stage 3.8 Extension: QA Gates, Revision Loops, and Release Evidence
+
+### QA Gates
+- Enforce path normalization and remove redundant points/boolean residue.
+- Require consistent `viewBox` and visual bounds across icon family.
+- Enforce stroke/fill rules and token-aligned color mappings.
+- Validate deterministic naming/versioning for import safety.
+- Validate export variants (SVG primary, PNG fallback where required).
+- Require accessibility labels/title metadata for semantic icons.
+
+### Revision-Loop Rules
+- Record each failed icon with category: geometry, styling, naming, token mismatch, or accessibility.
+- Revisions must preserve semantic intent and grid alignment.
+- Re-run render checks in target environments after each fix batch.
+
+### Evidence Requirements
+- Before/after snippets for corrected files.
+- Lint/render QA report and export inventory table.
+- Signoff from design system owner and engineering consumer.
+
+### Acceptance/Rejection Gates
+Accept when all icons meet viewBox/path/token/naming/a11y rules and render cleanly in target stack.
+Reject when naming is nondeterministic, tokens are hard-coded incorrectly, or required fallback exports are missing.
+
+### Integration and Handoff
+Forward QA report and signoff matrix to `creative-qa-gate-automation`.
+After pass, deliver normalized sources and release exports via `creative-asset-handoff`.
+

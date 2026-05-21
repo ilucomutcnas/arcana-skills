@@ -104,5 +104,33 @@ Quick reference:
 - Extracted text or tables in requested format.
 - Error reports for any processing failures.
 
-## QA Gate Integration
-Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.
+
+## Stage 3.8 Extension: QA Gates, Revision Loops, and Release Evidence
+
+### QA Gates
+- Validate fillable form fields for presence, names, and writability.
+- Run text extraction/accessibility checks to confirm readable output order.
+- Validate bounding boxes for overflow and clipped labels.
+- Verify page count/order and metadata consistency with release brief.
+- Validate watermark/provenance markers where required.
+- For merge/split operations, confirm integrity by source-to-output page mapping.
+- Confirm redaction/security notes when sensitive data handling is in scope.
+
+### Revision-Loop Rules
+- Log each defect with severity, page/field scope, owner, and retest command.
+- Re-run only impacted scripts after fixes, then run full regression validation on final PDF.
+- Any blocker (legal omission, corrupted output, missing required field) halts release until closed.
+
+### Evidence Requirements
+- Script outputs for field checks, bounding boxes, metadata, and extraction.
+- Page mapping or checksum report for merge/split jobs.
+- Issue log showing resolution state and final retest pass.
+
+### Acceptance/Rejection Gates
+Accept when script outputs pass, metadata/page integrity matches brief, and required legal/security notes are present.
+Reject when any required field fails, extraction is unreadable, or redaction/security expectations are unmet.
+
+### Integration and Handoff
+Submit script logs and acceptance checklist to `creative-qa-gate-automation` for document gate approval.
+Package approved PDFs, supporting logs, and usage notes with `creative-asset-handoff`.
+

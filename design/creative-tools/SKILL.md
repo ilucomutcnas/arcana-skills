@@ -15,7 +15,7 @@ Provide structured guidance for creative production tools: generating and iterat
 
 ## Domain Coverage
 
-This package represents the creative tools domain. It covers seven interconnected capabilities: performance ad creative generation with platform specs and iteration tracking, content creation with brand voice analysis and SEO optimization, PDF processing for document automation, vector workflow automation for SVG/icon normalization, raster retouch pipelines for non-destructive image production, and creative asset handoff for release-ready delivery. Mini-skills are separated for routing and selective loading while still supporting multi-skill composition.
+This package represents the creative tools domain. It covers seven interconnected capabilities: performance ad creative generation with platform specs and iteration tracking, content creation with brand voice analysis and SEO optimization, PDF processing for document automation, vector workflow automation for SVG/icon normalization, raster retouch pipelines for non-destructive image production, creative QA gate automation for review/signoff/release decisions, and creative asset handoff for release-ready delivery. Mini-skills are separated for routing and selective loading while still supporting multi-skill composition.
 
 ## How to Use
 

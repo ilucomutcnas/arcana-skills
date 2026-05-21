@@ -84,5 +84,31 @@ Reject handoff when:
 - Manifest does not reconcile to delivered files.
 - Acceptance criteria are missing or unsigned.
 
-## QA Gate Integration
-Use with `creative-qa-gate-automation` for pre-release checks, revision loops, stakeholder signoff, and evidence-pack generation.
+
+## Stage 3.8 Extension: QA Gates, Revision Loops, and Release Evidence
+
+### QA Gates
+- Require a release manifest that reconciles every export to one source record.
+- Require ownership matrix and explicit approval status per asset group.
+- Enforce strict source/export separation and immutable approved exports.
+- Require usage instructions, constraints, and provenance/licensing notes.
+- Define rollback/withdrawal paths before distribution.
+
+### Revision-Loop Rules
+- Any post-signoff file change creates a new version and reopens QA gate review.
+- Maintain revision history with change reason, owner, and affected channels.
+- Late-change protocol must identify impacted stakeholders and replacement instructions.
+
+### Evidence Requirements
+- Delivery manifest with versions and approval states.
+- Signoff matrix across creative, engineering, marketing, and compliance.
+- Rollback instructions and archive map for previous approved sets.
+
+### Acceptance/Rejection Gates
+Accept when manifest reconciliation, owner approvals, and source/export integrity are complete.
+Reject when assets are missing provenance, ownership is undefined, or late changes bypassed re-approval.
+
+### Integration and Downstream Expectations
+Handoff should only proceed after `creative-qa-gate-automation` returns release-go status.
+Downstream teams receive approved-only exports, source lineage references, usage guidance, and rollback contacts.
+
