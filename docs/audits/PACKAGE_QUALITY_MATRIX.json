@@ -643,26 +643,21 @@
     },
     {
       "order": 2,
-      "package": "design/creative-tools",
-      "reason": "Expanded coverage is solid, but follow-up should deepen cross-mini-skill QA/signoff workflows and end-to-end release-readiness evidence."
-    },
-    {
-      "order": 3,
       "package": "design/design-systems",
       "reason": "Structurally strong after upgrade; remaining follow-up is deeper long-horizon operational evidence and adoption/release playbooks."
     },
     {
-      "order": 4,
+      "order": 3,
       "package": "design/css-styling",
       "reason": "Already ready-for-use; keep as lower-priority follow-up for advanced release-playbook depth, not an immediate upgrade blocker."
     },
     {
-      "order": 5,
+      "order": 4,
       "package": "design/accessibility-ux",
       "reason": "Moved to ready-for-use after Stage 3.6; keep only as optional future pass for professional-threshold depth, not immediate content-upgrade urgency."
     },
     {
-      "order": 6,
+      "order": 5,
       "package": "design/brand-visual",
       "reason": "Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency."
     }
