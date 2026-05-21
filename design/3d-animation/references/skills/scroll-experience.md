@@ -76,20 +76,26 @@ Library options and their strengths:
 - Include library import statements and setup.
 - Document any performance considerations.
 
-## Production Constraints and Failure Modes
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-- Define measurable performance budgets (frame time, memory, draw calls, shader compile time) before implementation.
-- Document browser/GPU matrix (Chrome, Safari, Firefox + at least one mobile device class) and known limitations.
-- Add explicit fallback behavior (reduced motion, static poster, disabled heavy effect path) for low-end/mobile constraints.
-- Capture failure modes in review notes: visual artifacts, precision drift, lifecycle leaks, disposal omissions, and asset loading errors.
-- Require release evidence: before/after metrics, acceptance checklist, and rollback strategy.
+### Mini-Skill-Specific Failure Modes
+- CLS from pinning, viewport unit jumps on mobile, unmounted listeners, inaccessible keyboard flow.
 
-## Diagnostics Checklist
+### Diagnostics Workflow
+1. Build a minimal reproducible case centered on `scroll-experience` behavior.
+2. Validate configuration and lifecycle boundaries specific to this mini-skill.
+3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
+4. Verify fallback path behavior under failure and reduced-capability conditions.
+5. Record release decision with explicit pass/fail against acceptance gates.
 
-1. Reproduce issue with minimal scene/component and deterministic inputs.
-2. Isolate subsystem boundaries (geometry/material/shader/postprocessing/interaction/loader).
-3. Instrument timing (`performance.now`, frame budget logging, renderer info counters).
-4. Validate resize/dispose/context lifecycle and listener cleanup.
-5. Verify color-space/tone mapping consistency and mobile-specific rendering behavior.
-6. Record pass/fail evidence and ship only if all blocking defects are cleared.
+### Measurable Release Evidence
+- Provide at least one table of baseline vs optimized measurements relevant to `scroll-experience`.
+- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
+- Attach reproducible parameters/state values so QA can replay the scenario.
 
+### Acceptance / Rejection Criteria
+- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
+- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+
+### Adjacent Mini-Skills to Use for Validation
+- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `scroll-experience`.

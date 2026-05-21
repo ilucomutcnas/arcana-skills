@@ -46,16 +46,28 @@ hemi.intensity;
 5. Disable shadows on lights that do not need them.
 6. Use light layers to exclude objects from certain lights.
 
-## Production Evidence Addendum
+## Shadow Quality / Performance Triage Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Before / After Shadow Settings
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| Setting | Before | After |
+|---|---|---|
+| shadow map size | 4096 | 2048 desktop / 1024 mobile |
+| PCF mode | PCFSoft | PCFSoft desktop, Basic mobile |
+| light count with shadows | 3 | 1 key + baked fill |
+
+### Shadow Map Budget Table
+
+| Tier | Max Shadow Maps | Max Total Resolution |
+|---|---:|---:|
+| Desktop | 2 | 4096^2 combined |
+| Mobile | 1 | 1024^2 |
+
+### Mobile Fallback
+- Disable contact shadows and lower shadow camera frustum updates.
+
+### Visual QA Gates
+- No peter-panning on hero assets.
+- Penumbra softness consistent across camera orbit.
+- Frame time impact from shadows <= 4ms on baseline desktop.
 

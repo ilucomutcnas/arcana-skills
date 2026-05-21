@@ -83,16 +83,28 @@ new THREE.StringKeyframeTrack(
 4. Use LOD for animations: simpler rigs for distant characters.
 5. Limit active mixers: each `mixer.update()` has a cost.
 
-## Production Evidence Addendum
+## GLTF Clip Blending + Procedural Idle Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Mixer / Action Lifecycle Table
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| Phase | Action | Validation |
+|---|---|---|
+| Load | create `AnimationMixer` | mixer exists once per model |
+| Init | set base clip weight 1.0 | no duplicate play calls |
+| Blend | crossfade idle->gesture | no snapping at transition |
+| Teardown | stop actions + uncache | memory returns after dispose |
+
+### Delta-Time Correctness
+- Use `clock.getDelta()` capped at `0.05` to avoid tab-throttle spikes.
+- Multiply procedural idle offsets by delta, not frame count.
+
+### Pause/Resume Hidden Tab
+- On `visibilitychange`, pause mixer and resume with fresh delta reset.
+
+### Reduced-Motion Strategy
+- Keep essential state changes; disable idle bob and long camera easing.
+
+### Acceptance Checks
+- Animation remains deterministic across 60Hz and 120Hz displays.
+- No action leaks after route transitions.
 

@@ -65,16 +65,36 @@ function ScrollComponent() {
 }
 ```
 
-## Production Evidence Addendum
+## Scroll-Driven Product Story Release Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Section Timing Table
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| Section | Scroll Span | Effect | Pinning |
+|---|---:|---|---|
+| Hero intro | 0-18vh | headline parallax + model fade-in | pinned |
+| Feature reveal | 18-72vh | camera dolly + text stepper | pinned |
+| Spec breakdown | 72-130vh | chart scrub + counters | unpinned |
+| CTA | 130-160vh | subtle fade + scale | unpinned |
+
+### Library / Tech Choice Notes
+- GSAP ScrollTrigger for deterministic scrub + pin control.
+- Native IntersectionObserver for analytics beacons.
+- CSS `scroll-timeline` reserved for non-critical enhancement only.
+
+### Reduced-Motion Fallback
+- Replace scrubbed transforms with discrete fade-in sections.
+- Disable pinning and preserve natural document flow.
+
+### Cleanup / Unmount Checklist
+- [ ] Kill ScrollTrigger instances on route change.
+- [ ] Remove resize/scroll listeners.
+- [ ] Reset inline transforms before unmount.
+
+### CLS / Layout Stability QA Matrix
+
+| Check | Target | Result Gate |
+|---|---|---|
+| CLS | < 0.1 | Block release if exceeded |
+| Hero height shift | 0px after hydration | Block release |
+| Mobile viewport resize jump | none | Must pass Safari iOS |
 

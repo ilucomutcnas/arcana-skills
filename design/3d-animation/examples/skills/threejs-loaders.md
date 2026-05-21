@@ -103,16 +103,29 @@ loader.load(
 );
 ```
 
-## Production Evidence Addendum
+## Model Loading Pipeline Release Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### LoadingManager States
+- `onStart`: show skeleton placeholder.
+- `onProgress`: update determinate progress bar.
+- `onError`: switch to fallback poster/model + retry CTA.
+- `onLoad`: hide loader and emit analytics success event.
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+### Fallback Behavior
+- Prefer low-poly proxy GLB when primary fails.
+- If both fail, keep static poster and textual feature summary.
+
+### Cancellation / Caching Notes
+- Abort in-flight fetch when route changes.
+- Cache successfully parsed assets by URL + version key.
+
+### GLTF Transform Checklist
+- [ ] Normalize scale and center pivot.
+- [ ] Validate material assignments and tangents.
+- [ ] Strip unused animation clips.
+
+### Release Checklist
+- [ ] Offline/error path tested.
+- [ ] Progress UI does not stall at 99%.
+- [ ] Fallback path maintains layout height.
 

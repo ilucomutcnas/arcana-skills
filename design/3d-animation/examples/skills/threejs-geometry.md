@@ -70,16 +70,28 @@ new THREE.PolyhedronGeometry(vertices, indices, 1, 0);
 4. Choose appropriate segment counts: more segments = smoother but slower.
 5. Dispose unused geometry: `geometry.dispose()`.
 
-## Production Evidence Addendum
+## Instanced Mesh Conversion Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Before / After Budget Table
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| Metric | Before (600 Mesh) | After (Instanced) | Gate |
+|---|---:|---:|---|
+| Draw calls | 612 | 18 | Pass if < 40 |
+| CPU frame ms | 11.2 | 4.6 | Pass if <= 6 |
+| GPU memory MB | 280 | 190 | Pass if <= 220 |
+
+### BufferGeometry / InstancedMesh Snippet
+
+```javascript
+const geometry = new THREE.BoxGeometry(1,1,1);
+const material = new THREE.MeshStandardMaterial({ color: 0x66ccff });
+const instanced = new THREE.InstancedMesh(geometry, material, count);
+```
+
+### Bounding Volume + Normal Validation
+- Recompute `geometry.computeBoundingSphere()` after attribute edits.
+- Validate normals with helper pass before shipping.
+
+### Disposal Checks
+- Dispose shared geometry/material exactly once during teardown.
 

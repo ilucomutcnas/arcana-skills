@@ -64,16 +64,34 @@ void main() {
 - Pack data into `vec4` to minimize memory access.
 - Pre-calculate constant values on the CPU as uniforms.
 
-## Production Evidence Addendum
+## Fragment Shader Release Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Uniform Table
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| Uniform | Type | Purpose | Guardrail |
+|---|---|---|---|
+| `uTime` | float | phase animation | freeze toggle for debugging |
+| `uResolution` | vec2 | pixel normalization | update on resize |
+| `uNoiseScale` | float | turbulence detail | clamp 0.5-8.0 |
+| `uExposure` | float | tone control | clamp 0.8-1.4 |
+
+### Precision + Derivative Notes
+- Use `highp` in fragment shader for mobile stability when gradients are subtle.
+- Use `fwidth`-based smoothing for contour edges.
+
+### Before / After Anti-Aliasing Snippet
+
+```glsl
+// Before
+float ring = step(0.5, fract(d * 8.0));
+
+// After
+float w = fwidth(d * 8.0);
+float ring = smoothstep(0.5 - w, 0.5 + w, fract(d * 8.0));
+```
+
+### Mobile GPU Release Criteria
+- No temporal shimmer on iOS Safari and Adreno Chrome.
+- Shader compile time < 40ms cold start.
+- Visual delta against desktop reference <= agreed art threshold.
 

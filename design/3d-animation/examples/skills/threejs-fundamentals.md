@@ -93,16 +93,25 @@ camera.lookAt(0, 0, 0);
 camera.updateProjectionMatrix(); // Call after changing fov, aspect, near, far
 ```
 
-## Production Evidence Addendum
+## Production Scene Setup Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Lifecycle Coverage
+- Initialize renderer/camera/scene only on client mount.
+- Handle resize with debounced camera aspect + renderer size updates.
+- Dispose geometries/materials/textures and remove listeners on unmount.
+- Register and recover from `webglcontextlost` / `webglcontextrestored`.
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+### Pixel Ratio Cap
+- `renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))`.
+
+### Color Management
+- Set output color space and tone mapping once; verify texture colorSpace alignment.
+
+### SSR / Client Boundary
+- Keep scene bootstrap in client-only module; SSR renders semantic shell.
+
+### Acceptance Checks
+- No uncaught context-loss errors in 10 reload stress test.
+- Resize keeps aspect accuracy within 1px letterboxing tolerance.
+- GPU memory stable after mount/unmount loop x20.
 

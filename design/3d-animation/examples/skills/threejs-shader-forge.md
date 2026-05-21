@@ -95,16 +95,27 @@ const material = new THREE.RawShaderMaterial({
 4. Use textures as lookup tables for complex functions.
 5. Limit overdraw — avoid transparent objects when possible.
 
-## Production Evidence Addendum
+## Custom Shader Material Integration Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Uniform Validation Table
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| Uniform | Validation | Fallback |
+|---|---|---|
+| `uTime` | monotonic increasing | freeze at 0 for static render |
+| `uResolution` | matches renderer target | derive from render target size |
+| `uPalette` | 4-color array length | default palette constant |
+
+### Shader Path Fallback Note
+- Primary: `ShaderMaterial` (WebGL).
+- Advanced: TSL NodeMaterial (WebGPU-capable builds).
+- Emergency fallback: `MeshStandardMaterial` preserving silhouette and brand color.
+
+### Material Disposal
+- Dispose custom materials on scene teardown and clear uniform references.
+
+### Fallback Material Path
+- Trigger fallback on compile/link error or unsupported extension.
+
+### Debug Handoff Notes
+- Document defines, expected uniforms, and toggles for QA to reproduce artifact reports.
 

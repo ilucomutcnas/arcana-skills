@@ -23,16 +23,30 @@ For working code examples, see the dedicated example files:
 - React wrapper component: `spline-3d-integration__examples/react-spline-wrapper.tsx`
 - Interactive scene with events: `spline-3d-integration__examples/interactive-scene.tsx`
 
-## Production Evidence Addendum
+## React/Next Spline Hero Integration Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Lazy-Load + Fallback Poster Flow
+1. Render static poster image immediately.
+2. Lazy import Spline component on client intersection.
+3. Swap poster to live scene after `onLoad` event and keep poster for reduced-motion mode.
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+### Event Listener Lifecycle Cleanup
+- Register Spline events (`mouseDown`, `mouseHover`) inside `useEffect`.
+- Remove listeners on unmount and when scene instance changes.
+
+### SSR Boundary Note
+- Wrap Spline import with `dynamic(..., { ssr: false })` in Next.js.
+- Keep text content server-rendered to avoid hydration mismatch.
+
+### Mobile Performance Check Table
+
+| Device Class | Target FPS | Fallback Trigger |
+|---|---:|---|
+| High-end mobile | >= 45 | none |
+| Mid-range mobile | >= 30 | disable heavy autoplay camera |
+| Low-end mobile | >= 24 | static poster only |
+
+### Accessibility Alternative Content
+- Provide semantic heading + summary outside canvas.
+- Add keyboard-accessible CTA independent from Spline interaction.
 

@@ -99,16 +99,30 @@
 3. Use `Snap` for instant state changes (disabled states).
 4. Animate shader uniforms in `draw_bg`, `draw_text`, etc.
 
-## Production Evidence Addendum
+## Makepad Button/Card Transition Release Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### State Transition Table
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| State | Entry Trigger | Exit Trigger | Motion Token | Release Expectation |
+|---|---|---|---|---|
+| `default` | initial/load | hover/focus/disabled | none | Stable baseline colors |
+| `hover` | pointer enter | pointer leave/press | `fast-120ms` | Elevation + subtle scale |
+| `pressed` | pointer down/keyboard activate | pointer up | `snap-0ms` for scale, `80ms` color | Immediate tactile response |
+| `disabled` | form lock / async pending | enabled | `snap-0ms` | No hover/press animation |
+| `focus` | keyboard tab | blur | `standard-160ms` ring | WCAG-visible focus ring |
+
+### Snap vs Forward Timing Decisions
+- Use snap for interaction-critical transforms (`pressed` scale).
+- Use forward easing for decorative transitions (`hover` glow).
+- Reject builds where disabled state still animates.
+
+### Reduced-Motion Mapping
+- Map `hover` scale animation to color-only change when reduced motion active.
+- Collapse card entrance motion to opacity fade <= 80ms.
+
+### Failure-State Checklist
+- [ ] Focus ring visible without pointer.
+- [ ] Rapid hover/press spam does not deadlock state machine.
+- [ ] Disabled state ignores all pointer/key events.
+- [ ] Motion tokens resolve from shared design token source, not literals.
 

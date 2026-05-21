@@ -55,16 +55,33 @@ const [colorMap, normalMap, roughnessMap] = await Promise.all([
 5. Limit texture size: 2048 usually sufficient for web.
 6. Reuse textures: same texture = better batching.
 
-## Production Evidence Addendum
+## Texture Memory Reduction Plan Example
 
-### Constraints
-- Frame budget target: <= 16.6ms on desktop baseline, <= 25ms on mid-range mobile fallback path.
-- Regression threshold: reject if draw calls or GPU memory increase > 15% without approval.
-- Accessibility gate: reduced-motion path and non-pointer interaction fallback must be validated.
+### Before / After Texture Budget
 
-### Release Checks
-1. Deterministic reproduction steps documented with exact parameter/state values.
-2. Browser matrix logged (Chrome + Safari + Firefox + one mobile browser).
-3. Before/after screenshots or metric notes recorded in PR description (no binary assets required in repository).
-4. Rollback switch documented (feature flag, material fallback, or effect disable path).
+| Asset Group | Before MB | After MB | Strategy |
+|---|---:|---:|---|
+| Hero albedo set | 96 | 36 | atlas + KTX2 |
+| Normal/ORM set | 64 | 28 | resolution tiering |
+| UI decals | 22 | 8 | sprite atlas reuse |
+
+### Rules
+- Enable mipmaps for minified textures.
+- Limit anisotropy to device-supported cap with project max (often 4-8).
+- Set `colorSpace` correctly (sRGB for color maps, linear for data maps).
+
+### Atlas Strategy
+- Merge small props into shared atlas to cut texture binds.
+
+### Async Loading / Disposal Snippet
+
+```javascript
+const tex = await textureLoader.loadAsync(url);
+tex.colorSpace = THREE.SRGBColorSpace;
+// ... later on teardown
+tex.dispose();
+```
+
+### Compression Notes
+- Prefer KTX2/Basis pipeline in build stage; DRACO handles geometry, not texture payload.
 
