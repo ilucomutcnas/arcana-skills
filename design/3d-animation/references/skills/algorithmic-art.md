@@ -80,24 +80,35 @@ The HTML artifact must work immediately in claude.ai artifacts or any browser.
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- seed governance, non-deterministic exports, over-budget canvas resolution, inaccessible color contrast in generated palettes.
+### Failure Modes to Catch Before Release
+- Seed replay mismatch: same `seed` produces different pixel output across refreshes.
+- Parameter overflow: UI allows values outside approved artistic range and breaks composition density.
+- Export drift: runtime preview canvas differs from export canvas ratio, cropping key motifs.
+- Interactive lag: parameter scrubbing causes frame stalls on mid-tier devices.
+- Fallback gap: static poster mode missing when interaction budget is exceeded.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `algorithmic-art` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Algorithmic Art)
+1. Lock a test seed set (`seed-a`, `seed-b`, `seed-c`) and replay each seed three times per browser.
+2. Validate parameter clamps by forcing min/max values and confirming safe output boundaries.
+3. Compare preview vs export dimensions (`1x`, `2x`, print size) for framing consistency.
+4. Run interaction stress pass (rapid slider changes for 30s) and record frame stability.
+5. Trigger reduced-motion mode and verify static poster fallback with preserved composition.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `algorithmic-art`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Release Evidence Package
+- Seed used for approval (single canonical integer).
+- Parameter JSON snapshot (all tunables + clamp ranges).
+- Canvas dimensions for preview and export.
+- Browser replay notes (Chrome/Safari/Firefox consistency summary).
+- Export hash or side-by-side visual comparison note documenting replay fidelity.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Same seed + parameter JSON reproduces matching composition structure in all target browsers.
+- No parameter setting produces empty, clipped, or NaN-driven output.
+- Export framing matches approved preview framing within documented tolerance.
+- Interactive mode stays within budget, or static fallback is automatically selected.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `algorithmic-art`.
+### Validation Neighbors
+- `glsl-shader-alchemist` for procedural math and visual-function sanity checks.
+- `threejs-postprocessing` for color/contrast finishing when canvas output is composited.
+- `threejs-fundamentals` for canvas lifecycle and performance baselines.
+

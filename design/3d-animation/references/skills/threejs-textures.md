@@ -76,24 +76,35 @@ Load, configure, and optimize textures for Three.js materials. Covers TextureLoa
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- texture memory spikes, mipmap misuse, anisotropy overuse, atlas fragmentation and disposal leaks.
+### Texture Pipeline Failure Modes
+- Aggregate texture memory exceeds budget on mid-tier devices.
+- Missing mipmaps causes shimmering at distance.
+- Unbounded anisotropy increases sampling cost with limited visual gain.
+- Incorrect colorSpace assignment distorts albedo or data maps.
+- Compression strategy unclear (KTX2 for textures vs DRACO for geometry).
+- Async loader lifecycle leaks textures after scene disposal.
+- Atlas packing introduces UV bleed if padding rules are ignored.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-textures` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Texture Governance)
+1. Inventory texture set and compute memory footprint by asset group.
+2. Verify mipmap generation and min/mag filters for each critical map.
+3. Set anisotropy caps by device tier and compare quality/perf impact.
+4. Audit colorSpace assignments (sRGB vs linear) map-by-map.
+5. Validate atlas packing with UV edge test patterns.
+6. Trace async load/dispose lifecycle to ensure textures are released.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-textures`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Release Evidence Format
+- Before/after texture memory table.
+- Texture settings checklist (mipmaps, anisotropy, colorSpace, compression flag).
+- Loader/disposal lifecycle note describing when textures are freed.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Texture memory remains within defined platform budgets.
+- No visible shimmer/bleed artifacts in standard camera paths.
+- Disposal verified: no persistent GPU texture growth after scene teardown.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-textures`.
+### Validation Neighbors
+- `threejs-materials` for map usage and shading output.
+- `threejs-loaders` for async delivery and fallback behavior.
+- `threejs-fundamentals` for renderer color and lifecycle consistency.
+

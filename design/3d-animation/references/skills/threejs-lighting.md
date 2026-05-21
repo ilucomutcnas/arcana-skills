@@ -74,24 +74,33 @@ Shadow setup: enable `renderer.shadowMap.enabled = true`, set `light.castShadow 
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- shadow acne/peter-panning, excessive shadow map budgets, physically incorrect intensity, weak mobile fallback.
+### Lighting/Shadow Failure Modes
+- Shadow map resolution exceeds budget and tanks frame rate.
+- Shadow camera frustum too wide introduces acne and unstable penumbra.
+- Physically correct lighting disabled while PBR materials expect it.
+- Environment map intensity over-darkens or over-brightens hero assets.
+- Mobile shadow fallback absent, causing severe performance collapse.
+- Contact shadows shimmer during camera motion.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-lighting` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Lighting QA)
+1. Capture baseline shadow settings and performance cost.
+2. Tune shadow frustum tightly around action area and re-evaluate acne/peter-panning.
+3. Validate physically-correct lighting with calibrated exposure.
+4. Sweep environment intensity against approved material references.
+5. Execute mobile fallback profile (reduced map size / disabled features).
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-lighting`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Evidence Package
+- Shadow settings before/after table with map sizes and light counts.
+- Visual QA notes for peter-panning, acne, over-dark PBR, contact-shadow stability.
+- Mobile fallback table describing enabled/disabled shadow features.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Visual defects stay below art-direction tolerance.
+- Lighting configuration meets frame budget on baseline devices.
+- Mobile fallback preserves readability and core depth cues.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-lighting`.
+### Validation Neighbors
+- `threejs-materials` for PBR response calibration.
+- `threejs-fundamentals` for renderer/camera baseline consistency.
+- `threejs-postprocessing` for final perceived contrast and bloom interactions.
+

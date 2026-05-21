@@ -83,24 +83,33 @@ Choosing between approaches:
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- uniform lifecycle bugs, define mismatch across builds, material leaks, WebGPU/WebGL fallback gaps.
+### Integration Failure Modes
+- ShaderMaterial uniforms initialized once but never refreshed on resize/time updates.
+- RawShaderMaterial attribute/define mismatch between mesh and shader.
+- TSL/NodeMaterial path diverges from WebGL fallback output.
+- Material instances leak because disposal path misses custom shader references.
+- Compile/link errors are not surfaced with actionable logs.
+- Fallback material path missing, resulting in invisible meshes.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-shader-forge` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Shader Integration)
+1. Validate uniform lifecycle: init, frame update, resize update, teardown.
+2. Audit defines and required attributes for each shader variant.
+3. Compare WebGPU/TSL and WebGL output under same scene inputs.
+4. Capture compile/link logs with shader chunk identifiers.
+5. Force fallback material path and verify visual continuity.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-shader-forge`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Evidence Required for Release
+- Uniform validation table (name, source, update cadence, bounds).
+- Fallback material note (trigger + expected visual behavior).
+- Compile/link error capture format used by QA/dev handoff.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Shader variants compile consistently on supported targets.
+- Uniform updates remain synchronized with animation and viewport changes.
+- Fallback material prevents invisibility on shader failure.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-shader-forge`.
+### Validation Neighbors
+- `procedural-shader-debugging` for deep artifact diagnosis.
+- `glsl-shader-alchemist` for shader-code quality and optimization.
+- `threejs-materials` for fallback and blended material behavior.
+

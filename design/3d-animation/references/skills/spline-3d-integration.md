@@ -78,24 +78,33 @@ Master guide for embedding interactive 3D scenes from Spline.design into web pro
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- hydration mismatch in SSR, missing fallback poster, leaked event listeners, mobile framerate collapse.
+### Integration Failure Modes
+- Lazy-load trigger never fires and hero remains blank.
+- Poster fallback removed too early, exposing load flashes.
+- Spline event listeners duplicate on component remount.
+- SSR boundary violations create hydration warnings in Next.js.
+- Mobile scene exceeds performance tier and drops interaction responsiveness.
+- No accessible text alternative for non-canvas users.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `spline-3d-integration` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Spline Delivery)
+1. Verify lazy-load threshold and poster swap timing with network throttling.
+2. Inspect listener registration/removal on mount, route change, and unmount.
+3. Validate SSR/client split with hydration logs enabled.
+4. Benchmark scene performance across mobile device tiers.
+5. Confirm accessible alternative content remains present and meaningful.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `spline-3d-integration`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Required Evidence
+- Lifecycle checklist (mount/load/listener cleanup/unmount).
+- Mobile performance table by device class and fallback path.
+- Fallback behavior notes for failed load and reduced-motion mode.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Hero never renders blank during slow-network load.
+- Listener lifecycle is leak-free across remount cycles.
+- Mobile tier fallback keeps UX usable and stable.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `spline-3d-integration`.
+### Validation Neighbors
+- `scroll-experience` for scroll-bound hero coordination.
+- `threejs-fundamentals` for rendering lifecycle guardrails.
+- `threejs-loaders` for async asset failure handling patterns.
+

@@ -78,24 +78,33 @@ Library options and their strengths:
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- CLS from pinning, viewport unit jumps on mobile, unmounted listeners, inaccessible keyboard flow.
+### Scroll Production Failure Modes
+- Pin sections introduce cumulative layout shift during hydration.
+- Mobile viewport height changes break scroll timing offsets.
+- Reduced-motion path missing, causing inaccessible long scrub animations.
+- Keyboard users cannot progress narrative due to scroll-only triggers.
+- ScrollTrigger/Lenis listeners survive unmount and double-fire on route return.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `scroll-experience` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Narrative + Stability)
+1. Build section timing table with start/end markers and pin ownership.
+2. Record CLS during initial load and route transitions.
+3. Run reduced-motion and keyboard-only traversal as mandatory accessibility pass.
+4. Test mobile browser chrome show/hide to inspect viewport resize drift.
+5. Verify teardown: destroy trigger instances and remove listeners on unmount.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `scroll-experience`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Evidence Required for Release Review
+- Section timing table with intended visual events.
+- CLS notes including measurement method and max observed value.
+- Cleanup checklist results for listeners/triggers.
+- Reduced-motion fallback description with screenshots optional (not stored in repo).
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- CLS remains within project budget across target devices.
+- Scroll narrative remains usable via keyboard and reduced-motion mode.
+- No retained listeners or duplicate triggers after route remount.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `scroll-experience`.
+### Validation Neighbors
+- `threejs-animation` for scrubbed animation timing correctness.
+- `threejs-fundamentals` for resize and render-loop resilience.
+- `threejs-interaction` for keyboard/pointer parity validation.
+

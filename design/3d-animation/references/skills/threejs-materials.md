@@ -78,24 +78,33 @@ Common properties: `side` (FrontSide, BackSide, DoubleSide), `transparent`, `opa
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- transparent sorting artifacts, incorrect colorSpace, over-expensive PBR stacks, map mismatch.
+### Material Review Failure Modes
+- Wrong material class selected for intended lighting model.
+- PBR maps missing or misassigned (normal/roughness/metalness/ao).
+- Transparent objects render in wrong order with depth artifacts.
+- Color-space mismatch between albedo and data maps.
+- Roughness/normal values overly aggressive and break realism.
+- Texture-heavy materials exceed frame/memory budgets.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-materials` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Material Quality)
+1. Validate material selection against object function (hero, UI 3D, background).
+2. Run PBR map checklist for channel correctness and UV usage.
+3. Inspect transparent assets with renderOrder/depthWrite permutations.
+4. Audit color-space settings for all bound textures.
+5. Compare visual/perf tradeoffs between high-fidelity and fallback materials.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-materials`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Evidence Required
+- Material property before/after table for corrected assets.
+- Map validation checklist (present, colorSpace, channel correctness).
+- Transparent-object note documenting renderOrder and depthWrite decisions.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Materials match art direction under target lighting setup.
+- Transparency artifacts eliminated in primary camera paths.
+- Material stack remains within performance and memory targets.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-materials`.
+### Validation Neighbors
+- `threejs-textures` for map payload and color-space correctness.
+- `threejs-lighting` for physically based response validation.
+- `procedural-shader-debugging` for shader-driven material anomalies.
+

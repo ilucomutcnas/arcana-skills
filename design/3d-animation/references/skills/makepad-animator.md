@@ -76,24 +76,30 @@ Version: makepad-widgets (dev branch). Last updated: 2026-01-19. Check for updat
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- state-machine deadlocks, hover/pressed conflicts, disabled state still animating, reduced-motion mismatch.
+### Failure Modes for Makepad Animator State Systems
+- Stuck state after rapid hover/press transitions.
+- Disabled component still running hover pulse.
+- Focus-ring transition conflicting with pressed transition keyframes.
+- Hover/pressed race causing one-frame flicker or double transition.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `makepad-animator` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (State + Motion Tokens)
+1. Build a transition matrix for `default`, `hover`, `pressed`, `focus`, `disabled`.
+2. Mark each transition as `Snap` or `Forward` with rationale (latency-critical vs decorative).
+3. Execute keyboard-only navigation to validate focus and reduced-motion behavior.
+4. Stress-test pointer events (fast in/out + press spam) for race-condition artifacts.
+5. Confirm disabled state suppresses animator channels except accessibility-indicator changes.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `makepad-animator`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Release Evidence Format
+- State transition table with entry/exit triggers.
+- Timing-token table (token name, ms, easing, Snap/Forward choice).
+- Reduced-motion mapping note (what is removed, what remains semantic).
 
 ### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+- Accept only if every state pair resolves deterministically without stuck values.
+- Reject if disabled state animates, focus ring disappears, or transition races remain reproducible.
+- Reject if reduced-motion mode still uses large-scale motion transforms.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `makepad-animator`.
+### Validation Neighbors
+- `makepad-shader-lab` for shader-uniform synchronization with animator state.
+- `procedural-shader-debugging` when animated visual artifacts need instrumentation.
+

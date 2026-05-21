@@ -76,24 +76,35 @@ Load external 3D models, textures, and other assets into Three.js scenes. Covers
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- stalled progress states, failed fallback handling, uncancelled requests, unnormalized GLTF transforms.
+### Asset Loading Failure Modes
+- LoadingManager progress stalls without terminal success/error state.
+- Model failure path lacks fallback model/poster, leaving empty scene.
+- Imported GLTF scale/origin inconsistent with scene conventions.
+- Compression pipeline assumptions (DRACO/KTX2) undocumented for deployment.
+- Requests continue after route change, wasting bandwidth.
+- Offline/slow-network paths not tested.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-loaders` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Loader Reliability)
+1. Define explicit loading states (start/progress/success/error/fallback).
+2. Force network failures and verify fallback model or poster behavior.
+3. Validate GLTF transform normalization (scale, orientation, pivot).
+4. Confirm cancellation behavior on navigation.
+5. Verify caching strategy and stale-version invalidation.
+6. Run slow-network and offline simulations for readiness.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-loaders`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Release Evidence Requirements
+- Loading state table with UI behavior per state.
+- Fallback result notes from forced error test.
+- Asset transform checklist for each shipped model.
+- Network failure test note (throttled + offline).
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Every load path resolves to success or intentional fallback.
+- Transform normalization prevents scene-placement regressions.
+- Navigation does not leak in-flight asset requests.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-loaders`.
+### Validation Neighbors
+- `threejs-textures` for texture payload readiness.
+- `threejs-materials` for map/material compatibility.
+- `threejs-animation` for clip availability after load.
+

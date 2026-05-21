@@ -80,24 +80,33 @@ Comprehensive guide to writing GPU shaders using GLSL (OpenGL Shading Language).
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- precision collapse on mobile, derivative aliasing, branch-heavy hot paths, color-space mismatch.
+### Shader Authoring Failure Modes
+- `mediump` precision introduces temporal instability on mobile GPUs.
+- Missing derivative smoothing creates stair-step aliasing.
+- Heavy dynamic branching spikes fragment cost in dense scenes.
+- Uniform ranges allow invalid values that collapse output.
+- Color-space/tone-mapping mismatch causes washed highlights or clipped blacks.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `glsl-shader-alchemist` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (GLSL)
+1. Audit precision qualifiers per shader stage and test forced highp/mediump variants.
+2. Compare hard-threshold edges vs derivative-based anti-alias implementations.
+3. Profile branch-heavy paths with representative scene complexity.
+4. Validate uniform table (type, range, default, debug override).
+5. Run color-space verification with same scene in target browsers/GPU tiers.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `glsl-shader-alchemist`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Release Evidence Format
+- Uniform table with validated min/max ranges.
+- Before/after shader snippet for anti-alias or color-space correction.
+- Browser/GPU matrix (desktop + mobile) with artifact notes.
+- Compile-time or frame-cost observation tied to shader revision.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- No critical artifacts across approved GPU/browser matrix.
+- Uniform constraints prevent invalid rendering states.
+- Performance impact remains inside effect budget.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `glsl-shader-alchemist`.
+### Validation Neighbors
+- `procedural-shader-debugging` for systematic defect triage.
+- `threejs-shader-forge` for integration-layer correctness.
+- `threejs-postprocessing` for final output color pipeline verification.
+

@@ -76,24 +76,32 @@ Implement animation in Three.js using both procedural techniques (Timer, request
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- delta-time spikes, action blending pops, orphaned mixers after route change, reduced-motion noncompliance.
+### Animation Failure Modes
+- Mixer instances persist after scene teardown, leaking memory.
+- Uncapped delta produces animation jumps after tab throttling.
+- Clip blend weights snap due to misordered crossfade calls.
+- Hidden-tab pause/resume resumes with invalid elapsed time.
+- Reduced-motion mode still plays non-essential idle loops.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-animation` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Mixer + Actions)
+1. Document mixer/action lifecycle from model load through disposal.
+2. Apply delta cap and compare motion continuity before/after.
+3. Exercise clip transitions repeatedly to detect blend pops.
+4. Run hidden-tab test (background 30s, return) and inspect continuity.
+5. Validate reduced-motion behavior and confirm `uncacheRoot` cleanup.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-animation`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Release Evidence
+- Mixer/action lifecycle table including cleanup steps.
+- Hidden-tab test result note with observed behavior.
+- Reduced-motion behavior summary for each animation channel.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- No leaked actions/mixers after route transitions.
+- Blend transitions remain smooth under repeated interaction.
+- Hidden-tab resume avoids jump artifacts.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-animation`.
+### Validation Neighbors
+- `threejs-loaders` for clip source integrity from GLTF.
+- `threejs-interaction` for event-driven animation triggers.
+- `threejs-fundamentals` for render-loop timing correctness.
+

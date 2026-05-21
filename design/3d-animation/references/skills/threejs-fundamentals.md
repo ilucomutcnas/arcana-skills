@@ -83,24 +83,36 @@ Systematically create high-quality 3D scenes and interactive experiences using T
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- resize drift, context-loss unrecovered, excessive DPR causing GPU overload, SSR/client boundary leaks.
+### Core Runtime Failure Modes
+- DevicePixelRatio left uncapped, causing avoidable GPU pressure.
+- Resize path updates renderer but not camera projection correctly.
+- Color management configuration inconsistent with material/texture inputs.
+- Geometry/material disposal omitted on unmount.
+- Context-loss event unhandled, leaving unrecoverable blank canvas.
+- Server-rendered shell mixes with client scene bootstrap incorrectly.
+- No error boundary/fallback shell for initialization failures.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-fundamentals` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Scene Baseline)
+1. Verify DPR cap policy across desktop and mobile.
+2. Run resize matrix (orientation change + container resize) and inspect framing.
+3. Audit color management settings against sample textured assets.
+4. Execute repeated mount/unmount cycles and inspect memory trend.
+5. Simulate context-loss/recovery and validate renderer restoration.
+6. Test SSR/client boundary behavior with hydration logs.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-fundamentals`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Required Release Evidence
+- Resize test results (expected vs observed framing).
+- Mount/unmount memory note after stress loop.
+- Context-loss recovery note with steps and outcome.
+- DPR budget declaration used in production build.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Stable framing and aspect behavior across all target breakpoints.
+- No unbounded memory growth during lifecycle stress test.
+- Context loss handled with successful recovery or graceful fallback.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-fundamentals`.
+### Validation Neighbors
+- `threejs-geometry` for buffer lifecycle correctness.
+- `threejs-materials` for color-space compatibility validation.
+- `threejs-interaction` for input behavior after resize/recovery events.
+

@@ -76,24 +76,33 @@ Do not use `THREE.CapsuleGeometry` in Three.js versions before r142.
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- draw-call explosion, invalid normals after edits, missing bounds causing culling bugs, undisposed buffers.
+### Geometry Pipeline Failure Modes
+- Draw-call count scales linearly due to missed instancing opportunity.
+- BufferGeometry attributes exceed expected bounds and corrupt shading.
+- Merge strategy invalidates per-object material requirements.
+- Bounding sphere/box stale after vertex mutation, causing culling errors.
+- Normals/tangents inconsistent after procedural edits.
+- Geometry resources not disposed during scene teardown.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `threejs-geometry` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Geometry Efficiency)
+1. Profile scene draw calls before optimization.
+2. Evaluate InstancedMesh vs merge strategy based on material and transform diversity.
+3. Recompute and validate bounding volumes after attribute updates.
+4. Run normal/tangent validation pass using debug shading.
+5. Confirm disposal sequence for merged/instanced resources.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `threejs-geometry`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Evidence Required for Approval
+- Draw-call before/after table.
+- Memory usage comparison table after geometry strategy change.
+- Bounding volume validation notes including culling edge cases.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- Optimization meets draw-call budget without visual regression.
+- Bounds and normals remain valid under animation/camera movement.
+- No geometry memory leaks after teardown.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `threejs-geometry`.
+### Validation Neighbors
+- `threejs-materials` for shading correctness on optimized meshes.
+- `threejs-fundamentals` for lifecycle/disposal confirmation.
+- `threejs-loaders` when geometry originates from imported assets.
+

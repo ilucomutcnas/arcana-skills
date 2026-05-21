@@ -78,24 +78,32 @@ Version: makepad-widgets (dev branch). Last updated: 2026-01-19. Check for updat
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Mini-Skill-Specific Failure Modes
-- Sdf2d edge shimmer, gradient banding, rounded-box radius jitter, uniform update desync.
+### Makepad Shader Failure Modes
+- Sdf2d edges shimmer due to insufficient anti-alias window.
+- Gradient banding in low-luminance themes.
+- Rounded-box corners collapse when radius uniform overshoots control bounds.
+- Uniform update cadence mismatched with animator state updates.
+- Compile failure path leaves component blank instead of using visual fallback.
 
-### Diagnostics Workflow
-1. Build a minimal reproducible case centered on `makepad-shader-lab` behavior.
-2. Validate configuration and lifecycle boundaries specific to this mini-skill.
-3. Capture quantitative evidence (timings, memory, visual diffs) before and after fixes.
-4. Verify fallback path behavior under failure and reduced-capability conditions.
-5. Record release decision with explicit pass/fail against acceptance gates.
+### Diagnostics Workflow (Sdf2d + Uniforms)
+1. Visualize SDF distance field and edge threshold values while animating radius.
+2. Run dark-theme gradient sweep and detect visible banding thresholds.
+3. Log uniform writes per frame; verify ordering relative to animation state changes.
+4. Force shader compile failure (invalid token test) to verify fallback paint path.
+5. Compare before/after shader revisions with same interaction script.
 
-### Measurable Release Evidence
-- Provide at least one table of baseline vs optimized measurements relevant to `makepad-shader-lab`.
-- Validate on Chrome + Safari + Firefox and one mobile browser/GPU tier.
-- Attach reproducible parameters/state values so QA can replay the scenario.
+### Required Release Evidence
+- Before/after shader snippet showing artifact remediation.
+- Artifact table (symptom, trigger, fix, residual risk).
+- Uniform update checklist signed off for hover/focus/press transitions.
 
-### Acceptance / Rejection Criteria
-- **Accept** when all blocking defects are resolved, metrics meet budget, and fallback paths are confirmed.
-- **Reject** when defect reproduction remains, metrics regress beyond threshold, or lifecycle cleanup/fallback is missing.
+### Acceptance Gates
+- No visible corner jitter in repeated hover loop.
+- Gradient quality acceptable on at least one OLED mobile device class.
+- Compile failure reliably switches to approved fallback style.
 
-### Adjacent Mini-Skills to Use for Validation
-- Primary validation neighbors: `procedural-shader-debugging`, `threejs-fundamentals`, and package-adjacent skills tied to `makepad-shader-lab`.
+### Validation Neighbors
+- `makepad-animator` for state transition timing alignment.
+- `procedural-shader-debugging` for NaN/precision instrumentation patterns.
+- `glsl-shader-alchemist` for shader math and anti-alias techniques.
+
