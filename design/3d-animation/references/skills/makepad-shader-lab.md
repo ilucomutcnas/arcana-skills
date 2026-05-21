@@ -78,32 +78,32 @@ Version: makepad-widgets (dev branch). Last updated: 2026-01-19. Check for updat
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Makepad Shader Failure Modes
-- Sdf2d edges shimmer due to insufficient anti-alias window.
-- Gradient banding in low-luminance themes.
-- Rounded-box corners collapse when radius uniform overshoots control bounds.
-- Uniform update cadence mismatched with animator state updates.
-- Compile failure path leaves component blank instead of using visual fallback.
+### Production Failure Modes
+- Sdf2d primitives render edge jitter from precision loss at scaled sizes.
+- Gradient ramps show visible banding under low-contrast UI themes.
+- Rounded-box corners collapse or alias at small radii.
+- Uniform updates desynchronize from frame timing, producing temporal flicker.
+- Shader compile failure leaves no safe fallback paint path.
 
-### Diagnostics Workflow (Sdf2d + Uniforms)
-1. Visualize SDF distance field and edge threshold values while animating radius.
-2. Run dark-theme gradient sweep and detect visible banding thresholds.
-3. Log uniform writes per frame; verify ordering relative to animation state changes.
-4. Force shader compile failure (invalid token test) to verify fallback paint path.
-5. Compare before/after shader revisions with same interaction script.
+### Diagnostics Workflow (Makepad Shader Lab)
+1. Test Sdf2d shapes at multiple scale factors and DPI values to verify edge continuity.
+2. Capture gradient sweeps on dark/light themes and check for quantization steps.
+3. Probe rounded-box radius extremes and document artifact thresholds.
+4. Trace uniform update cadence against frame callbacks to detect stale values.
+5. Intentionally break shader syntax and validate fallback render behavior is deterministic.
 
-### Required Release Evidence
-- Before/after shader snippet showing artifact remediation.
-- Artifact table (symptom, trigger, fix, residual risk).
-- Uniform update checklist signed off for hover/focus/press transitions.
+### Release Evidence Format
+- Before/after shader snippet showing the exact artifact fix.
+- Artifact table with issue type, trigger conditions, and corrected outcome.
+- Uniform update checklist confirming timing source, update frequency, and default initialization.
 
-### Acceptance Gates
-- No visible corner jitter in repeated hover loop.
-- Gradient quality acceptable on at least one OLED mobile device class.
-- Compile failure reliably switches to approved fallback style.
+### Acceptance / Rejection Criteria
+- **Accept** when shape edges remain stable at all supported scale targets.
+- **Reject** if gradient banding is visible in baseline UI themes without mitigation.
+- **Reject** if compile failures produce transparent/blank surfaces instead of fallback styling.
+- **Accept** only when uniform lifecycles are predictable and frame-coherent.
 
-### Validation Neighbors
-- `makepad-animator` for state transition timing alignment.
-- `procedural-shader-debugging` for NaN/precision instrumentation patterns.
-- `glsl-shader-alchemist` for shader math and anti-alias techniques.
-
+### Adjacent Mini-Skills to Use for Validation
+- `makepad-animator`
+- `procedural-shader-debugging`
+- `glsl-shader-alchemist`

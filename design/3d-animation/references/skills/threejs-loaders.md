@@ -76,35 +76,35 @@ Load external 3D models, textures, and other assets into Three.js scenes. Covers
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Asset Loading Failure Modes
-- LoadingManager progress stalls without terminal success/error state.
-- Model failure path lacks fallback model/poster, leaving empty scene.
-- Imported GLTF scale/origin inconsistent with scene conventions.
-- Compression pipeline assumptions (DRACO/KTX2) undocumented for deployment.
-- Requests continue after route change, wasting bandwidth.
-- Offline/slow-network paths not tested.
+### Production Failure Modes
+- LoadingManager states do not progress cleanly from pending to complete/error.
+- Failed model fetch leaves empty viewport without poster/model fallback.
+- Imported GLTF scale/origin/orientation is inconsistent across assets.
+- DRACO/KTX2 decoder pathways are misconfigured (without bundled binaries here).
+- Requests cannot be cancelled during route changes, causing ghost updates.
+- Cache strategy causes stale assets or redundant downloads on slow networks.
 
-### Diagnostics Workflow (Loader Reliability)
-1. Define explicit loading states (start/progress/success/error/fallback).
-2. Force network failures and verify fallback model or poster behavior.
-3. Validate GLTF transform normalization (scale, orientation, pivot).
-4. Confirm cancellation behavior on navigation.
-5. Verify caching strategy and stale-version invalidation.
-6. Run slow-network and offline simulations for readiness.
+### Diagnostics Workflow (Three.js Loaders)
+1. Trace LoadingManager callbacks and verify deterministic UI states.
+2. Simulate 404/timeout failures and confirm fallback poster or fallback model path.
+3. Normalize GLTF transforms at load time and record canonical orientation/scale rules.
+4. Validate DRACO/KTX2 configuration notes and runtime capability checks.
+5. Test cancellation on navigation and ensure in-flight callbacks are ignored safely.
+6. Run throttled/offline network scenarios to verify release readiness.
 
-### Release Evidence Requirements
-- Loading state table with UI behavior per state.
-- Fallback result notes from forced error test.
-- Asset transform checklist for each shipped model.
-- Network failure test note (throttled + offline).
+### Release Evidence Format
+- Loading state table (`idle`, `loading`, `partial`, `ready`, `error`) with UI behavior.
+- Fallback result note describing exact behavior under fetch failure.
+- Asset transform checklist (units, pivot, up-axis, scale normalization).
+- Network failure test note for slow 3G and offline simulation.
 
-### Acceptance Gates
-- Every load path resolves to success or intentional fallback.
-- Transform normalization prevents scene-placement regressions.
-- Navigation does not leak in-flight asset requests.
+### Acceptance / Rejection Criteria
+- **Accept** when loading states and fallback behavior are user-visible and reliable.
+- **Reject** if transform normalization is inconsistent between imported assets.
+- **Reject** when cancelled requests can still mutate disposed scenes.
+- **Accept** only when slow/offline scenarios are explicitly validated.
 
-### Validation Neighbors
-- `threejs-textures` for texture payload readiness.
-- `threejs-materials` for map/material compatibility.
-- `threejs-animation` for clip availability after load.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-textures`
+- `threejs-materials`
+- `threejs-animation`

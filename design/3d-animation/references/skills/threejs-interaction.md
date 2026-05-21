@@ -76,33 +76,34 @@ Implement user interaction in Three.js scenes. Covers camera controls (OrbitCont
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Interaction Failure Modes
-- Raycasting every frame across all objects causes CPU spikes.
-- Pointer normalization mismatch with canvas offsets yields inaccurate picks.
-- Missing layer filtering allows non-interactive meshes to capture events.
-- Touch flow diverges from pointer behavior.
-- Keyboard alternative does not map to selected-object state.
-- Event handlers accumulate across scene remounts.
+### Production Failure Modes
+- Raycasts run every frame without throttling, causing CPU spikes.
+- Pointer coordinates are mis-normalized under CSS scaling or DPR changes.
+- Non-interactive objects are still included in raycast layers.
+- Touch and keyboard alternatives are missing for pointer-only patterns.
+- Event listeners persist after unmount.
+- Focus state diverges from selected-object state.
 
-### Diagnostics Workflow (Input Robustness)
-1. Set raycast frequency budget and verify throttle/debounce behavior.
-2. Validate pointer normalization using known screen-space test points.
-3. Restrict raycast to interaction layers and verify exclusions.
-4. Test pointer, touch, and keyboard parity for same target actions.
-5. Audit listener attach/detach lifecycle during route transitions.
+### Diagnostics Workflow (Three.js Interaction)
+1. Set raycast frequency budget per interaction type (hover, drag, click).
+2. Validate pointer normalization math against resized canvas and DPR-capped renderer.
+3. Enforce layer-based filtering so only intended objects participate in picking.
+4. Verify parity across pointer, touch, and keyboard activation paths.
+5. Audit event registration and cleanup on scene/controller lifecycle transitions.
+6. Confirm focus and selection mappings remain synchronized for accessibility.
 
 ### Release Evidence Format
-- Input-mode table (pointer/touch/keyboard behavior parity).
-- Event lifecycle checklist (attach/remove points).
-- Keyboard alternative validation notes for selection and focus announcement.
+- Input-mode table listing supported actions for mouse, touch, keyboard, and assistive tech.
+- Event lifecycle checklist covering add/remove points for all listeners.
+- Keyboard alternative validation note with tested key bindings and focus outcomes.
 
-### Acceptance Gates
-- Interaction latency remains within budget under expected object counts.
-- Keyboard and touch users can complete core interactions.
-- No stale listeners after unmount/remount cycles.
+### Acceptance / Rejection Criteria
+- **Accept** when raycast workload stays inside budget under peak interaction.
+- **Reject** if pointer normalization fails after resize or DPR changes.
+- **Reject** when keyboard users cannot trigger primary interaction flows.
+- **Accept** only when event cleanup prevents duplicate handlers after remount.
 
-### Validation Neighbors
-- `threejs-fundamentals` for resize/canvas coordinate consistency.
-- `threejs-animation` for interaction-triggered motion behavior.
-- `threejs-geometry` for accurate hit volumes and bounds.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-fundamentals`
+- `threejs-animation`
+- `threejs-geometry`

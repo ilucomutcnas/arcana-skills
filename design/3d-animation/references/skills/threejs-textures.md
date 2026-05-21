@@ -76,35 +76,38 @@ Load, configure, and optimize textures for Three.js materials. Covers TextureLoa
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Texture Pipeline Failure Modes
-- Aggregate texture memory exceeds budget on mid-tier devices.
-- Missing mipmaps causes shimmering at distance.
-- Unbounded anisotropy increases sampling cost with limited visual gain.
-- Incorrect colorSpace assignment distorts albedo or data maps.
-- Compression strategy unclear (KTX2 for textures vs DRACO for geometry).
-- Async loader lifecycle leaks textures after scene disposal.
-- Atlas packing introduces UV bleed if padding rules are ignored.
+### Production Failure Modes
+- Texture memory footprint exceeds per-tier GPU budget.
+- Mipmap generation is incorrect for NPOT or UI-critical assets.
+- Anisotropy is set above practical device caps.
+- `colorSpace` assignments are inconsistent across albedo/data textures.
+- KTX2/DRACO asset references are misaligned with loader capabilities (without new binaries).
+- Atlas strategy introduces bleeding or UV mismatch.
+- Async texture loads race scene readiness and display placeholders indefinitely.
+- Disposal lifecycle misses texture cleanup on route changes.
 
-### Diagnostics Workflow (Texture Governance)
-1. Inventory texture set and compute memory footprint by asset group.
-2. Verify mipmap generation and min/mag filters for each critical map.
-3. Set anisotropy caps by device tier and compare quality/perf impact.
-4. Audit colorSpace assignments (sRGB vs linear) map-by-map.
-5. Validate atlas packing with UV edge test patterns.
-6. Trace async load/dispose lifecycle to ensure textures are released.
+### Diagnostics Workflow (Three.js Textures)
+1. Inventory texture formats/resolutions and compare against tiered memory budget.
+2. Validate mipmap policy per texture type and NPOT constraints.
+3. Cap anisotropy by queried device maximum and project budget ceiling.
+4. Audit colorSpace rules for color vs data maps.
+5. Verify KTX2/DRACO reference paths and runtime fallback behavior without bundling binaries here.
+6. Test atlas edges under minification to catch bleeding artifacts.
+7. Confirm async loading states and final bind timing for all critical textures.
+8. Execute disposal audit for texture and loader lifecycles.
 
 ### Release Evidence Format
-- Before/after texture memory table.
-- Texture settings checklist (mipmaps, anisotropy, colorSpace, compression flag).
-- Loader/disposal lifecycle note describing when textures are freed.
+- Before/after texture memory table by asset group and device tier.
+- Texture settings checklist (mipmaps, anisotropy, wrap/filter, colorSpace).
+- Disposal/loader lifecycle note summarizing creation, bind, release, and cache policy.
 
-### Acceptance Gates
-- Texture memory remains within defined platform budgets.
-- No visible shimmer/bleed artifacts in standard camera paths.
-- Disposal verified: no persistent GPU texture growth after scene teardown.
+### Acceptance / Rejection Criteria
+- **Accept** when memory usage and quality targets are both satisfied per tier.
+- **Reject** if colorSpace misconfiguration causes visible color drift.
+- **Reject** when async load races can leave unresolved placeholders.
+- **Accept** only when disposal and cache policy prevent texture leaks.
 
-### Validation Neighbors
-- `threejs-materials` for map usage and shading output.
-- `threejs-loaders` for async delivery and fallback behavior.
-- `threejs-fundamentals` for renderer color and lifecycle consistency.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-materials`
+- `threejs-loaders`
+- `threejs-fundamentals`

@@ -78,35 +78,35 @@ Apply post-processing effects to Three.js scenes using EffectComposer and render
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Post Stack Failure Modes
-- Incorrect pass ordering causes halo clipping or broken depth cues.
-- Render targets sized above practical budget for device tier.
-- DPR left uncapped while heavy bloom is active.
-- Bloom threshold poorly tuned, crushing midtones.
-- OutputPass/tone mapping mismatched with renderer color pipeline.
-- Mobile path lacks post stack disable/degrade decision.
+### Production Failure Modes
+- Pass order causes color grading or anti-aliasing to run on incorrect buffers.
+- Render targets allocate at full DPR with no cap, exhausting memory bandwidth.
+- Bloom threshold/intensity overwhelms highlights and crushes detail.
+- OutputPass/tone mapping pipeline double-applies color transforms.
+- Mobile path keeps expensive passes active without disable switch.
+- Aggregate pass cost exceeds frame budget in scene hotspots.
 
-### Diagnostics Workflow (Composer Integrity)
-1. Document pass order with dependencies (input/output expectations).
-2. Measure per-pass GPU cost and total post-processing overhead.
-3. Validate render-target sizing against DPR caps per tier.
-4. Tune bloom threshold/intensity using reference shots.
-5. Confirm OutputPass and tone mapping are applied once in final pipeline.
-6. Test mobile disable path and fallback visual quality.
+### Diagnostics Workflow (Three.js Postprocessing)
+1. Enumerate pass chain and validate ordering dependencies (scene, AA, bloom, grading, output).
+2. Audit render target sizing against DPR caps and viewport tiers.
+3. Tune bloom threshold/radius/intensity against reference shots, not single frames.
+4. Verify color management and OutputPass integration with renderer tone mapping settings.
+5. Profile per-pass GPU cost and define mobile disable/degrade policy.
+6. Re-test with post stack off to isolate net frame-cost contribution.
 
-### Release Evidence
-- Pass-order table with rationale.
-- Render-target budget note (resolution + DPR policy).
-- Mobile disable decision and trigger conditions.
-- Before/after frame-cost note from profiler pass.
+### Release Evidence Format
+- Pass-order table listing pass purpose, input buffer, output buffer, and order index.
+- Render-target budget note with resolution/DPR caps by tier.
+- Mobile disable decision record specifying which passes are disabled or simplified.
+- Before/after frame-cost note quantifying post stack overhead.
 
-### Acceptance Gates
-- Post stack cost stays within allocated frame budget.
-- Color output remains consistent with non-post baseline intent.
-- Mobile fallback maintains legibility without severe artifacting.
+### Acceptance / Rejection Criteria
+- **Accept** when pass chain is deterministic and color output matches reference.
+- **Reject** if uncapped render targets breach memory/performance budget.
+- **Reject** when mobile policy is undefined for expensive passes.
+- **Accept** only when frame-cost delta is documented and within budget.
 
-### Validation Neighbors
-- `threejs-shader-forge` for custom pass shader correctness.
-- `procedural-shader-debugging` for artifact isolation.
-- `threejs-fundamentals` for renderer/tone-mapping consistency.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-shader-forge`
+- `procedural-shader-debugging`
+- `threejs-fundamentals`

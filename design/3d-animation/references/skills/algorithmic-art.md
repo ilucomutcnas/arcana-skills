@@ -80,35 +80,34 @@ The HTML artifact must work immediately in claude.ai artifacts or any browser.
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Failure Modes to Catch Before Release
-- Seed replay mismatch: same `seed` produces different pixel output across refreshes.
-- Parameter overflow: UI allows values outside approved artistic range and breaks composition density.
-- Export drift: runtime preview canvas differs from export canvas ratio, cropping key motifs.
-- Interactive lag: parameter scrubbing causes frame stalls on mid-tier devices.
-- Fallback gap: static poster mode missing when interaction budget is exceeded.
+### Production Failure Modes
+- **Non-replayable outputs:** deterministic seeds produce diverging compositions after refresh or browser swap.
+- **Clamp violations:** exposed controls bypass governed min/max ranges and create invalid geometry density.
+- **Export framing drift:** downloadable image dimensions or aspect ratio no longer match live canvas framing.
+- **Interaction budget collapse:** high-frequency control updates drop frame pacing below the agreed creative-review threshold.
+- **No static fallback:** poster export path is absent when interactive rendering is intentionally degraded.
 
 ### Diagnostics Workflow (Algorithmic Art)
-1. Lock a test seed set (`seed-a`, `seed-b`, `seed-c`) and replay each seed three times per browser.
-2. Validate parameter clamps by forcing min/max values and confirming safe output boundaries.
-3. Compare preview vs export dimensions (`1x`, `2x`, print size) for framing consistency.
-4. Run interaction stress pass (rapid slider changes for 30s) and record frame stability.
-5. Trigger reduced-motion mode and verify static poster fallback with preserved composition.
+1. Run a deterministic replay pass with three fixed seeds and one randomized seed promoted to a fixed seed.
+2. For every controlled parameter, test `min`, `max`, and one out-of-range payload to verify clamp governance.
+3. Validate preview/export parity at each approved output size (screen, social, print).
+4. Perform a 30-second scrub test across all interactive controls while collecting FPS and dropped-frame notes.
+5. Force reduced capability mode and confirm static poster fallback generation still preserves the selected seed composition.
 
-### Release Evidence Package
-- Seed used for approval (single canonical integer).
-- Parameter JSON snapshot (all tunables + clamp ranges).
-- Canvas dimensions for preview and export.
-- Browser replay notes (Chrome/Safari/Firefox consistency summary).
-- Export hash or side-by-side visual comparison note documenting replay fidelity.
+### Release Evidence Format
+- `seed`: canonical numeric seed used for sign-off.
+- `parameters.json`: full parameter payload including clamp ranges.
+- `canvas_size`: runtime width/height and export width/height.
+- `browser_replay_notes`: replay parity notes for Chrome, Safari, and Firefox.
+- `export_fidelity`: file hash of exported artifact or documented visual-diff note.
 
-### Acceptance Gates
-- Same seed + parameter JSON reproduces matching composition structure in all target browsers.
-- No parameter setting produces empty, clipped, or NaN-driven output.
-- Export framing matches approved preview framing within documented tolerance.
-- Interactive mode stays within budget, or static fallback is automatically selected.
+### Acceptance / Rejection Criteria
+- **Accept** only when deterministic seed replay reproduces the same motif layout across approved browsers.
+- **Reject** if any governed parameter can exceed clamp policy without explicit release approval.
+- **Accept** only when export dimensions preserve focal composition from runtime preview.
+- **Reject** if interaction controls cause sustained stutter without an automatic static poster fallback path.
 
-### Validation Neighbors
-- `glsl-shader-alchemist` for procedural math and visual-function sanity checks.
-- `threejs-postprocessing` for color/contrast finishing when canvas output is composited.
-- `threejs-fundamentals` for canvas lifecycle and performance baselines.
-
+### Adjacent Mini-Skills to Use for Validation
+- `glsl-shader-alchemist`
+- `threejs-postprocessing`
+- `threejs-fundamentals`

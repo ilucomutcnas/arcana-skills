@@ -83,33 +83,34 @@ Choosing between approaches:
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Integration Failure Modes
-- ShaderMaterial uniforms initialized once but never refreshed on resize/time updates.
-- RawShaderMaterial attribute/define mismatch between mesh and shader.
-- TSL/NodeMaterial path diverges from WebGL fallback output.
-- Material instances leak because disposal path misses custom shader references.
-- Compile/link errors are not surfaced with actionable logs.
-- Fallback material path missing, resulting in invisible meshes.
+### Production Failure Modes
+- ShaderMaterial, RawShaderMaterial, and TSL paths are mixed without compatibility rules.
+- Uniform lifecycle is unmanaged, leaving stale references after material swaps.
+- `defines` permutations explode and trigger unnecessary recompiles.
+- Custom shader materials are not disposed during scene teardown.
+- WebGPU-only features are used without WebGL fallback planning.
+- Compile/link failures do not hand off to a stable fallback material.
 
-### Diagnostics Workflow (Shader Integration)
-1. Validate uniform lifecycle: init, frame update, resize update, teardown.
-2. Audit defines and required attributes for each shader variant.
-3. Compare WebGPU/TSL and WebGL output under same scene inputs.
-4. Capture compile/link logs with shader chunk identifiers.
-5. Force fallback material path and verify visual continuity.
+### Diagnostics Workflow (Three.js Shader Forge)
+1. Document integration constraints for ShaderMaterial vs RawShaderMaterial vs TSL usage.
+2. Trace uniform ownership from initialization through per-frame updates and disposal.
+3. Audit `defines` strategy and collapse redundant permutations.
+4. Verify explicit material disposal on object replacement and route transitions.
+5. Test WebGPU-first and WebGL-fallback pathways for feature parity expectations.
+6. Inject compile/link errors intentionally and verify fallback material handoff plus error capture.
 
-### Evidence Required for Release
-- Uniform validation table (name, source, update cadence, bounds).
-- Fallback material note (trigger + expected visual behavior).
-- Compile/link error capture format used by QA/dev handoff.
+### Release Evidence Format
+- Uniform validation table (name, source, update frequency, dispose behavior).
+- Fallback material note describing trigger conditions and visual downgrade policy.
+- Compile/link error capture format with shader stage, log snippet, and recovery action.
 
-### Acceptance Gates
-- Shader variants compile consistently on supported targets.
-- Uniform updates remain synchronized with animation and viewport changes.
-- Fallback material prevents invisibility on shader failure.
+### Acceptance / Rejection Criteria
+- **Accept** when shader integration mode is explicit and consistent per material.
+- **Reject** if define churn causes avoidable runtime recompilation.
+- **Reject** when compile/link failure can leave meshes invisible.
+- **Accept** only when WebGPU/WebGL fallback behavior is documented and tested.
 
-### Validation Neighbors
-- `procedural-shader-debugging` for deep artifact diagnosis.
-- `glsl-shader-alchemist` for shader-code quality and optimization.
-- `threejs-materials` for fallback and blended material behavior.
-
+### Adjacent Mini-Skills to Use for Validation
+- `procedural-shader-debugging`
+- `glsl-shader-alchemist`
+- `threejs-materials`

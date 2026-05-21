@@ -76,32 +76,34 @@ Implement animation in Three.js using both procedural techniques (Timer, request
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Animation Failure Modes
-- Mixer instances persist after scene teardown, leaking memory.
-- Uncapped delta produces animation jumps after tab throttling.
-- Clip blend weights snap due to misordered crossfade calls.
-- Hidden-tab pause/resume resumes with invalid elapsed time.
-- Reduced-motion mode still plays non-essential idle loops.
+### Production Failure Modes
+- AnimationMixer instances accumulate across remounts.
+- Uncapped delta spikes after tab restore causing animation jumps.
+- Clip blending weights are not normalized and produce pose popping.
+- Hidden tabs continue full-rate updates.
+- Reduced-motion users receive full animation intensity.
+- Actions/clips remain cached after disposal.
 
-### Diagnostics Workflow (Mixer + Actions)
-1. Document mixer/action lifecycle from model load through disposal.
-2. Apply delta cap and compare motion continuity before/after.
-3. Exercise clip transitions repeatedly to detect blend pops.
-4. Run hidden-tab test (background 30s, return) and inspect continuity.
-5. Validate reduced-motion behavior and confirm `uncacheRoot` cleanup.
+### Diagnostics Workflow (Three.js Animation)
+1. Map mixer/action lifecycle from load to dispose for each animated asset.
+2. Clamp delta-time in the render loop and test tab hide/show transitions.
+3. Validate blend trees by logging action weights during state changes.
+4. Confirm `document.visibilityState` pause/resume behavior.
+5. Run reduced-motion mode and verify substitute behavior (slower, fewer, or static states).
+6. Execute cleanup audit using `stopAllAction`, `uncacheAction`, and `uncacheClip` paths.
 
-### Release Evidence
-- Mixer/action lifecycle table including cleanup steps.
-- Hidden-tab test result note with observed behavior.
-- Reduced-motion behavior summary for each animation channel.
+### Release Evidence Format
+- Mixer/action lifecycle table including creation, activation, pause, resume, and disposal hooks.
+- Hidden-tab test result with observed behavior before and after visibility restoration.
+- Reduced-motion behavior note summarizing which animations are disabled or softened.
 
-### Acceptance Gates
-- No leaked actions/mixers after route transitions.
-- Blend transitions remain smooth under repeated interaction.
-- Hidden-tab resume avoids jump artifacts.
+### Acceptance / Rejection Criteria
+- **Accept** when tab visibility transitions do not introduce animation jumps.
+- **Reject** if stale actions persist after scene teardown.
+- **Reject** when blend transitions produce visible pose snapping under normal control flow.
+- **Accept** only when reduced-motion policy is implemented and documented.
 
-### Validation Neighbors
-- `threejs-loaders` for clip source integrity from GLTF.
-- `threejs-interaction` for event-driven animation triggers.
-- `threejs-fundamentals` for render-loop timing correctness.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-loaders`
+- `threejs-interaction`
+- `threejs-fundamentals`
