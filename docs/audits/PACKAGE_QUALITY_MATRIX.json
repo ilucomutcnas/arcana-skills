@@ -3,11 +3,11 @@
   "stage": "stage-3-package-quality-audit",
   "summary": {
     "package_count": 8,
-    "professional": 1,
-    "working": 7,
+    "professional": 2,
+    "working": 6,
     "amateur": 0,
-    "ready_for_use": 4,
-    "needs_upgrade": 3,
+    "ready_for_use": 5,
+    "needs_upgrade": 2,
     "needs_major_upgrade": 0,
     "needs_asset_hygiene": 1,
     "needs_registry_only": 0
@@ -30,53 +30,92 @@
       "domain": "design",
       "slug": "3d-animation",
       "path": "design/3d-animation",
-      "mini_skill_count": 16,
-      "maturity": "working",
-      "status": "needs-upgrade",
-      "overall_score": 88,
+      "mini_skill_count": 17,
+      "maturity": "professional",
+      "status": "ready-for-use",
+      "overall_score": 96,
       "scores": {
         "structure_completeness": 5,
         "manifest_integrity": 5,
-        "routing_clarity": 4,
-        "reference_depth": 4,
-        "example_quality": 4,
+        "routing_clarity": 5,
+        "reference_depth": 5,
+        "example_quality": 5,
         "domain_coverage": 5,
-        "specificity_and_non_genericness": 4,
+        "specificity_and_non_genericness": 5,
         "professional_readiness": 4,
         "english_only_readiness": 5,
         "asset_hygiene_readiness": 4
       },
       "strengths": [
-        "Broad mini-skill coverage (16) with matching references and examples.",
-        "Reference and example files are consistently present and generally substantial."
+        "Package now covers 17 mini-skills, adding procedural-shader-debugging while preserving complete reference/example mapping and package router semantics.",
+        "Reference and example corpus is now operationally specific, with production diagnostics, release gates, cross-GPU handling, pass-order controls, and concrete acceptance criteria across core Three.js and Makepad flows."
       ],
       "quality_gaps": [
-        "Some example files are shorter and less workflow-rich than top-tier packages.",
-        "Overall score is below the rubric\u2019s typical professional band (90-100), so classification is kept conservative.",
-        "Asset hygiene readiness is good but still depends on Stage 4 verification."
+        "Professional readiness is strong but still short of top-tier confidence because Stage 4 asset hygiene/provenance verification is still pending.",
+        "A future pass can further deepen long-horizon operations playbooks (for example incident retrospectives and runbook automation templates) to harden sustained production governance."
       ],
       "recommended_upgrade_actions": [
-        "Deepen shortest examples with more concrete production constraints and failure modes.",
-        "Tag assets with explicit provenance/licensing metadata in Stage 4."
+        "Run Stage 4 asset hygiene/provenance verification and record outcomes without changing package semantics.",
+        "In a later non-audit cycle, expand advanced operations playbooks (incident-response drills, regression dashboards, and release rollback rehearsal templates)."
       ],
       "suggested_new_mini_skills": [
-        "procedural-shader-debugging"
+        "none required in this audit pass"
       ],
       "asset_hygiene_notes": [
-        "No obvious heavy binary bundle detected in package path; still requires Stage 4 audit confirmation."
+        "No new binary assets were introduced in the Stage 3.7/3.7 follow-up upgrade path; however, Stage 4 asset hygiene/provenance verification is still required before any clean-hygiene classification."
       ],
       "evidence": [
         {
           "path": "design/3d-animation/resources/manifest.json",
-          "note": "Manifest lists 16 mini-skills with reference/example links."
+          "note": "Manifest now lists 17 mini-skills including procedural-shader-debugging with reference/example links."
         },
         {
-          "path": "design/3d-animation/references/skills",
-          "note": "Reference files exist for all listed skills."
+          "path": "design/3d-animation/SKILL.md",
+          "note": "Router semantics are preserved and multi-skill activation now explicitly covers procedural shader bugs, production release review, mobile GPU artifacts, and Spline hero combinations."
         },
         {
-          "path": "design/3d-animation/examples/skills",
-          "note": "Example files exist for all listed skills."
+          "path": "design/3d-animation/composition-protocol.md",
+          "note": "Universal composition protocol is preserved and includes practical workflow recipe coverage for production-oriented 3D task composition."
+        },
+        {
+          "path": "design/3d-animation/self-diagnostic-protocol.md",
+          "note": "Self-diagnostic protocol includes release-evidence expectations and rejection criteria for rendering/3D output quality."
+        },
+        {
+          "path": "design/3d-animation/resources/routing-guide.md",
+          "note": "Routing guide includes procedural-shader-debugging and routes shader, mobile GPU, pass-order, color-space, texture/material, production release, Spline, and scroll-performance scenarios."
+        },
+        {
+          "path": "design/3d-animation/resources/asset-link-index.md",
+          "note": "Asset-link index preserves existing algorithmic-art and Spline links and adds procedural-shader-debugging with no required assets."
+        },
+        {
+          "path": "design/3d-animation/references/skills/procedural-shader-debugging.md",
+          "note": "New procedural-shader-debugging reference exists with diagnostic/release focus."
+        },
+        {
+          "path": "design/3d-animation/examples/skills/procedural-shader-debugging.md",
+          "note": "New procedural-shader-debugging example exists with concrete triage and validation workflow content."
+        },
+        {
+          "path": "design/3d-animation/references/skills/threejs-fundamentals.md",
+          "note": "Production diagnostics cover DPR caps, resize handling, color management, disposal lifecycle, context loss, SSR boundary, and fallback shell expectations."
+        },
+        {
+          "path": "design/3d-animation/references/skills/makepad-animator.md",
+          "note": "Production diagnostics cover state-machine risks, Snap vs Forward decisions, reduced-motion mapping, and validation neighbors."
+        },
+        {
+          "path": "design/3d-animation/references/skills/threejs-postprocessing.md",
+          "note": "Production diagnostics cover pass order, render target sizing, DPR caps, bloom, OutputPass/tone mapping, mobile disable paths, and pass-cost budgets."
+        },
+        {
+          "path": "design/3d-animation/examples/skills/threejs-fundamentals.md",
+          "note": "Concrete production scene setup example exists."
+        },
+        {
+          "path": "design/3d-animation/examples/skills/threejs-textures.md",
+          "note": "Concrete texture memory reduction planning example exists."
         }
       ]
     },
@@ -599,8 +638,8 @@
   "recommended_upgrade_order": [
     {
       "order": 1,
-      "package": "design/3d-animation",
-      "reason": "Strong package but now the top unresolved normal content-upgrade target after accessibility-ux moved to ready-for-use; deepen operational examples and release evidence toward professional maturity."
+      "package": "design/creative-tools",
+      "reason": "Top remaining normal content-upgrade target among not-ready packages; improve reference/example specificity and production workflow depth toward ready-for-use status."
     },
     {
       "order": 2,

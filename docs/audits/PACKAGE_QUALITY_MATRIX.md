@@ -7,11 +7,11 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Metric | Count |
 |---|---:|
 | Packages evaluated | 8 |
-| Professional | 1 |
-| Working | 7 |
+| Professional | 2 |
+| Working | 6 |
 | Amateur | 0 |
-| Ready for use | 4 |
-| Needs upgrade | 3 |
+| Ready for use | 5 |
+| Needs upgrade | 2 |
 | Needs major upgrade | 0 |
 | Needs asset hygiene | 1 |
 | Needs registry only | 0 |
@@ -20,7 +20,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 | Package | Mini-skills | Overall | Maturity | Status |
 |---|---:|---:|---|---|
-| design/3d-animation | 16 | 88 | working | needs-upgrade |
+| design/3d-animation | 17 | 96 | professional | ready-for-use |
 | design/accessibility-ux | 8 | 89 | working | ready-for-use |
 | design/brand-visual | 9 | 75 | working | needs-asset-hygiene |
 | design/content-writing | 8 | 93 | professional | ready-for-use |
@@ -33,14 +33,14 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 | Maturity | Packages |
 |---|---:|
-| professional | 1 |
-| working | 7 |
+| professional | 2 |
+| working | 6 |
 | amateur | 0 |
 
 | Status | Packages |
 |---|---:|
-| ready-for-use | 4 |
-| needs-upgrade | 3 |
+| ready-for-use | 5 |
+| needs-upgrade | 2 |
 | needs-major-upgrade | 0 |
 | needs-asset-hygiene | 1 |
 | needs-registry-only | 0 |
@@ -48,18 +48,28 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 ## Package Evaluations
 
 ### design/3d-animation
-- **Maturity:** working
-- **Status:** needs-upgrade
-- **Overall score:** 88
-- **Strengths:** Broad mini-skill coverage (16) with matching references and examples.; Reference and example files are consistently present and generally substantial.
-- **Quality gaps:** Some example files are shorter and less workflow-rich than top-tier packages.; Overall score is below the rubric’s typical professional band (90-100), so classification is kept conservative.; Asset hygiene readiness is good but still depends on Stage 4 verification.
-- **Recommended upgrade actions:** Deepen shortest examples with more concrete production constraints and failure modes.; Tag assets with explicit provenance/licensing metadata in Stage 4.
-- **Suggested new mini-skills:** procedural-shader-debugging
-- **Asset hygiene notes:** No obvious heavy binary bundle detected in package path; still requires Stage 4 audit confirmation.
+- **Maturity:** professional
+- **Status:** ready-for-use
+- **Overall score:** 96
+- **Strengths:** Package now covers 17 mini-skills, adding procedural-shader-debugging while preserving complete reference/example mapping and package router semantics.; Reference and example corpus is now operationally specific, with production diagnostics, release gates, cross-GPU handling, pass-order controls, and concrete acceptance criteria across core Three.js and Makepad flows.
+- **Quality gaps:** Professional readiness is strong but still short of top-tier confidence because Stage 4 asset hygiene/provenance verification is still pending.; A future pass can further deepen long-horizon operations playbooks (for example incident retrospectives and runbook automation templates) to harden sustained production governance.
+- **Recommended upgrade actions:** Run Stage 4 asset hygiene/provenance verification and record outcomes without changing package semantics.; In a later non-audit cycle, expand advanced operations playbooks (incident-response drills, regression dashboards, and release rollback rehearsal templates).
+- **Suggested new mini-skills:** none required in this audit pass
+- **Asset hygiene notes:** No new binary assets were introduced in the Stage 3.7/3.7 follow-up upgrade path; however, Stage 4 asset hygiene/provenance verification is still required before any clean-hygiene classification.
 - **Evidence paths:**
-  - `design/3d-animation/resources/manifest.json` — Manifest lists 16 mini-skills with reference/example links.
-  - `design/3d-animation/references/skills` — Reference files exist for all listed skills.
-  - `design/3d-animation/examples/skills` — Example files exist for all listed skills.
+  - `design/3d-animation/resources/manifest.json` — Manifest now lists 17 mini-skills including procedural-shader-debugging with reference/example links.
+  - `design/3d-animation/SKILL.md` — Router semantics are preserved and multi-skill activation now explicitly covers procedural shader bugs, production release review, mobile GPU artifacts, and Spline hero combinations.
+  - `design/3d-animation/composition-protocol.md` — Universal composition protocol is preserved and includes practical workflow recipe coverage for production-oriented 3D task composition.
+  - `design/3d-animation/self-diagnostic-protocol.md` — Self-diagnostic protocol includes release-evidence expectations and rejection criteria for rendering/3D output quality.
+  - `design/3d-animation/resources/routing-guide.md` — Routing guide includes procedural-shader-debugging and routes shader, mobile GPU, pass-order, color-space, texture/material, production release, Spline, and scroll-performance scenarios.
+  - `design/3d-animation/resources/asset-link-index.md` — Asset-link index preserves existing algorithmic-art and Spline links and adds procedural-shader-debugging with no required assets.
+  - `design/3d-animation/references/skills/procedural-shader-debugging.md` — New procedural-shader-debugging reference exists with diagnostic/release focus.
+  - `design/3d-animation/examples/skills/procedural-shader-debugging.md` — New procedural-shader-debugging example exists with concrete triage and validation workflow content.
+  - `design/3d-animation/references/skills/threejs-fundamentals.md` — Production diagnostics cover DPR caps, resize handling, color management, disposal lifecycle, context loss, SSR boundary, and fallback shell expectations.
+  - `design/3d-animation/references/skills/makepad-animator.md` — Production diagnostics cover state-machine risks, Snap vs Forward decisions, reduced-motion mapping, and validation neighbors.
+  - `design/3d-animation/references/skills/threejs-postprocessing.md` — Production diagnostics cover pass order, render target sizing, DPR caps, bloom, OutputPass/tone mapping, mobile disable paths, and pass-cost budgets.
+  - `design/3d-animation/examples/skills/threejs-fundamentals.md` — Concrete production scene setup example exists.
+  - `design/3d-animation/examples/skills/threejs-textures.md` — Concrete texture memory reduction planning example exists.
 
 ### design/accessibility-ux
 - **Maturity:** working
@@ -193,9 +203,9 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
   - `design/pretext-ui/examples/skills/library-architecture.md` — Example is a concrete lineOverflowHint API architecture scenario with compatibility and risk tables.
 
 ## Recommended Upgrade Order
-1. **design/3d-animation** — Strong package but now the top unresolved normal content-upgrade target after accessibility-ux moved to ready-for-use.
-2. **design/creative-tools** — Expanded coverage is solid; follow-up should deepen cross-mini-skill QA/signoff workflows and end-to-end release-readiness evidence.
-3. **design/design-systems** — Structurally strong; remaining follow-up is deeper long-horizon operational evidence and adoption/release playbooks.
-4. **design/css-styling** — Keep as lower-priority follow-up for advanced playbook depth, not an immediate upgrade blocker.
-5. **design/accessibility-ux** — Moved to ready-for-use after Stage 3.6; optional future pass for professional-threshold depth, not immediate content-upgrade urgency.
-6. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency.
+1. **design/creative-tools** — Top remaining normal content-upgrade target among not-ready packages; improve reference/example specificity and production workflow depth toward ready-for-use status.
+2. **design/design-systems** — Structurally strong; remaining follow-up is deeper long-horizon operational evidence and adoption/release playbooks.
+3. **design/css-styling** — Keep as lower-priority follow-up for advanced playbook depth, not an immediate upgrade blocker.
+4. **design/accessibility-ux** — Moved to ready-for-use after Stage 3.6; optional future pass for professional-threshold depth, not immediate content-upgrade urgency.
+5. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency.
+
