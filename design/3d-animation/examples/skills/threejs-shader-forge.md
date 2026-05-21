@@ -94,3 +94,28 @@ const material = new THREE.RawShaderMaterial({
 3. Pre-calculate on CPU — move calculations to JavaScript when possible.
 4. Use textures as lookup tables for complex functions.
 5. Limit overdraw — avoid transparent objects when possible.
+
+## Custom Shader Material Integration Example
+
+### Uniform Validation Table
+
+| Uniform | Validation | Fallback |
+|---|---|---|
+| `uTime` | monotonic increasing | freeze at 0 for static render |
+| `uResolution` | matches renderer target | derive from render target size |
+| `uPalette` | 4-color array length | default palette constant |
+
+### Shader Path Fallback Note
+- Primary: `ShaderMaterial` (WebGL).
+- Advanced: TSL NodeMaterial (WebGPU-capable builds).
+- Emergency fallback: `MeshStandardMaterial` preserving silhouette and brand color.
+
+### Material Disposal
+- Dispose custom materials on scene teardown and clear uniform references.
+
+### Fallback Material Path
+- Trigger fallback on compile/link error or unsupported extension.
+
+### Debug Handoff Notes
+- Document defines, expected uniforms, and toggles for QA to reproduce artifact reports.
+

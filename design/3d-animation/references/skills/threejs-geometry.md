@@ -73,3 +73,36 @@ Do not use `THREE.CapsuleGeometry` in Three.js versions before r142.
 - Complete geometry creation code with appropriate parameters.
 - Include material pairing for visual testing.
 - Document segment counts and their visual impact.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Geometry Pipeline Failure Modes
+- Draw-call count scales linearly due to missed instancing opportunity.
+- BufferGeometry attributes exceed expected bounds and corrupt shading.
+- Merge strategy invalidates per-object material requirements.
+- Bounding sphere/box stale after vertex mutation, causing culling errors.
+- Normals/tangents inconsistent after procedural edits.
+- Geometry resources not disposed during scene teardown.
+
+### Diagnostics Workflow (Geometry Efficiency)
+1. Profile scene draw calls before optimization.
+2. Evaluate InstancedMesh vs merge strategy based on material and transform diversity.
+3. Recompute and validate bounding volumes after attribute updates.
+4. Run normal/tangent validation pass using debug shading.
+5. Confirm disposal sequence for merged/instanced resources.
+
+### Evidence Required for Approval
+- Draw-call before/after table.
+- Memory usage comparison table after geometry strategy change.
+- Bounding volume validation notes including culling edge cases.
+
+### Acceptance Gates
+- Optimization meets draw-call budget without visual regression.
+- Bounds and normals remain valid under animation/camera movement.
+- No geometry memory leaks after teardown.
+
+### Validation Neighbors
+- `threejs-materials` for shading correctness on optimized meshes.
+- `threejs-fundamentals` for lifecycle/disposal confirmation.
+- `threejs-loaders` when geometry originates from imported assets.
+

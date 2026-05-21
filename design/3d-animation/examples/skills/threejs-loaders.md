@@ -102,3 +102,30 @@ loader.load(
   },
 );
 ```
+
+## Model Loading Pipeline Release Example
+
+### LoadingManager States
+- `onStart`: show skeleton placeholder.
+- `onProgress`: update determinate progress bar.
+- `onError`: switch to fallback poster/model + retry CTA.
+- `onLoad`: hide loader and emit analytics success event.
+
+### Fallback Behavior
+- Prefer low-poly proxy GLB when primary fails.
+- If both fail, keep static poster and textual feature summary.
+
+### Cancellation / Caching Notes
+- Abort in-flight fetch when route changes.
+- Cache successfully parsed assets by URL + version key.
+
+### GLTF Transform Checklist
+- [ ] Normalize scale and center pivot.
+- [ ] Validate material assignments and tangents.
+- [ ] Strip unused animation clips.
+
+### Release Checklist
+- [ ] Offline/error path tested.
+- [ ] Progress UI does not stall at 99%.
+- [ ] Fallback path maintains layout height.
+

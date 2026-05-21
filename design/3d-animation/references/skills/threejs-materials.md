@@ -75,3 +75,36 @@ Common properties: `side` (FrontSide, BackSide, DoubleSide), `transparent`, `opa
 - Material configuration with all relevant properties.
 - Texture map assignments when applicable.
 - Comments explaining material choice rationale.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Material Review Failure Modes
+- Wrong material class selected for intended lighting model.
+- PBR maps missing or misassigned (normal/roughness/metalness/ao).
+- Transparent objects render in wrong order with depth artifacts.
+- Color-space mismatch between albedo and data maps.
+- Roughness/normal values overly aggressive and break realism.
+- Texture-heavy materials exceed frame/memory budgets.
+
+### Diagnostics Workflow (Material Quality)
+1. Validate material selection against object function (hero, UI 3D, background).
+2. Run PBR map checklist for channel correctness and UV usage.
+3. Inspect transparent assets with renderOrder/depthWrite permutations.
+4. Audit color-space settings for all bound textures.
+5. Compare visual/perf tradeoffs between high-fidelity and fallback materials.
+
+### Evidence Required
+- Material property before/after table for corrected assets.
+- Map validation checklist (present, colorSpace, channel correctness).
+- Transparent-object note documenting renderOrder and depthWrite decisions.
+
+### Acceptance Gates
+- Materials match art direction under target lighting setup.
+- Transparency artifacts eliminated in primary camera paths.
+- Material stack remains within performance and memory targets.
+
+### Validation Neighbors
+- `threejs-textures` for map payload and color-space correctness.
+- `threejs-lighting` for physically based response validation.
+- `procedural-shader-debugging` for shader-driven material anomalies.
+

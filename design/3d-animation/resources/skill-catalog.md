@@ -94,6 +94,12 @@ This file maps each mini-skill to its reference and examples file.
 - Reference: `references/skills/threejs-textures.md`
 - Examples: `examples/skills/threejs-textures.md`
 
+## 17. procedural-shader-debugging
+- Summary: Diagnose broken procedural shader output across GLSL, Makepad, Three.js shader materials, and postprocessing integration boundaries.
+- Reference: `references/skills/procedural-shader-debugging.md`
+- Examples: `examples/skills/procedural-shader-debugging.md`
+- Use with: glsl-shader-alchemist (raw GLSL artifacts), threejs-shader-forge (ShaderMaterial/TSL integration), threejs-postprocessing (pass-order defects), threejs-materials + threejs-textures (visual mismatch root cause).
+
 ## Additional Package Index
 
 - [`asset-link-index.md`](asset-link-index.md) — complete link map for auxiliary folders and files.

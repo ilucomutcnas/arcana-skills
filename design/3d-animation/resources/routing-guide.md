@@ -24,6 +24,7 @@ Use this guide to decide which extracted file to open.
 
 ### Shader Programming
 - **glsl-shader-alchemist** → `references/skills/glsl-shader-alchemist.md` and `examples/skills/glsl-shader-alchemist.md`
+- **procedural-shader-debugging** → `references/skills/procedural-shader-debugging.md` and `examples/skills/procedural-shader-debugging.md`
 
 ### Third-Party 3D Tools
 - **spline-3d-integration** → `references/skills/spline-3d-integration.md` and `examples/skills/spline-3d-integration.md`
@@ -53,6 +54,14 @@ Use this guide to decide which extracted file to open.
 - **Embedding Spline scenes** → spline-3d-integration
 - **Makepad UI work** → makepad-animator + makepad-shader-lab
 - **Texture workflow** → threejs-textures + threejs-materials + threejs-loaders
+- **Procedural shader bug** → procedural-shader-debugging + glsl-shader-alchemist + threejs-shader-forge
+- **Mobile GPU shader artifact** → procedural-shader-debugging + glsl-shader-alchemist + threejs-materials + threejs-textures
+- **Postprocessing pass-order issue** → procedural-shader-debugging + threejs-postprocessing + threejs-shader-forge
+- **Color-space/tone-mapping mismatch** → procedural-shader-debugging + threejs-materials + threejs-postprocessing
+- **Texture/material visual bug** → threejs-textures + threejs-materials + procedural-shader-debugging
+- **Production 3D release review** → threejs-fundamentals + threejs-loaders + threejs-materials + threejs-textures + threejs-interaction + procedural-shader-debugging
+- **Spline hero performance review** → spline-3d-integration + scroll-experience + threejs-fundamentals
+- **Scroll scene performance/a11y review** → scroll-experience + threejs-animation + threejs-fundamentals
 
 ## Shared Rules
 

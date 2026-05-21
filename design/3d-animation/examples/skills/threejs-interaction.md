@@ -71,3 +71,32 @@ function updateMouseCanvas(event, canvas) {
 3. Use simple collision meshes for complex geometry.
 4. Disable controls when not needed: `controls.enabled = false`.
 5. Batch interaction checks.
+
+## Object Picking Release Example
+
+### Input Alternative Table
+
+| Input Mode | Mechanism | Accessibility Note |
+|---|---|---|
+| Pointer | raycast on move/click | hover states mirrored to ARIA label |
+| Touch | tap raycast with threshold | prevent accidental drag activation |
+| Keyboard | focus list + Enter select | required when pointer unavailable |
+
+### Raycasting Budget
+- Limit interactive objects to curated pick layer.
+- Throttle hover raycast to <= 30Hz.
+
+### Pointer Normalization Snippet
+
+```javascript
+pointer.x = (event.clientX / rect.width) * 2 - 1;
+pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+```
+
+### Event Cleanup
+- Remove pointer/touch/key listeners on unmount.
+- Clear hovered state when canvas loses focus.
+
+### Focus-State Mapping
+- Selected mesh ID must map to keyboard focus ring and screen-reader announcement.
+

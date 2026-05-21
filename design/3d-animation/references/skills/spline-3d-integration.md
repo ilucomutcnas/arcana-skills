@@ -75,3 +75,36 @@ Master guide for embedding interactive 3D scenes from Spline.design into web pro
 - Complete integration code for the target framework.
 - Loading and error state handling.
 - Performance configuration when applicable.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Integration Failure Modes
+- Lazy-load trigger never fires and hero remains blank.
+- Poster fallback removed too early, exposing load flashes.
+- Spline event listeners duplicate on component remount.
+- SSR boundary violations create hydration warnings in Next.js.
+- Mobile scene exceeds performance tier and drops interaction responsiveness.
+- No accessible text alternative for non-canvas users.
+
+### Diagnostics Workflow (Spline Delivery)
+1. Verify lazy-load threshold and poster swap timing with network throttling.
+2. Inspect listener registration/removal on mount, route change, and unmount.
+3. Validate SSR/client split with hydration logs enabled.
+4. Benchmark scene performance across mobile device tiers.
+5. Confirm accessible alternative content remains present and meaningful.
+
+### Required Evidence
+- Lifecycle checklist (mount/load/listener cleanup/unmount).
+- Mobile performance table by device class and fallback path.
+- Fallback behavior notes for failed load and reduced-motion mode.
+
+### Acceptance Gates
+- Hero never renders blank during slow-network load.
+- Listener lifecycle is leak-free across remount cycles.
+- Mobile tier fallback keeps UX usable and stable.
+
+### Validation Neighbors
+- `scroll-experience` for scroll-bound hero coordination.
+- `threejs-fundamentals` for rendering lifecycle guardrails.
+- `threejs-loaders` for async asset failure handling patterns.
+

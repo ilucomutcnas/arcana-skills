@@ -80,3 +80,39 @@ Systematically create high-quality 3D scenes and interactive experiences using T
 - Responsive resize handler.
 - Import statements or import map configuration.
 - Clear comments explaining each setup step.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Core Runtime Failure Modes
+- DevicePixelRatio left uncapped, causing avoidable GPU pressure.
+- Resize path updates renderer but not camera projection correctly.
+- Color management configuration inconsistent with material/texture inputs.
+- Geometry/material disposal omitted on unmount.
+- Context-loss event unhandled, leaving unrecoverable blank canvas.
+- Server-rendered shell mixes with client scene bootstrap incorrectly.
+- No error boundary/fallback shell for initialization failures.
+
+### Diagnostics Workflow (Scene Baseline)
+1. Verify DPR cap policy across desktop and mobile.
+2. Run resize matrix (orientation change + container resize) and inspect framing.
+3. Audit color management settings against sample textured assets.
+4. Execute repeated mount/unmount cycles and inspect memory trend.
+5. Simulate context-loss/recovery and validate renderer restoration.
+6. Test SSR/client boundary behavior with hydration logs.
+
+### Required Release Evidence
+- Resize test results (expected vs observed framing).
+- Mount/unmount memory note after stress loop.
+- Context-loss recovery note with steps and outcome.
+- DPR budget declaration used in production build.
+
+### Acceptance Gates
+- Stable framing and aspect behavior across all target breakpoints.
+- No unbounded memory growth during lifecycle stress test.
+- Context loss handled with successful recovery or graceful fallback.
+
+### Validation Neighbors
+- `threejs-geometry` for buffer lifecycle correctness.
+- `threejs-materials` for color-space compatibility validation.
+- `threejs-interaction` for input behavior after resize/recovery events.
+

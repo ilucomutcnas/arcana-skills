@@ -82,3 +82,29 @@ new THREE.StringKeyframeTrack(
 3. Disable when off-screen: stop mixer updates for invisible objects.
 4. Use LOD for animations: simpler rigs for distant characters.
 5. Limit active mixers: each `mixer.update()` has a cost.
+
+## GLTF Clip Blending + Procedural Idle Example
+
+### Mixer / Action Lifecycle Table
+
+| Phase | Action | Validation |
+|---|---|---|
+| Load | create `AnimationMixer` | mixer exists once per model |
+| Init | set base clip weight 1.0 | no duplicate play calls |
+| Blend | crossfade idle->gesture | no snapping at transition |
+| Teardown | stop actions + uncache | memory returns after dispose |
+
+### Delta-Time Correctness
+- Use `clock.getDelta()` capped at `0.05` to avoid tab-throttle spikes.
+- Multiply procedural idle offsets by delta, not frame count.
+
+### Pause/Resume Hidden Tab
+- On `visibilitychange`, pause mixer and resume with fresh delta reset.
+
+### Reduced-Motion Strategy
+- Keep essential state changes; disable idle bob and long camera easing.
+
+### Acceptance Checks
+- Animation remains deterministic across 60Hz and 120Hz displays.
+- No action leaks after route transitions.
+

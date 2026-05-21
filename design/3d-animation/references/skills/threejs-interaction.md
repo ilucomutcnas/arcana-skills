@@ -73,3 +73,36 @@ Implement user interaction in Three.js scenes. Covers camera controls (OrbitCont
 - Complete interaction setup with controls and raycasting.
 - Mouse/touch event handlers with NDC conversion.
 - Intersection handling with visual feedback.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Interaction Failure Modes
+- Raycasting every frame across all objects causes CPU spikes.
+- Pointer normalization mismatch with canvas offsets yields inaccurate picks.
+- Missing layer filtering allows non-interactive meshes to capture events.
+- Touch flow diverges from pointer behavior.
+- Keyboard alternative does not map to selected-object state.
+- Event handlers accumulate across scene remounts.
+
+### Diagnostics Workflow (Input Robustness)
+1. Set raycast frequency budget and verify throttle/debounce behavior.
+2. Validate pointer normalization using known screen-space test points.
+3. Restrict raycast to interaction layers and verify exclusions.
+4. Test pointer, touch, and keyboard parity for same target actions.
+5. Audit listener attach/detach lifecycle during route transitions.
+
+### Release Evidence Format
+- Input-mode table (pointer/touch/keyboard behavior parity).
+- Event lifecycle checklist (attach/remove points).
+- Keyboard alternative validation notes for selection and focus announcement.
+
+### Acceptance Gates
+- Interaction latency remains within budget under expected object counts.
+- Keyboard and touch users can complete core interactions.
+- No stale listeners after unmount/remount cycles.
+
+### Validation Neighbors
+- `threejs-fundamentals` for resize/canvas coordinate consistency.
+- `threejs-animation` for interaction-triggered motion behavior.
+- `threejs-geometry` for accurate hit volumes and bounds.
+

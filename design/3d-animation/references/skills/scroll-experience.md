@@ -75,3 +75,36 @@ Library options and their strengths:
 - Provide complete, working scroll animation code.
 - Include library import statements and setup.
 - Document any performance considerations.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Scroll Production Failure Modes
+- Pin sections introduce cumulative layout shift during hydration.
+- Mobile viewport height changes break scroll timing offsets.
+- Reduced-motion path missing, causing inaccessible long scrub animations.
+- Keyboard users cannot progress narrative due to scroll-only triggers.
+- ScrollTrigger/Lenis listeners survive unmount and double-fire on route return.
+
+### Diagnostics Workflow (Narrative + Stability)
+1. Build section timing table with start/end markers and pin ownership.
+2. Record CLS during initial load and route transitions.
+3. Run reduced-motion and keyboard-only traversal as mandatory accessibility pass.
+4. Test mobile browser chrome show/hide to inspect viewport resize drift.
+5. Verify teardown: destroy trigger instances and remove listeners on unmount.
+
+### Evidence Required for Release Review
+- Section timing table with intended visual events.
+- CLS notes including measurement method and max observed value.
+- Cleanup checklist results for listeners/triggers.
+- Reduced-motion fallback description with screenshots optional (not stored in repo).
+
+### Acceptance Gates
+- CLS remains within project budget across target devices.
+- Scroll narrative remains usable via keyboard and reduced-motion mode.
+- No retained listeners or duplicate triggers after route remount.
+
+### Validation Neighbors
+- `threejs-animation` for scrubbed animation timing correctness.
+- `threejs-fundamentals` for resize and render-loop resilience.
+- `threejs-interaction` for keyboard/pointer parity validation.
+

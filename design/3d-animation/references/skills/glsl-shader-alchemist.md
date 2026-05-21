@@ -77,3 +77,36 @@ Comprehensive guide to writing GPU shaders using GLSL (OpenGL Shading Language).
 - Include all uniform declarations with types and descriptions.
 - Document any varying variables passed between stages.
 - Include JavaScript setup code for uniform binding when relevant.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Shader Authoring Failure Modes
+- `mediump` precision introduces temporal instability on mobile GPUs.
+- Missing derivative smoothing creates stair-step aliasing.
+- Heavy dynamic branching spikes fragment cost in dense scenes.
+- Uniform ranges allow invalid values that collapse output.
+- Color-space/tone-mapping mismatch causes washed highlights or clipped blacks.
+
+### Diagnostics Workflow (GLSL)
+1. Audit precision qualifiers per shader stage and test forced highp/mediump variants.
+2. Compare hard-threshold edges vs derivative-based anti-alias implementations.
+3. Profile branch-heavy paths with representative scene complexity.
+4. Validate uniform table (type, range, default, debug override).
+5. Run color-space verification with same scene in target browsers/GPU tiers.
+
+### Release Evidence Format
+- Uniform table with validated min/max ranges.
+- Before/after shader snippet for anti-alias or color-space correction.
+- Browser/GPU matrix (desktop + mobile) with artifact notes.
+- Compile-time or frame-cost observation tied to shader revision.
+
+### Acceptance Gates
+- No critical artifacts across approved GPU/browser matrix.
+- Uniform constraints prevent invalid rendering states.
+- Performance impact remains inside effect budget.
+
+### Validation Neighbors
+- `procedural-shader-debugging` for systematic defect triage.
+- `threejs-shader-forge` for integration-layer correctness.
+- `threejs-postprocessing` for final output color pipeline verification.
+

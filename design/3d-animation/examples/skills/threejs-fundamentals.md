@@ -92,3 +92,26 @@ camera.position.set(0, 5, 10);
 camera.lookAt(0, 0, 0);
 camera.updateProjectionMatrix(); // Call after changing fov, aspect, near, far
 ```
+
+## Production Scene Setup Example
+
+### Lifecycle Coverage
+- Initialize renderer/camera/scene only on client mount.
+- Handle resize with debounced camera aspect + renderer size updates.
+- Dispose geometries/materials/textures and remove listeners on unmount.
+- Register and recover from `webglcontextlost` / `webglcontextrestored`.
+
+### Pixel Ratio Cap
+- `renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))`.
+
+### Color Management
+- Set output color space and tone mapping once; verify texture colorSpace alignment.
+
+### SSR / Client Boundary
+- Keep scene bootstrap in client-only module; SSR renders semantic shell.
+
+### Acceptance Checks
+- No uncaught context-loss errors in 10 reload stress test.
+- Resize keeps aspect accuracy within 1px letterboxing tolerance.
+- GPU memory stable after mount/unmount loop x20.
+

@@ -39,10 +39,14 @@ Common combinations:
 - **Building a 3D scene**: threejs-fundamentals (primary) + threejs-geometry + threejs-materials + threejs-lighting
 - **Interactive 3D experience**: threejs-fundamentals + threejs-interaction (primary) + threejs-animation + threejs-materials
 - **Visual effects and shaders**: threejs-shader-forge (primary) + glsl-shader-alchemist + threejs-postprocessing + threejs-materials
+- **Procedural shader bug**: procedural-shader-debugging (primary) + glsl-shader-alchemist + threejs-shader-forge + threejs-postprocessing
+- **Production 3D release review**: threejs-fundamentals (primary) + threejs-loaders + threejs-textures + threejs-materials + threejs-interaction + procedural-shader-debugging
+- **Mobile GPU artifact**: procedural-shader-debugging (primary) + glsl-shader-alchemist + threejs-materials + threejs-textures
 - **Loading external models**: threejs-loaders (primary) + threejs-materials + threejs-lighting + threejs-animation
 - **Generative art**: algorithmic-art (primary) + glsl-shader-alchemist + threejs-postprocessing
 - **Makepad UI animations**: makepad-animator (primary) + makepad-shader-lab
 - **Spline integration**: spline-3d-integration (primary) + threejs-fundamentals
+- **Spline hero integration**: spline-3d-integration (primary) + scroll-experience + threejs-fundamentals
 - **Scroll-driven effects**: scroll-experience (primary) + threejs-fundamentals + threejs-animation
 
 ## Package Structure
@@ -140,6 +144,11 @@ Common combinations:
 - Summary: Load, configure, and optimize textures in Three.js including async loading, mipmaps, compression, and texture atlases.
 - Open reference: `references/skills/threejs-textures.md`
 - Open examples: `examples/skills/threejs-textures.md`
+
+### procedural-shader-debugging
+- Summary: Diagnose coordinate-space, precision, NaN, pass-order, color-space, and GPU-specific procedural shader failures with release evidence requirements.
+- Open reference: `references/skills/procedural-shader-debugging.md`
+- Open examples: `examples/skills/procedural-shader-debugging.md`
 
 ## Validation
 

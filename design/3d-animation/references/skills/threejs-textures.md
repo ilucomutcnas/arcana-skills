@@ -73,3 +73,38 @@ Load, configure, and optimize textures for Three.js materials. Covers TextureLoa
 - Complete texture loading code with error handling.
 - Texture configuration for wrapping and filtering.
 - Async loading patterns when loading multiple textures.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Texture Pipeline Failure Modes
+- Aggregate texture memory exceeds budget on mid-tier devices.
+- Missing mipmaps causes shimmering at distance.
+- Unbounded anisotropy increases sampling cost with limited visual gain.
+- Incorrect colorSpace assignment distorts albedo or data maps.
+- Compression strategy unclear (KTX2 for textures vs DRACO for geometry).
+- Async loader lifecycle leaks textures after scene disposal.
+- Atlas packing introduces UV bleed if padding rules are ignored.
+
+### Diagnostics Workflow (Texture Governance)
+1. Inventory texture set and compute memory footprint by asset group.
+2. Verify mipmap generation and min/mag filters for each critical map.
+3. Set anisotropy caps by device tier and compare quality/perf impact.
+4. Audit colorSpace assignments (sRGB vs linear) map-by-map.
+5. Validate atlas packing with UV edge test patterns.
+6. Trace async load/dispose lifecycle to ensure textures are released.
+
+### Release Evidence Format
+- Before/after texture memory table.
+- Texture settings checklist (mipmaps, anisotropy, colorSpace, compression flag).
+- Loader/disposal lifecycle note describing when textures are freed.
+
+### Acceptance Gates
+- Texture memory remains within defined platform budgets.
+- No visible shimmer/bleed artifacts in standard camera paths.
+- Disposal verified: no persistent GPU texture growth after scene teardown.
+
+### Validation Neighbors
+- `threejs-materials` for map usage and shading output.
+- `threejs-loaders` for async delivery and fallback behavior.
+- `threejs-fundamentals` for renderer color and lifecycle consistency.
+

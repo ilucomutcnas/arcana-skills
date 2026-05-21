@@ -75,3 +75,38 @@ Apply post-processing effects to Three.js scenes using EffectComposer and render
 - Complete EffectComposer setup with RenderPass and effect passes.
 - Animation loop using `composer.render()`.
 - Resize handler for both renderer and composer.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Post Stack Failure Modes
+- Incorrect pass ordering causes halo clipping or broken depth cues.
+- Render targets sized above practical budget for device tier.
+- DPR left uncapped while heavy bloom is active.
+- Bloom threshold poorly tuned, crushing midtones.
+- OutputPass/tone mapping mismatched with renderer color pipeline.
+- Mobile path lacks post stack disable/degrade decision.
+
+### Diagnostics Workflow (Composer Integrity)
+1. Document pass order with dependencies (input/output expectations).
+2. Measure per-pass GPU cost and total post-processing overhead.
+3. Validate render-target sizing against DPR caps per tier.
+4. Tune bloom threshold/intensity using reference shots.
+5. Confirm OutputPass and tone mapping are applied once in final pipeline.
+6. Test mobile disable path and fallback visual quality.
+
+### Release Evidence
+- Pass-order table with rationale.
+- Render-target budget note (resolution + DPR policy).
+- Mobile disable decision and trigger conditions.
+- Before/after frame-cost note from profiler pass.
+
+### Acceptance Gates
+- Post stack cost stays within allocated frame budget.
+- Color output remains consistent with non-post baseline intent.
+- Mobile fallback maintains legibility without severe artifacting.
+
+### Validation Neighbors
+- `threejs-shader-forge` for custom pass shader correctness.
+- `procedural-shader-debugging` for artifact isolation.
+- `threejs-fundamentals` for renderer/tone-mapping consistency.
+

@@ -54,3 +54,34 @@ const [colorMap, normalMap, roughnessMap] = await Promise.all([
 4. Enable mipmaps: for distant objects.
 5. Limit texture size: 2048 usually sufficient for web.
 6. Reuse textures: same texture = better batching.
+
+## Texture Memory Reduction Plan Example
+
+### Before / After Texture Budget
+
+| Asset Group | Before MB | After MB | Strategy |
+|---|---:|---:|---|
+| Hero albedo set | 96 | 36 | atlas + KTX2 |
+| Normal/ORM set | 64 | 28 | resolution tiering |
+| UI decals | 22 | 8 | sprite atlas reuse |
+
+### Rules
+- Enable mipmaps for minified textures.
+- Limit anisotropy to device-supported cap with project max (often 4-8).
+- Set `colorSpace` correctly (sRGB for color maps, linear for data maps).
+
+### Atlas Strategy
+- Merge small props into shared atlas to cut texture binds.
+
+### Async Loading / Disposal Snippet
+
+```javascript
+const tex = await textureLoader.loadAsync(url);
+tex.colorSpace = THREE.SRGBColorSpace;
+// ... later on teardown
+tex.dispose();
+```
+
+### Compression Notes
+- Prefer KTX2/Basis pipeline in build stage; DRACO handles geometry, not texture payload.
+

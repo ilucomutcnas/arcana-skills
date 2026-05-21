@@ -73,3 +73,33 @@ Version: makepad-widgets (dev branch). Last updated: 2026-01-19. Check for updat
 - Provide complete animator blocks with all required states.
 - Include clear comments explaining each state and transition.
 - Use consistent formatting following Makepad DSL conventions.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Failure Modes for Makepad Animator State Systems
+- Stuck state after rapid hover/press transitions.
+- Disabled component still running hover pulse.
+- Focus-ring transition conflicting with pressed transition keyframes.
+- Hover/pressed race causing one-frame flicker or double transition.
+
+### Diagnostics Workflow (State + Motion Tokens)
+1. Build a transition matrix for `default`, `hover`, `pressed`, `focus`, `disabled`.
+2. Mark each transition as `Snap` or `Forward` with rationale (latency-critical vs decorative).
+3. Execute keyboard-only navigation to validate focus and reduced-motion behavior.
+4. Stress-test pointer events (fast in/out + press spam) for race-condition artifacts.
+5. Confirm disabled state suppresses animator channels except accessibility-indicator changes.
+
+### Release Evidence Format
+- State transition table with entry/exit triggers.
+- Timing-token table (token name, ms, easing, Snap/Forward choice).
+- Reduced-motion mapping note (what is removed, what remains semantic).
+
+### Acceptance / Rejection Criteria
+- Accept only if every state pair resolves deterministically without stuck values.
+- Reject if disabled state animates, focus ring disappears, or transition races remain reproducible.
+- Reject if reduced-motion mode still uses large-scale motion transforms.
+
+### Validation Neighbors
+- `makepad-shader-lab` for shader-uniform synchronization with animator state.
+- `procedural-shader-debugging` when animated visual artifacts need instrumentation.
+

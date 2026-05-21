@@ -69,3 +69,29 @@ new THREE.PolyhedronGeometry(vertices, indices, 1, 0);
 3. Use `InstancedMesh`: for many identical objects.
 4. Choose appropriate segment counts: more segments = smoother but slower.
 5. Dispose unused geometry: `geometry.dispose()`.
+
+## Instanced Mesh Conversion Example
+
+### Before / After Budget Table
+
+| Metric | Before (600 Mesh) | After (Instanced) | Gate |
+|---|---:|---:|---|
+| Draw calls | 612 | 18 | Pass if < 40 |
+| CPU frame ms | 11.2 | 4.6 | Pass if <= 6 |
+| GPU memory MB | 280 | 190 | Pass if <= 220 |
+
+### BufferGeometry / InstancedMesh Snippet
+
+```javascript
+const geometry = new THREE.BoxGeometry(1,1,1);
+const material = new THREE.MeshStandardMaterial({ color: 0x66ccff });
+const instanced = new THREE.InstancedMesh(geometry, material, count);
+```
+
+### Bounding Volume + Normal Validation
+- Recompute `geometry.computeBoundingSphere()` after attribute edits.
+- Validate normals with helper pass before shipping.
+
+### Disposal Checks
+- Dispose shared geometry/material exactly once during teardown.
+

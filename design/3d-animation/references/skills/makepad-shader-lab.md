@@ -75,3 +75,35 @@ Version: makepad-widgets (dev branch). Last updated: 2026-01-19. Check for updat
 - Complete draw component blocks with shader code.
 - All uniforms explicitly declared.
 - Clear comments explaining SDF operations and visual intent.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Makepad Shader Failure Modes
+- Sdf2d edges shimmer due to insufficient anti-alias window.
+- Gradient banding in low-luminance themes.
+- Rounded-box corners collapse when radius uniform overshoots control bounds.
+- Uniform update cadence mismatched with animator state updates.
+- Compile failure path leaves component blank instead of using visual fallback.
+
+### Diagnostics Workflow (Sdf2d + Uniforms)
+1. Visualize SDF distance field and edge threshold values while animating radius.
+2. Run dark-theme gradient sweep and detect visible banding thresholds.
+3. Log uniform writes per frame; verify ordering relative to animation state changes.
+4. Force shader compile failure (invalid token test) to verify fallback paint path.
+5. Compare before/after shader revisions with same interaction script.
+
+### Required Release Evidence
+- Before/after shader snippet showing artifact remediation.
+- Artifact table (symptom, trigger, fix, residual risk).
+- Uniform update checklist signed off for hover/focus/press transitions.
+
+### Acceptance Gates
+- No visible corner jitter in repeated hover loop.
+- Gradient quality acceptable on at least one OLED mobile device class.
+- Compile failure reliably switches to approved fallback style.
+
+### Validation Neighbors
+- `makepad-animator` for state transition timing alignment.
+- `procedural-shader-debugging` for NaN/precision instrumentation patterns.
+- `glsl-shader-alchemist` for shader math and anti-alias techniques.
+

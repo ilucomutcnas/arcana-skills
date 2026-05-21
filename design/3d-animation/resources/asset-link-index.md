@@ -98,3 +98,8 @@ This index enumerates every skill-specific auxiliary folder and file in the pack
 - Reference: [`references/skills/threejs-textures.md`](../references/skills/threejs-textures.md)
 - Examples: [`examples/skills/threejs-textures.md`](../examples/skills/threejs-textures.md)
 - No additional asset folders.
+
+## procedural-shader-debugging
+- Reference: [`references/skills/procedural-shader-debugging.md`](../references/skills/procedural-shader-debugging.md)
+- Examples: [`examples/skills/procedural-shader-debugging.md`](../examples/skills/procedural-shader-debugging.md)
+- Assets: none required.

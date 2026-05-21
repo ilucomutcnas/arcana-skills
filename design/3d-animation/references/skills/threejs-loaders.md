@@ -73,3 +73,38 @@ Load external 3D models, textures, and other assets into Three.js scenes. Covers
 - Complete loader setup with LoadingManager.
 - Model post-processing code (shadows, materials, centering).
 - Error handling for all loading operations.
+
+## Stage 3.7 Extension: Production Diagnostics and Release Gates
+
+### Asset Loading Failure Modes
+- LoadingManager progress stalls without terminal success/error state.
+- Model failure path lacks fallback model/poster, leaving empty scene.
+- Imported GLTF scale/origin inconsistent with scene conventions.
+- Compression pipeline assumptions (DRACO/KTX2) undocumented for deployment.
+- Requests continue after route change, wasting bandwidth.
+- Offline/slow-network paths not tested.
+
+### Diagnostics Workflow (Loader Reliability)
+1. Define explicit loading states (start/progress/success/error/fallback).
+2. Force network failures and verify fallback model or poster behavior.
+3. Validate GLTF transform normalization (scale, orientation, pivot).
+4. Confirm cancellation behavior on navigation.
+5. Verify caching strategy and stale-version invalidation.
+6. Run slow-network and offline simulations for readiness.
+
+### Release Evidence Requirements
+- Loading state table with UI behavior per state.
+- Fallback result notes from forced error test.
+- Asset transform checklist for each shipped model.
+- Network failure test note (throttled + offline).
+
+### Acceptance Gates
+- Every load path resolves to success or intentional fallback.
+- Transform normalization prevents scene-placement regressions.
+- Navigation does not leak in-flight asset requests.
+
+### Validation Neighbors
+- `threejs-textures` for texture payload readiness.
+- `threejs-materials` for map/material compatibility.
+- `threejs-animation` for clip availability after load.
+
