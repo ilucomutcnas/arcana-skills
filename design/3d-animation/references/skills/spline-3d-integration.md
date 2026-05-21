@@ -78,33 +78,34 @@ Master guide for embedding interactive 3D scenes from Spline.design into web pro
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Integration Failure Modes
-- Lazy-load trigger never fires and hero remains blank.
-- Poster fallback removed too early, exposing load flashes.
-- Spline event listeners duplicate on component remount.
-- SSR boundary violations create hydration warnings in Next.js.
-- Mobile scene exceeds performance tier and drops interaction responsiveness.
-- No accessible text alternative for non-canvas users.
+### Production Failure Modes
+- Spline payload blocks initial render because lazy loading gates are missing.
+- Poster fallback does not render when WebGL init fails or bandwidth is constrained.
+- Embedded scene listeners persist after component teardown.
+- SSR/Next.js hydration mismatches occur from client-only Spline calls on server paths.
+- Scene complexity exceeds mobile tier limits and causes thermal throttling.
+- Accessibility alternative content is absent when 3D scene is unavailable.
 
-### Diagnostics Workflow (Spline Delivery)
-1. Verify lazy-load threshold and poster swap timing with network throttling.
-2. Inspect listener registration/removal on mount, route change, and unmount.
-3. Validate SSR/client split with hydration logs enabled.
-4. Benchmark scene performance across mobile device tiers.
-5. Confirm accessible alternative content remains present and meaningful.
+### Diagnostics Workflow (Spline 3D Integration)
+1. Verify lazy import boundaries so initial shell renders without scene payload.
+2. Force offline/timeout conditions and confirm poster fallback plus actionable recovery messaging.
+3. Audit event listener registration and disposal during mount/unmount cycles.
+4. Test Next.js SSR routes to ensure Spline references are client-gated.
+5. Benchmark scene tiers (low/medium/high complexity) on representative mobile hardware.
+6. Validate accessible textual alternative and interactive controls parity.
 
-### Required Evidence
-- Lifecycle checklist (mount/load/listener cleanup/unmount).
-- Mobile performance table by device class and fallback path.
-- Fallback behavior notes for failed load and reduced-motion mode.
+### Release Evidence Format
+- Lifecycle checklist for mount, ready, interaction, suspend, unmount, and disposal events.
+- Mobile performance table (device tier, scene tier, FPS band, memory note).
+- Fallback behavior notes covering offline, WebGL-fail, and reduced-capability scenarios.
 
-### Acceptance Gates
-- Hero never renders blank during slow-network load.
-- Listener lifecycle is leak-free across remount cycles.
-- Mobile tier fallback keeps UX usable and stable.
+### Acceptance / Rejection Criteria
+- **Accept** when lazy loading preserves fast shell render and scene hydration is stable.
+- **Reject** if listener cleanup is incomplete after route transitions.
+- **Reject** if mobile low-tier profile cannot sustain declared performance target without fallback.
+- **Accept** only when accessibility alternative content is present and meaningful.
 
-### Validation Neighbors
-- `scroll-experience` for scroll-bound hero coordination.
-- `threejs-fundamentals` for rendering lifecycle guardrails.
-- `threejs-loaders` for async asset failure handling patterns.
-
+### Adjacent Mini-Skills to Use for Validation
+- `scroll-experience`
+- `threejs-fundamentals`
+- `threejs-loaders`

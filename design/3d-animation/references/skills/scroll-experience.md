@@ -78,33 +78,33 @@ Library options and their strengths:
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Scroll Production Failure Modes
-- Pin sections introduce cumulative layout shift during hydration.
-- Mobile viewport height changes break scroll timing offsets.
-- Reduced-motion path missing, causing inaccessible long scrub animations.
-- Keyboard users cannot progress narrative due to scroll-only triggers.
-- ScrollTrigger/Lenis listeners survive unmount and double-fire on route return.
+### Production Failure Modes
+- Scroll pinning shifts layout and causes cumulative layout shift spikes.
+- Mobile viewport resize (URL bar collapse/expand) breaks trigger offsets.
+- Reduced-motion users still receive motion-driven pinned storytelling.
+- Keyboard-only navigation cannot access pinned sections predictably.
+- Unmounted views leak ScrollTrigger/Lenis/listener subscriptions.
 
-### Diagnostics Workflow (Narrative + Stability)
-1. Build section timing table with start/end markers and pin ownership.
-2. Record CLS during initial load and route transitions.
-3. Run reduced-motion and keyboard-only traversal as mandatory accessibility pass.
-4. Test mobile browser chrome show/hide to inspect viewport resize drift.
-5. Verify teardown: destroy trigger instances and remove listeners on unmount.
+### Diagnostics Workflow (Scroll Experience)
+1. Instrument pinned sections with markers and verify stable start/end positions across breakpoints.
+2. Record CLS during full narrative scroll and flag spikes over the agreed budget.
+3. Validate keyboard-only progression through interactive sections with focus visibility intact.
+4. Toggle reduced-motion preference and verify non-animated fallback sequencing.
+5. Navigate away and back repeatedly to confirm listener and trigger cleanup on unmount.
 
-### Evidence Required for Release Review
-- Section timing table with intended visual events.
-- CLS notes including measurement method and max observed value.
-- Cleanup checklist results for listeners/triggers.
-- Reduced-motion fallback description with screenshots optional (not stored in repo).
+### Release Evidence Format
+- Section timing table (section id, trigger start, trigger end, observed duration).
+- CLS notes with measured totals and offending section references.
+- Cleanup checklist covering listeners, ScrollTrigger instances, Lenis instances, and observers.
+- Reduced-motion fallback description for each pinned segment.
 
-### Acceptance Gates
-- CLS remains within project budget across target devices.
-- Scroll narrative remains usable via keyboard and reduced-motion mode.
-- No retained listeners or duplicate triggers after route remount.
+### Acceptance / Rejection Criteria
+- **Accept** when pinning retains layout stability within CLS budget.
+- **Reject** if viewport resize produces drifted trigger alignment on mobile browsers.
+- **Reject** when cleanup checks show retained listeners/triggers after route change.
+- **Accept** only when reduced-motion and keyboard pathways preserve equivalent narrative access.
 
-### Validation Neighbors
-- `threejs-animation` for scrubbed animation timing correctness.
-- `threejs-fundamentals` for resize and render-loop resilience.
-- `threejs-interaction` for keyboard/pointer parity validation.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-animation`
+- `threejs-fundamentals`
+- `threejs-interaction`

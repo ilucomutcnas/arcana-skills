@@ -74,33 +74,34 @@ Shadow setup: enable `renderer.shadowMap.enabled = true`, set `light.castShadow 
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Lighting/Shadow Failure Modes
-- Shadow map resolution exceeds budget and tanks frame rate.
-- Shadow camera frustum too wide introduces acne and unstable penumbra.
-- Physically correct lighting disabled while PBR materials expect it.
-- Environment map intensity over-darkens or over-brightens hero assets.
-- Mobile shadow fallback absent, causing severe performance collapse.
-- Contact shadows shimmer during camera motion.
+### Production Failure Modes
+- Shadow map resolution is over-provisioned and tanks frame time.
+- Shadow camera frustum is too broad or clipped, producing unstable shadows.
+- Physically correct lighting config drifts from material calibration.
+- Environment map intensity over-darkens or washes PBR response.
+- Mobile path keeps expensive dynamic shadows enabled.
+- Visual defects appear: peter-panning, acne, over-dark PBR, unstable contact shadows.
 
-### Diagnostics Workflow (Lighting QA)
-1. Capture baseline shadow settings and performance cost.
-2. Tune shadow frustum tightly around action area and re-evaluate acne/peter-panning.
-3. Validate physically-correct lighting with calibrated exposure.
-4. Sweep environment intensity against approved material references.
-5. Execute mobile fallback profile (reduced map size / disabled features).
+### Diagnostics Workflow (Three.js Lighting)
+1. Benchmark shadow map sizes per light and trim to scene-specific budgets.
+2. Tune shadow camera near/far/frustum extents around actual subject bounds.
+3. Validate physically correct lighting toggles against reference calibrated scene.
+4. Balance environment intensity with material roughness/metalness ranges.
+5. Execute mobile profile with shadow fallback policy applied.
+6. Run visual QA pass explicitly checking acne, peter-panning, contact-shadow stability.
 
-### Evidence Package
-- Shadow settings before/after table with map sizes and light counts.
-- Visual QA notes for peter-panning, acne, over-dark PBR, contact-shadow stability.
-- Mobile fallback table describing enabled/disabled shadow features.
+### Release Evidence Format
+- Shadow settings before/after table (map size, bias, normalBias, frustum extents).
+- Visual QA notes with issue snapshots/observations and chosen mitigations.
+- Mobile fallback table showing which shadow features are downgraded per tier.
 
-### Acceptance Gates
-- Visual defects stay below art-direction tolerance.
-- Lighting configuration meets frame budget on baseline devices.
-- Mobile fallback preserves readability and core depth cues.
+### Acceptance / Rejection Criteria
+- **Accept** when lighting remains stable and performant across desktop/mobile tiers.
+- **Reject** if acne or peter-panning is visible in hero shots.
+- **Reject** when mobile fallback policy is undefined or ineffective.
+- **Accept** only when PBR exposure and environment intensity pass art-direction review.
 
-### Validation Neighbors
-- `threejs-materials` for PBR response calibration.
-- `threejs-fundamentals` for renderer/camera baseline consistency.
-- `threejs-postprocessing` for final perceived contrast and bloom interactions.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-materials`
+- `threejs-fundamentals`
+- `threejs-postprocessing`

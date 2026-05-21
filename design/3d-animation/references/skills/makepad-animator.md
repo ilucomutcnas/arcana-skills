@@ -76,30 +76,31 @@ Version: makepad-widgets (dev branch). Last updated: 2026-01-19. Check for updat
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Failure Modes for Makepad Animator State Systems
-- Stuck state after rapid hover/press transitions.
-- Disabled component still running hover pulse.
-- Focus-ring transition conflicting with pressed transition keyframes.
-- Hover/pressed race causing one-frame flicker or double transition.
+### Production Failure Modes
+- Animator state machine remains latched after quick hover→pressed→disabled transitions.
+- `Snap` is used where `Forward` is required, causing abrupt UI regressions.
+- Disabled controls still animate hover/pressed tracks.
+- Focus ring animation conflicts with pressed timeline and obscures accessibility state.
+- Hover and pressed signals race, producing nondeterministic keyframe selection.
 
-### Diagnostics Workflow (State + Motion Tokens)
-1. Build a transition matrix for `default`, `hover`, `pressed`, `focus`, `disabled`.
-2. Mark each transition as `Snap` or `Forward` with rationale (latency-critical vs decorative).
-3. Execute keyboard-only navigation to validate focus and reduced-motion behavior.
-4. Stress-test pointer events (fast in/out + press spam) for race-condition artifacts.
-5. Confirm disabled state suppresses animator channels except accessibility-indicator changes.
+### Diagnostics Workflow (Makepad Animator)
+1. Document each widget state node and allowed transitions (`idle`, `hover`, `focus`, `pressed`, `disabled`).
+2. Audit per-transition timing mode and justify `Snap` vs `Forward` in a rule table.
+3. Simulate rapid pointer/key navigation to surface hover/pressed race behavior.
+4. Verify disabled-state precedence: once disabled, all non-essential animations must stop.
+5. Execute reduced-motion pass and confirm every animated transition maps to compliant alternatives.
 
 ### Release Evidence Format
-- State transition table with entry/exit triggers.
-- Timing-token table (token name, ms, easing, Snap/Forward choice).
-- Reduced-motion mapping note (what is removed, what remains semantic).
+- State transition table covering source state, target state, guard condition, and transition mode.
+- Timing-token table listing duration/ease tokens and where they are consumed.
+- Reduced-motion mapping note describing per-state fallback behavior.
 
 ### Acceptance / Rejection Criteria
-- Accept only if every state pair resolves deterministically without stuck values.
-- Reject if disabled state animates, focus ring disappears, or transition races remain reproducible.
-- Reject if reduced-motion mode still uses large-scale motion transforms.
+- **Accept** when every interaction path resolves to a valid terminal state without deadlocks.
+- **Reject** if disabled components animate or process hover/pressed tracks.
+- **Reject** if focus indicator timing can be visually masked by pressed transitions.
+- **Accept** only when reduced-motion behavior preserves affordance clarity without motion-heavy sequences.
 
-### Validation Neighbors
-- `makepad-shader-lab` for shader-uniform synchronization with animator state.
-- `procedural-shader-debugging` when animated visual artifacts need instrumentation.
-
+### Adjacent Mini-Skills to Use for Validation
+- `makepad-shader-lab`
+- `procedural-shader-debugging`

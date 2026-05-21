@@ -76,33 +76,36 @@ Do not use `THREE.CapsuleGeometry` in Three.js versions before r142.
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Geometry Pipeline Failure Modes
-- Draw-call count scales linearly due to missed instancing opportunity.
-- BufferGeometry attributes exceed expected bounds and corrupt shading.
-- Merge strategy invalidates per-object material requirements.
-- Bounding sphere/box stale after vertex mutation, causing culling errors.
-- Normals/tangents inconsistent after procedural edits.
-- Geometry resources not disposed during scene teardown.
+### Production Failure Modes
+- Draw-call count exceeds scene budget due to over-fragmented meshes.
+- BufferGeometry attributes contain mismatched lengths or invalid boundaries.
+- InstancedMesh is skipped where repeated meshes dominate scene cost.
+- Merge strategy removes needed per-part transforms or materials.
+- Bounding volumes are stale, breaking culling and interaction accuracy.
+- Normals/tangents are invalid, causing shading seams.
+- Geometry disposal is incomplete on scene replacement.
 
-### Diagnostics Workflow (Geometry Efficiency)
-1. Profile scene draw calls before optimization.
-2. Evaluate InstancedMesh vs merge strategy based on material and transform diversity.
-3. Recompute and validate bounding volumes after attribute updates.
-4. Run normal/tangent validation pass using debug shading.
-5. Confirm disposal sequence for merged/instanced resources.
+### Diagnostics Workflow (Three.js Geometry)
+1. Capture baseline draw calls and identify top geometry contributors.
+2. Validate every BufferGeometry attribute count and index bounds before upload.
+3. Apply InstancedMesh decision rules for repeated assets and compare CPU/GPU cost.
+4. Evaluate merge candidates while preserving material groups and transforms.
+5. Recompute and verify bounding sphere/box after procedural or loader-side edits.
+6. Run normal/tangent integrity checks for PBR-ready shading.
+7. Confirm `geometry.dispose()` coverage during teardown.
 
-### Evidence Required for Approval
-- Draw-call before/after table.
-- Memory usage comparison table after geometry strategy change.
-- Bounding volume validation notes including culling edge cases.
+### Release Evidence Format
+- Draw-call before/after table by scene checkpoint.
+- Memory table including geometry count, vertex count, and GPU memory estimate.
+- Bounding volume validation notes for culling and picking correctness.
 
-### Acceptance Gates
-- Optimization meets draw-call budget without visual regression.
-- Bounds and normals remain valid under animation/camera movement.
-- No geometry memory leaks after teardown.
+### Acceptance / Rejection Criteria
+- **Accept** when draw calls are within documented budget and visual output is unchanged.
+- **Reject** if merged or instanced paths break material assignment or transforms.
+- **Reject** when bounding volumes are stale and cause missed picks or over-culling.
+- **Accept** only when disposal checklist confirms no orphan geometries.
 
-### Validation Neighbors
-- `threejs-materials` for shading correctness on optimized meshes.
-- `threejs-fundamentals` for lifecycle/disposal confirmation.
-- `threejs-loaders` when geometry originates from imported assets.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-materials`
+- `threejs-fundamentals`
+- `threejs-loaders`

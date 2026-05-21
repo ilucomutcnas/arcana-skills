@@ -83,36 +83,37 @@ Systematically create high-quality 3D scenes and interactive experiences using T
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Core Runtime Failure Modes
-- DevicePixelRatio left uncapped, causing avoidable GPU pressure.
-- Resize path updates renderer but not camera projection correctly.
-- Color management configuration inconsistent with material/texture inputs.
-- Geometry/material disposal omitted on unmount.
-- Context-loss event unhandled, leaving unrecoverable blank canvas.
-- Server-rendered shell mixes with client scene bootstrap incorrectly.
-- No error boundary/fallback shell for initialization failures.
+### Production Failure Modes
+- Device pixel ratio is uncapped and overwhelms fill-rate on high-DPR screens.
+- Resize handling desynchronizes camera aspect and renderer dimensions.
+- Color management setup mixes linear/sRGB assumptions.
+- Renderer, geometries, or textures survive unmount and leak GPU memory.
+- WebGL context loss is unhandled, leaving a blank viewport.
+- SSR paths execute browser-only WebGL code.
+- Missing error boundary/fallback shell obscures initialization failures.
 
-### Diagnostics Workflow (Scene Baseline)
-1. Verify DPR cap policy across desktop and mobile.
-2. Run resize matrix (orientation change + container resize) and inspect framing.
-3. Audit color management settings against sample textured assets.
-4. Execute repeated mount/unmount cycles and inspect memory trend.
-5. Simulate context-loss/recovery and validate renderer restoration.
-6. Test SSR/client boundary behavior with hydration logs.
+### Diagnostics Workflow (Three.js Fundamentals)
+1. Enforce and test DPR caps by device class.
+2. Trigger resize storms and verify camera/projection/renderer coherence.
+3. Validate color-management configuration against a known reference swatch scene.
+4. Run mount/unmount loop and inspect memory trajectory for leaks.
+5. Simulate context loss/recovery events and confirm renderer restoration path.
+6. Confirm SSR/client boundary with guarded imports and client-only bootstrapping.
+7. Exercise error boundary to ensure user-facing fallback shell appears on failure.
 
-### Required Release Evidence
-- Resize test results (expected vs observed framing).
-- Mount/unmount memory note after stress loop.
-- Context-loss recovery note with steps and outcome.
-- DPR budget declaration used in production build.
+### Release Evidence Format
+- Resize test result documenting aspect ratio correctness after repeated resizes.
+- Mount/unmount memory note with observed steady-state behavior.
+- Context-loss recovery note including restoration latency and user-facing state.
+- DPR budget table by device category.
 
-### Acceptance Gates
-- Stable framing and aspect behavior across all target breakpoints.
-- No unbounded memory growth during lifecycle stress test.
-- Context loss handled with successful recovery or graceful fallback.
+### Acceptance / Rejection Criteria
+- **Accept** when DPR caps and resize handlers preserve quality/performance balance.
+- **Reject** if memory climbs across repeated mount/unmount cycles.
+- **Reject** if context loss leaves scene unrecoverable.
+- **Accept** only when SSR-safe boundaries and fallback shell are demonstrated.
 
-### Validation Neighbors
-- `threejs-geometry` for buffer lifecycle correctness.
-- `threejs-materials` for color-space compatibility validation.
-- `threejs-interaction` for input behavior after resize/recovery events.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-geometry`
+- `threejs-materials`
+- `threejs-interaction`

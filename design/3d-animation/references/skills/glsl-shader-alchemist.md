@@ -80,33 +80,35 @@ Comprehensive guide to writing GPU shaders using GLSL (OpenGL Shading Language).
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Shader Authoring Failure Modes
-- `mediump` precision introduces temporal instability on mobile GPUs.
-- Missing derivative smoothing creates stair-step aliasing.
-- Heavy dynamic branching spikes fragment cost in dense scenes.
-- Uniform ranges allow invalid values that collapse output.
-- Color-space/tone-mapping mismatch causes washed highlights or clipped blacks.
+### Production Failure Modes
+- Precision qualifiers (`mediump`/`highp`) are inconsistent and create mobile artifacts.
+- Derivative-based anti-aliasing (`fwidth`) is absent, causing shimmering edges.
+- Dynamic branches inflate fragment cost on low-tier GPUs.
+- Uniform contracts allow invalid ranges or missing defaults.
+- Color-space assumptions conflict with tone-mapped output.
+- Mobile GPUs fail compile/link due to unsupported instruction patterns.
 
-### Diagnostics Workflow (GLSL)
-1. Audit precision qualifiers per shader stage and test forced highp/mediump variants.
-2. Compare hard-threshold edges vs derivative-based anti-alias implementations.
-3. Profile branch-heavy paths with representative scene complexity.
-4. Validate uniform table (type, range, default, debug override).
-5. Run color-space verification with same scene in target browsers/GPU tiers.
+### Diagnostics Workflow (GLSL Shader Alchemist)
+1. Audit precision declarations per stage and verify mobile-safe fallback precision.
+2. Run aliasing checks with and without derivative smoothing on thin features.
+3. Profile branch-heavy paths and replace runtime branches with math/defines where needed.
+4. Validate uniform schema (type, range, default, update cadence) against runtime inputs.
+5. Compare linear vs sRGB output under active tone mapping across target browsers/GPUs.
+6. Execute compile tests on at least one Adreno and one Apple GPU target class.
 
 ### Release Evidence Format
-- Uniform table with validated min/max ranges.
-- Before/after shader snippet for anti-alias or color-space correction.
-- Browser/GPU matrix (desktop + mobile) with artifact notes.
-- Compile-time or frame-cost observation tied to shader revision.
+- Uniform validation table with name, type, legal range, default, and owner.
+- Before/after shader snippet highlighting precision/AA/branch optimizations.
+- Browser/GPU matrix documenting compile success and visual parity.
+- Compile-time log excerpt or frame-cost delta note tied to the optimization.
 
-### Acceptance Gates
-- No critical artifacts across approved GPU/browser matrix.
-- Uniform constraints prevent invalid rendering states.
-- Performance impact remains inside effect budget.
+### Acceptance / Rejection Criteria
+- **Accept** only when shader compiles cleanly on documented desktop and mobile GPU matrix.
+- **Reject** if uniform misuse can produce NaN output or clipped color without guardrails.
+- **Reject** when branch-heavy code exceeds agreed frame-cost budget.
+- **Accept** when color-space and tone-mapping behavior match art-direction references.
 
-### Validation Neighbors
-- `procedural-shader-debugging` for systematic defect triage.
-- `threejs-shader-forge` for integration-layer correctness.
-- `threejs-postprocessing` for final output color pipeline verification.
-
+### Adjacent Mini-Skills to Use for Validation
+- `procedural-shader-debugging`
+- `threejs-shader-forge`
+- `threejs-postprocessing`

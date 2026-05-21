@@ -78,33 +78,34 @@ Common properties: `side` (FrontSide, BackSide, DoubleSide), `transparent`, `opa
 
 ## Stage 3.7 Extension: Production Diagnostics and Release Gates
 
-### Material Review Failure Modes
-- Wrong material class selected for intended lighting model.
-- PBR maps missing or misassigned (normal/roughness/metalness/ao).
-- Transparent objects render in wrong order with depth artifacts.
-- Color-space mismatch between albedo and data maps.
-- Roughness/normal values overly aggressive and break realism.
-- Texture-heavy materials exceed frame/memory budgets.
+### Production Failure Modes
+- Material choice ignores surface intent (PBR vs unlit vs stylized).
+- PBR map channels are missing, mispacked, or assigned with wrong color-space.
+- Transparent materials render in incorrect order due to depthWrite/renderOrder misuse.
+- Normal and roughness workflows are mismatched with authored textures.
+- Texture count and resolution exceed budget for target hardware.
+- Performance degrades from expensive material features without fallback.
 
-### Diagnostics Workflow (Material Quality)
-1. Validate material selection against object function (hero, UI 3D, background).
-2. Run PBR map checklist for channel correctness and UV usage.
-3. Inspect transparent assets with renderOrder/depthWrite permutations.
-4. Audit color-space settings for all bound textures.
-5. Compare visual/perf tradeoffs between high-fidelity and fallback materials.
+### Diagnostics Workflow (Three.js Materials)
+1. Review material selection rules per asset category and lighting model.
+2. Validate each PBR map assignment, channel packing, and colorSpace configuration.
+3. Stress-test transparent object stacks while tuning renderOrder and depthWrite.
+4. Audit normal/roughness pipeline consistency with DCC export settings.
+5. Measure texture/material budget impact and apply downgrades for low tiers.
+6. Compare expensive vs simplified material variants for performance tradeoff decisions.
 
-### Evidence Required
-- Material property before/after table for corrected assets.
-- Map validation checklist (present, colorSpace, channel correctness).
+### Release Evidence Format
+- Material property before/after table (type, critical params, performance cost).
+- Map validation checklist covering albedo/normal/roughness/metalness/AO inputs.
 - Transparent-object note documenting renderOrder and depthWrite decisions.
 
-### Acceptance Gates
-- Materials match art direction under target lighting setup.
-- Transparency artifacts eliminated in primary camera paths.
-- Material stack remains within performance and memory targets.
+### Acceptance / Rejection Criteria
+- **Accept** when material choices match art intent and hardware budget.
+- **Reject** if map colorSpace or channel mapping is incorrect for any production asset.
+- **Reject** when transparency artifacts remain unresolved in layered scenes.
+- **Accept** only when low-tier fallback materials are defined for heavy assets.
 
-### Validation Neighbors
-- `threejs-textures` for map payload and color-space correctness.
-- `threejs-lighting` for physically based response validation.
-- `procedural-shader-debugging` for shader-driven material anomalies.
-
+### Adjacent Mini-Skills to Use for Validation
+- `threejs-textures`
+- `threejs-lighting`
+- `procedural-shader-debugging`
