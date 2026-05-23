@@ -10,8 +10,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | Professional | 2 |
 | Working | 6 |
 | Amateur | 0 |
-| Ready for use | 5 |
-| Needs upgrade | 2 |
+| Ready for use | 6 |
+| Needs upgrade | 1 |
 | Needs major upgrade | 0 |
 | Needs asset hygiene | 1 |
 | Needs registry only | 0 |
@@ -24,7 +24,7 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 | design/accessibility-ux | 8 | 89 | working | ready-for-use |
 | design/brand-visual | 9 | 75 | working | needs-asset-hygiene |
 | design/content-writing | 8 | 93 | professional | ready-for-use |
-| design/creative-tools | 6 | 83 | working | needs-upgrade |
+| design/creative-tools | 7 | 90 | working | ready-for-use |
 | design/css-styling | 13 | 88 | working | ready-for-use |
 | design/design-systems | 10 | 84 | working | needs-upgrade |
 | design/pretext-ui | 10 | 86 | working | ready-for-use |
@@ -39,8 +39,8 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 | Status | Packages |
 |---|---:|
-| ready-for-use | 5 |
-| needs-upgrade | 2 |
+| ready-for-use | 6 |
+| needs-upgrade | 1 |
 | needs-major-upgrade | 0 |
 | needs-asset-hygiene | 1 |
 | needs-registry-only | 0 |
@@ -124,20 +124,27 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
 
 ### design/creative-tools
 - **Maturity:** working
-- **Status:** needs-upgrade
-- **Overall score:** 83
-- **Strengths:** Mini-skill coverage doubled from 3 to 6 and now spans ad/content, PDF, vector automation, raster retouch, and delivery handoff workflows.; Routing, composition, and self-diagnostic guidance are coherent and operational across old and newly added mini-skills.; Each newly added mini-skill includes both reference and example files with practical workflow detail.
-- **Quality gaps:** Professional readiness improved but remains below top-tier packages because several examples are still moderate depth rather than end-to-end production playbooks.; Asset hygiene is not yet Stage 4-verified; package cannot be treated as fully clean on provenance and binary policy.
-- **Recommended upgrade actions:** Deepen cross-mini-skill scenarios (vector + raster + handoff) with failure handling, QA gates, and revision loops.; Add stronger operational checklists for acceptance criteria and cross-team signoff in creative-asset-handoff examples.; Complete Stage 4 asset hygiene/provenance verification and document outcomes.
-- **Suggested new mini-skills:** creative-qa-gate-automation
-- **Asset hygiene notes:** New mini-skills list no required assets, but package-level Stage 4 provenance and hygiene validation is still pending.
+- **Status:** ready-for-use
+- **Overall score:** 90
+- **Strengths:** Mini-skill coverage is now 7 with creative-qa-gate-automation added, closing the prior QA/signoff/release-gate workflow gap.; Routing surfaces are consistently integrated across SKILL, catalog, manifest, routing guide, and asset-link index for release and validation compositions.; References and examples now contain concrete Stage 3.8 operational detail: rejection paths, revision loops, evidence packs, acceptance gates, and stakeholder signoff patterns.
+- **Quality gaps:** Package maturity is stronger but still working (not professional) because several workflows remain scenario-level slices rather than full multi-quarter production governance playbooks.; Stage 4 asset hygiene/provenance verification is still pending and must remain open even though no new binary assets were introduced.
+- **Recommended upgrade actions:** Run Stage 4 asset hygiene/provenance verification and document outcomes without changing package semantics.; In a future non-audit pass, deepen cross-mini-skill operating playbooks (campaign + content + PDF + vector/raster + handoff) with measurable acceptance/rejection metrics and rollback evidence.; Add longitudinal release governance examples covering repeated launch cycles, late-change control, and post-release defect handling.
+- **Suggested new mini-skills:** none required in this audit pass
+- **Asset hygiene notes:** Existing links/resources were preserved and creative-qa-gate-automation added without required assets, but Stage 4 hygiene/provenance validation is still required and not complete.
 - **Evidence paths:**
-  - `design/creative-tools/resources/manifest.json` — Manifest now lists 6 mini-skills, including vector-workflow-automation, raster-retouch-pipeline, and creative-asset-handoff.
-  - `design/creative-tools/resources/skill-catalog.md` — Catalog documents all 6 mini-skills with expanded operational summaries and pairings.
-  - `design/creative-tools/resources/routing-guide.md` — Routing preserves original routes and adds routes for vector/raster/handoff workflows.
-  - `design/creative-tools/references/skills/vector-workflow-automation.md` — New operational reference exists for vector cleanup, normalization, and export planning.
-  - `design/creative-tools/examples/skills/raster-retouch-pipeline.md` — New example provides realistic raster cleanup/export flow with QA-oriented steps.
-  - `design/creative-tools/resources/asset-link-index.md` — Asset index retains prior auxiliary links and lists new mini-skills with no required assets.
+  - `design/creative-tools/resources/manifest.json` — Manifest now lists 7 mini-skills including creative-qa-gate-automation.
+  - `design/creative-tools/SKILL.md` — Router semantics are preserved and include campaign QA/signoff, cross-channel creative release, editorial launch package, and document delivery QA combinations.
+  - `design/creative-tools/composition-protocol.md` — Universal composition protocol is preserved and now includes practical creative release recipes.
+  - `design/creative-tools/self-diagnostic-protocol.md` — Self-diagnostic protocol includes Stage 3.8 release-gate checks and rejection criteria.
+  - `design/creative-tools/resources/routing-guide.md` — Routing guide includes creative-qa-gate-automation and routes creative QA gates, campaign release signoff, cross-channel validation, compliance review, launch approval, icon/product/PDF QA, late revision loops, and stakeholder approval matrices.
+  - `design/creative-tools/resources/asset-link-index.md` — Asset-link index preserves existing ad-creative/content-creator/pdf-processing links and adds creative-qa-gate-automation with no required assets.
+  - `design/creative-tools/references/skills/creative-qa-gate-automation.md` — New QA gate automation reference exists with release criteria and evidence-pack expectations.
+  - `design/creative-tools/examples/skills/creative-qa-gate-automation.md` — New QA gate automation example exists with concrete signoff/revision workflow detail.
+  - `design/creative-tools/references/skills/ad-creative.md` — Reference includes Stage 3.8 QA gates for platform specs, claim substantiation, variation readiness, rejected-angle handling, and evidence packs.
+  - `design/creative-tools/examples/skills/ad-creative.md` — Example includes campaign revision loop, variant QA table, rejection reasons, approved final copy, and evidence checklist.
+  - `design/creative-tools/references/skills/pdf-processing.md` — Reference includes PDF release QA gates for fields, extraction/accessibility, geometry metadata, provenance, merge/split integrity, and security notes.
+  - `design/creative-tools/examples/skills/vector-workflow-automation.md` — Example includes icon-set QA/release workflow with SVG delta evidence, issue taxonomy, export variants, and signoff gates.
+  - `design/creative-tools/examples/skills/creative-asset-handoff.md` — Example includes final package governance with release manifest, ownership/signoff, source-export separation, revision history, rollback path, and late-change protocol.
 
 ### design/css-styling
 - **Maturity:** working
@@ -203,9 +210,9 @@ This Stage 3 output is **audit-only**. No package content, manifests, registry f
   - `design/pretext-ui/examples/skills/library-architecture.md` — Example is a concrete lineOverflowHint API architecture scenario with compatibility and risk tables.
 
 ## Recommended Upgrade Order
-1. **design/creative-tools** — Now the top unresolved normal content-upgrade target; deepen cross-mini-skill QA/signoff workflows and end-to-end release-readiness evidence.
-2. **design/design-systems** — Structurally strong after upgrade; remaining follow-up is deeper long-horizon operational evidence and adoption/release playbooks.
-3. **design/css-styling** — Already ready-for-use; keep as lower-priority follow-up for advanced release-playbook depth, not an immediate upgrade blocker.
-4. **design/accessibility-ux** — Ready-for-use after Stage 3.6; keep only as optional future pass for professional-threshold depth.
-5. **design/3d-animation** — Re-evaluated to ready-for-use/professional after Stage 3.7 and reference-specificity upgrades; retain only as periodic maintenance for diagnostic freshness, not immediate content-upgrade urgency.
+1. **design/design-systems** — Now the top unresolved normal content-upgrade target; deepen long-horizon operational evidence and adoption/release playbooks.
+2. **design/css-styling** — Ready-for-use but still a practical lower-priority follow-up for broader end-to-end release playbook depth across all mini-skills.
+3. **design/accessibility-ux** — Ready-for-use with strong operational depth; keep only as optional follow-up for professional-threshold governance breadth.
+4. **design/creative-tools** — Re-evaluated to ready-for-use after Stage 3.8; retain only as periodic maintenance and Stage 4 hygiene follow-through, not immediate content-upgrade urgency.
+5. **design/3d-animation** — Professional/ready-for-use after Stage 3.7; maintain periodic diagnostic freshness rather than upgrade urgency.
 6. **design/brand-visual** — Keep as Stage 4 asset-hygiene priority, not normal content-upgrade urgency.
